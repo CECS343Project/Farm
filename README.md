@@ -1,7 +1,7 @@
 # Farm
 [Progess so far](https://github.com/CECS343Project/Farm/milestones) | [Issues to be claimed](https://github.com/CECS343Project/Farm/issues?q=is%3Aopen+is%3Aissue+label%3A%22help+wanted%22)
 ## Problem
-Significant time different between a doctor giving prescription to patient, and pharmacy in receipt of prescriptions. No record to query or categorization of patient prescription.
+There is a significant time difference between a doctor giving a prescription to patient, and pharmacy recieving it. There is also no record to query or categorization of patient prescriptions.
 
 ## Solution
 Java application installed on both doctor and pharmacy side.
