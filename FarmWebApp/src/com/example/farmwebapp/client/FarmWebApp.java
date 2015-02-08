@@ -17,6 +17,11 @@ public class FarmWebApp implements EntryPoint
 		Button myButton = new Button("Hello");
 		
 		RootPanel.get("helloWorld").add(myButton);
+		RootPanel.get("helloWorld").add(myButton);
+		RootPanel.get("helloWorld").add(myButton);
+		RootPanel.get("helloWorld").add(myButton);
+		RootPanel.get("helloWorld").add(myButton);
+		RootPanel.get("helloWorld").add(myButton);
 	}
 	
 }
