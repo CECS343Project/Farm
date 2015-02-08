@@ -10,7 +10,7 @@
   <inherits name='com.google.gwt.user.User'/>
  
 
-  <!-- Inherit the default GWT style sheet.  You can change       -->
+
   <!-- the theme of your GWT application by uncommenting          -->
   <!-- any one of the following lines.                            -->
   <inherits name='com.google.gwt.user.theme.clean.Clean'/>
