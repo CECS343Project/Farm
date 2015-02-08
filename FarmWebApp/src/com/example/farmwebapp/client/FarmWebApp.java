@@ -16,7 +16,7 @@ public class FarmWebApp implements EntryPoint
 	{
 		MGWT.applySettings(MGWTSettings.getAppSetting());
 		
-		Button myButton = new Button("Hello");
+		Button myButton = new Button("Hello World!");
 		
 		RootPanel.get("helloWorld").add(myButton);
 	}
