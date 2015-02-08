@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 function farmwebapp(){var O='bootstrap',P='begin',Q='gwt.codesvr.farmwebapp=',R='gwt.codesvr=',S='farmwebapp',T='startup',U='DUMMY',V=0,W=1,X='iframe',Y='javascript:""',Z='position:absolute; width:0; height:0; border:none; left: -1000px;',$=' top: -1000px;',_='CSS1Compat',ab='<!doctype html>',bb='',cb='<html><head><\/head><body><\/body><\/html>',db='undefined',eb='DOMContentLoaded',fb=50,gb='Chrome',hb='eval("',ib='");',jb='script',kb='javascript',lb='moduleStartup',mb='moduleRequested',nb='Failed to load ',ob='head',pb='meta',qb='name',rb='farmwebapp::',sb='::',tb='gwt:property',ub='content',vb='=',wb='gwt:onPropertyErrorFn',xb='Bad handler "',yb='" for "gwt:onPropertyErrorFn"',zb='gwt:onLoadErrorFn',Ab='" for "gwt:onLoadErrorFn"',Bb='#',Cb='?',Db='/',Eb='img',Fb='clear.cache.gif',Gb='baseUrl',Hb='farmwebapp.nocache.js',Ib='base',Jb='//',Kb='user.agent',Lb='webkit',Mb='safari',Nb='msie',Ob=10,Pb=11,Qb='ie10',Rb=9,Sb='ie9',Tb=8,Ub='ie8',Vb='gecko',Wb='gecko1_8',Xb=2,Yb=3,Zb=4,$b='selectingPermutation',_b='farmwebapp.devmode.js',ac="GWT module 'farmwebapp' may need to be (re)compiled",bc=':',cc='.cache.js',dc='link',ec='rel',fc='stylesheet',gc='href',hc='loadExternalRefs',ic='gwt/clean/clean.css',jc='end',kc='http:',lc='file:',mc='_gwt_dummy_',nc='__gwtDevModeHook:farmwebapp',oc='Ignoring non-whitelisted Dev Mode URL: ',pc=':moduleBase';var o=window;var p=document;r(O,P);function q(){var a=o.location.search;return a.indexOf(Q)!=-1||a.indexOf(R)!=-1}
 function r(a,b){if(o.__gwtStatsEvent){o.__gwtStatsEvent({moduleName:S,sessionId:o.__gwtStatsSessionId,subSystem:T,evtGroup:a,millis:(new Date).getTime(),type:b})}}
 farmwebapp.__sendStats=r;farmwebapp.__moduleName=S;farmwebapp.__errFn=null;farmwebapp.__moduleBase=U;farmwebapp.__softPermutationId=V;farmwebapp.__computePropValue=null;farmwebapp.__getPropMap=null;farmwebapp.__installRunAsyncCode=function(){};farmwebapp.__gwtStartLoadingFragment=function(){return null};farmwebapp.__gwt_isKnownPropertyValue=function(){return false};farmwebapp.__gwt_getMetaProperty=function(){return null};var s=null;var t=o.__gwt_activeModules=o.__gwt_activeModules||{};t[S]={moduleName:S};farmwebapp.__moduleStartupDone=function(e){var f=t[S].bindings;t[S].bindings=function(){var a=f?f():{};var b=e[farmwebapp.__softPermutationId];for(var c=V;c<b.length;c++){var d=b[c];a[d[V]]=d[W]}return a}};var u;function v(){w();return u}
@@ -24,3 +25,72 @@ r(hc,P);c(ic);r(hc,jc)}
 B();farmwebapp.__moduleBase=C();t[S].moduleBase=farmwebapp.__moduleBase;var H=F();if(o){var I=!!(o.location.protocol==kc||o.location.protocol==lc);o.__gwt_activeModules[S].canRedirect=I;function J(){var b=mc;try{o.sessionStorage.setItem(b,b);o.sessionStorage.removeItem(b);return true}catch(a){return false}}
 if(I&&J()){var K=nc;var L=o.sessionStorage[K];if(!/^http:\/\/(localhost|127\.0\.0\.1)(:\d+)?\/.*$/.test(L)){if(L&&(window.console&&console.log)){console.log(oc+L)}L=bb}if(L&&!o[K]){o[K]=true;o[K+pc]=C();var M=p.createElement(jb);M.src=L;var N=p.getElementsByTagName(ob)[V];N.insertBefore(M,N.firstElementChild||N.children[V]);return false}}}G();r(O,jc);A(H);return true}
 farmwebapp.succeeded=farmwebapp();
+=======
+/*
+ * Copyright 2014 Google Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not
+ * use this file except in compliance with the License. You may obtain a copy of
+ * the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+ * License for the specific language governing permissions and limitations under
+ * the License.
+ */
+
+/**
+ * This startup script is used when we run superdevmode from an app server.
+ */
+(function($wnd, $doc){
+  // document.head does not exist in IE8
+  var $head = $doc.head || $doc.getElementsByTagName('head')[0];
+  // Compute some codeserver urls so as the user does not need bookmarklets
+  var hostName = $wnd.location.hostname;
+  var serverUrl = 'http://' + hostName + ':50958';
+  var module = 'farmwebapp';
+  var nocacheUrl = serverUrl + '/recompile-requester/' + module;
+
+  // Insert the superdevmode nocache script in the first position of the head
+  var devModeScript = $doc.createElement('script');
+  devModeScript.src = nocacheUrl;
+
+  // Everybody except IE8 does fire an error event
+  // This means that we do not detect a non running SDM with IE8.
+  if (devModeScript.addEventListener) {
+    var callback = function() {
+      // Don't show the confirmation dialogue twice (multimodule)
+      if (!$wnd.__gwt__sdm__confirmed &&
+           (!$wnd.__gwt_sdm__recompiler || !$wnd.__gwt_sdm__recompiler.loaded)) {
+        $wnd.__gwt__sdm__confirmed = true;
+        if ($wnd.confirm(
+            "Couldn't load " +  module + " from Super Dev Mode\n" +
+            "server at " + serverUrl + ".\n" +
+            "Please make sure this server is ready.\n" +
+            "Do you want to try again?")) {
+          $wnd.location.reload();
+        }
+      }
+    };
+    devModeScript.addEventListener("error", callback, true);
+  }
+
+  var injectScriptTag = function(){
+    $head.insertBefore(devModeScript, $head.firstElementChild || $head.children[0]);
+  };
+
+  if (/loaded|complete/.test($doc.readyState)) {
+    injectScriptTag();
+  } else {
+    //defer app script insertion until the body is ready
+    if($wnd.addEventListener){
+      $wnd.addEventListener('load', injectScriptTag, false);
+    } else{
+      $wnd.attachEvent('onload', injectScriptTag);
+    }
+  }
+})(window, document);
+>>>>>>> homegui
