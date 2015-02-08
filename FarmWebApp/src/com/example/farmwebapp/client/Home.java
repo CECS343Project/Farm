@@ -23,7 +23,7 @@ public class Home
 	
 	public void removePanel()
 	{
-		
+		this.getPanel().removeFromParent();
 	}
 
 }
