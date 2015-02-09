@@ -1,0 +1,68 @@
+<<<<<<< HEAD
+/*
+Universal Main Panel Styling
+*/
+.mainPanel
+{
+	border-width:5px;
+	border-style:solid;
+	background-color:red;
+}
+
+/*
+end of Main Panel Styling
+*/
+
+/*
+Styling for Login
+*/
+.loginButton
+{
+	padding: 25px;
+}
+.loginMainVert
+{
+	margin-left:600px;
+	margin-top:200px;
+}
+.loginTop
+{
+	
+}
+/*
+End of Login
+*/
+
+
+/*
+Styling for PopUps
+*/
+/*the outside of the popup*/
+.gwt-PopupPanel
+{
+	
+}
+/*the wrapper around the content*/
+.gwt-PopupPanel .popupContent
+{
+	
+}
+/*the glass background behind the popup*/
+.gwt-PopupPanelGlass
+{
+	
+}
+
+/*
+End of PopUps
+*/
+=======
+.mainPanel
+{
+	position:fixed;
+	left:50%;
+	border-style: inset;
+	border-width: .5cm;
+	
+}
+>>>>>>> d555e8920a2f95855a751d75e4765f6725454174
