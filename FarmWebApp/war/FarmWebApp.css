@@ -1,8 +1,12 @@
 /*
 Universal Main Panel Styling
 */
-border-width:5px;
+.mainPanel
+{
+	border-width:5px;
 	border-style:solid;
+	background-color:red;
+}
 
 /*
 end of Main Panel Styling

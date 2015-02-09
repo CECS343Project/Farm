@@ -36,6 +36,8 @@ public class Login extends PopUps
 		loginContent.add(username);
 		loginContent.add(password);
 		loginContent.add(buttonLogin);
+		loginContent.add(buttonLogin);
+		loginContent.add(buttonLogin);
 		buttonLogin.addStyleName("loginButton");
 		//return loginMain ;
 	
