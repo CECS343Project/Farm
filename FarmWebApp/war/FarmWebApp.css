@@ -1,17 +1,24 @@
 /*
+Universal Main Panel Styling
+*/
+border-width:5px;
+	border-style:solid;
+
+/*
+end of Main Panel Styling
+*/
+
+/*
 Styling for Login
 */
 .loginButton
 {
-	
-}
-.loginMain
-{
-	
+	padding: 25px;
 }
 .loginMainVert
 {
-	
+	margin-left:600px;
+	margin-top:200px;
 }
 .loginTop
 {

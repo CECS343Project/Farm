@@ -8,13 +8,13 @@ import com.google.gwt.user.client.ui.*;
 public class Login extends PopUps
 {
 
-	private HorizontalPanel loginMain = new HorizontalPanel();
+	private HorizontalPanel mainPanel = new HorizontalPanel();
 	private HorizontalPanel loginTop = new HorizontalPanel();
 	private VerticalPanel loginMainVert = new VerticalPanel();
 	private VerticalPanel loginContent = new VerticalPanel();
 	private Hyperlink signIn = new Hyperlink("SIGN IN","d.java");
 	private Hyperlink signUp = new Hyperlink("SIGN UP","f.java");
-	private Button login = new Button("lOGIN");	
+	private Button buttonLogin = new Button("LOGIN");	
 	private TextBox username = new TextBox();
 	private PasswordTextBox password = new PasswordTextBox();
 	
@@ -23,24 +23,24 @@ public class Login extends PopUps
 	{
 		loginMainVert.add(loginTop);
 		loginMainVert.addStyleName("loginMainVert");
-		
 		loginTop.addStyleName("loginTop");
 		loginTop.add(signIn);
 		loginTop.add(signUp);
 		
-		loginMainVert.add(loginMain);
+		loginMainVert.add(mainPanel);
 		
-		loginMain.addStyleName("loginMain");
+		mainPanel.addStyleName("mainPanel");
 		//loginMain.add(image);
-		loginMain.add(loginContent);
+		mainPanel.add(loginContent);
 		
 		loginContent.add(username);
 		loginContent.add(password);
-		loginContent.add(login);
-		login.addStyleName("loginButton");
+		loginContent.add(buttonLogin);
+		buttonLogin.addStyleName("loginButton");
 		//return loginMain ;
 	
-	login.addClickHandler(new ClickHandler()
+	//
+	buttonLogin.addClickHandler(new ClickHandler()
 	{
         public void onClick(ClickEvent event) 
         {
@@ -70,7 +70,7 @@ public class Login extends PopUps
         };
 	});
 	
-	return loginMain ;
+	return mainPanel;
 	}
 	
 }
