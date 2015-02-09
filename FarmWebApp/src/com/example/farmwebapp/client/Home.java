@@ -23,6 +23,8 @@ public class Home
 		pButtons.add(bLogout);
 		
 		pHome.add(pButtons);
+		
+		pHome.addStyleName("mainPanel");
 
 		return pHome;
 	}

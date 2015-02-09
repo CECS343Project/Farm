@@ -1,0 +1,8 @@
+.mainPanel
+{
+	position:fixed;
+	left:50%;
+	border-style: inset;
+	border-width: .5cm;
+	
+}
