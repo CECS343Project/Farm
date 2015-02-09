@@ -1,25 +1,37 @@
 package com.example.farmwebapp.client;
 
-
 import com.google.gwt.core.client.EntryPoint;
+<<<<<<< HEAD
+import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.user.client.ui.*;
+=======
 import com.google.gwt.user.client.ui.RootPanel;
+>>>>>>> d555e8920a2f95855a751d75e4765f6725454174
 
 
 public class FarmWebApp implements EntryPoint
 {
 	
+<<<<<<< HEAD
+	
+	//@Override
+	public void onModuleLoad() 
+	{
+		Login login = new Login();
+		RootPanel.get("login").add(login.getPanel());
+		
+	
+		
+	}
+=======
 	public void onModuleLoad() 
 	{
 		Home homePage = new Home();
 		
-<<<<<<< HEAD
-		Button myButton = new Button("Hello");
-		
-		RootPanel.get("helloWorld").add(myButton);
-=======
 		RootPanel.get("homePage").add(homePage.getPanel());		
->>>>>>> homegui
 	}
 	
 	
+>>>>>>> d555e8920a2f95855a751d75e4765f6725454174
 }

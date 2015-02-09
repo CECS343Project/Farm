@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /*
 Universal Main Panel Styling
 */
@@ -55,3 +56,13 @@ Styling for PopUps
 /*
 End of PopUps
 */
+=======
+.mainPanel
+{
+	position:fixed;
+	left:50%;
+	border-style: inset;
+	border-width: .5cm;
+	
+}
+>>>>>>> d555e8920a2f95855a751d75e4765f6725454174
