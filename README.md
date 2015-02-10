@@ -1,4 +1,4 @@
-# Farm
+# Prescribe+
 [Progess so far](https://github.com/CECS343Project/Farm/milestones) | [Issues to be claimed](https://github.com/CECS343Project/Farm/issues?q=is%3Aopen+is%3Aissue+label%3A%22help+wanted%22) | [Contribution Graph](https://github.com/CECS343Project/Farm/network)
 ## Problem
 There is a significant time difference between a doctor giving a prescription to patient, and pharmacy recieving it. There is also no record to query or categorization of patient prescriptions.
