@@ -1,5 +1,8 @@
 /**
- * 
+ * Class: NewPatient
+ * Description: Creates gui for adding a new patient, has functionality to 
+ * 				remove the gui as well
+ * @author Russell
  */
 
 package com.example.farmwebapp.client;
@@ -9,8 +12,10 @@ import com.google.gwt.user.client.ui.*;
 public class NewPatient 
 {
 	/**
+	 * Creates the panel for adding a new patient to be added to the root panel
 	 * 
-	 * @return
+	 * @author Russell
+	 * @return Returns the VerticalPanel pNewPatientMain to be added
 	 */
 	public VerticalPanel getPanel()
 	{
@@ -139,7 +144,7 @@ public class NewPatient
 	}
 	
 	/**
-	 * 
+	 * Removes the entire panel from the root panel
 	 */
 	public void removePanel()
 	{
