@@ -1,11 +1,22 @@
+body
+{
+	background-color:#e0e0e0 !important;	
+
+}
+
 /*
 Universal Main Panel Styling
 */
 .mainPanel
 {
-	border-width:5px;
-	border-style:solid;
-	background-color:red;
+	border-width:15px;
+	border-style:inset;
+	border-color:#EE4037;
+	background-color:#44BDE8;
+	margin: 0px auto; 
+	width: 480px; 
+	text-align:left;
+	margin-bottom: .5cm;	
 }
 
 /*
