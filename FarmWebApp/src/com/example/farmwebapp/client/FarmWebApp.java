@@ -12,9 +12,11 @@ public class FarmWebApp implements EntryPoint
 	{
 		Login login = new Login();
 		Home homePage = new Home();
+		NewPatient newPatient = new NewPatient();
 		
 		RootPanel.get("login").add(login.getPanel());
 		RootPanel.get("homePage").add(homePage.getPanel());
+		RootPanel.get("newPatient").add(newPatient.getPanel());
 		
 	
 	}
