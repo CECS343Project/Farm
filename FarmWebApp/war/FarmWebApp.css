@@ -19,10 +19,24 @@ Styling for Login
 {
 	padding: 25px;
 }
+.LoginImage
+{
+	height: 200px;
+	width: 200px;
+}
+.gwt-Image
+{
+	height: 200px;
+	width: 200px;
+}
 .loginMainVert
 {
 	margin-left:600px;
 	margin-top:200px;
+}
+.loginContent
+{
+	padding: 20px 50px 100px 50px;
 }
 .loginTop
 {

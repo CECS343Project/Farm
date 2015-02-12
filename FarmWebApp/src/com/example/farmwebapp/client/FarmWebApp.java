@@ -5,16 +5,22 @@ import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.ui.*;
 
 
-public class FarmWebApp implements EntryPoint
+public class FarmWebApp 
 {
-	
-	//@Override
-	public void onModuleLoad() 
+	public void onModuleLoad()
 	{
 		Login login = new Login();
-		RootPanel.get("login").add(login.getPanel());
+		NewAccount newAccount = new NewAccount();
+		//RootPanel.get("login").add(login.getWidget());
+		TabPanel pMainTabPanel = new TabPanel();
+		Label lSignIn = new Label("Sign In");
+		Label lSignUp = new Label("Sign Up");
+		pMainTabPanel.add(login.getPanel(), lSignIn);
+		pMainTabPanel.add(newAccount.getPanel(), lSignUp);
 		
-	
+		pMainTabPanel.selectTab(0);
+		 pMainTabPanel.setWidth("600");
+		 pMainTabPanel.setHeight("200");
+		RootPanel.get("main").add(pMainTabPanel);
 	}
-	
 }
