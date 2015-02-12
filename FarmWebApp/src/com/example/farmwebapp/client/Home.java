@@ -1,20 +1,24 @@
 package com.example.farmwebapp.client;
 
+import com.google.gwt.resources.client.ImageResource;
 import com.google.gwt.user.client.ui.*;
 
 public class Home 
 {
 	
 	
-	public VerticalPanel getPanel()
+	public HorizontalPanel getPanel()
 	{
-		VerticalPanel pHome = new  VerticalPanel();
-		//private VerticalPanel pLogo;
+		HorizontalPanel pHome = new  HorizontalPanel();
+		VerticalPanel pLogo = new VerticalPanel();
 		VerticalPanel pButtons = new VerticalPanel();
+		
+		Image iLogo = new Image("pill_bug_logo.jpg");
+		
 		Button bNewPatient = new Button("New Patient");
 		Button bSearchPatients = new Button("Search Patients");
 		Button bSettings = new Button("Settings");
-		//private Button bUpdates = new Button("Updates");
+		Button bUpdates = new Button("Updates");
 		Button bLogout = new Button("Logout");
 		
 		pButtons.add(bNewPatient);
@@ -22,6 +26,9 @@ public class Home
 		pButtons.add(bSettings);
 		pButtons.add(bLogout);
 		
+		pLogo.add(iLogo);
+		
+		pHome.add(pLogo);
 		pHome.add(pButtons);
 		
 		pHome.addStyleName("mainPanel");
