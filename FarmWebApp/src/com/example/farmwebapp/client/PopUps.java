@@ -43,10 +43,14 @@ public class PopUps extends DialogBox
 		};
 		bOk.addClickHandler(chOkButton);
 		
+		
 		popupPanel.add(lMessage);
 		pButtonPanel.add(bOk);
 		popupPanel.add(pButtonPanel);
 		setWidget(popupPanel);
+		
+		popupPanel.addStyleName("popupPanel");
+		pButtonPanel.addStyleName("pButtonPanel");
 		this.center();
 		this.show();
 	}

@@ -41,17 +41,33 @@ public class Login
 		
 		pMainLoginPanel.addStyleName("mainPanel");
 		pMainLoginPanel.add(iLogin);
-		iLogin.addStyleName("loginImage");
+		iLogin.addStyleName("gwt-Image-login");
 		pMainLoginPanel.add(pLoginContent);
 		
 		pLoginContent.addStyleName("loginContent");
 		pLoginContent.add(tUsername);
 		pLoginContent.add(tPassword);
 		pLoginContent.add(bLogin);
-	
-	return pMainLoginPanel;
-	}
+		
+		
+		
+		 bLogin.addClickHandler(new ClickHandler() 
+		 {
+	 
+	         public void onClick(ClickEvent event) 
+	         {
+	            // Instantiate the dialog box and show it.
+	            PopUps popups = new PopUps();
+
+	            //int left = Window.getClientWidth()/ 2;
+	            //int top = Window.getClientHeight()/ 2;
+	           // PopUps.setPopupPosition(left, top);
+	            popups.showDialog("Wrong password or username");				
+	         } 
+	         });
+		/*
 	PopUps popup = new PopUps();
+	{
 	if(tPassword == true)
 	{
 		//takes them to homepage
@@ -59,8 +75,14 @@ public class Login
 	else if(tPassword ==  false)
 	{
 		popup.showDialog("Incorrect password or username");
+	}	
+		*/
+	
+	return pMainLoginPanel;
 	}
 	
-}
+	
 
+
+}
        

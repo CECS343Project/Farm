@@ -42,10 +42,10 @@ Styling for Login
 	height: 200px;
 	width: 200px;
 }
-.gwt-Image
+.gwt-Image-login
 {
 	height: 200px;
-	width: 200px;
+	width: 200px; 
 }
 .loginMainVert
 {
@@ -67,7 +67,16 @@ End of Login
 
 
 /*
-
+Styling  for PopUps
+*/
+.popupPanel
+{
+	background-color:red;
+}
+.pButtonPanel
+{
+	background-color:yellow;
+}
 
 /*
 End of PopUps
