@@ -1,12 +1,29 @@
-<<<<<<< HEAD
+body
+{
+	background-color:#e0e0e0 !important;	
+
+}
+
 /*
 Universal Main Panel Styling
 */
 .mainPanel
 {
+<<<<<<< HEAD
+	border-width:15px;
+	border-style:inset;
+	border-color:#EE4037;
+	background-color:#44BDE8;
+	margin: 0px auto; 
+	width: 480px; 
+	text-align:left;
+	margin-bottom: .5cm;	
+=======
 	border-width:5px;
 	border-style:solid;
-	background-color:red;
+	border-color:white;
+	background-color:#D2D2D2;
+>>>>>>> guitesting2
 }
 
 /*
@@ -16,14 +33,46 @@ end of Main Panel Styling
 /*
 Styling for Login
 */
+
+.gwt-TabBar
+ { 
+ 	background-color:white;
+ 	color:red;
+ 	border-color:white;
+ }
+ .gwt-TabBar .gwt-TabBarItem
+  { 
+ 	background-color:white;
+  }
+.gwt-TabBar .gwt-TabBarItem-selected 
+{ 
+	background-color:white;
+	color:red;
+}
+
 .loginButton
 {
 	padding: 25px;
+}
+.LoginImage
+{
+	height: 200px;
+	width: 200px;
+}
+.gwt-Image-login
+{
+	height: 200px;
+	width: 200px; 
 }
 .loginMainVert
 {
 	margin-left:600px;
 	margin-top:200px;
+}
+.loginContent
+{
+	padding: 20px 50px 100px 20px;
+	
 }
 .loginTop
 {
@@ -35,34 +84,17 @@ End of Login
 
 
 /*
-Styling for PopUps
+Styling  for PopUps
 */
-/*the outside of the popup*/
-.gwt-PopupPanel
+.popupPanel
 {
-	
+	background-color:red;
 }
-/*the wrapper around the content*/
-.gwt-PopupPanel .popupContent
+.pButtonPanel
 {
-	
-}
-/*the glass background behind the popup*/
-.gwt-PopupPanelGlass
-{
-	
+	background-color:yellow;
 }
 
 /*
 End of PopUps
 */
-=======
-.mainPanel
-{
-	position:fixed;
-	left:50%;
-	border-style: inset;
-	border-width: .5cm;
-	
-}
->>>>>>> d555e8920a2f95855a751d75e4765f6725454174

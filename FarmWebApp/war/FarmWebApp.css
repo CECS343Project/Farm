@@ -26,14 +26,46 @@ end of Main Panel Styling
 /*
 Styling for Login
 */
+
+.gwt-TabBar
+ { 
+ 	background-color:white;
+ 	color:red;
+ 	border-color:white;
+ }
+ .gwt-TabBar .gwt-TabBarItem
+  { 
+ 	background-color:white;
+  }
+.gwt-TabBar .gwt-TabBarItem-selected 
+{ 
+	background-color:white;
+	color:red;
+}
+
 .loginButton
 {
 	padding: 25px;
+}
+.LoginImage
+{
+	height: 200px;
+	width: 200px;
+}
+.gwt-Image-login
+{
+	height: 200px;
+	width: 200px; 
 }
 .loginMainVert
 {
 	margin-left:600px;
 	margin-top:200px;
+}
+.loginContent
+{
+	padding: 20px 50px 100px 20px;
+	
 }
 .loginTop
 {
@@ -45,22 +77,15 @@ End of Login
 
 
 /*
-Styling for PopUps
+Styling  for PopUps
 */
-/*the outside of the popup*/
-.gwt-PopupPanel
+.popupPanel
 {
-	
+	background-color:red;
 }
-/*the wrapper around the content*/
-.gwt-PopupPanel .popupContent
+.pButtonPanel
 {
-	
-}
-/*the glass background behind the popup*/
-.gwt-PopupPanelGlass
-{
-	
+	background-color:yellow;
 }
 
 /*

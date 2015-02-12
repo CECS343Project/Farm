@@ -4,76 +4,84 @@ import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.*;
 
-public class Login extends PopUps
+//create tab panel
+//do both sign in and sign up page using tab panel
+//add dialogue box
+public class Login 
 {
 
-	private HorizontalPanel mainPanel = new HorizontalPanel();
-	private HorizontalPanel loginTop = new HorizontalPanel();
-	private VerticalPanel loginMainVert = new VerticalPanel();
-	private VerticalPanel loginContent = new VerticalPanel();
-	private Hyperlink signIn = new Hyperlink("SIGN IN","d.java");
-	private Hyperlink signUp = new Hyperlink("SIGN UP","f.java");
-	private Button buttonLogin = new Button("LOGIN");	
-	private TextBox username = new TextBox();
-	private PasswordTextBox password = new PasswordTextBox();
+	//private TabPanel tabpanelLogin = new TabPanel();
+	//private String signIn = "Sign In";
+	//private String signUp = "Sign Up";
+	
+	private HorizontalPanel pMainLoginPanel = new HorizontalPanel();
+	//private HorizontalPanel loginTop = new HorizontalPanel();
+	//private VerticalPanel loginMainVert = new VerticalPanel();
+	private VerticalPanel pLoginContent = new VerticalPanel();
+	//private Hyperlink signIn = new Hyperlink("SIGN IN","d.java");
+	//private Hyperlink signUp = new Hyperlink("SIGN UP","f.java");
+	private Button bLogin = new Button("LOGIN");	
+	private TextBox tUsername = new TextBox();
+	private PasswordTextBox tPassword = new PasswordTextBox();
+	private Image iLogin = new Image("https://img0.etsystatic.com/000/0/6169781/il_fullxfull.284298540.jpg");
+	//iLogin.setUrl("https://img0.etsystatic.com/000/0/6169781/il_fullxfull.284298540.jpg");
+	private AbsolutePanel pImagePanel = new AbsolutePanel();
 	
 
 	public HorizontalPanel getPanel() 
 	{
-		loginMainVert.add(loginTop);
-		loginMainVert.addStyleName("loginMainVert");
-		loginTop.addStyleName("loginTop");
-		loginTop.add(signIn);
-		loginTop.add(signUp);
+		//TabPanel.add(mainPanel, signIn);
+		//loginMainVert.add(loginTop);
+		//loginMainVert.addStyleName("loginMainVert");
+	//	loginTop.addStyleName("loginTop");
 		
-		loginMainVert.add(mainPanel);
 		
-		mainPanel.addStyleName("mainPanel");
-		//loginMain.add(image);
-		mainPanel.add(loginContent);
+		//loginMainVert.add(mainPanel);
 		
-		loginContent.add(username);
-		loginContent.add(password);
-		loginContent.add(buttonLogin);
-		loginContent.add(buttonLogin);
-		loginContent.add(buttonLogin);
-		buttonLogin.addStyleName("loginButton");
-		//return loginMain ;
-	
-	//
-	buttonLogin.addClickHandler(new ClickHandler()
+		pMainLoginPanel.addStyleName("mainPanel");
+		pMainLoginPanel.add(iLogin);
+		iLogin.addStyleName("gwt-Image-login");
+		pMainLoginPanel.add(pLoginContent);
+		
+		pLoginContent.addStyleName("loginContent");
+		pLoginContent.add(tUsername);
+		pLoginContent.add(tPassword);
+		pLoginContent.add(bLogin);
+		
+		
+		
+		 bLogin.addClickHandler(new ClickHandler() 
+		 {
+	 
+	         public void onClick(ClickEvent event) 
+	         {
+	            // Instantiate the dialog box and show it.
+	            PopUps popups = new PopUps();
+
+	            //int left = Window.getClientWidth()/ 2;
+	            //int top = Window.getClientHeight()/ 2;
+	           // PopUps.setPopupPosition(left, top);
+	            popups.showDialog("Wrong password or username");				
+	         } 
+	         });
+		/*
+	PopUps popup = new PopUps();
 	{
-        public void onClick(ClickEvent event) 
-        {
-           // Create the new popup.
-           final Confirmation popup = new Confirmation();
-           // Position the popup 1/3rd of the way down and across 
-           // the screen, and show the popup. Since the position 
-           // calculation is based on the offsetWidth and offsetHeight 
-           // of the popup, you have to use the 
-           // setPopupPositionAndShow(callback)  method. The alternative 
-           // would be to call show(), calculate  the left and
-           // top positions, and call setPopupPosition(left, top). 
-           // This would have the ugly side effect of the popup jumping 
-           // from its original position to its new position.
-           popup.setPopupPositionAndShow(new PopupPanel.PositionCallback()
-           {
-              public void setPosition(int offsetWidth, int offsetHeight) 
-              {
-            	  Confirmation dds = new Confirmation();
-                 int left = (Window.getClientWidth() - offsetWidth) / 3;
-                 int top = (Window.getClientHeight() - offsetHeight) / 3;
-                 popup.setPopupPosition(left, top);
-                  dds.show();
-              }
-             
-           });
-        };
-	});
+	if(tPassword == true)
+	{
+		//takes them to homepage
+	}
+	else if(tPassword ==  false)
+	{
+		popup.showDialog("Incorrect password or username");
+	}	
+		*/
 	
-	return mainPanel;
+	return pMainLoginPanel;
 	}
 	
-}
+	
 
+
+}
        

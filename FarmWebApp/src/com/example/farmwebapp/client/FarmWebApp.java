@@ -3,22 +3,32 @@ package com.example.farmwebapp.client;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.user.client.ui.*;
 
-
-public class FarmWebApp implements EntryPoint
+//key down listener to check password matches repassword
+//look up date list boxes 
+//look up username / key down to search database to make sure 
+//put guiding text inside textbox
+public class FarmWebApp 
 {
-	
-	//@Override
-	public void onModuleLoad() 
+	public void onModuleLoad()
 	{
 		Login login = new Login();
 		Home homePage = new Home();
 		NewPatient newPatient = new NewPatient();
 		
-		RootPanel.get("login").add(login.getPanel());
+		NewAccount newAccount = new NewAccount();
+		//RootPanel.get("login").add(login.getWidget());
+		TabPanel pMainTabPanel = new TabPanel();
+		Label lSignIn = new Label("SIGN IN");
 		RootPanel.get("homePage").add(homePage.getPanel());
 		RootPanel.get("newPatient").add(newPatient.getPanel());
+		Label lSignUp = new Label("SIGN UP");
+		pMainTabPanel.add(login.getPanel(), lSignIn);
+		pMainTabPanel.add(newAccount.getPanel(), lSignUp);
 		
-	
+		pMainTabPanel.selectTab(0);
+		 pMainTabPanel.setWidth("600");
+		 pMainTabPanel.setHeight("100");
+		RootPanel.get("main").add(pMainTabPanel);
 	}
 	
 }

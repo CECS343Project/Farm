@@ -1,33 +1,58 @@
 package com.example.farmwebapp.client;
 
+import javafx.stage.PopupBuilder;
+
+import com.google.gwt.core.client.EntryPoint;
+import com.google.gwt.core.client.GWT;
+import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.user.client.Window;
+import com.google.gwt.user.client.ui.Button;
+import com.google.gwt.user.client.ui.ClickListener;
+import com.google.gwt.user.client.ui.DialogBox;
+import com.google.gwt.user.client.ui.HTML;
+import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Label;
+import com.google.gwt.user.client.ui.Panel;
 import com.google.gwt.user.client.ui.PopupPanel;
+import com.google.gwt.user.client.ui.RootPanel;
+import com.google.gwt.user.client.ui.VerticalPanel;
+import com.google.gwt.user.client.ui.Widget;
 
-public class PopUps 
+public class PopUps extends DialogBox
 {
-	static class Confirmation extends PopupPanel 
-	  {
+	PopUps(){}
+	
+	private VerticalPanel popupPanel = new VerticalPanel();
+	private HorizontalPanel pButtonPanel = new HorizontalPanel();
+	
+	
+	public void showDialog(String message)
+	{
+		Label lMessage = new Label(message);
+		Button bOk = new Button("OK");
+		
+		ClickHandler chOkButton = new ClickHandler()
+		{
 
-	    public Confirmation() 
-	    {
-	      // PopupPanel's constructor takes 'auto-hide' as its boolean parameter.
-	      // If this is set, the panel closes itself automatically when the user
-	      // clicks outside of it.
-	      super(true);
-
-	      // PopupPanel is a SimplePanel, so you have to set it's widget property to
-	      // whatever you want its contents to be.
-	      setWidget(new Label("Confirmation"));
-	    }
-	    public Confirmation(boolean yes, boolean no)
-	    {
-	    	
-	    }
-	    
-	    public void show()
-	    {
-	    	this.show();
-	    }
-
-	  }
+			@Override
+			public void onClick(ClickEvent event) 
+			{
+				hide();				
+			}
+		};
+		bOk.addClickHandler(chOkButton);
+		
+		
+		popupPanel.add(lMessage);
+		pButtonPanel.add(bOk);
+		popupPanel.add(pButtonPanel);
+		setWidget(popupPanel);
+		
+		popupPanel.addStyleName("popupPanel");
+		pButtonPanel.addStyleName("pButtonPanel");
+		this.center();
+		this.show();
+	}
+   
 }
