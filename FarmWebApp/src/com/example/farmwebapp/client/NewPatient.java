@@ -1,9 +1,17 @@
+/**
+ * 
+ */
+
 package com.example.farmwebapp.client;
 
 import com.google.gwt.user.client.ui.*;
 
 public class NewPatient 
 {
+	/**
+	 * 
+	 * @return
+	 */
 	public VerticalPanel getPanel()
 	{
 		VerticalPanel pNewPatientMain = new VerticalPanel();
@@ -128,6 +136,14 @@ public class NewPatient
 		pNewPatientMain.addStyleName("mainPanel");
 			
 		return pNewPatientMain;
+	}
+	
+	/**
+	 * 
+	 */
+	public void removePanel()
+	{
+		this.getPanel().removeFromParent();
 	}
 
 }

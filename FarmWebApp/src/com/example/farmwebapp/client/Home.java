@@ -1,3 +1,7 @@
+/**
+ * 
+ */
+
 package com.example.farmwebapp.client;
 
 import com.google.gwt.resources.client.ImageResource;
@@ -6,7 +10,10 @@ import com.google.gwt.user.client.ui.*;
 public class Home 
 {
 	
-	
+	/**
+	 * 
+	 * @return
+	 */
 	public HorizontalPanel getPanel()
 	{
 		HorizontalPanel pHome = new  HorizontalPanel();
@@ -36,6 +43,9 @@ public class Home
 		return pHome;
 	}
 	
+	/**
+	 * 
+	 */
 	public void removePanel()
 	{
 		this.getPanel().removeFromParent();
