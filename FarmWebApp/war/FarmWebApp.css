@@ -5,7 +5,8 @@ Universal Main Panel Styling
 {
 	border-width:5px;
 	border-style:solid;
-	background-color:red;
+	border-color:white;
+	background-color:#D2D2D2;
 }
 
 /*
@@ -15,6 +16,23 @@ end of Main Panel Styling
 /*
 Styling for Login
 */
+
+.gwt-TabBar
+ { 
+ 	background-color:white;
+ 	color:red;
+ 	border-color:white;
+ }
+ .gwt-TabBar .gwt-TabBarItem
+  { 
+ 	background-color:white;
+  }
+.gwt-TabBar .gwt-TabBarItem-selected 
+{ 
+	background-color:white;
+	color:red;
+}
+
 .loginButton
 {
 	padding: 25px;
@@ -36,7 +54,8 @@ Styling for Login
 }
 .loginContent
 {
-	padding: 20px 50px 100px 50px;
+	padding: 20px 50px 100px 20px;
+	
 }
 .loginTop
 {
@@ -48,23 +67,7 @@ End of Login
 
 
 /*
-Styling for PopUps
-*/
-/*the outside of the popup*/
-.gwt-PopupPanel
-{
-	
-}
-/*the wrapper around the content*/
-.gwt-PopupPanel .popupContent
-{
-	
-}
-/*the glass background behind the popup*/
-.gwt-PopupPanelGlass
-{
-	
-}
+
 
 /*
 End of PopUps

@@ -13,14 +13,14 @@ public class FarmWebApp
 		NewAccount newAccount = new NewAccount();
 		//RootPanel.get("login").add(login.getWidget());
 		TabPanel pMainTabPanel = new TabPanel();
-		Label lSignIn = new Label("Sign In");
-		Label lSignUp = new Label("Sign Up");
+		Label lSignIn = new Label("SIGN IN");
+		Label lSignUp = new Label("SIGN UP");
 		pMainTabPanel.add(login.getPanel(), lSignIn);
 		pMainTabPanel.add(newAccount.getPanel(), lSignUp);
 		
 		pMainTabPanel.selectTab(0);
 		 pMainTabPanel.setWidth("600");
-		 pMainTabPanel.setHeight("200");
+		 pMainTabPanel.setHeight("100");
 		RootPanel.get("main").add(pMainTabPanel);
 	}
 }

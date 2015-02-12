@@ -26,11 +26,7 @@ public class PopUps extends DialogBox
 	private VerticalPanel popupPanel = new VerticalPanel();
 	private HorizontalPanel pButtonPanel = new HorizontalPanel();
 	
-	/**
-	 *  Shows a given dialog message in a popup box
-	 * @author Russell  
-	 * @param message
-	 */
+	
 	public void showDialog(String message)
 	{
 		Label lMessage = new Label(message);

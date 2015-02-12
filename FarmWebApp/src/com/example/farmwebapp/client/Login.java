@@ -51,7 +51,15 @@ public class Login
 	
 	return pMainLoginPanel;
 	}
-	
+	PopUps popup = new PopUps();
+	if(tPassword == true)
+	{
+		//takes them to homepage
+	}
+	else if(tPassword ==  false)
+	{
+		popup.showDialog("Incorrect password or username");
+	}
 	
 }
 
