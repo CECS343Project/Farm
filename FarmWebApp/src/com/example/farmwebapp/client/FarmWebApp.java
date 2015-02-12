@@ -11,7 +11,10 @@ public class FarmWebApp implements EntryPoint
 	public void onModuleLoad() 
 	{
 		Login login = new Login();
+		Home homePage = new Home();
+		
 		RootPanel.get("login").add(login.getPanel());
+		RootPanel.get("homePage").add(homePage.getPanel());
 		
 	
 	}
