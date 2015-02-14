@@ -1,6 +1,5 @@
 package com.example.farmwebapp.client;
 
-import com.google.gwt.resources.client.ImageResource;
 import com.google.gwt.user.client.ui.*;
 
 public class Home 

@@ -7,7 +7,7 @@ import com.google.gwt.user.client.ui.*;
 //look up date list boxes 
 //look up username / key down to search database to make sure 
 //put guiding text inside textbox
-public class FarmWebApp 
+public class FarmWebApp implements EntryPoint
 {
 	public void onModuleLoad()
 	{
