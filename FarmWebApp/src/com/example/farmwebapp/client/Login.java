@@ -27,15 +27,12 @@ public class Login
 	private AbsolutePanel pImagePanel = new AbsolutePanel();
 	
 
-	public HorizontalPanel getPanel() 
+	public TabPanel getPanel() 
 	{
-		//TabPanel.add(mainPanel, signIn);
-		//loginMainVert.add(loginTop);
-		//loginMainVert.addStyleName("loginMainVert");
-	//	loginTop.addStyleName("loginTop");
-		
-		
-		//loginMainVert.add(mainPanel);
+		NewAccount newAccount = new NewAccount();
+		TabPanel pMainTabPanel = new TabPanel();
+		Label lSignIn = new Label("SIGN IN");
+		Label lSignUp = new Label("SIGN UP");
 		
 		pMainLoginPanel.addStyleName("mainPanel");
 		pMainLoginPanel.add(iLogin);
@@ -48,35 +45,29 @@ public class Login
 		pLoginContent.add(bLogin);
 		
 		
-		
+		pMainTabPanel.add(pMainLoginPanel, lSignIn);
+		pMainTabPanel.add(newAccount.getPanel(), lSignUp);
 		 bLogin.addClickHandler(new ClickHandler() 
 		 {
 	 
 	         public void onClick(ClickEvent event) 
 	         {
-	            // Instantiate the dialog box and show it.
 	            PopUps popups = new PopUps();
+	            popups.showDialog("Wrong password or username");
+	            newAccount.removePanel();
+	            removePanel();
+	            
+	         }
 
-	            //int left = Window.getClientWidth()/ 2;
-	            //int top = Window.getClientHeight()/ 2;
-	           // PopUps.setPopupPosition(left, top);
-	            popups.showDialog("Wrong password or username");				
-	         } 
+		
 	         });
-		/*
-	PopUps popup = new PopUps();
-	{
-	if(tPassword == true)
-	{
-		//takes them to homepage
-	}
-	else if(tPassword ==  false)
-	{
-		popup.showDialog("Incorrect password or username");
-	}	
-		*/
 	
-	return pMainLoginPanel;
+	return pMainTabPanel;
+	}
+	
+	protected void removePanel()
+	{
+		this.getPanel().removeFromParent();
 	}
 	
 	

@@ -15,20 +15,19 @@ public class FarmWebApp implements EntryPoint
 		Home homePage = new Home();
 		NewPatient newPatient = new NewPatient();
 		
-		NewAccount newAccount = new NewAccount();
-		//RootPanel.get("login").add(login.getWidget());
-		TabPanel pMainTabPanel = new TabPanel();
-		Label lSignIn = new Label("SIGN IN");
+		//NewAccount newAccount = new NewAccount();
+		//TabPanel pMainTabPanel = new TabPanel();
+		//Label lSignIn = new Label("SIGN IN");
 		RootPanel.get("homePage").add(homePage.getPanel());
 		RootPanel.get("newPatient").add(newPatient.getPanel());
-		Label lSignUp = new Label("SIGN UP");
-		pMainTabPanel.add(login.getPanel(), lSignIn);
-		pMainTabPanel.add(newAccount.getPanel(), lSignUp);
+		//Label lSignUp = new Label("SIGN UP");
+		//pMainTabPanel.add(login.getPanel(), lSignIn);
+		//pMainTabPanel.add(newAccount.getPanel(), lSignUp);
 		
-		pMainTabPanel.selectTab(0);
-		 pMainTabPanel.setWidth("600");
-		 pMainTabPanel.setHeight("100");
-		RootPanel.get("main").add(pMainTabPanel);
+		//pMainTabPanel.selectTab(0);
+		//pMainTabPanel.setWidth("600");
+		//pMainTabPanel.setHeight("100");
+		RootPanel.get("main").add(login.getPanel());
 	}
 	
 }

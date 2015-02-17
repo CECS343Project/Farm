@@ -103,4 +103,9 @@ public class NewAccount
 		return pMainPanel;
 		
 	}
+	
+	protected void removePanel()
+	{
+		this.getPanel().removeFromParent();
+	}
 }
