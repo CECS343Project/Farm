@@ -1,6 +1,13 @@
 package com.example.farmwebapp.client;
 
+import java.util.Date;
+
+import com.google.gwt.event.logical.shared.ValueChangeEvent;
+import com.google.gwt.event.logical.shared.ValueChangeHandler;
+import com.google.gwt.i18n.client.DateTimeFormat;
 import com.google.gwt.user.client.ui.*;
+import com.google.gwt.user.datepicker.client.DateBox;
+import com.google.gwt.user.datepicker.client.DatePicker;
 
 public class NewAccount 
 {
@@ -21,7 +28,9 @@ public class NewAccount
 	
 	private TextBox tFirstName = new TextBox();
 	private TextBox tLastName = new TextBox();
-	private TextBox tSuffix = new TextBox();
+	//date of birth is a drop down
+	private ListBox lbSuffix = new ListBox();
+	
 	private TextBox tUsername = new TextBox();
 	private TextBox tPassword = new TextBox();
 	private TextBox tRePassword = new TextBox();
@@ -30,7 +39,6 @@ public class NewAccount
 	private TextBox tLicense= new TextBox();
 	private TextBox tPhone = new TextBox();
 	
-	//date of birth is a drop down
 	
 	private Label lName = new Label("NAME: ");
 	private Label lUserName = new Label("USERNAME: ");
@@ -40,13 +48,16 @@ public class NewAccount
 	private Label lPhone = new Label("PHONE No:");
 	private Label lDoB = new Label("DATE OF BIRTH:");
 	
+	
 	private RadioButton rDoctor = new RadioButton("radioButtons", "Doctor",true);
 	private RadioButton rPharmacist = new RadioButton("radioButtons", "Pharmacist");
 	
-	private ListBox lbMonth = new ListBox();
-	private ListBox lbDay = new ListBox();
-	private ListBox lbYear = new ListBox();
-	 
+	private Button bSignIn = new Button("SIGN UP");
+	
+	 DatePicker dpSignUp = new DatePicker();
+     final Label lDate = new Label();
+
+     
 	
 	public VerticalPanel getPanel()
 	{
@@ -58,7 +69,12 @@ public class NewAccount
 		pContent.add(lName);
 		pContent.add(tFirstName);
 		pContent.add(tLastName);
-		pContent.add(tSuffix);
+		pContent.add(lbSuffix);
+		lbSuffix.addItem("Jr.");
+	    lbSuffix.addItem("Sr.");
+	    // Make enough room for all five items (setting this value to 1 turns it
+	    // into a drop-down list).
+	    lbSuffix.setVisibleItemCount(1);
 		
 		//second row
 		pMainPanel.add(pContent2);
@@ -88,24 +104,22 @@ public class NewAccount
 		
 		pMainPanel.add(pContent4);
 		pContent4.add(lDoB);
-		pContent4.add(lbMonth);
-		//for(int i=1; i<31;i++)
-		//{
-		//	lbDay.addItem(i);
-		//}
-		pContent4.add(lbDay);
-		pContent4.add(lbYear);
 		
-		
-		
-		
-		
+     // Create a DateBox
+     DateTimeFormat dateFormat = DateTimeFormat.getFormat("MM/dd/yyyy");
+     DateBox dbSignIn = new DateBox();
+     dbSignIn.setFormat(new DateBox.DefaultFormat(dateFormat));
+	
+     pContent4.add(dbSignIn);
+	pContent4.add(bSignIn);
+	bSignIn.addStyleName("newAccountButton");
 		return pMainPanel;
-		
 	}
 	
 	protected void removePanel()
 	{
 		this.getPanel().removeFromParent();
 	}
+	
+	
 }

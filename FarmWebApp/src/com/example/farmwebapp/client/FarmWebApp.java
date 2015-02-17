@@ -8,6 +8,7 @@ import com.google.gwt.user.client.ui.*;
 //look up username / key down to search database to make sure 
 //put guiding text inside textbox
 public class FarmWebApp implements EntryPoint
+
 {
 	public void onModuleLoad()
 	{

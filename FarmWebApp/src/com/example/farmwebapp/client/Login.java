@@ -14,6 +14,7 @@ public class Login
 	private VerticalPanel pLoginContent = new VerticalPanel();
 	private Button bLogin = new Button("LOGIN");	
 	private TextBox tUsername = new TextBox();
+	
 	private PasswordTextBox tPassword = new PasswordTextBox();
 	private Image iLogin = new Image("https://img0.etsystatic.com/000/0/6169781/il_fullxfull.284298540.jpg");
 	
@@ -34,6 +35,9 @@ public class Login
 		pLoginContent.add(tUsername);
 		pLoginContent.add(tPassword);
 		pLoginContent.add(bLogin);
+		
+		tUsername.setText("Username");
+		tPassword.setText("Password");
 		
 		
 		pMainTabPanel.add(pMainLoginPanel, lSignIn);
