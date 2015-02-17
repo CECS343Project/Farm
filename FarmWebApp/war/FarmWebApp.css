@@ -74,6 +74,18 @@ Styling for Login
 /*
 End of Login
 */
+/*
+Styling for New Account
+*/
+.newAccountButton
+{
+	float:right;
+	margin-right:50px;
+}
+
+/*
+End of New Account
+*/
 
 
 /*
