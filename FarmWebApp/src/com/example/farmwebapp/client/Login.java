@@ -9,25 +9,16 @@ import com.google.gwt.user.client.ui.*;
 public class Login 
 {
 
-	//private TabPanel tabpanelLogin = new TabPanel();
-	//private String signIn = "Sign In";
-	//private String signUp = "Sign Up";
-	
+	private VerticalPanel pLoginContainer = new VerticalPanel();
 	private HorizontalPanel pMainLoginPanel = new HorizontalPanel();
-	//private HorizontalPanel loginTop = new HorizontalPanel();
-	//private VerticalPanel loginMainVert = new VerticalPanel();
 	private VerticalPanel pLoginContent = new VerticalPanel();
-	//private Hyperlink signIn = new Hyperlink("SIGN IN","d.java");
-	//private Hyperlink signUp = new Hyperlink("SIGN UP","f.java");
 	private Button bLogin = new Button("LOGIN");	
 	private TextBox tUsername = new TextBox();
 	private PasswordTextBox tPassword = new PasswordTextBox();
 	private Image iLogin = new Image("https://img0.etsystatic.com/000/0/6169781/il_fullxfull.284298540.jpg");
-	//iLogin.setUrl("https://img0.etsystatic.com/000/0/6169781/il_fullxfull.284298540.jpg");
-	private AbsolutePanel pImagePanel = new AbsolutePanel();
 	
 
-	public TabPanel getPanel() 
+	public VerticalPanel getPanel() 
 	{
 		NewAccount newAccount = new NewAccount();
 		TabPanel pMainTabPanel = new TabPanel();
@@ -62,7 +53,7 @@ public class Login
 		
 	         });
 	
-	return pMainTabPanel;
+	return pLoginContainer;
 	}
 	
 	protected void removePanel()

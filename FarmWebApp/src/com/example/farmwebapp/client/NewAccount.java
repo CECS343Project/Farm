@@ -17,7 +17,7 @@ public class NewAccount
 	private VerticalPanel pData3 = new VerticalPanel();
 	private VerticalPanel pData4 = new VerticalPanel();
 	private VerticalPanel pData5 = new VerticalPanel();
-	private VerticalPanel pData6 = new VerticalPanel();
+	//private VerticalPanel pData6 = new VerticalPanel();
 	
 	private TextBox tFirstName = new TextBox();
 	private TextBox tLastName = new TextBox();
