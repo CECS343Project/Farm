@@ -8,6 +8,8 @@ import com.google.gwt.user.client.ui.*;
 //look up date list boxes 
 //look up username / key down to search database to make sure 
 //put guiding text inside textbox
+//change date drop downs to Date Picker
+
 public class FarmWebApp 
 {
 	public void onModuleLoad()
