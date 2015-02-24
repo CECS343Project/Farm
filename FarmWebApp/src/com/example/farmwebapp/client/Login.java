@@ -17,16 +17,15 @@ public class Login
 	
 	private PasswordTextBox tPassword = new PasswordTextBox();
 	private Image iLogin = new Image("https://img0.etsystatic.com/000/0/6169781/il_fullxfull.284298540.jpg");
-	
+	private NewAccount newAccount = new NewAccount();
 
 	public VerticalPanel getPanel() 
 	{
-		NewAccount newAccount = new NewAccount();
+		
 		TabPanel pMainTabPanel = new TabPanel();
 		Label lSignIn = new Label("SIGN IN");
 		Label lSignUp = new Label("SIGN UP");
 		
-		pMainLoginPanel.addStyleName("mainPanel");
 		pMainLoginPanel.add(iLogin);
 		iLogin.addStyleName("gwt-Image-login");
 		pMainLoginPanel.add(pLoginContent);
@@ -42,20 +41,22 @@ public class Login
 		
 		pMainTabPanel.add(pMainLoginPanel, lSignIn);
 		pMainTabPanel.add(newAccount.getPanel(), lSignUp);
-		 bLogin.addClickHandler(new ClickHandler() 
-		 {
+		bLogin.addClickHandler(new ClickHandler() 
+		{
 	 
-	         public void onClick(ClickEvent event) 
-	         {
-	            PopUps popups = new PopUps();
-	            popups.showDialog("Wrong password or username");
-	            newAccount.removePanel();
-	            removePanel();
+	        public void onClick(ClickEvent event) 
+	        {
+	           PopUps popups = new PopUps();
+	           popups.showDialog("Wrong password or username");
+	           removePanel();
 	            
-	         }
+	        }
 
 		
-	         });
+	    });
+		
+		pLoginContainer.add(pMainTabPanel);
+		pLoginContainer.addStyleName("mainPanel");
 	
 	return pLoginContainer;
 	}
@@ -63,6 +64,7 @@ public class Login
 	protected void removePanel()
 	{
 		this.getPanel().removeFromParent();
+		newAccount.removePanel();
 	}
 	
 	

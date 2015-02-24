@@ -2,6 +2,8 @@ package com.example.farmwebapp.client;
 
 import java.util.Date;
 
+import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
 import com.google.gwt.i18n.client.DateTimeFormat;
@@ -61,7 +63,6 @@ public class NewAccount
 	
 	public VerticalPanel getPanel()
 	{
-		pMainPanel.addStyleName("mainPanel");
 		pMainPanel.add(pProfession);
 		pProfession.add(rDoctor);
 		pProfession.add(rPharmacist);
@@ -105,14 +106,31 @@ public class NewAccount
 		pMainPanel.add(pContent4);
 		pContent4.add(lDoB);
 		
-     // Create a DateBox
-     DateTimeFormat dateFormat = DateTimeFormat.getFormat("MM/dd/yyyy");
-     DateBox dbSignIn = new DateBox();
-     dbSignIn.setFormat(new DateBox.DefaultFormat(dateFormat));
+		// Create a DateBox
+		DateTimeFormat dateFormat = DateTimeFormat.getFormat("MM/dd/yyyy");
+     	DateBox dbSignIn = new DateBox();
+     	dbSignIn.setFormat(new DateBox.DefaultFormat(dateFormat));
 	
-     pContent4.add(dbSignIn);
-	pContent4.add(bSignIn);
-	bSignIn.addStyleName("newAccountButton");
+     	pContent4.add(dbSignIn);
+     	pContent4.add(bSignIn);
+		bSignIn.addStyleName("newAccountButton");
+	
+		bSignIn.addClickHandler(new ClickHandler() 
+		{
+	 
+	        public void onClick(ClickEvent event) 
+	        {
+	           PopUps popups = new PopUps();
+	           popups.showDialog("Thank you for signing up");
+	           removePanel();
+	            
+	        }
+
+		
+	    });
+	
+	
+	
 		return pMainPanel;
 	}
 	
