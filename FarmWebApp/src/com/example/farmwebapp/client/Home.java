@@ -24,7 +24,7 @@ public class Home
 		Button bNewPatient = new Button("New Patient");
 		Button bSearchPatients = new Button("Search Patients");
 		Button bSettings = new Button("Settings");
-		Button bUpdates = new Button("Updates");
+		//Button bUpdates = new Button("Updates");
 		Button bLogout = new Button("Logout");
 		
 		pButtons.add(bNewPatient);

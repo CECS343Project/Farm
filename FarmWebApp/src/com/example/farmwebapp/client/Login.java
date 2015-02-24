@@ -9,36 +9,23 @@ import com.google.gwt.user.client.ui.*;
 public class Login 
 {
 
-	//private TabPanel tabpanelLogin = new TabPanel();
-	//private String signIn = "Sign In";
-	//private String signUp = "Sign Up";
-	
+	private VerticalPanel pLoginContainer = new VerticalPanel();
 	private HorizontalPanel pMainLoginPanel = new HorizontalPanel();
-	//private HorizontalPanel loginTop = new HorizontalPanel();
-	//private VerticalPanel loginMainVert = new VerticalPanel();
 	private VerticalPanel pLoginContent = new VerticalPanel();
-	//private Hyperlink signIn = new Hyperlink("SIGN IN","d.java");
-	//private Hyperlink signUp = new Hyperlink("SIGN UP","f.java");
 	private Button bLogin = new Button("LOGIN");	
 	private TextBox tUsername = new TextBox();
 	
 	private PasswordTextBox tPassword = new PasswordTextBox();
 	private Image iLogin = new Image("https://img0.etsystatic.com/000/0/6169781/il_fullxfull.284298540.jpg");
-	//iLogin.setUrl("https://img0.etsystatic.com/000/0/6169781/il_fullxfull.284298540.jpg");
-	private AbsolutePanel pImagePanel = new AbsolutePanel();
-	
+	private NewAccount newAccount = new NewAccount();
 
-	public HorizontalPanel getPanel() 
+	public VerticalPanel getPanel() 
 	{
-		//TabPanel.add(mainPanel, signIn);
-		//loginMainVert.add(loginTop);
-		//loginMainVert.addStyleName("loginMainVert");
-	//	loginTop.addStyleName("loginTop");
 		
+		TabPanel pMainTabPanel = new TabPanel();
+		Label lSignIn = new Label("SIGN IN");
+		Label lSignUp = new Label("SIGN UP");
 		
-		//loginMainVert.add(mainPanel);
-		
-		pMainLoginPanel.addStyleName("mainPanel");
 		pMainLoginPanel.add(iLogin);
 		iLogin.addStyleName("gwt-Image-login");
 		pMainLoginPanel.add(pLoginContent);
@@ -52,35 +39,32 @@ public class Login
 		tPassword.setText("Password");
 		
 		
-		
-		 bLogin.addClickHandler(new ClickHandler() 
-		 {
+		pMainTabPanel.add(pMainLoginPanel, lSignIn);
+		pMainTabPanel.add(newAccount.getPanel(), lSignUp);
+		bLogin.addClickHandler(new ClickHandler() 
+		{
 	 
-	         public void onClick(ClickEvent event) 
-	         {
-	            // Instantiate the dialog box and show it.
-	            PopUps popups = new PopUps();
+	        public void onClick(ClickEvent event) 
+	        {
+	           PopUps popups = new PopUps();
+	           popups.showDialog("Wrong password or username");
+	           removePanel();
+	            
+	        }
 
-	            //int left = Window.getClientWidth()/ 2;
-	            //int top = Window.getClientHeight()/ 2;
-	           // PopUps.setPopupPosition(left, top);
-	            popups.showDialog("Wrong password or username");				
-	         } 
-	         });
-		/*
-	PopUps popup = new PopUps();
-	{
-	if(tPassword == true)
-	{
-		//takes them to homepage
-	}
-	else if(tPassword ==  false)
-	{
-		popup.showDialog("Incorrect password or username");
-	}	
-		*/
+		
+	    });
+		
+		pLoginContainer.add(pMainTabPanel);
+		pLoginContainer.addStyleName("mainPanel");
 	
-	return pMainLoginPanel;
+	return pLoginContainer;
+	}
+	
+	protected void removePanel()
+	{
+		this.getPanel().removeFromParent();
+		newAccount.removePanel();
 	}
 	
 	
