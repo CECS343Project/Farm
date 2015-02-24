@@ -18,11 +18,86 @@ Universal Main Panel Styling
 	text-align:left;
 	margin-bottom: .5cm;	
 }
-
 /*
 end of Main Panel Styling
 */
 
+/*
+Universal Button Styling
+*/
+.button
+{
+	
+}
+/*
+End of Button Styling
+*/
+
+/*
+Universal Text Field Styling
+*/
+.textField
+{
+	
+}
+/*
+End of Text Field Styling
+*/
+
+/*
+Universal Label Styling
+*/
+.label
+{
+	
+}
+/*
+End of Label Styling
+*/
+
+/*
+Tab Panel Styling
+*/
+.tabPanel
+{
+	
+}
+/*
+End of Tab Panel Styling
+*/
+
+/*
+Image Styling
+*/
+.image
+{
+	
+}
+/*
+End of Image Styling
+*/
+
+/*
+Text Area Styling
+*/
+.textArea
+{
+	
+}
+/*
+End of Text Area Styling
+*/
+
+/*
+Date Picker Styling
+*/
+.datePicker
+{
+	
+}
+/*
+End of Date Picker Styling
+*/
 /*
 Styling for Login
 */
