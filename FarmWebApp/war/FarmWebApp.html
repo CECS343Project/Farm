@@ -1,18 +1,46 @@
 <!doctype html>
 <html>
   <head>
+  	<title>Web Application Starter Project</title>
+  	<link type = "text/css" rel="stylesheet" href="FarmWebApp.css"/>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-    <link type="text/css" rel="stylesheet" href="FarmWebApp.css">
-    <title>Web Application Starter Project</title>
     <script type="text/javascript" language="javascript" src="farmwebapp/farmwebapp.nocache.js"></script>
   </head>
   <body>
-    <h1>Pill Bug</h1>
-	
-	<div id="main"></div>
-	
-	<div id="login"></div>
-  	<div id="homePage"></div>
-  	<div id="newPatient"></div>
+    <!--Header-->
+		<table id = "header">
+			<td>Sign In</td>
+			<td><div class = "design_containerDivider_small"></div></td>
+			<td>Sign Up</td>
+		</table>
+
+		<!--Main Structure-->
+		<div id = "design_Container"></div>
+		<div id = "design_containerDivider"></div>
+
+		<!--Login-->
+		<div id = "logo">
+		<img src = "pillBug.jpg"/>
+		</div>
+
+		<table id = "login_Member">
+			<tr><td style = "font-family: Aqua; opacity: 100">USERNAME:</td></tr>
+			<tr class = "spaceUnder" >
+				<td><div class = "login_Container"></div></td>
+			</tr>
+			<tr><td style = "font-family: Aqua; opacity: 100">PASSWORD:</td></tr>
+			<tr><td><div class = "login_Container"></div></td></tr>
+		</table>
+
+		<!--Footer-->
+		<table id = "footer">
+			<td>Contact Us</td>
+			<td><div class = "design_containerDivider_small"></div></td>
+			<td>About</td>
+			<td><div class = "design_containerDivider_small"></div></td>
+			<td>FAQ</td>
+			<td><div class = "design_containerDivider_small"></div></td>
+			<td id = "info_copyright">Copyright &copy 2015 Pill Bug</td>
+		</table>
   </body>
 </html>

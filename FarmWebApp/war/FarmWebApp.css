@@ -1,105 +1,159 @@
-body
-{
-	background-color:#e0e0e0 !important;	
+body {
+	background-color: White;
+}
+@font-face {
+  font-family: 'Aqua';
+  src: url('aqua-webfont.eot'); /* IE9 Compat Modes */
+  src: url('aqua-webfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('aqua-webfont.woff') format('woff'), /* Modern Browsers */
+       url('aqua-webfont.ttf')  format('truetype'), /* Safari, Android, iOS */
+       url('aqua-webfont.svg#svgFontName') format('svg'); /* Legacy iOS */
+}
+#design_Container {
+	/*Position*/
+	top: 50%;
+	left: 50%;
+	position: absolute;
+	margin: -220px 0px 0px -350px;
 
+	/*Design Properties*/
+	width: 700px;
+	height: 440px;
+	border-radius: 2px;
+	background-color: #E0E0E0;
+	/*border: 1px solid Black;*/
 }
+#design_containerDivider{
+	/*Position*/
+	top: 50%;
+	left: 50%;
+	width: 1px;
+	height: 220px;
+	position: absolute;
+	margin: -109px 0px 0px 0px;
 
-/*
-Universal Main Panel Styling
-*/
-.mainPanel
-{
-	border-width:15px;
-	border-style:inset;
-	border-color:#EE4037;
-	background-color:#44BDE8;
-	margin: 0px auto; 
-	width: 480px; 
-	text-align:left;
-	margin-bottom: .5cm;	
+	/*Design Properties*/
+	background-color: black;
+	background-image: -webkit-gradient(
+		linear,
+		left top,
+		left bottom,
+		color-stop(0, #E0E0E0),
+		color-stop(0.5, #000000),
+		color-stop(1, #E0E0E0)
+	);
+	background-image: -o-linear-gradient(bottom, #E0E0E0 0%, #000000 50%, #E0E0E0 100%);
+	background-image: -moz-linear-gradient(bottom, #E0E0E0 0%, #000000 50%, #E0E0E0 100%);
+	background-image: -webkit-linear-gradient(bottom, #E0E0E0 0%, #000000 50%, #E0E0E0 100%);
+	background-image: -ms-linear-gradient(bottom, #E0E0E0 0%, #000000 50%, #E0E0E0 100%);
+	background-image: linear-gradient(to bottom, #E0E0E0 0%, #000000 50%, #E0E0E0 100%);
 }
+.design_containerDivider_small {
+	/*Position*/
+	width: 1px;
+	height: 25px;
 
-/*
-end of Main Panel Styling
-*/
+	/*Design Properties*/
+	background-color: black;
+	background-image: -webkit-gradient(
+		linear,
+		left top,
+		left bottom,
+		color-stop(0, #FFFFFF),
+		color-stop(0.5, #000000),
+		color-stop(1, #FFFFFF)
+	);
+	background-image: -o-linear-gradient(bottom, #FFFFFF 0%, #000000 50%, #FFFFFF 100%);
+	background-image: -moz-linear-gradient(bottom, #FFFFFF 0%, #000000 50%, #FFFFFF 100%);
+	background-image: -webkit-linear-gradient(bottom, #FFFFFF 0%, #000000 50%, #FFFFFF 100%);
+	background-image: -ms-linear-gradient(bottom, #FFFFFF 0%, #000000 50%, #FFFFFF 100%);
+	background-image: linear-gradient(to bottom, #FFFFFF 0%, #000000 50%, #FFFFFF 100%);
+}
+#logo_giftVineHeader {
+	/*Position*/
+	top: 50%;
+	left: 50%;
+	position: absolute;
+	margin: -294px 0px 0px -350px;
 
-/*
-Styling for Login
-*/
+	/*Design Properties*/
+	font-size: 80px;
+	font-family: Aqua;
+}
+#logo_giftVineHeader_sm {
+	/*Position*/
+	top: 50%;
+	left: 50%;
+	margin: -256px 0px 0px -50px;
+	position: absolute;
 
-.gwt-TabBar
- { 
- 	background-color:white;
- 	color:red;
- 	border-color:white;
- }
- .gwt-TabBar .gwt-TabBarItem
-  { 
- 	background-color:white;
-  }
-.gwt-TabBar .gwt-TabBarItem-selected 
-{ 
-	background-color:white;
-	color:red;
+	/*Design Properties*/
+	font-size: 10px;
+	font-family: Aqua;
 }
+.login_Container {
+	/*Design Properties*/
+	width: 250px;
+	height: 30px;
+	opacity: 0.75;
+	border-radius: 2px;
+	background-color: #FFFFFF;
+}
+tr.spaceUnder > td {
+	padding-bottom: 4em;
+}
+#logo {
+	/*Position*/
+	top: 50%;
+	left: 50%;
+	position: absolute;
+	margin: -85px 0px 0px -300px;
+}
+#login_Member {
+	/*Position*/
+	top: 50%;
+	left: 50%;
+	position: absolute;
+	margin: -100px 0px 0px 47.5px;
+}
+#header {
+	/*Position*/
+	top: 50%;
+	left: 50%;
+	margin: -260px 0px 0px -353px;
+	position: absolute;
 
-.loginButton
-{
-	padding: 25px;
+	/*Design Properties*/
+	opacity: 0.75;
+	font-size: 12px;
+	font-family: Arial;
 }
-.LoginImage
-{
-	height: 200px;
-	width: 200px;
+.gwt-TextBox {
+	/*Position*/
+	top: 50%;
+	left: 50%;
+	position: absolute;
+	margin: -80px 0px 0px 50px;
 }
-.gwt-Image-login
-{
-	height: 200px;
-	width: 200px; 
+.gwt-PasswordTextBox {
+	/*Position*/
+	top: 50%;
+	left: 50%;
+	position: absolute;
+	margin: 22px 0px 0px 50px;
 }
-.loginMainVert
-{
-	margin-left:600px;
-	margin-top:200px;
-}
-.loginContent
-{
-	padding: 20px 50px 100px 20px;
-	
-}
-.loginTop
-{
-	
-}
-/*
-End of Login
-*/
-/*
-Styling for New Account
-*/
-.newAccountButton
-{
-	float:right;
-	margin-right:50px;
-}
+#footer {
+	/*Position*/
+	top: 50%;
+	left: 50%;
+	margin: 230px 0px 0px -353px;
+	position: absolute;
 
-/*
-End of New Account
-*/
-
-
-/*
-Styling  for PopUps
-*/
-.popupPanel
-{
-	background-color:red;
+	/*Design Properties*/
+	opacity: 0.75;
+	font-size: 12px;
+	font-family: Arial;
 }
-.pButtonPanel
-{
-	background-color:yellow;
+#info_copyright {
+	opacity: 0.5;
 }
-
-/*
-End of PopUps
-*/

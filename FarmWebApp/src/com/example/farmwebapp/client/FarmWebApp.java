@@ -1,35 +1,33 @@
 package com.example.farmwebapp.client;
 
-import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.user.client.ui.*;
+import com.google.gwt.core.client.EntryPoint;
+import com.google.gwt.event.dom.client.KeyPressEvent;
+import com.google.gwt.event.dom.client.KeyPressHandler;
 
-//key down listener to check password matches repassword
-//look up date list boxes 
-//look up username / key down to search database to make sure 
-//put guiding text inside textbox
 public class FarmWebApp implements EntryPoint
 
 {
-	public void onModuleLoad()
-	{
-		Login login = new Login();
-		Home homePage = new Home();
-		NewPatient newPatient = new NewPatient();
+	public void onModuleLoad() {
 		
-		NewAccount newAccount = new NewAccount();
-		//RootPanel.get("login").add(login.getWidget());
-		TabPanel pMainTabPanel = new TabPanel();
-		Label lSignIn = new Label("SIGN IN");
-		RootPanel.get("homePage").add(homePage.getPanel());
-		RootPanel.get("newPatient").add(newPatient.getPanel());
-		Label lSignUp = new Label("SIGN UP");
-		pMainTabPanel.add(login.getPanel(), lSignIn);
-		pMainTabPanel.add(newAccount.getPanel(), lSignUp);
+		TextBox tb = new TextBox();
+		tb.setPixelSize(245, 20);
 		
-		pMainTabPanel.selectTab(0);
-		 pMainTabPanel.setWidth("600");
-		 pMainTabPanel.setHeight("100");
-		RootPanel.get("main").add(pMainTabPanel);
+		PasswordTextBox ptb = new PasswordTextBox();
+		ptb.setPixelSize(245, 20);
+		
+		tb.addKeyPressHandler(new KeyPressHandler() {
+
+			public void onKeyPress(KeyPressEvent event) {
+				// Add Event
+			}
+		});
+		
+		// Add them to the root panel.
+		VerticalPanel panel = new VerticalPanel();
+		panel.add(tb);
+		panel.add(ptb);
+		RootPanel.get().add(panel);
 	}
-	
+
 }

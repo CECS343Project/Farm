@@ -1,19 +1,13 @@
-/**
- * 
- */
-
 package com.example.farmwebapp.client;
-
+import com.google.gwt.event.dom.client.KeyPressEvent;
+import com.google.gwt.event.dom.client.KeyPressHandler;
 import com.google.gwt.user.client.ui.*;
 
 public class Home 
 {
 	
-	/**
-	 * 
-	 * @return
-	 */
-	public HorizontalPanel getPanel()
+	
+	/*public HorizontalPanel getPanel()
 	{
 		HorizontalPanel pHome = new  HorizontalPanel();
 		VerticalPanel pLogo = new VerticalPanel();
@@ -42,12 +36,9 @@ public class Home
 		return pHome;
 	}
 	
-	/**
-	 * 
-	 */
 	public void removePanel()
 	{
 		this.getPanel().removeFromParent();
-	}
+	}*/
 
 }
