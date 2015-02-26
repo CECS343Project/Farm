@@ -26,13 +26,13 @@ public class Login
 		Label lSignIn = new Label("SIGN IN");
 		Label lSignUp = new Label("SIGN UP");
 		
-		pMainLoginPanel.add(iLogin);
-		pMainLoginPanel.add(pLoginContent);
-		
 		pLoginContent.addStyleName("loginContent");
 		pLoginContent.add(tUsername);
 		pLoginContent.add(tPassword);
 		pLoginContent.add(bLogin);
+		
+		pMainLoginPanel.add(iLogin);
+		pMainLoginPanel.add(pLoginContent);
 		
 		tUsername.setText("Username");
 		tPassword.setText("Password");

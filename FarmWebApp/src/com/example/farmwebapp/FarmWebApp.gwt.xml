@@ -8,7 +8,7 @@
   <!-- <inherits name='com.google.gwt.user.theme.standard.Standard'/> -->
   <!-- <inherits name='com.google.gwt.user.theme.chrome.Chrome'/> -->
   <!-- <inherits name='com.google.gwt.user.theme.dark.Dark'/>     -->
-
+	<inherits name="org.helios.gwt.fonts.GwtWebFonts"/>
   <entry-point class='com.example.farmwebapp.client.FarmWebApp'/>
   <source path='client'/>
   <source path='shared'/>
