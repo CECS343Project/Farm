@@ -9,14 +9,11 @@ Universal Main Panel Styling
 */
 .mainPanel
 {
-	border-width:15px;
-	border-style:inset;
-	border-color:#EE4037;
-	background-color:#44BDE8;
+	
 	margin: 0px auto; 
-	width: 480px; 
-	text-align:left;
-	margin-bottom: .5cm;	
+	margin-bottom: .5cm;
+	
+	background-color:#E0E0E0;	
 }
 /*
 end of Main Panel Styling
@@ -25,14 +22,36 @@ end of Main Panel Styling
 /*
 Universal Button Styling
 */
-.button
-{
-	
+button.gwt-Button, #wrapper button.gwt-Button {
+    background: transparent url(icons/back_normal.gif) repeat-x;
+    border:transparent;
+    outline: none;
+    vertical-align: baseline;
+    text-decoration: none;
+    cursor: pointer;
+    color: #1e7ec8;
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    height: 24px;
+    font: normal 12px arial, helvetica, verdana, sans-serif;
+    white-space: nowrap;
+    padding: 0 5px;
+    width:100%;
+    margin: 0px auto 0px auto;
 }
 /*
 End of Button Styling
 */
-
+/*
+Universal Text Box Styling
+*/
+.gwt-TextBox
+{
+	margin-bottom: 15px; 
+}
+/*
+End of Text Field Styling
+*/
 /*
 Universal Text Field Styling
 */
@@ -58,9 +77,9 @@ End of Label Styling
 /*
 Tab Panel Styling
 */
-.tabPanel
+.gwt-TabBar 
 {
-	
+	background: none;
 }
 /*
 End of Tab Panel Styling
