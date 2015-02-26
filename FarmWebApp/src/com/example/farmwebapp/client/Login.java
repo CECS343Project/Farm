@@ -55,6 +55,7 @@ public class Login
 		
 	    });
 		
+		pMainTabPanel.selectTab(0);
 		pLoginContainer.add(pMainTabPanel);
 		pLoginContainer.addStyleName("mainPanel");
 	
