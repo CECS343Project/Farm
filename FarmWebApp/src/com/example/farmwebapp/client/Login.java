@@ -16,7 +16,7 @@ public class Login
 	private TextBox tUsername = new TextBox();
 	
 	private PasswordTextBox tPassword = new PasswordTextBox();
-	private Image iLogin = new Image("https://img0.etsystatic.com/000/0/6169781/il_fullxfull.284298540.jpg");
+	private Image iLogin = new Image("pill_bug_logo.jpg");
 	private NewAccount newAccount = new NewAccount();
 
 	public VerticalPanel getPanel() 
@@ -27,7 +27,6 @@ public class Login
 		Label lSignUp = new Label("SIGN UP");
 		
 		pMainLoginPanel.add(iLogin);
-		iLogin.addStyleName("gwt-Image-login");
 		pMainLoginPanel.add(pLoginContent);
 		
 		pLoginContent.addStyleName("loginContent");

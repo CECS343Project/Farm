@@ -33,10 +33,11 @@ button.gwt-Button, #wrapper button.gwt-Button {
     -moz-border-radius: 2px;
     -webkit-border-radius: 2px;
     height: 24px;
-    font: normal 12px arial, helvetica, verdana, sans-serif;
+    font: bold 15px arial, helvetica, verdana, sans-serif;
     white-space: nowrap;
     padding: 0 5px;
     width:100%;
+    margin-top:1.5cm;
     margin: 0px auto 0px auto;
 }
 /*
@@ -197,3 +198,25 @@ Styling  for PopUps
 /*
 End of PopUps
 */
+
+.design_containerDivider_small {
+	/*Position*/
+	width: 1px;
+	height: 25px;
+
+	/*Design Properties*/
+	background-color: black;
+	background-image: -webkit-gradient(
+		linear,
+		left top,
+		left bottom,
+		color-stop(0, #FFFFFF),
+		color-stop(0.5, #000000),
+		color-stop(1, #FFFFFF)
+	);
+	background-image: -o-linear-gradient(bottom, #FFFFFF 0%, #000000 50%, #FFFFFF 100%);
+	background-image: -moz-linear-gradient(bottom, #FFFFFF 0%, #000000 50%, #FFFFFF 100%);
+	background-image: -webkit-linear-gradient(bottom, #FFFFFF 0%, #000000 50%, #FFFFFF 100%);
+	background-image: -ms-linear-gradient(bottom, #FFFFFF 0%, #000000 50%, #FFFFFF 100%);
+	background-image: linear-gradient(to bottom, #FFFFFF 0%, #000000 50%, #FFFFFF 100%);
+}
