@@ -1,12 +1,14 @@
 package com.example.farmwebapp.client;
+
+
+import java.util.EventListener;
+
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.ui.*;
 
-//create tab panel
-//do both sign in and sign up page using tab panel
-//add dialogue box
-public class Login 
+//do key down handler implement keyboardlistener
+public class Login
 {
 
 	//private TabPanel tabpanelLogin = new TabPanel();
@@ -27,6 +29,9 @@ public class Login
 	//iLogin.setUrl("https://img0.etsystatic.com/000/0/6169781/il_fullxfull.284298540.jpg");
 	private AbsolutePanel pImagePanel = new AbsolutePanel();
 	
+	//to 
+	CheckBox cbLogin = new CheckBox("Show Text");
+	
 
 	public HorizontalPanel getPanel() 
 	{
@@ -46,12 +51,13 @@ public class Login
 		pLoginContent.addStyleName("loginContent");
 		pLoginContent.add(tUsername);
 		pLoginContent.add(tPassword);
+		pLoginContent.add(cbLogin);
 		pLoginContent.add(bLogin);
 		
 		tUsername.setText("Username");
 		tPassword.setText("Password");
-		
-		
+		cbLogin.setValue(false);
+		//tPassword.addKeyboardListener(this);
 		
 		 bLogin.addClickHandler(new ClickHandler() 
 		 {
@@ -67,22 +73,32 @@ public class Login
 	            popups.showDialog("Wrong password or username");				
 	         } 
 	         });
-		/*
-	PopUps popup = new PopUps();
-	{
-	if(tPassword == true)
-	{
-		//takes them to homepage
-	}
-	else if(tPassword ==  false)
-	{
-		popup.showDialog("Incorrect password or username");
-	}	
-		*/
+		 cbLogin.addClickHandler(new ClickHandler() 
+		 {
+		     // @Override
+		      public void onClick(ClickEvent event) 
+		      {
+		        boolean checked = ((CheckBox) event.getSource()).getValue();
+		      //  Window.alert("It is " + (checked ? "" : "not ") + "checked");
+		        if(checked)
+		        {
+		        	tPassword.getElement().setAttribute("type", "text");
+		        }
+		        else
+		        {
+		        	tPassword.getElement().setPropertyString("type", "password");
+		        }
+		        }
+		      });
+		    
+		 
 	
 	return pMainLoginPanel;
 	}
+	//keydown listener
 	
+		
+		
 	
 
 
