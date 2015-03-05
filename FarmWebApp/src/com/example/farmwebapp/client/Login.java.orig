@@ -18,11 +18,18 @@ public class Login
 	private TextBox tUsername = new TextBox();
 	
 	private PasswordTextBox tPassword = new PasswordTextBox();
+<<<<<<< HEAD
 	private Image iLogin = new Image("pill_bug_logo.jpg");
 	private NewAccount newAccount = new NewAccount();
+=======
+	private Image iLogin = new Image("https://img0.etsystatic.com/000/0/6169781/il_fullxfull.284298540.jpg");
+	//iLogin.setUrl("https://img0.etsystatic.com/000/0/6169781/il_fullxfull.284298540.jpg");
+	private AbsolutePanel pImagePanel = new AbsolutePanel();
+	
 	//to 
 	CheckBox cbLogin = new CheckBox("Show Text");
 	
+>>>>>>> guitesting2
 
 	public VerticalPanel getPanel() 
 	{
@@ -42,48 +49,77 @@ public class Login
 		
 		tUsername.setText("Username");
 		tPassword.setText("Password");
-		cbLogin.setValue(false);
-		//tPassword.addKeyboardListener(this);
+<<<<<<< HEAD
+		
+		
 		pMainTabPanel.add(pMainLoginPanel, lSignIn);
 		pMainTabPanel.add(newAccount.getPanel(), lSignUp);
 		bLogin.addClickHandler(new ClickHandler() 
 		{
+=======
+		cbLogin.setValue(false);
+		//tPassword.addKeyboardListener(this);
+		
+		 bLogin.addClickHandler(new ClickHandler() 
+		 {
+>>>>>>> guitesting2
 	 
 	        public void onClick(ClickEvent event) 
 	        {
 	           PopUps popups = new PopUps();
 	           popups.showDialog("Wrong password or username");
-	           boolean checked = ((CheckBox) event.getSource()).getValue();
-			      //  Window.alert("It is " + (checked ? "" : "not ") + "checked");
-			        if(checked)
-			        {
-			        	tPassword.getElement().setAttribute("type", "text");
-			        }
-			        else
-			        {
-			        	tPassword.getElement().setPropertyString("type", "password");
-			        }
 	           removePanel();
+	            
 	        }
 
+<<<<<<< HEAD
 		
 	    });
 		
 		pMainTabPanel.selectTab(0);
 		pLoginContainer.add(pMainTabPanel);
-		cbLogin.setValue(false);
-		//tPassword.addKeyboardListener(this);
-		 
-		 return pLoginContainer;
-		}
+		pLoginContainer.addStyleName("mainPanel");
+	
+	return pLoginContainer;
+	}
+=======
+	            //int left = Window.getClientWidth()/ 2;
+	            //int top = Window.getClientHeight()/ 2;
+	           // PopUps.setPopupPosition(left, top);
+	            popups.showDialog("Wrong password or username");				
+	         } 
+	         });
+		 cbLogin.addClickHandler(new ClickHandler() 
+		 {
+		     // @Override
+		      public void onClick(ClickEvent event) 
+		      {
+		        boolean checked = ((CheckBox) event.getSource()).getValue();
+		      //  Window.alert("It is " + (checked ? "" : "not ") + "checked");
+		        if(checked)
+		        {
+		        	tPassword.getElement().setAttribute("type", "text");
+		        }
+		        else
+		        {
+		        	tPassword.getElement().setPropertyString("type", "password");
+		        }
+		        }
+		      });
 		    
 		 
+>>>>>>> guitesting2
 	
 	protected void removePanel()
 	{
 		this.getPanel().removeFromParent();
 		newAccount.removePanel();
 	}
+	//keydown listener
+	
+		
+		
+	
 
 
 }
