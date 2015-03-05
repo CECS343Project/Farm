@@ -1,12 +1,14 @@
 package com.example.farmwebapp.client;
+
+
+import java.util.EventListener;
+
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.ui.*;
 
-//create tab panel
-//do both sign in and sign up page using tab panel
-//add dialogue box
-public class Login 
+//do key down handler implement keyboardlistener
+public class Login
 {
 
 	private VerticalPanel pLoginContainer = new VerticalPanel();
@@ -18,6 +20,9 @@ public class Login
 	private PasswordTextBox tPassword = new PasswordTextBox();
 	private Image iLogin = new Image("pill_bug_logo.jpg");
 	private NewAccount newAccount = new NewAccount();
+	//to 
+	CheckBox cbLogin = new CheckBox("Show Text");
+	
 
 	public VerticalPanel getPanel() 
 	{
@@ -29,6 +34,7 @@ public class Login
 		pLoginContent.addStyleName("loginContent");
 		pLoginContent.add(tUsername);
 		pLoginContent.add(tPassword);
+		pLoginContent.add(cbLogin);
 		pLoginContent.add(bLogin);
 		
 		pMainLoginPanel.add(iLogin);
@@ -36,8 +42,8 @@ public class Login
 		
 		tUsername.setText("Username");
 		tPassword.setText("Password");
-		
-		
+		cbLogin.setValue(false);
+		//tPassword.addKeyboardListener(this);
 		pMainTabPanel.add(pMainLoginPanel, lSignIn);
 		pMainTabPanel.add(newAccount.getPanel(), lSignUp);
 		bLogin.addClickHandler(new ClickHandler() 
@@ -56,17 +62,33 @@ public class Login
 		
 		pMainTabPanel.selectTab(0);
 		pLoginContainer.add(pMainTabPanel);
-		pLoginContainer.addStyleName("mainPanel");
-	
-	return pLoginContainer;
-	}
+		     // @Override
+		      public void onClick(ClickEvent event) 
+		      {
+		        boolean checked = ((CheckBox) event.getSource()).getValue();
+		      //  Window.alert("It is " + (checked ? "" : "not ") + "checked");
+		        if(checked)
+		        {
+		        	tPassword.getElement().setAttribute("type", "text");
+		        }
+		        else
+		        {
+		        	tPassword.getElement().setPropertyString("type", "password");
+		        }
+		        }
+		      });
+		    
+		 
 	
 	protected void removePanel()
 	{
 		this.getPanel().removeFromParent();
 		newAccount.removePanel();
 	}
+	//keydown listener
 	
+		
+		
 	
 
 
