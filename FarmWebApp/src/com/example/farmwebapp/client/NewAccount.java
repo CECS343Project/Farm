@@ -111,6 +111,7 @@ public class NewAccount
      dbSignIn.setFormat(new DateBox.DefaultFormat(dateFormat));
 	
      pContent4.add(dbSignIn);
+     dbSignIn.addStyleName("dateBox"); //style this to make it smaller
 	pContent4.add(bSignIn);
 	bSignIn.addStyleName("newAccountButton");
 		return pMainPanel;
