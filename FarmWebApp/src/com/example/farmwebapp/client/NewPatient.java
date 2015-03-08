@@ -22,7 +22,9 @@ public class NewPatient
 		VerticalPanel pNewPatientMain = new VerticalPanel();
 		HorizontalPanel pDOB = new HorizontalPanel();
 		HorizontalPanel pDosage = new HorizontalPanel();
+		HorizontalPanel pPrescriptionContainter = new HorizontalPanel();
 		FlexTable ftPatientInfo = new FlexTable();
+		FlexTable ftPrescriptionInfo = new FlexTable();
 		
 		Image iPatient = new Image("patient_picture.jpg");
 		
@@ -77,6 +79,10 @@ public class NewPatient
 		
 		Button bPlus = new Button("+");
 		Button bMinus = new Button("-");
+		Button bAddPrescription = new Button("Add Prescription");
+		
+		
+		lNewPatient.addStyleName("headers");
 		
 		pDosage.add(bPlus);
 		pDosage.add(bMinus);
@@ -116,25 +122,30 @@ public class NewPatient
 		ftPatientInfo.setWidget(6, 3, tbPolicyIssuer);
 		ftPatientInfo.setWidget(6, 4, lPolicyStatus);
 		ftPatientInfo.setWidget(6, 5, tbPolicyStatus);
-		ftPatientInfo.setWidget(7, 0, lMedicine);
-		ftPatientInfo.setWidget(7, 1, tbMedicine);
-		ftPatientInfo.setWidget(7, 2, lDose);
-		ftPatientInfo.setWidget(7, 3, pDosage);
-		ftPatientInfo.setWidget(7, 4, lFrequency);
-		ftPatientInfo.setWidget(7, 5, lbFrequency);
-		ftPatientInfo.setWidget(8, 0, lAllergies);
-		ftPatientInfo.setWidget(8, 1, tbAllergies);
-		ftPatientInfo.setWidget(9, 0, lMedStartDate);
-		ftPatientInfo.setWidget(9, 1, tbMedStartDate);
-		ftPatientInfo.setWidget(9, 2, lMedEndDate);
-		ftPatientInfo.setWidget(9, 3, tbMedEndDate);
+		ftPatientInfo.setWidget(6, 6, bAddPrescription);
+		
+		//////////////////////////////////////////////////////////////////
+		ftPrescriptionInfo.setWidget(0, 0, lMedicine);
+		ftPrescriptionInfo.setWidget(0, 1, tbMedicine);
+		ftPrescriptionInfo.setWidget(0, 2, lDose);
+		ftPrescriptionInfo.setWidget(0, 3, pDosage);
+		ftPrescriptionInfo.setWidget(0, 4, lFrequency);
+		ftPrescriptionInfo.setWidget(0, 5, lbFrequency);
+		ftPrescriptionInfo.setWidget(1, 0, lAllergies);
+		ftPrescriptionInfo.setWidget(1, 1, tbAllergies);
+		ftPrescriptionInfo.setWidget(2, 0, lMedStartDate);
+		ftPrescriptionInfo.setWidget(2, 1, tbMedStartDate);
+		ftPrescriptionInfo.setWidget(2, 2, lMedEndDate);
+		ftPrescriptionInfo.setWidget(2, 3, tbMedEndDate);
 		
 		taNotes.setCharacterWidth(120);
 	    taNotes.setVisibleLines(5);
+	    
 		
 	    pNewPatientMain.add(lNewPatient);
 	    pNewPatientMain.add(iPatient);
 		pNewPatientMain.add(ftPatientInfo);
+		//pNewPatientMain.add(ftPrescriptionInfo);
 		pNewPatientMain.add(lNotes);
 		pNewPatientMain.add(taNotes);
 		

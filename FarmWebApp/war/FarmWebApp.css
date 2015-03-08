@@ -43,6 +43,21 @@ button.gwt-Button, #wrapper button.gwt-Button {
 /*
 End of Button Styling
 */
+
+/*
+Header styling
+*/
+.headers
+{
+	font-size: 200%;
+	width: 100%;
+	margin-left:auto;
+	margin-right:auto;
+}
+/*
+End
+*/
+
 /*
 Universal Text Box Styling
 */
