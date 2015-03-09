@@ -15,6 +15,7 @@ public class FarmWebApp implements EntryPoint
 		Home homePage = new Home();
 		NewPatient newPatient = new NewPatient();
 		
+		
 		NewAccount newAccount = new NewAccount();
 		//RootPanel.get("login").add(login.getWidget());
 		TabPanel pMainTabPanel = new TabPanel();

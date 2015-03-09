@@ -54,7 +54,7 @@ public class NewAccount
 	
 	private Button bSignIn = new Button("SIGN UP");
 	
-	 DatePicker dpSignUp = new DatePicker();
+	private DatePicker dpSignUp = new DatePicker();
      final Label lDate = new Label();
 
      

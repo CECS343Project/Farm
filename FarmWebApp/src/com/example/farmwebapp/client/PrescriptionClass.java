@@ -26,12 +26,15 @@ public class PrescriptionClass
 	DoctorInfo doctorInfo = new DoctorInfo();
 	Meds meds = new Meds();
 	PrescriptionInfo prescriptionInfo = new PrescriptionInfo();
+	PrescriptionNotes prescriptionNotes= new PrescriptionNotes();
 	PrescriptionLabel prescriptionLabel = new PrescriptionLabel();
 	
 	public VerticalPanel getPanel()
 	{
 		pMainPresc.add(pTopPresc);
 		pMainPresc.add(pBottomPresc);
+		
+		//pTopPresc.add(patientInfo);
 		
 		//pTopPresc.add(patientInfo);
 		return pMainPresc;

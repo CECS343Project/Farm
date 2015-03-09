@@ -3,7 +3,7 @@
   associations="true" dependencies="false" nesting-relationships="true">  
   <class id="1" language="java" name="com.example.farmwebapp.client.PrescriptionNotes" project="FarmWebApp" 
     file="/FarmWebApp/src/com/example/farmwebapp/client/PrescriptionNotes.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="81" width="145" x="252" y="-48"/>    
+    <position height="-1" width="-1" x="309" y="710"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -12,186 +12,201 @@
   </class>  
   <class id="2" language="java" name="com.example.farmwebapp.client.NewPatient" project="FarmWebApp" 
     file="/FarmWebApp/src/com/example/farmwebapp/client/NewPatient.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="117" width="145" x="437" y="-48"/>    
+    <position height="-1" width="-1" x="167" y="50"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <interface id="3" language="java" name="com.example.farmwebapp.client.GreetingServiceAsync" project="FarmWebApp" 
-    file="/FarmWebApp/src/com/example/farmwebapp/client/GreetingServiceAsync.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="81" width="258" x="622" y="-48"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </interface>  
-  <class id="4" language="java" name="com.example.farmwebapp.client.DoctorInfo" project="FarmWebApp" 
+  <class id="3" language="java" name="com.example.farmwebapp.client.DoctorInfo" project="FarmWebApp" 
     file="/FarmWebApp/src/com/example/farmwebapp/client/DoctorInfo.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1169" y="645"/>    
+    <position height="-1" width="-1" x="900" y="700"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <interface id="5" language="java" name="com.example.farmwebapp.client.GreetingService" project="FarmWebApp" 
-    file="/FarmWebApp/src/com/example/farmwebapp/client/GreetingService.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="81" width="151" x="920" y="-48"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </interface>  
-  <class id="6" language="java" name="com.example.farmwebapp.client.PopUps" project="FarmWebApp" 
+  <class id="4" language="java" name="com.example.farmwebapp.client.PopUps" project="FarmWebApp" 
     file="/FarmWebApp/src/com/example/farmwebapp/client/PopUps.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="646" y="229"/>    
+    <position height="-1" width="-1" x="337" y="62"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="7" language="java" name="com.example.farmwebapp.client.Login" project="FarmWebApp" 
+  <class id="5" language="java" name="com.example.farmwebapp.client.Login" project="FarmWebApp" 
     file="/FarmWebApp/src/com/example/farmwebapp/client/Login.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="310" y="237"/>    
+    <position height="-1" width="-1" x="544" y="114"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="8" language="java" name="com.example.farmwebapp.client.PrescriptionInfo" project="FarmWebApp" 
-    file="/FarmWebApp/src/com/example/farmwebapp/client/PrescriptionInfo.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1371" y="644"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="9" language="java" name="com.example.farmwebapp.client.Meds" project="FarmWebApp" 
-    file="/FarmWebApp/src/com/example/farmwebapp/client/Meds.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1669" y="658"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="10" language="java" name="com.example.farmwebapp.client.PrescriptionClass" project="FarmWebApp" 
-    file="/FarmWebApp/src/com/example/farmwebapp/client/PrescriptionClass.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1274" y="181"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="11" language="java" name="com.example.farmwebapp.client.FarmWebApp" project="FarmWebApp" 
-    file="/FarmWebApp/src/com/example/farmwebapp/client/FarmWebApp.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="811" y="110"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="12" language="java" name="com.example.farmwebapp.client.RetrievedData" project="FarmWebApp" 
+  <class id="6" language="java" name="com.example.farmwebapp.client.Patient" project="FarmWebApp" 
     file="/FarmWebApp/src/com/example/farmwebapp/client/RetrievedData.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1232" y="15"/>    
+    <position height="-1" width="-1" x="746" y="1171"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="13" language="java" name="com.example.farmwebapp.client.PrescriptionLabel" project="FarmWebApp" 
+  <class id="7" language="java" name="com.example.farmwebapp.client.PrescriptionInfo" project="FarmWebApp" 
+    file="/FarmWebApp/src/com/example/farmwebapp/client/PrescriptionInfo.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="718" y="934"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="8" language="java" name="com.example.farmwebapp.client.Meds" project="FarmWebApp" 
+    file="/FarmWebApp/src/com/example/farmwebapp/client/Meds.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="516" y="854"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="9" language="java" name="com.example.farmwebapp.client.PrescriptionClass" project="FarmWebApp" 
+    file="/FarmWebApp/src/com/example/farmwebapp/client/PrescriptionClass.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="660" y="336"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="10" language="java" name="com.example.farmwebapp.client.FarmWebApp" project="FarmWebApp" 
+    file="/FarmWebApp/src/com/example/farmwebapp/client/FarmWebApp.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="740" y="45"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="11" language="java" name="com.example.farmwebapp.client.RetrievedData" project="FarmWebApp" 
+    file="/FarmWebApp/src/com/example/farmwebapp/client/RetrievedData.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="745" y="1010"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="12" language="java" name="com.example.farmwebapp.client.PrescriptionLabel" project="FarmWebApp" 
     file="/FarmWebApp/src/com/example/farmwebapp/client/PrescriptionLabel.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1885" y="659"/>    
+    <position height="-1" width="-1" x="957" y="438"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="14" language="java" name="com.example.farmwebapp.client.PatientInfo" project="FarmWebApp" 
+  <class id="13" language="java" name="com.example.farmwebapp.client.PatientInfo" project="FarmWebApp" 
     file="/FarmWebApp/src/com/example/farmwebapp/client/PatientInfo.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="2110" y="615"/>    
+    <position height="-1" width="-1" x="932" y="188"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="15" language="java" name="com.example.farmwebapp.client.NewAccount" project="FarmWebApp" 
+  <class id="14" language="java" name="com.example.farmwebapp.client.NewAccount" project="FarmWebApp" 
     file="/FarmWebApp/src/com/example/farmwebapp/client/NewAccount.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="116" y="347"/>    
+    <position height="-1" width="-1" x="120" y="513"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="16" language="java" name="com.example.farmwebapp.client.Home" project="FarmWebApp" 
+  <class id="15" language="java" name="com.example.farmwebapp.client.Home" project="FarmWebApp" 
     file="/FarmWebApp/src/com/example/farmwebapp/client/Home.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="827" y="315"/>    
+    <position height="-1" width="-1" x="736" y="175"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="17" language="java" name="com.example.farmwebapp.client.Search" project="FarmWebApp" 
+  <class id="16" language="java" name="com.example.farmwebapp.client.Search" project="FarmWebApp" 
     file="/FarmWebApp/src/com/example/farmwebapp/client/Search.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1017" y="248"/>    
+    <position height="-1" width="-1" x="334" y="354"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <association id="18">    
-    <end type="SOURCE" refId="10" navigable="false">      
-      <attribute id="19" name="meds"/>      
-      <multiplicity id="20" minimum="0" maximum="1"/>    
+  <association id="17">    
+    <end type="SOURCE" refId="9" navigable="false">      
+      <attribute id="18" name="doctorInfo"/>      
+      <multiplicity id="19" minimum="0" maximum="1"/>    
     </end>    
-    <end type="TARGET" refId="9" navigable="true"/>    
+    <end type="TARGET" refId="3" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="21">    
-    <end type="SOURCE" refId="10" navigable="false">      
-      <attribute id="22" name="doctorInfo"/>      
-      <multiplicity id="23" minimum="0" maximum="1"/>    
+  <association id="20">    
+    <end type="SOURCE" refId="11" navigable="false">      
+      <attribute id="21" name="patient"/>      
+      <multiplicity id="22" minimum="0" maximum="2147483647"/>    
     </end>    
-    <end type="TARGET" refId="4" navigable="true"/>    
+    <end type="TARGET" refId="6" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="24">    
-    <end type="SOURCE" refId="10" navigable="false">      
-      <attribute id="25" name="prescriptionLabel"/>      
-      <multiplicity id="26" minimum="0" maximum="1"/>    
+  <association id="23">    
+    <end type="SOURCE" refId="9" navigable="false">      
+      <attribute id="24" name="patientInfo"/>      
+      <multiplicity id="25" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="13" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="27">    
-    <end type="SOURCE" refId="10" navigable="false">      
-      <attribute id="28" name="patientInfo"/>      
-      <multiplicity id="29" minimum="0" maximum="1"/>    
+  <association id="26">    
+    <end type="SOURCE" refId="8" navigable="false">      
+      <attribute id="27" name="rdMeds"/>      
+      <multiplicity id="28" minimum="0" maximum="1"/>    
     </end>    
-    <end type="TARGET" refId="14" navigable="true"/>    
+    <end type="TARGET" refId="11" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="30">    
-    <end type="SOURCE" refId="10" navigable="false">      
-      <attribute id="31" name="prescriptionInfo"/>      
-      <multiplicity id="32" minimum="0" maximum="1"/>    
+  <association id="29">    
+    <end type="SOURCE" refId="9" navigable="false">      
+      <attribute id="30" name="meds"/>      
+      <multiplicity id="31" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="8" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="32">    
+    <end type="SOURCE" refId="9" navigable="false">      
+      <attribute id="33" name="prescriptionLabel"/>      
+      <multiplicity id="34" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="12" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="35">    
+    <end type="SOURCE" refId="9" navigable="false">      
+      <attribute id="36" name="prescriptionNotes"/>      
+      <multiplicity id="37" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="1" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="38">    
+    <end type="SOURCE" refId="9" navigable="false">      
+      <attribute id="39" name="prescriptionInfo"/>      
+      <multiplicity id="40" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="7" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
