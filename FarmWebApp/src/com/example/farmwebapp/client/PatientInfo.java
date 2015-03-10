@@ -21,7 +21,6 @@ public class PatientInfo
 	
 	public HorizontalPanel addPanel()
 	{
-		pMainPanel.addStyleName("mainPanel");
 		pMainPanel.add(iPatient);
 		pMainPanel.setSpacing(5);
 		pMainPanel.add(tPatient);
