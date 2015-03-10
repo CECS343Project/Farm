@@ -31,7 +31,7 @@ public class Meds
     private SuggestBox sMedsSearch= new SuggestBox(medsSuggest);
     
 	private Label drugAllergies = new Label("DRUG ALLERGIES");
-	private RetrievedData rdMeds = new RetrievedData();
+	//private RetrievedData rdMeds = new RetrievedData();
 	private TextArea tMeds = new TextArea();
 	private Image iTopMeds = new Image();
 	private Image iBottomMeds = new Image();

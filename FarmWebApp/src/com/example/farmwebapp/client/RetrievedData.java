@@ -10,12 +10,12 @@ public class RetrievedData
  * creates list of patients tied to the data
  */
 {
-
+/*
 	  private static final ArrayList<Patient> patient = (ArrayList<Patient>) Arrays.asList(
 		      new Patient("Joe", "Jack", "Camp Pedelton", new Date(4,3,1985)),
 		      new Patient(null, null, null, null),
 		      new Patient(null, null, null, null));
-	  
+*/	  
 	  
 
 
