@@ -1,3 +1,6 @@
+<p align="center">
+  <img src ="https://avatars0.githubusercontent.com/u/10623383?v=3&s=200" />
+</p>
 # Pill Bug
 [Progess so far](https://github.com/CECS343Project/Farm/milestones) | [Issues to be claimed](https://github.com/CECS343Project/Farm/issues?q=is%3Aopen+is%3Aissue+label%3A%22help+wanted%22+no%3Aassignee) | [Contribution Graph](https://github.com/CECS343Project/Farm/network)
 ## Problem
