@@ -14,7 +14,8 @@ public class FarmWebApp implements EntryPoint
 		Login login = new Login();
 		Home homePage = new Home();
 		NewPatient newPatient = new NewPatient();
-		
+
+
 		
 		NewAccount newAccount = new NewAccount();
 		//RootPanel.get("login").add(login.getWidget());
@@ -22,6 +23,7 @@ public class FarmWebApp implements EntryPoint
 		Label lSignIn = new Label("SIGN IN");
 		RootPanel.get("homePage").add(homePage.getPanel());
 		RootPanel.get("newPatient").add(newPatient.getPanel());
+
 		Label lSignUp = new Label("SIGN UP");
 		pMainTabPanel.add(login.getPanel(), lSignIn);
 		pMainTabPanel.add(newAccount.getPanel(), lSignUp);

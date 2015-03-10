@@ -11,42 +11,25 @@ import com.google.gwt.user.client.ui.*;
 public class Login
 {
 
-	//private TabPanel tabpanelLogin = new TabPanel();
-	//private String signIn = "Sign In";
-	//private String signUp = "Sign Up";
-	
+	private VerticalPanel pLoginContainer = new VerticalPanel();
 	private HorizontalPanel pMainLoginPanel = new HorizontalPanel();
-	//private HorizontalPanel loginTop = new HorizontalPanel();
-	//private VerticalPanel loginMainVert = new VerticalPanel();
 	private VerticalPanel pLoginContent = new VerticalPanel();
-	//private Hyperlink signIn = new Hyperlink("SIGN IN","d.java");
-	//private Hyperlink signUp = new Hyperlink("SIGN UP","f.java");
 	private Button bLogin = new Button("LOGIN");	
 	private TextBox tUsername = new TextBox();
 	
 	private PasswordTextBox tPassword = new PasswordTextBox();
-	private Image iLogin = new Image("https://img0.etsystatic.com/000/0/6169781/il_fullxfull.284298540.jpg");
-	//iLogin.setUrl("https://img0.etsystatic.com/000/0/6169781/il_fullxfull.284298540.jpg");
-	private AbsolutePanel pImagePanel = new AbsolutePanel();
-	
+	private Image iLogin = new Image("pill_bug_logo.jpg");
+	private NewAccount newAccount = new NewAccount();
 	//to 
 	CheckBox cbLogin = new CheckBox("Show Text");
 	
 
-	public HorizontalPanel getPanel() 
+	public VerticalPanel getPanel() 
 	{
-		//TabPanel.add(mainPanel, signIn);
-		//loginMainVert.add(loginTop);
-		//loginMainVert.addStyleName("loginMainVert");
-	//	loginTop.addStyleName("loginTop");
 		
-		
-		//loginMainVert.add(mainPanel);
-		
-		pMainLoginPanel.addStyleName("mainPanel");
-		pMainLoginPanel.add(iLogin);
-		iLogin.addStyleName("gwt-Image-login");
-		pMainLoginPanel.add(pLoginContent);
+		TabPanel pMainTabPanel = new TabPanel();
+		Label lSignIn = new Label("SIGN IN");
+		Label lSignUp = new Label("SIGN UP");
 		
 		pLoginContent.addStyleName("loginContent");
 		pLoginContent.add(tUsername);
@@ -54,52 +37,53 @@ public class Login
 		pLoginContent.add(cbLogin);
 		pLoginContent.add(bLogin);
 		
+		pMainLoginPanel.add(iLogin);
+		pMainLoginPanel.add(pLoginContent);
+		
 		tUsername.setText("Username");
 		tPassword.setText("Password");
 		cbLogin.setValue(false);
 		//tPassword.addKeyboardListener(this);
-		
-		 bLogin.addClickHandler(new ClickHandler() 
-		 {
+		pMainTabPanel.add(pMainLoginPanel, lSignIn);
+		pMainTabPanel.add(newAccount.getPanel(), lSignUp);
+		bLogin.addClickHandler(new ClickHandler() 
+		{
 	 
-	         public void onClick(ClickEvent event) 
-	         {
-	            // Instantiate the dialog box and show it.
-	            PopUps popups = new PopUps();
+	        public void onClick(ClickEvent event) 
+	        {
+	           PopUps popups = new PopUps();
+	           popups.showDialog("Wrong password or username");
+	           boolean checked = ((CheckBox) event.getSource()).getValue();
+			      //  Window.alert("It is " + (checked ? "" : "not ") + "checked");
+			        if(checked)
+			        {
+			        	tPassword.getElement().setAttribute("type", "text");
+			        }
+			        else
+			        {
+			        	tPassword.getElement().setPropertyString("type", "password");
+			        }
+	           removePanel();
+	        }
 
-	            //int left = Window.getClientWidth()/ 2;
-	            //int top = Window.getClientHeight()/ 2;
-	           // PopUps.setPopupPosition(left, top);
-	            popups.showDialog("Wrong password or username");				
-	         } 
-	         });
-		 cbLogin.addClickHandler(new ClickHandler() 
-		 {
-		     // @Override
-		      public void onClick(ClickEvent event) 
-		      {
-		        boolean checked = ((CheckBox) event.getSource()).getValue();
-		      //  Window.alert("It is " + (checked ? "" : "not ") + "checked");
-		        if(checked)
-		        {
-		        	tPassword.getElement().setAttribute("type", "text");
-		        }
-		        else
-		        {
-		        	tPassword.getElement().setPropertyString("type", "password");
-		        }
-		        }
-		      });
+		
+	    });
+		
+		pMainTabPanel.selectTab(0);
+		pLoginContainer.add(pMainTabPanel);
+		cbLogin.setValue(false);
+		//tPassword.addKeyboardListener(this);
+		 
+		 return pLoginContainer;
+		}
 		    
 		 
 	
-	return pMainLoginPanel;
+	protected void removePanel()
+	{
+		this.getPanel().removeFromParent();
+		newAccount.removePanel();
 	}
-	//keydown listener
-	
-		
-		
-	
 
 
 }
