@@ -48,28 +48,43 @@ public class Login
 		pMainTabPanel.add(newAccount.getPanel(), lSignUp);
 		bLogin.addClickHandler(new ClickHandler() 
 		{
-	 
 	        public void onClick(ClickEvent event) 
 	        {
-	           PopUps popups = new PopUps();
-	           popups.showDialog("Wrong password or username");
-	           boolean checked = ((CheckBox) event.getSource()).getValue();
-			      //  Window.alert("It is " + (checked ? "" : "not ") + "checked");
-			        if(checked)
-			        {
-			        	tPassword.getElement().setAttribute("type", "text");
-			        }
-			        else
-			        {
-			        	tPassword.getElement().setPropertyString("type", "password");
-			        }
-	           removePanel();
+	        	try
+	        	{
+		            PopUps popups = new PopUps();
+		            popups.showDialog("Welcome "  + tUsername.getText() + "!");
+	        	}
+	        	catch(Exception e)
+	        	{
+	        		
+	        	}
+	            //Remove panel only for navigation shizz
+	            //removePanel();
 	        }
 
 		
 	    });
-		
+		 cbLogin.addClickHandler(new ClickHandler() 
+		 {
+		     // @Override
+		      public void onClick(ClickEvent event) 
+		      {
+		        boolean checked = ((CheckBox) event.getSource()).getValue();
+		      //  Window.alert("It is " + (checked ? "" : "not ") + "checked");
+		        if(checked)
+		        {
+		        	tPassword.getElement().setAttribute("type", "text");
+		        }
+		        else
+		        {
+		        	tPassword.getElement().setPropertyString("type", "password");
+		        }
+		        }
+		      });
 		pMainTabPanel.selectTab(0);
+		pMainTabPanel.setWidth("600");
+		pMainTabPanel.setHeight("100");
 		pLoginContainer.add(pMainTabPanel);
 		cbLogin.setValue(false);
 		//tPassword.addKeyboardListener(this);
