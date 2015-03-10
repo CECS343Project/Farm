@@ -19,17 +19,14 @@ public class Login
 	
 	private PasswordTextBox tPassword = new PasswordTextBox();
 	private Image iLogin = new Image("pill_bug_logo.jpg");
-	private NewAccount newAccount = new NewAccount();
-	//to 
+
 	CheckBox cbLogin = new CheckBox("Show Text");
 	
 
 	public VerticalPanel getPanel() 
 	{
 		
-		TabPanel pMainTabPanel = new TabPanel();
-		Label lSignIn = new Label("SIGN IN");
-		Label lSignUp = new Label("SIGN UP");
+
 		
 		pLoginContent.addStyleName("loginContent");
 		pLoginContent.add(tUsername);
@@ -44,8 +41,6 @@ public class Login
 		tPassword.setText("Password");
 		cbLogin.setValue(false);
 		//tPassword.addKeyboardListener(this);
-		pMainTabPanel.add(pMainLoginPanel, lSignIn);
-		pMainTabPanel.add(newAccount.getPanel(), lSignUp);
 		bLogin.addClickHandler(new ClickHandler() 
 		{
 	        public void onClick(ClickEvent event) 
@@ -82,10 +77,8 @@ public class Login
 		        }
 		        }
 		      });
-		pMainTabPanel.selectTab(0);
-		pMainTabPanel.setWidth("600");
-		pMainTabPanel.setHeight("100");
-		pLoginContainer.add(pMainTabPanel);
+
+		pLoginContainer.add(pMainLoginPanel);
 		cbLogin.setValue(false);
 		//tPassword.addKeyboardListener(this);
 		 
@@ -97,7 +90,6 @@ public class Login
 	protected void removePanel()
 	{
 		this.getPanel().removeFromParent();
-		newAccount.removePanel();
 	}
 
 
