@@ -25,9 +25,6 @@ public class Login
 
 	public VerticalPanel getPanel() 
 	{
-		
-
-		
 		pLoginContent.addStyleName("loginContent");
 		pLoginContent.add(tUsername);
 		pLoginContent.add(tPassword);
@@ -40,7 +37,7 @@ public class Login
 		tUsername.setText("Username");
 		tPassword.setText("Password");
 		cbLogin.setValue(false);
-		//tPassword.addKeyboardListener(this);
+		
 		bLogin.addClickHandler(new ClickHandler() 
 		{
 	        public void onClick(ClickEvent event) 
@@ -54,19 +51,15 @@ public class Login
 	        	{
 	        		
 	        	}
-	            //Remove panel only for navigation shizz
-	            //removePanel();
 	        }
 
 		
 	    });
 		 cbLogin.addClickHandler(new ClickHandler() 
 		 {
-		     // @Override
 		      public void onClick(ClickEvent event) 
 		      {
 		        boolean checked = ((CheckBox) event.getSource()).getValue();
-		      //  Window.alert("It is " + (checked ? "" : "not ") + "checked");
 		        if(checked)
 		        {
 		        	tPassword.getElement().setAttribute("type", "text");
@@ -80,18 +73,13 @@ public class Login
 
 		pLoginContainer.add(pMainLoginPanel);
 		cbLogin.setValue(false);
-		//tPassword.addKeyboardListener(this);
 		 
 		 return pLoginContainer;
 		}
-		    
-		 
-	
+
 	protected void removePanel()
 	{
 		this.getPanel().removeFromParent();
 	}
-
-
 }
        

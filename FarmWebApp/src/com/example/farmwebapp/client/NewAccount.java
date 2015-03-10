@@ -20,13 +20,11 @@ public class NewAccount
 	private HorizontalPanel pContent3 = new HorizontalPanel();
 	private HorizontalPanel pContent4 = new HorizontalPanel();
 	
-	
 	private VerticalPanel pData1 = new VerticalPanel();
 	private VerticalPanel pData2 = new VerticalPanel();
 	private VerticalPanel pData3 = new VerticalPanel();
 	private VerticalPanel pData4 = new VerticalPanel();
 	private VerticalPanel pData5 = new VerticalPanel();
-	//private VerticalPanel pData6 = new VerticalPanel();
 	
 	private TextBox tFirstName = new TextBox();
 	private TextBox tLastName = new TextBox();
@@ -41,7 +39,6 @@ public class NewAccount
 	private TextBox tLicense= new TextBox();
 	private TextBox tPhone = new TextBox();
 	
-	
 	private Label lName = new Label("NAME: ");
 	private Label lUserName = new Label("USERNAME: ");
 	private Label lEmail = new Label("EMAIL:");
@@ -50,17 +47,14 @@ public class NewAccount
 	private Label lPhone = new Label("PHONE No:");
 	private Label lDoB = new Label("DATE OF BIRTH:");
 	
-	
 	private RadioButton rDoctor = new RadioButton("radioButtons", "Doctor",true);
 	private RadioButton rPharmacist = new RadioButton("radioButtons", "Pharmacist");
 	
 	private Button bSignIn = new Button("SIGN UP");
 	
 	private DatePicker dpSignUp = new DatePicker();
-     final Label lDate = new Label();
+    final Label lDate = new Label();
 
-     
-	
 	public VerticalPanel getPanel()
 	{
 		pMainPanel.add(pProfession);
@@ -112,7 +106,7 @@ public class NewAccount
      	dbSignIn.setFormat(new DateBox.DefaultFormat(dateFormat));
 	
      	pContent4.add(dbSignIn);
-     dbSignIn.addStyleName("dateBox"); //style this to make it smaller
+        dbSignIn.addStyleName("dateBox"); //style this to make it smaller
      	pContent4.add(bSignIn);
 		bSignIn.addStyleName("newAccountButton");
 	
@@ -122,16 +116,10 @@ public class NewAccount
 	        public void onClick(ClickEvent event) 
 	        {
 	           PopUps popups = new PopUps();
-	           popups.showDialog("Thank you for signing up");
-	           removePanel();
-	            
+	           popups.showDialog("Thank you for signing up");           
 	        }
-
-		
 	    });
-	
-	
-	
+
 		return pMainPanel;
 	}
 	
@@ -139,6 +127,4 @@ public class NewAccount
 	{
 		this.getPanel().removeFromParent();
 	}
-	
-	
 }
