@@ -48,7 +48,7 @@
   </class>  
   <class id="6" language="java" name="com.example.farmwebapp.client.Patient" project="FarmWebApp" 
     file="/FarmWebApp/src/com/example/farmwebapp/client/RetrievedData.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="746" y="1171"/>    
+    <position height="-1" width="-1" x="268" y="1115"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -93,7 +93,7 @@
   </class>  
   <class id="11" language="java" name="com.example.farmwebapp.client.RetrievedData" project="FarmWebApp" 
     file="/FarmWebApp/src/com/example/farmwebapp/client/RetrievedData.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="745" y="1010"/>    
+    <position height="-1" width="-1" x="272" y="934"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
