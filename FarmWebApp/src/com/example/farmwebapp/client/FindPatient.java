@@ -1,11 +1,18 @@
 package com.example.farmwebapp.client;
 
+import java.util.Arrays;
+import java.util.List;
+
+import com.google.gwt.user.cellview.client.*;
+import com.google.gwt.user.client.ui.*;
+/*
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.HasVerticalAlignment;
+*/
 
 public class FindPatient {
 	private final int CELLWIDTH = 150;
@@ -21,6 +28,8 @@ public class FindPatient {
 	private TextBox tb_nameSuffix = new TextBox();
 	private TextBox tb_addressStreet = new TextBox();
 	private TextBox tb_addressCityStateZip = new TextBox();
+	private ScrollPanel sp_TableContainer = new ScrollPanel();
+	private CellTable<String> ct_Results = new CellTable<String>();
 	
 	private VerticalPanel vp = new VerticalPanel();
 	private HorizontalPanel hp = new HorizontalPanel();
@@ -88,8 +97,96 @@ public class FindPatient {
 		 */
 		ft.getElement().setAttribute("cellpadding", "10");
 		
-		vp.add(hp);
+		/**
+		 * CELL TABLE FIELD
+		 */
+		
+		final List<String> l_DummyData = Arrays.asList
+				(
+						"Russell Tyler Tan",
+						"3131 ShadyPark Drive, Long Beach CA 90808",
+						"test@thejoejack.com",
+						"562-867-5309",
+						"01/01/1995",
+						"6541681351681",
+						
+						"Napoleon Fulinara",
+						"10453 Corvallis Court, Ventura CA 93004",
+						"test@thejoejack.com",
+						"562-999-5555",
+						"02/02/1992",
+						"64610610651515"
+				);
+		
+		TextColumn<String> tc_Name = new TextColumn<String>()
+		{
+
+			@Override
+			public String getValue(String object) {
+				// TODO Auto-generated method stub
+				return "Russell Tyler Tan";
+			}				
+		};
+		TextColumn<String> tc_Address = new TextColumn<String>()
+		{
+
+			@Override
+			public String getValue(String object) {
+				// TODO Auto-generated method stub
+				return "3131 ShadyPark Drive, Long Beach CA 90808";
+			}				
+		};
+		TextColumn<String> tc_Email = new TextColumn<String>()
+		{
+
+			@Override
+			public String getValue(String object) {
+				// TODO Auto-generated method stub
+				return "test@thejoejack.com";
+			}				
+		};
+		TextColumn<String> tc_PhoneNumber = new TextColumn<String>()
+		{
+
+			@Override
+			public String getValue(String object) {
+				// TODO Auto-generated method stub
+				return "562-867-5309";
+			}				
+		};
+		TextColumn<String> tc_DOB = new TextColumn<String>()
+		{
+
+			@Override
+			public String getValue(String object) {
+				// TODO Auto-generated method stub
+				return "01/01/1995";
+			}				
+		};
+		TextColumn<String> tc_LicenseNo = new TextColumn<String>()
+		{
+
+			@Override
+			public String getValue(String object) {
+				// TODO Auto-generated method stub
+				return "6541681351681";
+			}				
+		};		
+		ct_Results.addColumn(tc_Name, "Name");
+		ct_Results.addColumn(tc_Address, "Address");
+		ct_Results.addColumn(tc_Email, "Email");
+		ct_Results.addColumn(tc_PhoneNumber, "PhoneNumber");
+		ct_Results.addColumn(tc_DOB, "Date of Birth");
+		ct_Results.addColumn(tc_LicenseNo, "License Number");		
+		ct_Results.setRowCount(2,true);
+		ct_Results.setRowData(l_DummyData);
+		
+		sp_TableContainer.add(ct_Results);
+		
+		hp.add(sp_TableContainer);
+		
 		vp.add(ft);
+		vp.add(hp);
 		return vp;
 	}
 }
