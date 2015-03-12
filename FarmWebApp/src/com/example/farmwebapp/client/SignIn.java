@@ -1,5 +1,12 @@
 package com.example.farmwebapp.client;
 
+
+
+import com.google.gwt.dom.client.Style.Cursor;
+import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.event.dom.client.MouseOverEvent;
+import com.google.gwt.event.dom.client.MouseOverHandler;
 import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.CheckBox;
@@ -63,7 +70,21 @@ public class SignIn {
 		ft.getCellFormatter().setVerticalAlignment(2, 1, HasVerticalAlignment.ALIGN_BOTTOM);
 		cb_showPassword.getElement().setAttribute("align", "left");
 		cb_showPassword.addStyleName("showPassword");
-		
+		cb_showPassword.addClickHandler(new ClickHandler() 
+		 {
+		      public void onClick(ClickEvent event) 
+		      {
+		        boolean checked = ((CheckBox) event.getSource()).getValue();
+		        if(checked)
+		        {
+		        	ptb_password.getElement().setAttribute("type", "text");
+		        }
+		        else
+		        {
+		        	ptb_password.getElement().setPropertyString("type", "password");
+		        }
+		        }
+		      });
 		/**
 		 * LOGIN BUTTON
 		 */
@@ -72,7 +93,34 @@ public class SignIn {
 		ft.getCellFormatter().setVerticalAlignment(3, 1, HasVerticalAlignment.ALIGN_BOTTOM);
 		loginArrow.getElement().setAttribute("align", "right");
 		ft.getElement().setAttribute("cellpadding", "10");
+		loginArrow.addClickHandler(new ClickHandler() 
+		{
+	        public void onClick(ClickEvent event) 
+	        {
+	        	try
+	        	{
+		            PopUps popups = new PopUps();
+		            popups.showDialog("Welcome "  + tb_userName.getText() + "!");
+	        	}
+	        	catch(Exception e)
+	        	{
+	        		
+	        	}
+	        }
+
 		
+	    });
+		loginArrow.addMouseOverHandler(new MouseOverHandler()
+		{
+
+			@Override
+			public void onMouseOver(MouseOverEvent event) 
+			{
+				loginArrow.getElement().getStyle().setCursor(Cursor.POINTER);
+				
+			}
+			
+		});
 		/**
 		 * FORM PLACEMENT AND ATTRIBUTES
 		 */

@@ -1,5 +1,11 @@
 package com.example.farmwebapp.client;
 
+import com.google.gwt.dom.client.Style.Cursor;
+import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.event.dom.client.MouseOverEvent;
+import com.google.gwt.event.dom.client.MouseOverHandler;
+import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.IsWidget;
@@ -125,7 +131,54 @@ public class SignUp {
 		signUpArrow.setPixelSize(25, 25);
 		ft.getCellFormatter().setVerticalAlignment(5, 3, HasVerticalAlignment.ALIGN_BOTTOM);
 		signUpArrow.getElement().setAttribute("align", "right");
+		signUpArrow.addClickHandler(new ClickHandler() 
+		{
+	        public void onClick(ClickEvent event) 
+	        {
+	        	HTML s_DBData;
+	        	String s_SelectedProfession = "not sected";
+	        	
+	        	if(rb_doctor.getValue()) s_SelectedProfession = "Doctor";
+	        	if(rb_pharmacist.getValue()) s_SelectedProfession = "Pharmacist";
+	        	try
+	        	{
+	        		s_DBData = new HTML("User Type: " + s_SelectedProfession
+	        				+"Name: " + tb_nameFirst.getText() + "," + tb_nameLast.getText() + ", " + tb_nameSuffix.getText()
+	        				+ "<br>User name: " + tb_username.getText() + " Password: " + ptb_password.getText()
+	        				+ "<br>Email: " + tb_email.getText()
+	        				+ "<br>Date of Birth: " + tb_dob.getText()
+	        				+ "<br>Phone Number: " + tb_phoneNo.getText()
+	        				+ "<br>License Number: " + tb_licenseNo.getText());
+	        		
+	        		/*
+	        		s_DBData.add += "<br>User name: " + tb_username.getText() + " Password: " + ptb_password.getText();
+	        		s_DBData += "<br>Email: " + tb_email.getText();
+	        		s_DBData += "<br>Date of Birth: " + tb_dob.getText();
+	        		s_DBData += "<br>Phone Number: " + tb_phoneNo.getText();
+	        		s_DBData += "<br>License Number: " + tb_licenseNo.getText();
+	        		*/
+		            PopUps popups = new PopUps();
+		            popups.showDialog("Data sent to DB:\r\n"  + s_DBData);
+	        	}
+	        	catch(Exception e)
+	        	{
+	        		
+	        	}
+	        }
+
 		
+	    });
+		signUpArrow.addMouseOverHandler(new MouseOverHandler()
+		{
+
+			@Override
+			public void onMouseOver(MouseOverEvent event) 
+			{
+				signUpArrow.getElement().getStyle().setCursor(Cursor.POINTER);
+				
+			}
+			
+		});
 		/**
 		 * FORM PLACEMENT AND ATTRIBUTES
 		 */
