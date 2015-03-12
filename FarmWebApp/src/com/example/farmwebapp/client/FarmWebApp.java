@@ -16,7 +16,6 @@ public class FarmWebApp implements EntryPoint {
 	private TabLayoutPanel homePage = new TabLayoutPanel(2, Unit.EM);
 	
 	public void onModuleLoad() {
-	
 		homePage.setPixelSize(700, 440);
 		homePage.setAnimationDuration(1000);
 		homePage.add(signInPage.getSignInPanel(), "SIGN IN");

@@ -143,20 +143,12 @@ public class SignUp {
 	        	try
 	        	{
 	        		s_DBData = new HTML("User Type: " + s_SelectedProfession
-	        				+"Name: " + tb_nameFirst.getText() + "," + tb_nameLast.getText() + ", " + tb_nameSuffix.getText()
+	        				+"<br>Name: " + tb_nameFirst.getText() + "," + tb_nameLast.getText() + ", " + tb_nameSuffix.getText()
 	        				+ "<br>User name: " + tb_username.getText() + " Password: " + ptb_password.getText()
 	        				+ "<br>Email: " + tb_email.getText()
 	        				+ "<br>Date of Birth: " + tb_dob.getText()
 	        				+ "<br>Phone Number: " + tb_phoneNo.getText()
 	        				+ "<br>License Number: " + tb_licenseNo.getText());
-	        		
-	        		/*
-	        		s_DBData.add += "<br>User name: " + tb_username.getText() + " Password: " + ptb_password.getText();
-	        		s_DBData += "<br>Email: " + tb_email.getText();
-	        		s_DBData += "<br>Date of Birth: " + tb_dob.getText();
-	        		s_DBData += "<br>Phone Number: " + tb_phoneNo.getText();
-	        		s_DBData += "<br>License Number: " + tb_licenseNo.getText();
-	        		*/
 		            PopUps popups = new PopUps();
 		            popups.showDialog("Data sent to DB:\r\n"  + s_DBData);
 	        	}
