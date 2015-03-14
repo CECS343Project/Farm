@@ -106,7 +106,7 @@ public class NewAccount
 		pMainPanel.add(pContent4);
 		pContent4.add(lDoB);
 		
-<<<<<<< HEAD
+
      // Create a DateBox
      DateTimeFormat dateFormat = DateTimeFormat.getFormat("MM/dd/yyyy");
      DateBox dbSignIn = new DateBox();
@@ -116,11 +116,8 @@ public class NewAccount
      dbSignIn.addStyleName("dateBox"); //style this to make it smaller
 	pContent4.add(bSignIn);
 	bSignIn.addStyleName("newAccountButton");
-=======
-		// Create a DateBox
-		DateTimeFormat dateFormat = DateTimeFormat.getFormat("MM/dd/yyyy");
-     	DateBox dbSignIn = new DateBox();
-     	dbSignIn.setFormat(new DateBox.DefaultFormat(dateFormat));
+
+
 	
      	pContent4.add(dbSignIn);
      	pContent4.add(bSignIn);
@@ -142,7 +139,7 @@ public class NewAccount
 	
 	
 	
->>>>>>> 3d54a5acaa8c4ba1957d38caa1c08145fa6dd16f
+
 		return pMainPanel;
 	}
 	
