@@ -1,222 +1,52 @@
-body
-{
-	/*background-color:#e0e0e0 !important;*/	
-
+.gwt-TabLayoutPanel {
+	top: 50%;
+	left: 50%;
+	border: none;
+	position: absolute;
+	background-color: #E0E0E0;
+	margin: 150px 0px 0px 365px;
 }
 
-/*
-Universal Main Panel Styling
-*/
-.mainPanel
-{
-	
-	margin: 0px auto; 
-	margin-bottom: .5cm;
-	
-	background-color:#E0E0E0;	
-}
-/*
-end of Main Panel Styling
-*/
-
-/*
-Universal Button Styling
-*/
-button.gwt-Button, #wrapper button.gwt-Button {
-    background: transparent url(icons/back_normal.gif) repeat-x;
-    border:transparent;
-    outline: none;
-    vertical-align: baseline;
-    text-decoration: none;
-    cursor: pointer;
-    color: #1e7ec8;
-    -moz-border-radius: 2px;
-    -webkit-border-radius: 2px;
-    height: 24px;
-    font: bold 15px arial, helvetica, verdana, sans-serif;
-    white-space: nowrap;
-    padding: 0 5px;
-    width:100%;
-    margin-top:1.5cm;
-    margin: 0px auto 0px auto;
-}
-/*
-End of Button Styling
-*/
-/*
-Universal Text Box Styling
-*/
-.gwt-TextBox
-{
-	margin-bottom: 15px; 
-}
-/*
-End of Text Field Styling
-*/
-/*
-Universal Text Field Styling
-*/
-.textField
-{
-	
-}
-/*
-End of Text Field Styling
-*/
-
-/*
-Universal Label Styling
-*/
-.label
-{
-	
-}
-/*
-End of Label Styling
-*/
-
-/*
-Tab Panel Styling
-*/
-.gwt-TabBar 
-{
-	background: none;
-}
-/*
-End of Tab Panel Styling
-*/
-
-/*
-Image Styling
-*/
-.image
-{
-	
-}
-/*
-End of Image Styling
-*/
-
-/*
-Text Area Styling
-*/
-.textArea
-{
-	
-}
-/*
-End of Text Area Styling
-*/
-
-/*
-Date Picker Styling
-*/
-.datePicker
-{
-	
-}
-/*
-End of Date Picker Styling
-*/
-/*
-Styling for Login
-*/
-
-.gwt-TabBar
- { 
- 	background-color:white;
- 	color:red;
- 	border-color:white;
- }
- .gwt-TabBar .gwt-TabBarItem
-  { 
- 	background-color:white;
-  }
-.gwt-TabBar .gwt-TabBarItem-selected 
-{ 
-	background-color:white;
-	color:red;
+.gwt-TabLayoutPanel .gwt-TabLayoutPanelTab {
+	font-size: 1em;
+	text-align: center;
 }
 
-.loginButton
-{
-	padding: 25px;
-}
-.LoginImage
-{
-	height: 200px;
-	width: 200px;
-}
-.gwt-Image-login
-{
-	height: 200px;
-	width: 200px; 
-}
-.loginMainVert
-{
-	margin-left:600px;
-	margin-top:200px;
-}
-.loginContent
-{
-	padding: 20px 50px 100px 20px;
-	
-}
-.loginTop
-{
-	
-}
-/*
-End of Login
-*/
-/*
-Styling for New Account
-*/
-.newAccountButton
-{
-	float:right;
-	margin-right:50px;
+.gwt-TabLayoutPanel .gwt-TabLayoutPanelTabs {
+	background-color: white !important;
 }
 
-/*
-End of New Account
-*/
-
-
-/*
-Styling  for PopUps
-*/
-.popupPanel
-{
-	background-color:red;
-}
-.pButtonPanel
-{
-	background-color:yellow;
+.gwt-TabLayoutPanel .gwt-TabLayoutPanelContent {
+	border: none;
+	background: #E0E0E0;
 }
 
-/*
-End of PopUps
-*/
+.gwt-TabLayoutPanel .gwt-TabLayoutPanelTab-selected {
+	background-color: #E0E0E0 !important;
+}
 
-.design_containerDivider_small {
-	/*Position*/
-	width: 1px;
-	height: 25px;
+.signInPlacement {
+	margin: 0px 0px 0px 30px;
+}
 
-	/*Design Properties*/
-	background-color: black;
-	background-image: -webkit-gradient(
-		linear,
-		left top,
-		left bottom,
-		color-stop(0, #FFFFFF),
-		color-stop(0.5, #000000),
-		color-stop(1, #FFFFFF)
-	);
-	background-image: -o-linear-gradient(bottom, #FFFFFF 0%, #000000 50%, #FFFFFF 100%);
-	background-image: -moz-linear-gradient(bottom, #FFFFFF 0%, #000000 50%, #FFFFFF 100%);
-	background-image: -webkit-linear-gradient(bottom, #FFFFFF 0%, #000000 50%, #FFFFFF 100%);
-	background-image: -ms-linear-gradient(bottom, #FFFFFF 0%, #000000 50%, #FFFFFF 100%);
-	background-image: linear-gradient(to bottom, #FFFFFF 0%, #000000 50%, #FFFFFF 100%);
+.pillBugLogo {
+	top: 50%;
+	left: 50%;
+	margin: 160px 0px 0px 0px;
+}
+
+.divider {
+	top: 50%;
+	left: 50%;
+	margin: 90px 0px 0px 20px;
+}
+
+.signInPasswordTextBoxes {
+	margin: 150px 0px 0px 30px;
+}
+
+.showPassword {
+	top: 50%;
+	left: 50%;
+	margin: 0px 0px 0px -3px;
 }

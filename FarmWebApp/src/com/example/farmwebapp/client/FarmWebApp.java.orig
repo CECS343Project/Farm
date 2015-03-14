@@ -5,7 +5,36 @@ import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.user.client.ui.TabLayoutPanel;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
 
+<<<<<<< HEAD
+
+//look up username / key down to search database to make sure 
+
+public class FarmWebApp implements EntryPoint
+
+{
+	public void onModuleLoad()
+	{
+		Login login = new Login();
+		Home homePage = new Home();
+		NewPatient newPatient = new NewPatient();
+
+		
+		
+		NewAccount newAccount = new NewAccount();
+		//RootPanel.get("login").add(login.getWidget());
+		TabPanel pMainTabPanel = new TabPanel();
+		Label lSignIn = new Label("SIGN IN");
+
+
+		RootPanel.get("login").add(login.getPanel());
+
+		RootPanel.get("homePage").add(homePage.getPanel());
+		RootPanel.get("newPatient").add(newPatient.getPanel());
+
+	}
+=======
 public class FarmWebApp implements EntryPoint {
+>>>>>>> 2ecfef9f10d9709552c294f42dc27d124304dcd9
 	
 	private SignUp signUpPage = new SignUp();
 	private SignIn signInPage = new SignIn();
@@ -14,10 +43,6 @@ public class FarmWebApp implements EntryPoint {
 	private FindPatient findPatientPanel = new FindPatient();
 	private AddPatient addPatientPanel = new AddPatient();
 	private TabLayoutPanel homePage = new TabLayoutPanel(2, Unit.EM);
-
-
-		RootPanel.get("login").add(login.getPanel());
-
 	
 	public void onModuleLoad() {
 		homePage.setPixelSize(700, 440);

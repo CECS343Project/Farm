@@ -100,19 +100,28 @@ public class NewAccount
 		pMainPanel.add(pContent4);
 		pContent4.add(lDoB);
 		
+<<<<<<< HEAD
+
      // Create a DateBox
      DateTimeFormat dateFormat = DateTimeFormat.getFormat("MM/dd/yyyy");
      DateBox dbSignIn = new DateBox();
      dbSignIn.setFormat(new DateBox.DefaultFormat(dateFormat));
 	
      pContent4.add(dbSignIn);
-        dbSignIn.addStyleName("dateBox"); //style this to make it smaller
+     dbSignIn.addStyleName("dateBox"); //style this to make it smaller
 	pContent4.add(bSignIn);
 	bSignIn.addStyleName("newAccountButton");
 
 
+=======
+		// Create a DateBox
+		DateTimeFormat dateFormat = DateTimeFormat.getFormat("MM/dd/yyyy");
+     	DateBox dbSignIn = new DateBox();
+     	dbSignIn.setFormat(new DateBox.DefaultFormat(dateFormat));
+>>>>>>> 2ecfef9f10d9709552c294f42dc27d124304dcd9
 	
      	pContent4.add(dbSignIn);
+        dbSignIn.addStyleName("dateBox"); //style this to make it smaller
      	pContent4.add(bSignIn);
 		bSignIn.addStyleName("newAccountButton");
 	
@@ -125,6 +134,12 @@ public class NewAccount
 	           popups.showDialog("Thank you for signing up");           
 	        }
 	    });
+<<<<<<< HEAD
+	
+	
+	
+=======
+>>>>>>> 2ecfef9f10d9709552c294f42dc27d124304dcd9
 
 		return pMainPanel;
 	}
