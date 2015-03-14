@@ -16,7 +16,7 @@ public class FarmWebApp implements EntryPoint {
 	private TabLayoutPanel homePage = new TabLayoutPanel(2, Unit.EM);
 
 
-		RootPanel.get("login").add(login.getPanel());
+		
 
 	
 	public void onModuleLoad() {
