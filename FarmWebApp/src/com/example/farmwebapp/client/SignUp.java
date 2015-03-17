@@ -44,7 +44,10 @@ public class SignUp {
 	private RadioButton rb_doctor = new RadioButton("signUp", "DOCTOR");
 	private RadioButton rb_pharmacist = new RadioButton("signUp", "PHARMACIST");
 
+	@SuppressWarnings("deprecation")
 	public IsWidget getSignUpPanel() {
+		
+		rb_doctor.setChecked(true);
 		/**
 		 * PROFESSION RADIO BUTTONS
 		 */

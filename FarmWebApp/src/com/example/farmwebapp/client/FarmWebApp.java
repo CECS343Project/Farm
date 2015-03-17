@@ -2,6 +2,7 @@ package com.example.farmwebapp.client;
 
 import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.core.client.EntryPoint;
+import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.TabLayoutPanel;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
 
@@ -14,6 +15,8 @@ public class FarmWebApp implements EntryPoint {
 	private FindPatient findPatientPanel = new FindPatient();
 	private AddPatient addPatientPanel = new AddPatient();
 	private TabLayoutPanel homePage = new TabLayoutPanel(2, Unit.EM);
+	
+
 
 
 		
@@ -30,5 +33,6 @@ public class FarmWebApp implements EntryPoint {
 		homePage.add(addPatientPanel.getAddPatientPanel(), "ADD PATIENT");
 		RootLayoutPanel rootPanel = RootLayoutPanel.get();
 	    rootPanel.add(homePage);
+	    
 	}
 }

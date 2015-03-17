@@ -1,10 +1,12 @@
 .gwt-TabLayoutPanel {
-	top: 50%;
-	left: 50%;
+	position:absolute;
+	margin:auto;
 	border: none;
-	position: absolute;
+	top:0; 
+	left:0;
+	bottom:0;
+	right:0;
 	background-color: #E0E0E0;
-	margin: 150px 0px 0px 365px;
 }
 
 .gwt-TabLayoutPanel .gwt-TabLayoutPanelTab {
