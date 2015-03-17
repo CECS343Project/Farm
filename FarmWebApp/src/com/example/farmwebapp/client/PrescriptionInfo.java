@@ -14,7 +14,12 @@ import com.google.gwt.user.datepicker.client.DatePicker;
  */
 public class PrescriptionInfo 
 {
+	private final int CELLWIDTH = 150;
+	private final int CELLHEIGHT = 15;
 	private VerticalPanel pMainPanel = new VerticalPanel();
+	
+	private FlexTable ftContainer = new FlexTable();
+	
 	private HorizontalPanel pPanel1 = new HorizontalPanel();
 	private HorizontalPanel pPanel2 = new HorizontalPanel();
 	private HorizontalPanel pPanel3 = new HorizontalPanel();
@@ -36,18 +41,64 @@ public class PrescriptionInfo
 	private TextBox tDosage = new TextBox();
 	private TextBox tTimes = new TextBox();
 	private TextBox tDuration = new TextBox();
+	//dates
+	// Create a DateBox
+    private final DateTimeFormat dateFormat = DateTimeFormat.getFormat("MM/dd/yyyy");
+    private DateBox dbStart = new DateBox();
+    
+    private DateBox dbEnd = new DateBox();
+    
 	
 	//private DatePicker dpStart= new DatePicker();
 	//private DatePicker dpEnd= new DatePicker();
 	
 	private TextArea tNotes = new TextArea();
 	
-	private Button bSubmit = new Button();
+	private Button bSubmit = new Button("SUBMIT");
 	private Image iSubmit = new Image();
 
 	
 	public VerticalPanel getPanel()
 	{
+		ftContainer.setText(0, 0, "MEDICATION LIST");
+		
+		ftContainer.setText(1, 0, "DOSAGE");
+		ftContainer.getCellFormatter().setVerticalAlignment(1, 0, HasVerticalAlignment.ALIGN_BOTTOM);
+		ftContainer.setWidget(1, 1, tDosage);
+		tDosage.setPixelSize(CELLWIDTH, CELLHEIGHT);
+		
+		ftContainer.setText(1, 2, "TIMES PER");
+		ftContainer.getCellFormatter().setVerticalAlignment(1, 2, HasVerticalAlignment.ALIGN_BOTTOM);
+		ftContainer.setWidget(1, 3, tTimes);
+		tDosage.setPixelSize(CELLWIDTH, CELLHEIGHT);
+		
+		ftContainer.setText(2, 0, "DURATION");
+		ftContainer.getCellFormatter().setVerticalAlignment(2, 0, HasVerticalAlignment.ALIGN_BOTTOM);
+		ftContainer.setWidget(2, 1, tDuration);
+		tDosage.setPixelSize(CELLWIDTH, CELLHEIGHT);
+	
+		dbStart.setFormat(new DateBox.DefaultFormat(dateFormat));
+		
+		ftContainer.setText(3, 0, "START");
+		ftContainer.getCellFormatter().setVerticalAlignment(3, 0, HasVerticalAlignment.ALIGN_BOTTOM);
+		ftContainer.setWidget(3, 1, dbStart);
+		tDosage.setPixelSize(CELLWIDTH, CELLHEIGHT);
+		
+		dbEnd.setFormat(new DateBox.DefaultFormat(dateFormat));
+		
+		ftContainer.setText(3, 2, "END");
+		ftContainer.getCellFormatter().setVerticalAlignment(3, 2, HasVerticalAlignment.ALIGN_BOTTOM);
+		ftContainer.setWidget(3, 3, dbStart);
+		tDosage.setPixelSize(CELLWIDTH, CELLHEIGHT);
+		
+		ftContainer.setText(4, 0, "NOTES");
+		ftContainer.getCellFormatter().setVerticalAlignment(4, 0, HasVerticalAlignment.ALIGN_BOTTOM);
+		ftContainer.setWidget(4, 1, tNotes);
+		tDosage.setPixelSize(CELLWIDTH, CELLHEIGHT);
+		
+		ftContainer.setWidget(4, 2, bSubmit);
+		tDosage.setPixelSize(CELLWIDTH, CELLHEIGHT);
+		/*
 		pMainPanel.add(pPanel1);
 		pMainPanel.add(pPanel2);
 		pMainPanel.add(pPanel3);
@@ -68,13 +119,7 @@ public class PrescriptionInfo
 		pPanel4.add(lDuration);
 		pPanel4.add(tDuration);
 		
-		//dates
-		// Create a DateBox
-	    DateTimeFormat dateFormat = DateTimeFormat.getFormat("MM/dd/yyyy");
-	    DateBox dbStart = new DateBox();
-	    dbStart.setFormat(new DateBox.DefaultFormat(dateFormat));
-	    DateBox dbEnd = new DateBox();
-	    dbEnd.setFormat(new DateBox.DefaultFormat(dateFormat));
+
 		
 	    pPanel5.add(lStart);
 	    pPanel5.add(dbStart);
@@ -88,7 +133,9 @@ public class PrescriptionInfo
 	    
 	    pSubPanel.add(iSubmit);
 	    pSubPanel.add(lSubmit);
-	     
+	     */
+		
+		pMainPanel.add(ftContainer);
 		return pMainPanel;
 		
 	}

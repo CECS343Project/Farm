@@ -10,6 +10,8 @@ import com.google.gwt.user.client.ui.HasVerticalAlignment;
 public class AddPatient {
 	private final int CELLWIDTH = 150;
 	private final int CELLHEIGHT = 15;
+	
+	private PrescriptionInfo addPrescrip = new PrescriptionInfo();
 
 	private FlexTable ft = new FlexTable();
 	private TextBox tb_dob = new TextBox();
@@ -88,8 +90,9 @@ public class AddPatient {
 		 */
 		ft.getElement().setAttribute("cellpadding", "10");
 		
-		vp.add(hp);
+		hp.add(addPrescrip.getPanel());
 		vp.add(ft);
+		vp.add(hp);
 		return vp;
 	}
 }
