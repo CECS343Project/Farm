@@ -38,6 +38,7 @@ public class PrescriptionInfo
 	private Label lNotes = new Label("NOTES:");
 	private Label lSubmit = new Label("SUBMIT");
 
+	private TextBox tMedication = new TextBox();
 	private TextBox tDosage = new TextBox();
 	private TextBox tTimes = new TextBox();
 	private TextBox tDuration = new TextBox();
@@ -60,7 +61,10 @@ public class PrescriptionInfo
 	
 	public VerticalPanel getPanel()
 	{
-		ftContainer.setText(0, 0, "MEDICATION LIST");
+		ftContainer.setText(0, 0, "MEDICATION");
+		ftContainer.getCellFormatter().setVerticalAlignment(0, 0, HasVerticalAlignment.ALIGN_BOTTOM);
+		ftContainer.setWidget(0, 1, tMedication);
+		tDosage.setPixelSize(CELLWIDTH, CELLHEIGHT);
 		
 		ftContainer.setText(1, 0, "DOSAGE");
 		ftContainer.getCellFormatter().setVerticalAlignment(1, 0, HasVerticalAlignment.ALIGN_BOTTOM);
@@ -88,7 +92,7 @@ public class PrescriptionInfo
 		
 		ftContainer.setText(3, 2, "END");
 		ftContainer.getCellFormatter().setVerticalAlignment(3, 2, HasVerticalAlignment.ALIGN_BOTTOM);
-		ftContainer.setWidget(3, 3, dbStart);
+		ftContainer.setWidget(3, 3, dbEnd);
 		tDosage.setPixelSize(CELLWIDTH, CELLHEIGHT);
 		
 		ftContainer.setText(4, 0, "NOTES");
@@ -98,43 +102,8 @@ public class PrescriptionInfo
 		
 		ftContainer.setWidget(4, 2, bSubmit);
 		tDosage.setPixelSize(CELLWIDTH, CELLHEIGHT);
-		/*
-		pMainPanel.add(pPanel1);
-		pMainPanel.add(pPanel2);
-		pMainPanel.add(pPanel3);
-		pMainPanel.add(pPanel4);
-		pMainPanel.add(pPanel5);
-		pMainPanel.add(pPanel6);
-		pMainPanel.add(pPanel7);
-		
-		pPanel1.add(lList);
-		
-		//pPanel2.add();
-		
-		pPanel3.add(lDosage);
-		pPanel3.add(tDosage);
-		pPanel3.add(lTimes);
-		pPanel3.add(tTimes);
-		
-		pPanel4.add(lDuration);
-		pPanel4.add(tDuration);
-		
 
-		
-	    pPanel5.add(lStart);
-	    pPanel5.add(dbStart);
-	    pPanel5.add(lEnd);
-	    pPanel5.add(dbEnd);
-	    
-	    pPanel6.add(lNotes);
-	    
-	    pPanel7.add(tNotes);
-	    pPanel7.add(pSubPanel);
-	    
-	    pSubPanel.add(iSubmit);
-	    pSubPanel.add(lSubmit);
-	     */
-		
+		ftContainer.getElement().setAttribute("cellpadding", "5");
 		pMainPanel.add(ftContainer);
 		return pMainPanel;
 		
