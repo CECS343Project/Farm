@@ -44,7 +44,7 @@ lb,com.example.farmwebapp.client.Doctor$4::Doctor$4(Lcom/example/farmwebapp/clie
 mb,com.example.farmwebapp.client.Doctor$4::onMouseOver(Lcom/google/gwt/event/dom/client/MouseOverEvent;)V,com.example.farmwebapp.client.Doctor$4,onMouseOver,com/example/farmwebapp/client/Doctor.java,107,0
 a,com.example.farmwebapp.client.Doctor$4::this$01,com.example.farmwebapp.client.Doctor$4,this$01,com/example/farmwebapp/client/Doctor.java,103,-1
 FarmWebApp,,com.example.farmwebapp.client.FarmWebApp,,com/example/farmwebapp/client/FarmWebApp.java,8,-1
-nb,com.example.farmwebapp.client.FarmWebApp::$onModuleLoad(Lcom/example/farmwebapp/client/FarmWebApp;)V,com.example.farmwebapp.client.FarmWebApp,$onModuleLoad,com/example/farmwebapp/client/FarmWebApp.java,18,0
+nb,com.example.farmwebapp.client.FarmWebApp::$onModuleLoad(Lcom/example/farmwebapp/client/FarmWebApp;)V,com.example.farmwebapp.client.FarmWebApp,$onModuleLoad,com/example/farmwebapp/client/FarmWebApp.java,22,0
 ob,com.example.farmwebapp.client.FarmWebApp::FarmWebApp() <init>,com.example.farmwebapp.client.FarmWebApp,FarmWebApp,com/example/farmwebapp/client/FarmWebApp.java,8,0
 a,com.example.farmwebapp.client.FarmWebApp::addPatientPanel,com.example.farmwebapp.client.FarmWebApp,addPatientPanel,com/example/farmwebapp/client/FarmWebApp.java,15,-1
 b,com.example.farmwebapp.client.FarmWebApp::doctorMain,com.example.farmwebapp.client.FarmWebApp,doctorMain,com/example/farmwebapp/client/FarmWebApp.java,12,-1
