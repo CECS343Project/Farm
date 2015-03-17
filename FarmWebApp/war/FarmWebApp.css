@@ -52,3 +52,11 @@
 	left: 50%;
 	margin: 0px 0px 0px -3px;
 }
+
+.incorrectvalidator{
+	background-color: #E60000;
+}
+
+.correctvalidator{
+	background-color: #00FF33;
+}

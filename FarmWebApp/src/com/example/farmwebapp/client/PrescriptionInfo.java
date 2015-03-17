@@ -45,8 +45,8 @@ public class PrescriptionInfo
 	//dates
 	// Create a DateBox
     private final DateTimeFormat dateFormat = DateTimeFormat.getFormat("MM/dd/yyyy");
-    private DateBox dbStart = new DateBox();
     
+    private DateBox dbStart = new DateBox();
     private DateBox dbEnd = new DateBox();
     
 	
