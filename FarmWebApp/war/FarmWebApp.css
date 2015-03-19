@@ -60,3 +60,7 @@
 .correctvalidator{
 	background-color: #00FF33;
 }
+
+.centerVertically{
+	top: 50%;
+}

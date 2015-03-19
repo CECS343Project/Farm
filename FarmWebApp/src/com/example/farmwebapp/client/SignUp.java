@@ -77,6 +77,7 @@ public class SignUp {
 		 * NAME FIELD
 		 */
 		
+		lb_nameSuffix.addItem("   ");
 		lb_nameSuffix.addItem("Jr.");
 		lb_nameSuffix.addItem("Sr.");
 		
@@ -87,10 +88,12 @@ public class SignUp {
 		ft.getCellFormatter().setVerticalAlignment(0, 0, HasVerticalAlignment.ALIGN_BOTTOM);
 		ft.setWidget(0, 1, tb_nameFirst);
 		tb_nameFirst.setPixelSize(CELLWIDTH, CELLHEIGHT);
+		tb_nameFirst.setTitle("First");
 		
 		ft.setWidget(0, 2, tb_nameLast);
 		tb_nameLast.setPixelSize(CELLWIDTH, CELLHEIGHT);
-
+		tb_nameLast.setTitle("Last");
+		
 		ft.setWidget(0, 3, lb_nameSuffix);
 		tb_nameSuffix.setPixelSize(CELLWIDTH, CELLHEIGHT);
 
@@ -102,8 +105,8 @@ public class SignUp {
 		ft.setWidget(1, 1, tb_username);
 		tb_username.setPixelSize(CELLWIDTH, CELLHEIGHT);
 
-		ft.setWidget(2, 1, tb_usernameConfirm);
-		tb_usernameConfirm.setPixelSize(CELLWIDTH, CELLHEIGHT);
+		//ft.setWidget(2, 1, tb_usernameConfirm);
+		//tb_usernameConfirm.setPixelSize(CELLWIDTH, CELLHEIGHT);
 
 		/**
 		 * PASSWORD FIELD
@@ -115,6 +118,7 @@ public class SignUp {
 
 		ft.setWidget(4, 1, ptb_passwordConfirm);
 		ptb_passwordConfirm.setPixelSize(CELLWIDTH, CELLHEIGHT);
+		ptb_passwordConfirm.setTitle("Confirm Password");
 				
 		ptb_passwordConfirm.addKeyDownHandler(new KeyDownHandler(){
 
@@ -154,19 +158,19 @@ public class SignUp {
 
 		ft.setWidget(2, 3, tb_emailConfirm);
 		tb_emailConfirm.setPixelSize(CELLWIDTH, CELLHEIGHT);
-
+		tb_emailConfirm.setTitle("Confirm Email");
 			
 		tb_emailConfirm.addKeyDownHandler(new KeyDownHandler(){
 
 			@Override
 			public void onKeyDown(KeyDownEvent event) {
-				String originalPassword = tb_email.getText();
+				String originalEmail = tb_email.getText();
 				
-				if(originalPassword != tb_emailConfirm.getText())
+				if(originalEmail != tb_emailConfirm.getText())
 				{
 					tb_emailConfirm.setStyleName("incorrectvalidator");
 				}
-				else if(originalPassword == tb_emailConfirm.getText())
+				else if(originalEmail == tb_emailConfirm.getText())
 				{
 					tb_emailConfirm.setStyleName("correctValidator");
 				}
@@ -181,6 +185,9 @@ public class SignUp {
 		ft.getCellFormatter().setHorizontalAlignment(4, 2, HasHorizontalAlignment.ALIGN_RIGHT);		
 		ft.setWidget(3, 3, tb_phoneNo);
 		tb_phoneNo.setPixelSize(CELLWIDTH, CELLHEIGHT);
+		tb_phoneNo.setTitle("xxx-xxx-xxxx");
+		
+		
 
 		/**
 		 * LICENSE NUMBER

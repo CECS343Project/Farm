@@ -7,7 +7,10 @@ import com.google.gwt.user.client.ui.*;
 
 public class PopUps extends DialogBox
 {
-	PopUps(){}
+	PopUps()
+	{
+		super(true);
+	}
 	
 	private VerticalPanel popupPanel = new VerticalPanel();
 	private HorizontalPanel pButtonPanel = new HorizontalPanel();
