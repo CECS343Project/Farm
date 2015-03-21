@@ -7,6 +7,8 @@ import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.dom.client.KeyDownEvent;
 import com.google.gwt.event.dom.client.KeyDownHandler;
+import com.google.gwt.event.dom.client.KeyPressEvent;
+import com.google.gwt.event.dom.client.KeyPressHandler;
 import com.google.gwt.event.dom.client.MouseOverEvent;
 import com.google.gwt.event.dom.client.MouseOverHandler;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
@@ -14,6 +16,8 @@ import com.google.gwt.i18n.client.DateTimeFormat;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.HasHorizontalAlignment;
 import com.google.gwt.user.client.ui.Image;
+import com.google.gwt.user.client.ui.KeyboardListener;
+import com.google.gwt.user.client.ui.KeyboardListenerAdapter;
 import com.google.gwt.user.client.ui.ListBox;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.IsWidget;
@@ -23,6 +27,7 @@ import com.google.gwt.user.client.ui.VerticalPanel;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.PasswordTextBox;
 import com.google.gwt.user.client.ui.HasVerticalAlignment;
+import com.google.gwt.user.client.ui.Widget;
 import com.google.gwt.user.datepicker.client.DateBox;
 
 public class SignUp {
@@ -40,7 +45,6 @@ public class SignUp {
 	private TextBox tb_nameFirst = new TextBox();
 	private TextBox tb_nameSuffix = new TextBox();
 	private TextBox tb_emailConfirm = new TextBox();
-	private TextBox tb_usernameConfirm = new TextBox();
 	private PasswordTextBox ptb_password = new PasswordTextBox();
 	private PasswordTextBox ptb_passwordConfirm = new PasswordTextBox();
 	
@@ -60,6 +64,7 @@ public class SignUp {
 
 	private RadioButton rb_doctor = new RadioButton("signUp", "DOCTOR");
 	private RadioButton rb_pharmacist = new RadioButton("signUp", "PHARMACIST");
+
 
 	@SuppressWarnings("deprecation")
 	public IsWidget getSignUpPanel() {
@@ -128,13 +133,15 @@ public class SignUp {
 				
 				if(originalPassword != ptb_passwordConfirm.getText())
 				{
-					ptb_passwordConfirm.setStyleName("incorrectvalidator");
+					ptb_passwordConfirm.setStyleName(ptb_password.getStyleName() + " incorrectvalidator");
 				}
-				else if(originalPassword == ptb_passwordConfirm.getText())
+				else if(originalPassword == ptb_passwordConfirm.getText() && originalPassword.length() != 0)
 				{
-					ptb_passwordConfirm.setStyleName("correctvalidator");
+					ptb_passwordConfirm.setStyleName(ptb_password.getStyleName() + " correctvalidator");
 				}
-						
+				else if(originalPassword.length() == 0 && ptb_passwordConfirm.getText().length() == 0) {
+					ptb_passwordConfirm.setStyleName(ptb_password.getStyleName() + " clearvalidator");
+				}	
 			}
 		});
 
@@ -146,13 +153,13 @@ public class SignUp {
 		ft.getCellFormatter().setVerticalAlignment(5, 0, HasVerticalAlignment.ALIGN_BOTTOM);
 		ft.setWidget(5, 1, db_dob);
 		tb_dob.setPixelSize(CELLWIDTH, CELLHEIGHT);
+		db_dob.setPixelSize(CELLWIDTH, CELLHEIGHT);
 
 		/**
 		 * EMAIL FIELD
 		 */
 		ft.setText(1, 2, "EMAIL");
 		ft.getCellFormatter().setVerticalAlignment(1, 2, HasVerticalAlignment.ALIGN_BOTTOM);
-		ft.getCellFormatter().setHorizontalAlignment(1, 2, HasHorizontalAlignment.ALIGN_RIGHT);
 		ft.setWidget(1, 3, tb_email);
 		tb_email.setPixelSize(CELLWIDTH, CELLHEIGHT);
 
@@ -168,33 +175,40 @@ public class SignUp {
 				
 				if(originalEmail != tb_emailConfirm.getText())
 				{
-					tb_emailConfirm.setStyleName("incorrectvalidator");
+					tb_emailConfirm.setStyleName(tb_email.getStyleName() + " incorrectvalidator");
 				}
 				else if(originalEmail == tb_emailConfirm.getText())
 				{
-					tb_emailConfirm.setStyleName("correctValidator");
+					tb_emailConfirm.setStyleName(tb_email.getStyleName() + " correctValidator");
 				}
 						
 			}
 		});
+		
 		/**
 		 * PHONE NUMBER FIELD
 		 */
 		ft.setText(3, 2, "PHONE NUMBER");
 		ft.getCellFormatter().setVerticalAlignment(4, 2, HasVerticalAlignment.ALIGN_BOTTOM);
-		ft.getCellFormatter().setHorizontalAlignment(4, 2, HasHorizontalAlignment.ALIGN_RIGHT);		
 		ft.setWidget(3, 3, tb_phoneNo);
 		tb_phoneNo.setPixelSize(CELLWIDTH, CELLHEIGHT);
 		tb_phoneNo.setTitle("xxx-xxx-xxxx");
 		
-		
+		// Will only accept numerics
+	    tb_phoneNo.addKeyPressHandler(new KeyPressHandler() {
 
+	      public void onKeyPress(KeyPressEvent event) {
+	        if (!Character.isDigit(event.getCharCode())) {
+	          ((TextBox) event.getSource()).cancelKey();
+	        }
+	      }
+	    });
+		
 		/**
 		 * LICENSE NUMBER
 		 */
 		ft.setText(4, 2, "LICENSE NUMBER");
-		ft.getCellFormatter().setVerticalAlignment(3, 2, HasVerticalAlignment.ALIGN_BOTTOM);
-		ft.getCellFormatter().setHorizontalAlignment(3, 2, HasHorizontalAlignment.ALIGN_RIGHT);		
+		ft.getCellFormatter().setVerticalAlignment(3, 2, HasVerticalAlignment.ALIGN_BOTTOM);	
 		ft.setWidget(4, 3, tb_licenseNo);
 		tb_licenseNo.setPixelSize(CELLWIDTH, CELLHEIGHT);
 
@@ -216,7 +230,7 @@ public class SignUp {
 	        	if(rb_pharmacist.getValue()) s_SelectedProfession = "Pharmacist";
 	        	try
 	        	{
-	        		s_DBData = new HTML("User Type: " + s_SelectedProfession
+	        		/*s_DBData = new HTML("User Type: " + s_SelectedProfession
 	        				+"<br>Name: " + tb_nameFirst.getText() + "," + tb_nameLast.getText() + ", " + lb_nameSuffix.getSelectedItemText()
 	        				+ "<br>User name: " + tb_username.getText() + " Password: " + ptb_password.getText()
 	        				+ "<br>Email: " + tb_email.getText()
@@ -224,7 +238,7 @@ public class SignUp {
 	        				+ "<br>Phone Number: " + tb_phoneNo.getText()
 	        				+ "<br>License Number: " + tb_licenseNo.getText());
 		            PopUps popups = new PopUps();
-		            popups.showDialog("Data sent to DB:\r\n"  + s_DBData);
+		            popups.showDialog("Data sent to DB:\r\n"  + s_DBData);*/
 	        	}
 	        	catch(Exception e)
 	        	{
@@ -234,6 +248,7 @@ public class SignUp {
 
 		
 	    });
+		
 		signUpArrow.addMouseOverHandler(new MouseOverHandler()
 		{
 
@@ -245,6 +260,7 @@ public class SignUp {
 			}
 			
 		});
+		
 		/**
 		 * FORM PLACEMENT AND ATTRIBUTES
 		 */

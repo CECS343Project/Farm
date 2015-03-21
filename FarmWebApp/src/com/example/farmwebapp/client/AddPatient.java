@@ -122,19 +122,19 @@ public class AddPatient {
 	        	HTML s_DBData;
 	        	try
 	        	{
-	        		s_DBData = new HTML("User Type: Patient"
+	        		/*s_DBData = new HTML("User Type: Patient"
 	        				+"<br>Name: " + tb_nameFirst.getText() + "," + tb_nameLast.getText() + ", " + lb_nameSuffix.getSelectedItemText()
 	        				+ "<br>Address: " + tb_addressStreet.getText() + " City, State, Zip: " + tb_addressCityStateZip.getText()
 	        				+ "<br>Email: " + tb_email.getText()
 	        				+ "<br>Date of Birth: " + db_dob.getValue()
 	        				+ "<br>License Number: " + tb_licenseNo.getText()
 	        				+ "<br>PRESCRIPTION INFORMATION"
-	        				+ "<br>"+addPrescrip.getPrescriptionInstructions());
+	        				+ "<br>"+addPrescrip.getPrescriptionInstructions());*/
 	        		
 	        		//s_DBData += new HTML();
 	        		
 		            PopUps popups = new PopUps();
-		            popups.showDialog("Patient to add to the DB:\r\n"  + s_DBData);
+		            /*popups.showDialog("Patient to add to the DB:\r\n"  + s_DBData);*/
 	        	}
 	        	catch(Exception e)
 	        	{
