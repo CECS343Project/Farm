@@ -1,10 +1,10 @@
 package com.example.farmwebapp.client;
 
-import java.util.Arrays;
 import java.util.List;
+import java.util.Arrays;
 
-import com.google.gwt.user.cellview.client.*;
 import com.google.gwt.user.client.ui.*;
+import com.google.gwt.user.cellview.client.*;
 
 public class FindPatient {
 	private final int CELLWIDTH = 150;
@@ -17,6 +17,7 @@ public class FindPatient {
 	private TextBox tb_nameLast = new TextBox();
 	private TextBox tb_licenseNo = new TextBox();
 	private TextBox tb_nameFirst = new TextBox();
+	private ListBox lb_nameSuffix = new ListBox();
 	private TextBox tb_nameSuffix = new TextBox();
 	private TextBox tb_addressStreet = new TextBox();
 	private TextBox tb_addressCityStateZip = new TextBox();
@@ -37,7 +38,11 @@ public class FindPatient {
 		ft.setWidget(0, 2, tb_nameLast);
 		tb_nameLast.setPixelSize(CELLWIDTH, CELLHEIGHT);
 
-		ft.setWidget(0, 3, tb_nameSuffix);
+		lb_nameSuffix.addItem("   ");
+		lb_nameSuffix.addItem("Jr.");
+		lb_nameSuffix.addItem("Sr.");
+		
+		ft.setWidget(0, 3, lb_nameSuffix);
 		tb_nameSuffix.setPixelSize(CELLWIDTH, CELLHEIGHT);
 
 		/**
@@ -91,7 +96,7 @@ public class FindPatient {
 		/**
 		 * CELL TABLE FIELD
 		 */
-		final List<String> l_DummyData = Arrays.asList
+		/*final List<String> l_DummyData = Arrays.asList
 				(
 						"1",
 						"2"
@@ -159,8 +164,8 @@ public class FindPatient {
 		ct_Results.addColumn(tc_LicenseNo, "License Number");		
 		ct_Results.setRowCount(2,true);
 		ct_Results.setRowData(l_DummyData);
-
-		hp.add(ct_Results);
+		
+		hp.add(ct_Results);*/
 		
 		vp.add(ft);
 		vp.add(hp);

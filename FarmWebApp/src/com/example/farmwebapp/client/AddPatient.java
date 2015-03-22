@@ -1,7 +1,12 @@
 package com.example.farmwebapp.client;
 
+import com.google.gwt.dom.client.Style.Cursor;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.event.dom.client.KeyPressEvent;
+import com.google.gwt.event.dom.client.KeyPressHandler;
+import com.google.gwt.event.dom.client.MouseOverEvent;
+import com.google.gwt.event.dom.client.MouseOverHandler;
 import com.google.gwt.i18n.client.DateTimeFormat;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.HasHorizontalAlignment;
@@ -88,7 +93,6 @@ public class AddPatient {
 		 */
 		ft.setText(1, 2, "EMAIL");
 		ft.getCellFormatter().setVerticalAlignment(1, 2, HasVerticalAlignment.ALIGN_BOTTOM);
-		ft.getCellFormatter().setHorizontalAlignment(1, 2, HasHorizontalAlignment.ALIGN_RIGHT);
 		ft.setWidget(1, 3, tb_email);
 		tb_email.setPixelSize(CELLWIDTH, CELLHEIGHT);
 		
@@ -97,16 +101,23 @@ public class AddPatient {
 		 */
 		ft.setText(2, 2, "PHONE NUMBER");
 		ft.getCellFormatter().setVerticalAlignment(2, 2, HasVerticalAlignment.ALIGN_BOTTOM);
-		ft.getCellFormatter().setHorizontalAlignment(2, 2, HasHorizontalAlignment.ALIGN_RIGHT);
 		ft.setWidget(2, 3, tb_phoneNo);
 		tb_phoneNo.setPixelSize(CELLWIDTH, CELLHEIGHT);
+		
+		tb_phoneNo.addKeyPressHandler(new KeyPressHandler() {
+
+		      public void onKeyPress(KeyPressEvent event) {
+		        if (!Character.isDigit(event.getCharCode())) {
+		          ((TextBox) event.getSource()).cancelKey();
+		        }
+		      }
+		    });
 
 		/**
 		 * LICENSE NUMBER
 		 */
 		ft.setText(3, 2, "LICENSE NUMBER");
 		ft.getCellFormatter().setVerticalAlignment(3, 2, HasVerticalAlignment.ALIGN_BOTTOM);
-		ft.getCellFormatter().setHorizontalAlignment(3, 2, HasHorizontalAlignment.ALIGN_RIGHT);
 		ft.setWidget(3, 3, tb_licenseNo);
 		tb_licenseNo.setPixelSize(CELLWIDTH, CELLHEIGHT);
 		
@@ -115,7 +126,7 @@ public class AddPatient {
 		 */
 		ft.getElement().setAttribute("cellpadding", "10");
 		
-		addPrescrip.getSignUpArrow().addClickHandler(new ClickHandler() 
+		/*addPrescrip.getSignUpArrow().addClickHandler(new ClickHandler() 
 		{
 	        public void onClick(ClickEvent event) 
 	        {
@@ -131,10 +142,36 @@ public class AddPatient {
 	        				+ "<br>PRESCRIPTION INFORMATION"
 	        				+ "<br>"+addPrescrip.getPrescriptionInstructions());
 	        		
-	        		//s_DBData += new HTML();
+	        		s_DBData += new HTML();
 	        		
 		            PopUps popups = new PopUps();
-		            popups.showDialog("Patient to add to the DB:\r\n"  + s_DBData);
+		            /*popups.showDialog("Patient to add to the DB:\r\n"  + s_DBData);
+	        	}
+	        	catch(Exception e)
+	        	{
+	        		
+	        	}
+	        }
+
+		
+	    });*/
+		
+		/**
+		 * LOGIN BUTTON
+		 */
+		ft.setWidget(4, 3, signUpArrow);
+		signUpArrow.setPixelSize(25, 25);
+		ft.getCellFormatter().setVerticalAlignment(4, 3, HasVerticalAlignment.ALIGN_BOTTOM);
+		signUpArrow.getElement().setAttribute("align", "right");
+		ft.getElement().setAttribute("cellpadding", "10");
+		signUpArrow.addClickHandler(new ClickHandler() 
+		{
+	        public void onClick(ClickEvent event) 
+	        {
+	        	try
+	        	{
+		            PopUps popups = new PopUps();
+		            popups.showDialog("Patient Added!");
 	        	}
 	        	catch(Exception e)
 	        	{
@@ -144,8 +181,19 @@ public class AddPatient {
 
 		
 	    });
+		signUpArrow.addMouseOverHandler(new MouseOverHandler()
+		{
+
+			@Override
+			public void onMouseOver(MouseOverEvent event) 
+			{
+				signUpArrow.getElement().getStyle().setCursor(Cursor.POINTER);
+				
+			}
+			
+		});
 		
-		hp.add(addPrescrip.getPanel());
+		//hp.add(addPrescrip.getPanel());
 		vp.add(ft);
 		vp.add(hp);
 		
