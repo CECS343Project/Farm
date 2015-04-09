@@ -5,20 +5,23 @@ import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.user.client.ui.TabLayoutPanel;
 
 public class MainGUI {
-	private SignUp signUpPage = new SignUp();
-	private SignIn signInPage = new SignIn();
-	private Doctor doctorMain = new Doctor();
-	private Pharmacy pharmacyMain = new Pharmacy();
-	private FindPatient findPatientPanel = new FindPatient();
-	private AddPatient addPatientPanel = new AddPatient();
+	
 	private TabLayoutPanel homePage = new TabLayoutPanel(2, Unit.EM);
 	private PatientServiceImpl patientServiceImpl;
+	
 	public MainGUI(PatientServiceImpl patientServiceImpl) {
 		this.patientServiceImpl = patientServiceImpl;
 	}
 
 	public TabLayoutPanel getPanel()
 	{
+		SignUp signUpPage = new SignUp(patientServiceImpl);
+		SignIn signInPage = new SignIn(patientServiceImpl);
+		Doctor doctorMain = new Doctor(patientServiceImpl);
+		Pharmacy pharmacyMain = new Pharmacy(patientServiceImpl);
+		FindPatient findPatientPanel = new FindPatient(patientServiceImpl);
+		AddPatient addPatientPanel = new AddPatient(patientServiceImpl);
+		
 		homePage.setPixelSize(700, 440);
 		homePage.setAnimationDuration(1000);
 		homePage.add(signInPage.getSignInPanel(), "SIGN IN");

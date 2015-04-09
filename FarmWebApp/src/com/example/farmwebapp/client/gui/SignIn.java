@@ -2,6 +2,7 @@ package com.example.farmwebapp.client.gui;
 
 
 
+import com.example.farmwebapp.client.service.PatientServiceImpl;
 import com.google.gwt.dom.client.Style.Cursor;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
@@ -30,7 +31,12 @@ public class SignIn {
 	private Image pillBugLogo = new Image("/images/pillBugLogo.png");
 	
 	private CheckBox cb_showPassword = new CheckBox("Show Password");
+	private PatientServiceImpl patientServiceImpl;
 	
+	public SignIn(PatientServiceImpl patientServiceImpl) {
+		this.patientServiceImpl = patientServiceImpl;
+	}
+
 	public IsWidget getSignInPanel() {
 		/**
 		 * LOGO

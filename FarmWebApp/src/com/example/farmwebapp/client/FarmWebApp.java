@@ -1,29 +1,21 @@
 package com.example.farmwebapp.client;
 
-import com.example.farmwebapp.client.gui.AddPatient;
-import com.example.farmwebapp.client.gui.Doctor;
-import com.example.farmwebapp.client.gui.FindPatient;
 import com.example.farmwebapp.client.gui.MainGUI;
-import com.example.farmwebapp.client.gui.Pharmacy;
-import com.example.farmwebapp.client.gui.SignIn;
-import com.example.farmwebapp.client.gui.SignUp;
-import com.google.gwt.dom.client.Style.Unit;
+import com.example.farmwebapp.client.service.PatientServiceImpl;
 import com.google.gwt.core.client.EntryPoint;
-import com.google.gwt.user.client.ui.TabLayoutPanel;
+import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
 
 public class FarmWebApp implements EntryPoint {
 	
-	private MainGUI gui = new MainGUI();
+	private MainGUI gui;
 
 
-
-		
-
-	
 	public void onModuleLoad() {
+		PatientServiceImpl clientImpl = new PatientServiceImpl(GWT.getModuleBaseURL() + "PatientService");
+		gui = new MainGUI(clientImpl);
+		
 		RootLayoutPanel rootPanel = RootLayoutPanel.get();
 	    rootPanel.add(gui.getPanel());
-	    
 	}
 }

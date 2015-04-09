@@ -3,6 +3,7 @@ package com.example.farmwebapp.client.gui;
 import java.util.List;
 import java.util.Arrays;
 
+import com.example.farmwebapp.client.service.PatientServiceImpl;
 import com.google.gwt.user.client.ui.*;
 import com.google.gwt.user.cellview.client.*;
 
@@ -25,6 +26,11 @@ public class FindPatient {
 	
 	private VerticalPanel vp = new VerticalPanel();
 	private HorizontalPanel hp = new HorizontalPanel();
+	private PatientServiceImpl patientServiceImpl;
+
+	public FindPatient(PatientServiceImpl patientServiceImpl) {
+		this.patientServiceImpl = patientServiceImpl;
+	}
 
 	public IsWidget getFindPatientPanel() {
 		/**

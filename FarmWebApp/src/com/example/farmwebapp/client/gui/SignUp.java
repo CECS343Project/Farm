@@ -1,5 +1,6 @@
 package com.example.farmwebapp.client.gui;
 
+import com.example.farmwebapp.client.service.PatientServiceImpl;
 import com.google.gwt.dom.client.Style.Cursor;
 import com.google.gwt.event.dom.client.ChangeEvent;
 import com.google.gwt.event.dom.client.ChangeHandler;
@@ -64,6 +65,12 @@ public class SignUp {
 
 	private RadioButton rb_doctor = new RadioButton("signUp", "DOCTOR");
 	private RadioButton rb_pharmacist = new RadioButton("signUp", "PHARMACIST");
+	private PatientServiceImpl patientServiceImpl;
+
+
+	public SignUp(PatientServiceImpl patientServiceImpl) {
+		this.patientServiceImpl = patientServiceImpl;
+	}
 
 
 	@SuppressWarnings("deprecation")

@@ -1,5 +1,6 @@
 package com.example.farmwebapp.client.gui;
 
+import com.example.farmwebapp.client.service.PatientServiceImpl;
 import com.google.gwt.dom.client.Style.Cursor;
 import com.google.gwt.event.dom.client.MouseOverEvent;
 import com.google.gwt.event.dom.client.MouseOverHandler;
@@ -21,7 +22,12 @@ public class Pharmacy {
 	private Image findPatient = new Image("/images/findPatient.png");
 	private Image pillBugLogo = new Image("/images/pillBugLogo.png");
 	private Image updatePharmacy = new Image("/images/updatePharmacy.png");
+	private PatientServiceImpl patientServiceImpl;
 	
+	public Pharmacy(PatientServiceImpl patientServiceImpl) {
+		this.patientServiceImpl = patientServiceImpl;
+	}
+
 	public IsWidget getPharmacyPanel() {
 		/**
 		 * LOGO
