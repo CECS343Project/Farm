@@ -9,6 +9,6 @@ import com.google.web.bindery.requestfactory.shared.RequestFactory;
 @RemoteServiceRelativePath("PatientService")
 public interface PatientService extends RemoteService 
 {
-	public ResultSet getPatients();
+	public PatientData[] getPatients();
 
 }

@@ -6,6 +6,6 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
 
 public interface PatientServiceAsync 
 {
-	public void getPatients(AsyncCallback<ResultSet> callback);
+	public void getPatients(AsyncCallback<PatientData[]> callback);
 
 }

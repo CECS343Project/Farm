@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Scanner;
 
+import com.example.farmwebapp.client.PatientData;
 import com.example.farmwebapp.client.PatientService;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 import com.google.web.bindery.requestfactory.shared.RequestFactory;
@@ -34,16 +35,18 @@ public class PatientServiceImpl extends RemoteServiceServlet implements PatientS
 	}
 
 	@Override
-	public ResultSet getPatients() 
+	public PatientData[] getPatients() 
 	{
 		checkForDriver();
 		try {
+			
+			PatientData[] patients = new PatientData[1];
 			stmt = connection.createStatement();
 			ResultSet results = stmt.executeQuery("select * from `patient`;");
 			ResultSetMetaData rsmd = results.getMetaData();
 			int numberCols = rsmd.getColumnCount();
 			
-			return results;
+			return patients;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
