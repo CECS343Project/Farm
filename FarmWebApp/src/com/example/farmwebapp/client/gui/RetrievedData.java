@@ -1,4 +1,4 @@
-package com.example.farmwebapp.client;
+package com.example.farmwebapp.client.gui;
 
 import java.awt.List;
 import java.util.ArrayList;

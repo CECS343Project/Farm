@@ -1,4 +1,4 @@
-package com.example.farmwebapp.client;
+package com.example.farmwebapp.client.gui;
 
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Image;
