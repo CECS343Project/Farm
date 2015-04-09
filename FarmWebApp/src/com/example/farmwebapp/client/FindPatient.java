@@ -96,7 +96,7 @@ public class FindPatient {
 		/**
 		 * CELL TABLE FIELD
 		 */
-		/*final List<String> l_DummyData = Arrays.asList
+		final List<String> l_DummyData = Arrays.asList
 				(
 						"1",
 						"2"
@@ -165,7 +165,7 @@ public class FindPatient {
 		ct_Results.setRowCount(2,true);
 		ct_Results.setRowData(l_DummyData);
 		
-		hp.add(ct_Results);*/
+		hp.add(ct_Results);
 		
 		vp.add(ft);
 		vp.add(hp);
