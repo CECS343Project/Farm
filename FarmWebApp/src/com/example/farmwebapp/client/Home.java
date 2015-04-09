@@ -2,7 +2,7 @@
  * dsdasaddsdds
  */
 
-package com.example.farmwebapp.client.gui;
+package com.example.farmwebapp.client;
 
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;

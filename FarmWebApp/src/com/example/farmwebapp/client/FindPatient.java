@@ -1,11 +1,14 @@
-package com.example.farmwebapp.client.gui;
+package com.example.farmwebapp.client;
 
 import java.util.List;
 import java.util.Arrays;
 
-import com.example.farmwebapp.client.service.PatientServiceImpl;
+import com.example.farmwebapp.server.PatientServiceImpl;
+import com.example.farmwebapp.server.PatientServiceImpl;
+import com.google.cloud.sql.jdbc.ResultSet;
 import com.google.gwt.user.client.ui.*;
 import com.google.gwt.user.cellview.client.*;
+import com.google.web.bindery.requestfactory.shared.RequestFactory;
 
 public class FindPatient {
 	private final int CELLWIDTH = 150;
@@ -26,13 +29,14 @@ public class FindPatient {
 	
 	private VerticalPanel vp = new VerticalPanel();
 	private HorizontalPanel hp = new HorizontalPanel();
-	private PatientServiceImpl patientServiceImpl;
 
-	public FindPatient(PatientServiceImpl patientServiceImpl) {
-		this.patientServiceImpl = patientServiceImpl;
+	public FindPatient() {
+	
+		// TODO Auto-generated constructor stub
 	}
 
 	public IsWidget getFindPatientPanel() {
+		
 		/**
 		 * NAME FIELD
 		 */

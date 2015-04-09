@@ -5,7 +5,7 @@
  * @author Russell
  */
 
-package com.example.farmwebapp.client.gui;
+package com.example.farmwebapp.client;
 
 import com.google.gwt.user.client.ui.*;
 

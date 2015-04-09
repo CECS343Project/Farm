@@ -1,6 +1,5 @@
-package com.example.farmwebapp.client.gui;
+package com.example.farmwebapp.client;
 
-import com.example.farmwebapp.client.service.PatientServiceImpl;
 import com.google.gwt.dom.client.Style.Cursor;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
@@ -9,8 +8,6 @@ import com.google.gwt.event.dom.client.KeyPressHandler;
 import com.google.gwt.event.dom.client.MouseOverEvent;
 import com.google.gwt.event.dom.client.MouseOverHandler;
 import com.google.gwt.i18n.client.DateTimeFormat;
-import com.google.gwt.user.client.ui.HTML;
-import com.google.gwt.user.client.ui.HasHorizontalAlignment;
 import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.ListBox;
 import com.google.gwt.user.client.ui.TextBox;
@@ -47,10 +44,10 @@ public class AddPatient {
 	
 	private VerticalPanel vp = new VerticalPanel();
 	private HorizontalPanel hp = new HorizontalPanel();
-	private PatientServiceImpl patientServiceImpl;
-	
-	public AddPatient(PatientServiceImpl patientServiceImpl) {
-		this.patientServiceImpl = patientServiceImpl;
+
+
+	public AddPatient() {
+		// TODO Auto-generated constructor stub
 	}
 
 	public IsWidget getAddPatientPanel() {

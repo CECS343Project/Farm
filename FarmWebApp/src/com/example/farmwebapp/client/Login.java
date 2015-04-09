@@ -1,4 +1,4 @@
-package com.example.farmwebapp.client.gui;
+package com.example.farmwebapp.client;
 
 
 import java.util.EventListener;

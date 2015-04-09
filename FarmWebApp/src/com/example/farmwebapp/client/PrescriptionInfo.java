@@ -1,4 +1,4 @@
-package com.example.farmwebapp.client.gui;
+package com.example.farmwebapp.client;
 
 import com.google.gwt.dom.client.Style.Cursor;
 import com.google.gwt.event.dom.client.ClickEvent;

@@ -8,12 +8,16 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Scanner;
 
-import com.example.farmwebapp.client.gui.PatientDB;
-import com.example.farmwebapp.client.service.PatientService;
+import com.example.farmwebapp.client.PatientService;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
+import com.google.web.bindery.requestfactory.shared.RequestFactory;
 
 public class PatientServiceImpl extends RemoteServiceServlet implements PatientService
 {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private static String dbURL = "jdbc:mysql://173.254.28.65:3306/thejoeja_ePrescription_version_1";
 	private static Connection connection=null;
 	private static String userName="thejoeja_russell";
@@ -21,10 +25,17 @@ public class PatientServiceImpl extends RemoteServiceServlet implements PatientS
 	private static Statement stmt = null;
 	private static Scanner inScan = new Scanner(System.in);
 
+	public PatientServiceImpl(String string) {
+		// TODO Auto-generated constructor stub
+	}
+
+	public PatientServiceImpl() {
+		// TODO Auto-generated constructor stub
+	}
+
 	@Override
-	public PatientDB[] getPatients() 
+	public ResultSet getPatients() 
 	{
-		PatientDB[] patients = new PatientDB[1];
 		checkForDriver();
 		try {
 			stmt = connection.createStatement();
@@ -32,7 +43,7 @@ public class PatientServiceImpl extends RemoteServiceServlet implements PatientS
 			ResultSetMetaData rsmd = results.getMetaData();
 			int numberCols = rsmd.getColumnCount();
 			
-			
+			return results;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -1,26 +1,26 @@
-package com.example.farmwebapp.client.gui;
+package com.example.farmwebapp.client;
 
-import com.example.farmwebapp.client.service.PatientServiceImpl;
+import com.example.farmwebapp.server.PatientServiceImpl;
 import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.user.client.ui.TabLayoutPanel;
 
 public class MainGUI {
 	
 	private TabLayoutPanel homePage = new TabLayoutPanel(2, Unit.EM);
-	private PatientServiceImpl patientServiceImpl;
 	
-	public MainGUI(PatientServiceImpl patientServiceImpl) {
-		this.patientServiceImpl = patientServiceImpl;
+
+	public MainGUI() {
+		// TODO Auto-generated constructor stub
 	}
 
 	public TabLayoutPanel getPanel()
 	{
-		SignUp signUpPage = new SignUp(patientServiceImpl);
-		SignIn signInPage = new SignIn(patientServiceImpl);
-		Doctor doctorMain = new Doctor(patientServiceImpl);
-		Pharmacy pharmacyMain = new Pharmacy(patientServiceImpl);
-		FindPatient findPatientPanel = new FindPatient(patientServiceImpl);
-		AddPatient addPatientPanel = new AddPatient(patientServiceImpl);
+		SignUp signUpPage = new SignUp();
+		SignIn signInPage = new SignIn();
+		Doctor doctorMain = new Doctor();
+		Pharmacy pharmacyMain = new Pharmacy();
+		FindPatient findPatientPanel = new FindPatient();
+		AddPatient addPatientPanel = new AddPatient();
 		
 		homePage.setPixelSize(700, 440);
 		homePage.setAnimationDuration(1000);

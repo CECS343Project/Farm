@@ -1,6 +1,6 @@
-package com.example.farmwebapp.client.gui;
+package com.example.farmwebapp.client;
 
-import com.example.farmwebapp.client.service.PatientServiceImpl;
+import com.example.farmwebapp.server.PatientServiceImpl;
 import com.google.gwt.dom.client.Style.Cursor;
 import com.google.gwt.event.dom.client.MouseOverEvent;
 import com.google.gwt.event.dom.client.MouseOverHandler;
@@ -22,10 +22,10 @@ public class Pharmacy {
 	private Image findPatient = new Image("/images/findPatient.png");
 	private Image pillBugLogo = new Image("/images/pillBugLogo.png");
 	private Image updatePharmacy = new Image("/images/updatePharmacy.png");
-	private PatientServiceImpl patientServiceImpl;
-	
-	public Pharmacy(PatientServiceImpl patientServiceImpl) {
-		this.patientServiceImpl = patientServiceImpl;
+
+
+	public Pharmacy() {
+		// TODO Auto-generated constructor stub
 	}
 
 	public IsWidget getPharmacyPanel() {
