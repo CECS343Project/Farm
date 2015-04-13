@@ -2,10 +2,12 @@
  * Class: NewPatient
  * Description: Creates gui for adding a new patient, has functionality to 
  * 				remove the gui as well
+ * 
+ * 
  * @author Russell
  */
 
-package com.example.farmwebapp.client;
+package com.example.farmwebapp.client.gui;
 
 import com.google.gwt.user.client.ui.*;
 

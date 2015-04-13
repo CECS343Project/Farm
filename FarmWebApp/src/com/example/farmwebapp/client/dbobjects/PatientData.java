@@ -1,4 +1,12 @@
-package com.example.farmwebapp.client;
+/**
+ * PatientData
+ * Object class used for database access, this class defines the variables
+ * Stored in the database for a particular table 
+ * 
+ * @author Russell Tan
+ */
+
+package com.example.farmwebapp.client.dbobjects;
 
 import java.util.Date;
 

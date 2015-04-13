@@ -1,5 +1,12 @@
-package com.example.farmwebapp.client;
+/**
+ * 
+ * 
+ * 
+ * @author Russell Tan
+ */
+package com.example.farmwebapp.client.services;
 
+import com.example.farmwebapp.client.dbobjects.PatientData;
 import com.google.gwt.user.client.rpc.RemoteService;
 import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
 
@@ -7,5 +14,4 @@ import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
 public interface PatientService extends RemoteService 
 {
 	public PatientData[] getPatients();
-
 }

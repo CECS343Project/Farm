@@ -1,4 +1,13 @@
-package com.example.farmwebapp.client;
+/**
+ * AddPatient
+ * Gui component for adding a patient into the database
+ * Once the button is clicked, an asynchronous call is 
+ * made to the server which will insert the record into the database 
+ * 
+ * @author Napoleon Fulinara Jr.
+ * @author Russell Tan
+ */
+package com.example.farmwebapp.client.gui;
 
 import com.google.gwt.dom.client.Style.Cursor;
 import com.google.gwt.event.dom.client.ClickEvent;
@@ -8,6 +17,7 @@ import com.google.gwt.event.dom.client.KeyPressHandler;
 import com.google.gwt.event.dom.client.MouseOverEvent;
 import com.google.gwt.event.dom.client.MouseOverHandler;
 import com.google.gwt.i18n.client.DateTimeFormat;
+import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.ListBox;
 import com.google.gwt.user.client.ui.TextBox;
@@ -18,13 +28,16 @@ import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.HasVerticalAlignment;
 import com.google.gwt.user.datepicker.client.DateBox;
 
-public class AddPatient {
+public class AddPatient 
+{
 	private final int CELLWIDTH = 150;
 	private final int CELLHEIGHT = 15;
+	private final DateTimeFormat dateFormat = DateTimeFormat.getFormat("MM/dd/yyyy");
 	
 	private PrescriptionInfo addPrescrip = new PrescriptionInfo();
 
 	private FlexTable ft = new FlexTable();
+
 	private TextBox tb_dob = new TextBox();
 	private TextBox tb_email = new TextBox();
 	private TextBox tb_phoneNo = new TextBox();
@@ -37,19 +50,19 @@ public class AddPatient {
 	
 	private ListBox lb_nameSuffix = new ListBox();
 	
-	private final DateTimeFormat dateFormat = DateTimeFormat.getFormat("MM/dd/yyyy");
 	private DateBox db_dob = new DateBox();
-	
 	private Image signUpArrow = new Image("/images/loginArrow.png");
 	
 	private VerticalPanel vp = new VerticalPanel();
 	private HorizontalPanel hp = new HorizontalPanel();
 
+	//Default Constructor
+	public AddPatient(){}
 
-	public AddPatient() {
-		// TODO Auto-generated constructor stub
-	}
-
+	/**
+	 * @return Vertical panel containing the patient information to add
+	 * as well as the prescription info if applicable
+	 */
 	public IsWidget getAddPatientPanel() {
 		/**
 		 * NAME FIELD
@@ -107,6 +120,9 @@ public class AddPatient {
 		ft.setWidget(2, 3, tb_phoneNo);
 		tb_phoneNo.setPixelSize(CELLWIDTH, CELLHEIGHT);
 		
+		/**
+		 * Restricts box to only accept numbers
+		 */
 		tb_phoneNo.addKeyPressHandler(new KeyPressHandler() {
 
 		      public void onKeyPress(KeyPressEvent event) {
@@ -129,7 +145,10 @@ public class AddPatient {
 		 */
 		ft.getElement().setAttribute("cellpadding", "10");
 		
-		/*addPrescrip.getSignUpArrow().addClickHandler(new ClickHandler() 
+		/**
+		 * On button click - send data to database
+		 */
+		addPrescrip.getSignUpArrow().addClickHandler(new ClickHandler() 
 		{
 	        public void onClick(ClickEvent event) 
 	        {
@@ -145,19 +164,16 @@ public class AddPatient {
 	        				+ "<br>PRESCRIPTION INFORMATION"
 	        				+ "<br>"+addPrescrip.getPrescriptionInstructions());
 	        		
-	        		s_DBData += new HTML();
+	        		//s_DBData += new HTML();
 	        		
 		            PopUps popups = new PopUps();
-		            /*popups.showDialog("Patient to add to the DB:\r\n"  + s_DBData);
+		            popups.showDialog("Patient to add to the DB:\r\n"  + s_DBData);
 	        	}
 	        	catch(Exception e)
-	        	{
-	        		
+	        	{	        		
 	        	}
 	        }
-
-		
-	    });*/
+	    });
 		
 		/**
 		 * LOGIN BUTTON
@@ -167,6 +183,10 @@ public class AddPatient {
 		ft.getCellFormatter().setVerticalAlignment(4, 3, HasVerticalAlignment.ALIGN_BOTTOM);
 		signUpArrow.getElement().setAttribute("align", "right");
 		ft.getElement().setAttribute("cellpadding", "10");
+		
+		/**
+		 * Send RPC call
+		 */
 		signUpArrow.addClickHandler(new ClickHandler() 
 		{
 	        public void onClick(ClickEvent event) 
@@ -184,6 +204,9 @@ public class AddPatient {
 
 		
 	    });
+		/**
+		 * Change mouse to pointer to indicate the arrow is a button
+		 */
 		signUpArrow.addMouseOverHandler(new MouseOverHandler()
 		{
 
@@ -196,7 +219,8 @@ public class AddPatient {
 			
 		});
 		
-		//hp.add(addPrescrip.getPanel());
+		//Add all components to the vertical panel to be added to the root
+		hp.add(addPrescrip.getPanel());
 		vp.add(ft);
 		vp.add(hp);
 		

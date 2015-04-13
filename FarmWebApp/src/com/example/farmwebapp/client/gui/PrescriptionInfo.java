@@ -1,4 +1,12 @@
-package com.example.farmwebapp.client;
+/**
+ * 
+ * 
+ * 
+ * 
+ * 
+ * @author Daryl Blancaflor
+ */
+package com.example.farmwebapp.client.gui;
 
 import com.google.gwt.dom.client.Style.Cursor;
 import com.google.gwt.event.dom.client.ClickEvent;
@@ -6,17 +14,9 @@ import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.dom.client.MouseOverEvent;
 import com.google.gwt.event.dom.client.MouseOverHandler;
 import com.google.gwt.i18n.client.DateTimeFormat;
-import com.google.gwt.user.cellview.client.CellTable;
 import com.google.gwt.user.client.ui.*;
 import com.google.gwt.user.datepicker.client.DateBox;
-import com.google.gwt.user.datepicker.client.DatePicker;
 
-/**
- * interchangeable bottom right panel
- * 
- * @author Daryl
- *
- */
 public class PrescriptionInfo 
 {
 	private final int CELLWIDTH = 150;
@@ -24,29 +24,12 @@ public class PrescriptionInfo
 	private VerticalPanel pMainPanel = new VerticalPanel();
 	
 	private FlexTable ftContainer = new FlexTable();
-	
-	private HorizontalPanel pPanel1 = new HorizontalPanel();
-	private HorizontalPanel pPanel2 = new HorizontalPanel();
-	private HorizontalPanel pPanel3 = new HorizontalPanel();
-	private HorizontalPanel pPanel4 = new HorizontalPanel();
-	private HorizontalPanel pPanel5 = new HorizontalPanel();
-	private HorizontalPanel pPanel6 = new HorizontalPanel();
-	private HorizontalPanel pPanel7 = new HorizontalPanel();
-	private VerticalPanel pSubPanel= new VerticalPanel();
-	
-	private Label lList = new Label("MEDICATION LIST:");
-	private Label lDosage = new Label("DOSAGE: ");
-	private Label lTimes = new Label("TIMES PER: ");
-	private Label lDuration = new Label("DURATION: ");
-	private Label lStart = new Label("START DATE: ");
-	private Label lEnd = new Label("END  DATE: ");
-	private Label lNotes = new Label("NOTES:");
-	private Label lSubmit = new Label("SUBMIT");
 
 	private TextBox tMedication = new TextBox();
 	private TextBox tDosage = new TextBox();
 	private TextBox tTimes = new TextBox();
 	private TextBox tDuration = new TextBox();
+	
 	//dates
 	// Create a DateBox
     private final DateTimeFormat dateFormat = DateTimeFormat.getFormat("MM/dd/yyyy");
@@ -55,15 +38,11 @@ public class PrescriptionInfo
     private DateBox dbEnd = new DateBox();
     
     private Image signUpArrow = new Image("/images/loginArrow.png");
-	//private DatePicker dpStart= new DatePicker();
-	//private DatePicker dpEnd= new DatePicker();
 	
 	private TextArea tNotes = new TextArea();
 	
 	private Button bAddPrescrip = new Button("Add Presccription");
-	private Image iSubmit = new Image();
 
-	
 	public VerticalPanel getPanel()
 	{
 		ftContainer.setText(0, 0, "MEDICATION");
@@ -113,14 +92,11 @@ public class PrescriptionInfo
 		signUpArrow.setTitle("Add Patient");
 		signUpArrow.addMouseOverHandler(new MouseOverHandler()
 		{
-
 			@Override
 			public void onMouseOver(MouseOverEvent event) 
 			{
 				signUpArrow.getElement().getStyle().setCursor(Cursor.POINTER);
-				
 			}
-			
 		});
 		ftContainer.getCellFormatter().setHorizontalAlignment(4, 4, HasHorizontalAlignment.ALIGN_RIGHT);
 		
@@ -143,16 +119,13 @@ public class PrescriptionInfo
 	        	}
 	        	catch(Exception e)
 	        	{
-	        		
 	        	}
-	        }
-
-		
+	        }		
 	    });
 
 		ftContainer.setWidth("700");
 		ftContainer.setHeight("200");
-		ftContainer.getElement().setAttribute("cellpadding", "5");
+		ftContainer.getElement().setAttribute("cellpadding", "2");
 		pMainPanel.add(ftContainer);
 		return pMainPanel;
 		
@@ -176,6 +149,4 @@ public class PrescriptionInfo
 	{
 		return this.signUpArrow;
 	}
-	
-
 }

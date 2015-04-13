@@ -1,12 +1,15 @@
-package com.example.farmwebapp.client;
+/**
+ * 
+ * 
+ * 
+ * 
+ * 
+ * @author Daryl Blancaflor
+ */
+package com.example.farmwebapp.client.gui;
 
 import com.google.gwt.user.client.ui.*;
 
-/**
- * interchangeable right panel
- * @author Daryl
- *
- */
 public class PrescriptionLabel 
 {
 	private VerticalPanel pMainPanel = new VerticalPanel();
@@ -39,6 +42,5 @@ public class PrescriptionLabel
 		pSubPanel.add(lAllergies);
 		pSubPanel.add(tAllergies);
 		return pMainPanel;
-		
 	}
 }

@@ -1,13 +1,15 @@
-package com.example.farmwebapp.client;
+/**
+ * 
+ * 
+ * 
+ * 
+ * 
+ * @author Daryl Blancaflor
+ */
+package com.example.farmwebapp.client.gui;
 
 import com.google.gwt.user.client.ui.*;
 
-/**
- * interchangeable bottom left panel
- * 2 textareas and an image
- * @author Daryl
- *
- */
 public class PrescriptionNotes
 {
 	private VerticalPanel pMainPanel = new VerticalPanel();
@@ -31,6 +33,5 @@ public class PrescriptionNotes
 		pSubPanel2.add(iAuthorize);
 		pSubPanel2.add(lAuthorize);
 		return pMainPanel;
-		
 	}
 }

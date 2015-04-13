@@ -1,6 +1,13 @@
-package com.example.farmwebapp.client;
+/**
+ * Doctor
+ * Gui for the doctor after login
+ * contains the necessary buttons for a user of type doctor 
+ * 
+ * @author Napoleon Fulinara Jr.
+ * @author Russell Tan
+ */
+package com.example.farmwebapp.client.gui;
 
-import com.example.farmwebapp.server.PatientServiceImpl;
 import com.google.gwt.dom.client.Style.Cursor;
 import com.google.gwt.event.dom.client.MouseOverEvent;
 import com.google.gwt.event.dom.client.MouseOverHandler;
@@ -10,7 +17,7 @@ import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.HasVerticalAlignment;
 
-public class Pharmacy {
+public class Doctor {
 	
 	private FlexTable ft = new FlexTable();
 	private HorizontalPanel hp = new HorizontalPanel();
@@ -21,14 +28,14 @@ public class Pharmacy {
 	private Image addPatient = new Image("/images/addPatient.png");
 	private Image findPatient = new Image("/images/findPatient.png");
 	private Image pillBugLogo = new Image("/images/pillBugLogo.png");
-	private Image updatePharmacy = new Image("/images/updatePharmacy.png");
 
+	//Default Constructor
+	public Doctor() {}
 
-	public Pharmacy() {
-		// TODO Auto-generated constructor stub
-	}
-
-	public IsWidget getPharmacyPanel() {
+	/**
+	 * @return Vertical panel containing the buttons for a doctor to navigate the application
+	 */
+	public IsWidget getDoctorPanel() {
 		/**
 		 * LOGO
 		 * SIGN-IN ATTRIBUTES
@@ -51,17 +58,17 @@ public class Pharmacy {
 		addPatient.setPixelSize(50, 50);
 		ft.getCellFormatter().setVerticalAlignment(0, 0, HasVerticalAlignment.ALIGN_BOTTOM);
 		addPatient.setTitle("Add a patient");
+		
+		//Change mouse to pointer to  indicate that it is a button
 		addPatient.addMouseOverHandler(new MouseOverHandler()
 		{
-
 			@Override
 			public void onMouseOver(MouseOverEvent event) 
 			{
-				addPatient.getElement().getStyle().setCursor(Cursor.POINTER);
-				
+				addPatient.getElement().getStyle().setCursor(Cursor.POINTER);		
 			}
-			
 		});
+		
 		/**
 		 * FIND PATIENT
 		 */
@@ -69,6 +76,8 @@ public class Pharmacy {
 		findPatient.setPixelSize(50, 50);
 		ft.getCellFormatter().setVerticalAlignment(0, 1, HasVerticalAlignment.ALIGN_BOTTOM);
 		findPatient.setTitle("Search patient database");
+		
+		//Change mouse to pointer to  indicate that it is a button		
 		findPatient.addMouseOverHandler(new MouseOverHandler()
 		{
 
@@ -80,31 +89,16 @@ public class Pharmacy {
 			}
 			
 		});
-		/**
-		 * UPDATE
-		 */
-		ft.setWidget(0, 2, updatePharmacy);
-		updatePharmacy.setPixelSize(50, 50);
-		ft.getCellFormatter().setVerticalAlignment(0, 1, HasVerticalAlignment.ALIGN_BOTTOM);
-		updatePharmacy.setTitle("Check for updated prescriptions");
-		updatePharmacy.addMouseOverHandler(new MouseOverHandler()
-		{
-
-			@Override
-			public void onMouseOver(MouseOverEvent event) 
-			{
-				updatePharmacy.getElement().getStyle().setCursor(Cursor.POINTER);
-				
-			}
-			
-		});
+		
 		/**
 		 * SETTINGS
 		 */
-		ft.setWidget(0, 3, settings);
+		ft.setWidget(0, 2, settings);
 		settings.setPixelSize(50, 50);
 		ft.getCellFormatter().setVerticalAlignment(0, 2, HasVerticalAlignment.ALIGN_BOTTOM);
 		settings.setTitle("Change application settings");
+		
+		//Change mouse to pointer to  indicate that it is a button		
 		settings.addMouseOverHandler(new MouseOverHandler()
 		{
 
@@ -116,13 +110,16 @@ public class Pharmacy {
 			}
 			
 		});
+		
 		/**
 		 * LOGOUT
 		 */
-		ft.setWidget(0, 4, logout);
+		ft.setWidget(0, 3, logout);
 		logout.setPixelSize(50, 50);
 		ft.getCellFormatter().setVerticalAlignment(0, 3, HasVerticalAlignment.ALIGN_BOTTOM);
 		logout.setTitle("Logout");
+		
+		//Change mouse to pointer to  indicate that it is a button		
 		logout.addMouseOverHandler(new MouseOverHandler()
 		{
 
@@ -134,12 +131,14 @@ public class Pharmacy {
 			}
 			
 		});
+		
 		/**
 		 * FORM PLACEMENT AND ATTRIBUTES
 		 */
 		ft.addStyleName("signInPasswordTextBoxes");
-		ft.getElement().setAttribute("cellpadding", "5");
+		ft.getElement().setAttribute("cellpadding", "13");
 		
+		//Add components to a flextable for organization
 		hp.add(ft);
 		return hp;
 	}

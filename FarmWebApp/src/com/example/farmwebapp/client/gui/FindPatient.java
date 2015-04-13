@@ -1,35 +1,43 @@
-package com.example.farmwebapp.client;
+/**
+ * FindPatient
+ * Gui for searching the database for a patients record
+ * contains the text fields for searching 
+ * and rpc functionality to query the database
+ * 
+ * @author Russell Tan
+ * @author Napoleon Fulinara Jr.
+ */
+package com.example.farmwebapp.client.gui;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 import java.util.Arrays;
 
-import com.example.farmwebapp.server.PatientServiceImpl;
-import com.example.farmwebapp.server.PatientServiceImpl;
-import com.google.cloud.sql.jdbc.ResultSet;
-import com.google.gwt.core.client.GWT;
+import com.example.farmwebapp.client.dbobjects.PatientData;
+import com.example.farmwebapp.client.services.PatientServiceAsync;
+import com.example.farmwebapp.client.services.PatientServiceInit;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.*;
 import com.google.gwt.user.cellview.client.*;
-import com.google.web.bindery.requestfactory.shared.RequestFactory;
 
-public class FindPatient {
+public class FindPatient 
+{
 	private final int CELLWIDTH = 150;
 	private final int CELLHEIGHT = 15;
 
 	private FlexTable ft = new FlexTable();
+
 	private TextBox tb_dob = new TextBox();
 	private TextBox tb_email = new TextBox();
 	private TextBox tb_phoneNo = new TextBox();
 	private TextBox tb_nameLast = new TextBox();
 	private TextBox tb_licenseNo = new TextBox();
 	private TextBox tb_nameFirst = new TextBox();
-	private ListBox lb_nameSuffix = new ListBox();
 	private TextBox tb_nameSuffix = new TextBox();
 	private TextBox tb_addressStreet = new TextBox();
 	private TextBox tb_addressCityStateZip = new TextBox();
+	
+	private ListBox lb_nameSuffix = new ListBox();
+	
 	private CellTable<PatientData> ct_Results = new CellTable<PatientData>();
 	
 	private VerticalPanel vp = new VerticalPanel();
@@ -38,64 +46,43 @@ public class FindPatient {
 	private PatientServiceAsync rpc;
 	private PatientData PatientsDB[]; 
 	
-
+	/**
+	 * Default constructor instantiates the rpc async service 
+	 * for querying the database
+	 */
 	public FindPatient() {
 		rpc = PatientServiceInit.initRpc();
 		getPatientsDB();
 	}
 	
+	/**
+	 * Sends an asynchronous call to the database and 
+	 * populates the celltable with the results when query succeeds
+	 */
 	public void getPatientsDB()
 	{
 		AsyncCallback<PatientData[]> callback = new AsyncCallback<PatientData[]>()
 		{
-
 			@Override
 			public void onFailure(Throwable caught) {
-				PopUps popUp = new PopUps();
-				
+				PopUps popUp = new PopUps();		
 				popUp.showDialog(caught.toString());
-				
 			}
 
 			@Override
 			public void onSuccess(PatientData[] result) {
-				PopUps popUp = new PopUps();
-				
-				popUp.showDialog("SUCCESS");
 				PatientsDB = result;
+
+				//Populates the celltable
 				drawTable();
 			}
-
 		};
-		PopUps popUp = new PopUps();
-		
-		popUp.showDialog("Started query");
-		popUp.showDialog(GWT.getModuleBaseURL()+"patientService");
 		rpc.getPatients(callback);
-		/*rpc.getPatients(new AsyncCallback<PatientData[]>()
-				{
-
-					@Override
-					public void onFailure(Throwable caught) {
-						PopUps popUp = new PopUps();
-						
-						popUp.showDialog(caught.toString());
-						// TODO Auto-generated method stub
-						
-					}
-
-					@Override
-					public void onSuccess(PatientData[] result) {
-						
-						PatientsDB = result;
-						drawTable();
-						
-					}
-			
-				});
-				*/
 	}
 
+	/**
+	 * @return Vertical panel with necessary text-boxes to search for a patient
+	 */
 	public IsWidget getFindPatientPanel() {
 		
 		/**
@@ -163,81 +150,75 @@ public class FindPatient {
 		 * FORM PLACEMENT AND ATTRIBUTES
 		 */
 		ft.getElement().setAttribute("cellpadding", "10");
-				
+
+		//Add necessary panels 
 		vp.add(ft);
 		vp.add(hp);
 		
 		return vp;
 	}
+	
+	/**
+	 * Populates the celltable using the PatientData class 
+	 * and the result of the query(PatientData[]) 
+	 */
 	public void drawTable()
 	{
-		PopUps popUp = new PopUps();
-		
-		popUp.showDialog("Made IT");
-
 		/**
 		 * CELL TABLE FIELD
 		 */
-		final List<PatientData> l_DummyData = Arrays.asList
-				(
-						PatientsDB
-				);
+		final List<PatientData> l_DummyData = Arrays.asList(PatientsDB);
 		
 		TextColumn<PatientData> tc_Name = new TextColumn<PatientData>()
 		{
-
 			@Override
-			public String getValue(PatientData object) {
-				// TODO Auto-generated method stub
+			public String getValue(PatientData object) 
+			{
 				return object.fName;
 			}				
 		};
 		TextColumn<PatientData> tc_Address = new TextColumn<PatientData>()
 		{
-
 			@Override
-			public String getValue(PatientData object) {
-				// TODO Auto-generated method stub
+			public String getValue(PatientData object)
+			{
 				return object.lName;
 			}				
 		};
 		TextColumn<PatientData> tc_Email = new TextColumn<PatientData>()
 		{
-
 			@Override
-			public String getValue(PatientData object) {
-				// TODO Auto-generated method stub
+			public String getValue(PatientData object) 
+			{
 				return object.fName;
 			}				
 		};
 		TextColumn<PatientData> tc_PhoneNumber = new TextColumn<PatientData>()
 		{
-
 			@Override
-			public String getValue(PatientData object) {
-				// TODO Auto-generated method stub
+			public String getValue(PatientData object) 
+			{
 				return object.fName;
 			}				
 		};
 		TextColumn<PatientData> tc_DOB = new TextColumn<PatientData>()
 		{
-
 			@Override
-			public String getValue(PatientData object) {
-				// TODO Auto-generated method stub
-				DateFormat df = new SimpleDateFormat("MM/dd/yyyy");
-				return df.format(object.dob);
+			public String getValue(PatientData object)
+			{
+				return object.dob.toString();
 			}				
 		};
 		TextColumn<PatientData> tc_LicenseNo = new TextColumn<PatientData>()
 		{
-
 			@Override
-			public String getValue(PatientData object) {
-				// TODO Auto-generated method stub
+			public String getValue(PatientData object) 
+			{
 				return object.pID;
 			}				
-		};		
+		};	
+		
+		//Add the columns to the table
 		ct_Results.addColumn(tc_Name, "Name");
 		ct_Results.addColumn(tc_Address, "Address");
 		ct_Results.addColumn(tc_Email, "Email");
@@ -247,8 +228,10 @@ public class FindPatient {
 		ct_Results.setRowCount(2,true);
 		ct_Results.setRowData(l_DummyData);
 		
+		//Add table to the horizontal panel
+		//Call the main panel generator again 
+		//after populating to place table in main panel
 		hp.add(ct_Results);
 		getFindPatientPanel();
 	}
-	
 }

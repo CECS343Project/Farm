@@ -1,8 +1,13 @@
-package com.example.farmwebapp.client;
+/**
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ */
+package com.example.farmwebapp.client.gui;
 
-
-
-import com.example.farmwebapp.server.PatientServiceImpl;
 import com.google.gwt.dom.client.Style.Cursor;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
@@ -17,8 +22,8 @@ import com.google.gwt.user.client.ui.PasswordTextBox;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.HasVerticalAlignment;
 
-public class SignIn {
-	
+public class SignIn 
+{
 	private final int CELLWIDTH = 200;
 	private final int CELLHEIGHT = 15;
 	private FlexTable ft = new FlexTable();
@@ -32,10 +37,8 @@ public class SignIn {
 	
 	private CheckBox cb_showPassword = new CheckBox("Show Password");
 
-
-	public SignIn() {
-		// TODO Auto-generated constructor stub
-	}
+	//Default Constructor
+	public SignIn() {}
 
 	public IsWidget getSignInPanel() {
 		/**
@@ -110,22 +113,16 @@ public class SignIn {
 	        	}
 	        	catch(Exception e)
 	        	{
-	        		
 	        	}
 	        }
-
-		
 	    });
 		loginArrow.addMouseOverHandler(new MouseOverHandler()
 		{
-
 			@Override
 			public void onMouseOver(MouseOverEvent event) 
 			{
 				loginArrow.getElement().getStyle().setCursor(Cursor.POINTER);
-				
 			}
-			
 		});
 		/**
 		 * FORM PLACEMENT AND ATTRIBUTES

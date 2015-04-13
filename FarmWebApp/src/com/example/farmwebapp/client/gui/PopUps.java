@@ -1,4 +1,13 @@
-package com.example.farmwebapp.client;
+/**
+ * 
+ * 
+ * 
+ * 
+ * @author Russell Tan
+ * @author Daryl Blancaflor
+ * 
+ */
+package com.example.farmwebapp.client.gui;
 
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
@@ -15,7 +24,6 @@ public class PopUps extends DialogBox
 	private VerticalPanel popupPanel = new VerticalPanel();
 	private HorizontalPanel pButtonPanel = new HorizontalPanel();
 	
-	
 	public void showDialog(SafeHtml message)
 	{
 		HTML lMessage = new HTML(message);
@@ -23,7 +31,6 @@ public class PopUps extends DialogBox
 		
 		ClickHandler chOkButton = new ClickHandler()
 		{
-
 			@Override
 			public void onClick(ClickEvent event) 
 			{
@@ -31,7 +38,6 @@ public class PopUps extends DialogBox
 			}
 		};
 		bOk.addClickHandler(chOkButton);
-		
 		
 		popupPanel.add(lMessage);
 		pButtonPanel.add(bOk);
@@ -51,7 +57,6 @@ public class PopUps extends DialogBox
 		
 		ClickHandler chOkButton = new ClickHandler()
 		{
-
 			@Override
 			public void onClick(ClickEvent event) 
 			{
@@ -59,7 +64,6 @@ public class PopUps extends DialogBox
 			}
 		};
 		bOk.addClickHandler(chOkButton);
-		
 		
 		popupPanel.add(lMessage);
 		pButtonPanel.add(bOk);
@@ -71,5 +75,4 @@ public class PopUps extends DialogBox
 		this.center();
 		this.show();
 	}	
-   
 }

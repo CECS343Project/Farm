@@ -1,9 +1,14 @@
-package com.example.farmwebapp.client;
+/**
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ */
+package com.example.farmwebapp.client.gui;
 
-import com.example.farmwebapp.server.PatientServiceImpl;
 import com.google.gwt.dom.client.Style.Cursor;
-import com.google.gwt.event.dom.client.ChangeEvent;
-import com.google.gwt.event.dom.client.ChangeHandler;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.dom.client.KeyDownEvent;
@@ -12,13 +17,9 @@ import com.google.gwt.event.dom.client.KeyPressEvent;
 import com.google.gwt.event.dom.client.KeyPressHandler;
 import com.google.gwt.event.dom.client.MouseOverEvent;
 import com.google.gwt.event.dom.client.MouseOverHandler;
-import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.i18n.client.DateTimeFormat;
 import com.google.gwt.user.client.ui.HTML;
-import com.google.gwt.user.client.ui.HasHorizontalAlignment;
 import com.google.gwt.user.client.ui.Image;
-import com.google.gwt.user.client.ui.KeyboardListener;
-import com.google.gwt.user.client.ui.KeyboardListenerAdapter;
 import com.google.gwt.user.client.ui.ListBox;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.IsWidget;
@@ -28,10 +29,10 @@ import com.google.gwt.user.client.ui.VerticalPanel;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.PasswordTextBox;
 import com.google.gwt.user.client.ui.HasVerticalAlignment;
-import com.google.gwt.user.client.ui.Widget;
 import com.google.gwt.user.datepicker.client.DateBox;
 
-public class SignUp {
+public class SignUp 
+{
 	private final int CELLWIDTH = 150;
 	private final int CELLHEIGHT = 15;
 
@@ -49,7 +50,6 @@ public class SignUp {
 	private PasswordTextBox ptb_password = new PasswordTextBox();
 	private PasswordTextBox ptb_passwordConfirm = new PasswordTextBox();
 	
-	
 	private ListBox lb_namePrefix = new ListBox();
 	private ListBox lb_nameSuffix = new ListBox();
 	
@@ -66,16 +66,12 @@ public class SignUp {
 	private RadioButton rb_doctor = new RadioButton("signUp", "DOCTOR");
 	private RadioButton rb_pharmacist = new RadioButton("signUp", "PHARMACIST");
 
-
-
-	public SignUp() {
-		// TODO Auto-generated constructor stub
-	}
-
-
+	//Default Constructor
+	public SignUp() {}
+	
 	@SuppressWarnings("deprecation")
-	public IsWidget getSignUpPanel() {
-		
+	public IsWidget getSignUpPanel() 
+	{	
 		rb_doctor.setChecked(true);
 		/**
 		 * PROFESSION RADIO BUTTONS
@@ -174,8 +170,8 @@ public class SignUp {
 		tb_emailConfirm.setPixelSize(CELLWIDTH, CELLHEIGHT);
 		tb_emailConfirm.setTitle("Confirm Email");
 			
-		tb_emailConfirm.addKeyDownHandler(new KeyDownHandler(){
-
+		tb_emailConfirm.addKeyDownHandler(new KeyDownHandler()
+		{
 			@Override
 			public void onKeyDown(KeyDownEvent event) {
 				String originalEmail = tb_email.getText();
@@ -187,8 +183,7 @@ public class SignUp {
 				else if(originalEmail == tb_emailConfirm.getText())
 				{
 					tb_emailConfirm.setStyleName(tb_email.getStyleName() + " correctValidator");
-				}
-						
+				}						
 			}
 		});
 		
@@ -202,10 +197,12 @@ public class SignUp {
 		tb_phoneNo.setTitle("xxx-xxx-xxxx");
 		
 		// Will only accept numerics
-	    tb_phoneNo.addKeyPressHandler(new KeyPressHandler() {
-
-	      public void onKeyPress(KeyPressEvent event) {
-	        if (!Character.isDigit(event.getCharCode())) {
+	    tb_phoneNo.addKeyPressHandler(new KeyPressHandler() 
+	    {
+	      public void onKeyPress(KeyPressEvent event) 
+	      {
+	        if (!Character.isDigit(event.getCharCode())) 
+	        {
 	          ((TextBox) event.getSource()).cancelKey();
 	        }
 	      }
@@ -237,7 +234,7 @@ public class SignUp {
 	        	if(rb_pharmacist.getValue()) s_SelectedProfession = "Pharmacist";
 	        	try
 	        	{
-	        		/*s_DBData = new HTML("User Type: " + s_SelectedProfession
+	        		s_DBData = new HTML("User Type: " + s_SelectedProfession
 	        				+"<br>Name: " + tb_nameFirst.getText() + "," + tb_nameLast.getText() + ", " + lb_nameSuffix.getSelectedItemText()
 	        				+ "<br>User name: " + tb_username.getText() + " Password: " + ptb_password.getText()
 	        				+ "<br>Email: " + tb_email.getText()
@@ -245,27 +242,21 @@ public class SignUp {
 	        				+ "<br>Phone Number: " + tb_phoneNo.getText()
 	        				+ "<br>License Number: " + tb_licenseNo.getText());
 		            PopUps popups = new PopUps();
-		            popups.showDialog("Data sent to DB:\r\n"  + s_DBData);*/
+		            popups.showDialog("Data sent to DB:\r\n"  + s_DBData);
 	        	}
 	        	catch(Exception e)
 	        	{
-	        		
 	        	}
-	        }
-
-		
+	        }		
 	    });
 		
 		signUpArrow.addMouseOverHandler(new MouseOverHandler()
 		{
-
 			@Override
 			public void onMouseOver(MouseOverEvent event) 
 			{
-				signUpArrow.getElement().getStyle().setCursor(Cursor.POINTER);
-				
-			}
-			
+				signUpArrow.getElement().getStyle().setCursor(Cursor.POINTER);	
+			}	
 		});
 		
 		/**

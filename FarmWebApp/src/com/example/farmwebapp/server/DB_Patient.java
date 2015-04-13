@@ -1,7 +1,14 @@
+/**
+ * @author branflake2267
+ * @author Russell Tan
+ */
+
+
 package com.example.farmwebapp.server;
 
 import java.sql.*;
-import com.example.farmwebapp.client.PatientData;
+
+import com.example.farmwebapp.client.dbobjects.PatientData;
 
 public class DB_Patient extends DB_Conn
 {

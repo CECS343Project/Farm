@@ -1,7 +1,14 @@
+/**
+ * 
+ * 
+ * 
+ * 
+ * @author Russell Tan
+ */
 package com.example.farmwebapp.server;
 
-import com.example.farmwebapp.client.PatientData;
-import com.example.farmwebapp.client.PatientService;
+import com.example.farmwebapp.client.dbobjects.PatientData;
+import com.example.farmwebapp.client.services.PatientService;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 
 @SuppressWarnings("serial")

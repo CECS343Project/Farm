@@ -1,18 +1,26 @@
-package com.example.farmwebapp.client;
+/**
+ * 
+ * 
+ * 
+ * 
+ * 
+ * @author Russell Tan 
+ */
+package com.example.farmwebapp.client.gui;
 
-import com.example.farmwebapp.server.PatientServiceImpl;
 import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.user.client.ui.TabLayoutPanel;
 
-public class MainGUI {
-	
+public class MainGUI 
+{	
 	private TabLayoutPanel homePage = new TabLayoutPanel(2, Unit.EM);
 	
+	//Default constructor
+	public MainGUI() {}
 
-	public MainGUI() {
-		// TODO Auto-generated constructor stub
-	}
-
+	/**
+	 * @return
+	 */
 	public TabLayoutPanel getPanel()
 	{
 		SignUp signUpPage = new SignUp();
