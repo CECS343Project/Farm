@@ -50,8 +50,8 @@ public class DB_Conn {
 
 		String db 		= "thejoeja_ePrescription_version_1";
 		String driver = "com.mysql.jdbc.Driver";
-		String user 	= "thejoeja_russell";
-		String pass 	= "teleport77";
+		String user 	= "thejoeja_client";
+		String pass 	= "farmClient6$";
 
 		
 		url = url + db;

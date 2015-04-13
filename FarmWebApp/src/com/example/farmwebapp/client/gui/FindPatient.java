@@ -50,7 +50,12 @@ public class FindPatient
 	 * Default constructor instantiates the rpc async service 
 	 * for querying the database
 	 */
-	public FindPatient() {
+	public FindPatient() 
+	{
+		lb_nameSuffix.addItem("   ");
+		lb_nameSuffix.addItem("Jr.");
+		lb_nameSuffix.addItem("Sr.");
+	
 		rpc = PatientServiceInit.initRpc();
 		getPatientsDB();
 	}
@@ -95,10 +100,6 @@ public class FindPatient
 
 		ft.setWidget(0, 2, tb_nameLast);
 		tb_nameLast.setPixelSize(CELLWIDTH, CELLHEIGHT);
-
-		lb_nameSuffix.addItem("   ");
-		lb_nameSuffix.addItem("Jr.");
-		lb_nameSuffix.addItem("Sr.");
 		
 		ft.setWidget(0, 3, lb_nameSuffix);
 		tb_nameSuffix.setPixelSize(CELLWIDTH, CELLHEIGHT);
