@@ -7,13 +7,13 @@
 
   <!-- Servlets -->
   <servlet>
-      <servlet-name>PatientServlet</servlet-name>
+      <servlet-name>patientServlet</servlet-name>
       <servlet-class>com.example.farmwebapp.server.PatientServiceImpl</servlet-class>
   </servlet>
   
   <servlet-mapping>
-      <servlet-name>PatientServlet</servlet-name>
-      <url-pattern>/farmwebapp/PatientService</url-pattern>
+      <servlet-name>patientServlet</servlet-name>
+      <url-pattern>/farmwebapp/patientService</url-pattern>
   </servlet-mapping>
   
   

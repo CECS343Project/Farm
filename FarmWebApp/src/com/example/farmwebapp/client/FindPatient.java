@@ -1,11 +1,16 @@
 package com.example.farmwebapp.client;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Arrays;
 
 import com.example.farmwebapp.server.PatientServiceImpl;
 import com.example.farmwebapp.server.PatientServiceImpl;
 import com.google.cloud.sql.jdbc.ResultSet;
+import com.google.gwt.core.client.GWT;
+import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.*;
 import com.google.gwt.user.cellview.client.*;
 import com.google.web.bindery.requestfactory.shared.RequestFactory;
@@ -25,14 +30,70 @@ public class FindPatient {
 	private TextBox tb_nameSuffix = new TextBox();
 	private TextBox tb_addressStreet = new TextBox();
 	private TextBox tb_addressCityStateZip = new TextBox();
-	private CellTable<String> ct_Results = new CellTable<String>();
+	private CellTable<PatientData> ct_Results = new CellTable<PatientData>();
 	
 	private VerticalPanel vp = new VerticalPanel();
 	private HorizontalPanel hp = new HorizontalPanel();
+	
+	private PatientServiceAsync rpc;
+	private PatientData PatientsDB[]; 
+	
 
 	public FindPatient() {
+		rpc = PatientServiceInit.initRpc();
+		getPatientsDB();
+	}
 	
-		// TODO Auto-generated constructor stub
+	public void getPatientsDB()
+	{
+		AsyncCallback<PatientData[]> callback = new AsyncCallback<PatientData[]>()
+		{
+
+			@Override
+			public void onFailure(Throwable caught) {
+				PopUps popUp = new PopUps();
+				
+				popUp.showDialog(caught.toString());
+				
+			}
+
+			@Override
+			public void onSuccess(PatientData[] result) {
+				PopUps popUp = new PopUps();
+				
+				popUp.showDialog("SUCCESS");
+				PatientsDB = result;
+				drawTable();
+			}
+
+		};
+		PopUps popUp = new PopUps();
+		
+		popUp.showDialog("Started query");
+		popUp.showDialog(GWT.getModuleBaseURL()+"patientService");
+		rpc.getPatients(callback);
+		/*rpc.getPatients(new AsyncCallback<PatientData[]>()
+				{
+
+					@Override
+					public void onFailure(Throwable caught) {
+						PopUps popUp = new PopUps();
+						
+						popUp.showDialog(caught.toString());
+						// TODO Auto-generated method stub
+						
+					}
+
+					@Override
+					public void onSuccess(PatientData[] result) {
+						
+						PatientsDB = result;
+						drawTable();
+						
+					}
+			
+				});
+				*/
 	}
 
 	public IsWidget getFindPatientPanel() {
@@ -102,68 +163,79 @@ public class FindPatient {
 		 * FORM PLACEMENT AND ATTRIBUTES
 		 */
 		ft.getElement().setAttribute("cellpadding", "10");
+				
+		vp.add(ft);
+		vp.add(hp);
 		
+		return vp;
+	}
+	public void drawTable()
+	{
+		PopUps popUp = new PopUps();
+		
+		popUp.showDialog("Made IT");
+
 		/**
 		 * CELL TABLE FIELD
 		 */
-		final List<String> l_DummyData = Arrays.asList
+		final List<PatientData> l_DummyData = Arrays.asList
 				(
-						"1",
-						"2"
+						PatientsDB
 				);
 		
-		TextColumn<String> tc_Name = new TextColumn<String>()
+		TextColumn<PatientData> tc_Name = new TextColumn<PatientData>()
 		{
 
 			@Override
-			public String getValue(String object) {
+			public String getValue(PatientData object) {
 				// TODO Auto-generated method stub
-				return "Russell Tyler Tan";
+				return object.fName;
 			}				
 		};
-		TextColumn<String> tc_Address = new TextColumn<String>()
+		TextColumn<PatientData> tc_Address = new TextColumn<PatientData>()
 		{
 
 			@Override
-			public String getValue(String object) {
+			public String getValue(PatientData object) {
 				// TODO Auto-generated method stub
-				return "3131 ShadyPark Drive, Long Beach CA 90808";
+				return object.lName;
 			}				
 		};
-		TextColumn<String> tc_Email = new TextColumn<String>()
+		TextColumn<PatientData> tc_Email = new TextColumn<PatientData>()
 		{
 
 			@Override
-			public String getValue(String object) {
+			public String getValue(PatientData object) {
 				// TODO Auto-generated method stub
-				return "test@thejoejack.com";
+				return object.fName;
 			}				
 		};
-		TextColumn<String> tc_PhoneNumber = new TextColumn<String>()
+		TextColumn<PatientData> tc_PhoneNumber = new TextColumn<PatientData>()
 		{
 
 			@Override
-			public String getValue(String object) {
+			public String getValue(PatientData object) {
 				// TODO Auto-generated method stub
-				return "562-867-5309";
+				return object.fName;
 			}				
 		};
-		TextColumn<String> tc_DOB = new TextColumn<String>()
+		TextColumn<PatientData> tc_DOB = new TextColumn<PatientData>()
 		{
 
 			@Override
-			public String getValue(String object) {
+			public String getValue(PatientData object) {
 				// TODO Auto-generated method stub
-				return "01/01/1995";
+				DateFormat df = new SimpleDateFormat("MM/dd/yyyy");
+				return df.format(object.dob);
 			}				
 		};
-		TextColumn<String> tc_LicenseNo = new TextColumn<String>()
+		TextColumn<PatientData> tc_LicenseNo = new TextColumn<PatientData>()
 		{
 
 			@Override
-			public String getValue(String object) {
+			public String getValue(PatientData object) {
 				// TODO Auto-generated method stub
-				return "6541681351681";
+				return object.pID;
 			}				
 		};		
 		ct_Results.addColumn(tc_Name, "Name");
@@ -176,10 +248,7 @@ public class FindPatient {
 		ct_Results.setRowData(l_DummyData);
 		
 		hp.add(ct_Results);
-		
-		vp.add(ft);
-		vp.add(hp);
-		
-		return vp;
+		getFindPatientPanel();
 	}
+	
 }

@@ -1,6 +1,5 @@
 package com.example.farmwebapp.server;
 
-import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -13,7 +12,7 @@ import java.sql.SQLException;
  * @author branflake2267
  *
  */
-public abstract class DB_Conn {
+public class DB_Conn {
 
 	private int serverLocation = 0;
 
@@ -23,55 +22,7 @@ public abstract class DB_Conn {
 	public DB_Conn() {
 
 		// figure out what server this application is being hosted on
-		getServerMysqlOn();
-	}
-
-	/**
-	 * What Server are we on? 
-	 * 
-	 * I use a design and production server, and hate switching everytime before I compile.
-	 * I use this to make switching to my production server automatic.
-	 */
-	private void getServerMysqlOn() {
-
-		String hostname = null;
-
-		try {
-			// Execute command
-			String command = "hostname";
-			Process child = Runtime.getRuntime().exec(command);
-
-			// Get the input stream and read from it
-			java.io.InputStream in = child.getInputStream();
-
-			hostname = "";
-			int c;
-			while ((c = in.read()) != -1) {
-				hostname += (char) c;
-			}
-			in.close();
-			child.destroy();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-
-		// debug
-		//System.out.println("hostname: " + hostname);
-
-		if (hostname.startsWith("de")) { // for design[0-9]+
-
-			this.serverLocation = 1; // desktop home office
-
-		} else if (hostname.startsWith("la")) { // for labtop -> localhost dbs
-
-			this.serverLocation = 2; // laptop
-
-		} else {
-
-			this.serverLocation = 0; // production server
-
-		}
-
+		//getServerMysqlOn();
 	}
 
 	/**
@@ -97,10 +48,10 @@ public abstract class DB_Conn {
 		// figure out what server this application is being hosted on
 		String url 		= getServerURL();
 
-		String db 		= "Bible";
+		String db 		= "thejoeja_ePrescription_version_1";
 		String driver = "com.mysql.jdbc.Driver";
-		String user 	= "test";
-		String pass 	= "test#";
+		String user 	= "thejoeja_russell";
+		String pass 	= "teleport77";
 
 		
 		url = url + db;
@@ -146,11 +97,13 @@ public abstract class DB_Conn {
 
 		} else { // production server
 
-			url = "jdbc:mysql://192.168.10.100:3306/";
+			url = "jdbc:mysql://173.254.28.65:3306/";
 
 		}
 
 		// debug
+		//PopUps pop = new PopUps();
+		//pop.showDialog("url:" + url);
 		//System.out.println("url:" + url);
 
 		return url;

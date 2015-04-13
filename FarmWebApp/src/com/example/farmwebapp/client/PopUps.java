@@ -7,7 +7,7 @@ import com.google.gwt.user.client.ui.*;
 
 public class PopUps extends DialogBox
 {
-	PopUps()
+	public PopUps()
 	{
 		super(true);
 	}
