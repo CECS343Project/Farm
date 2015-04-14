@@ -68,3 +68,44 @@
 .centerVertically{
 	top: 50%;
 }
+
+.gwt-TextArea {
+	resize: none;
+	font-size: 9.25px !important;
+}
+
+.moveSearchBox {
+	margin: 0px 0px 0px 95px;
+}
+
+.moveMedArrow {
+	margin: 10px 5px 0px 0px;
+}
+
+.moveAllergyLbl {
+	margin: 0px 0px 0px 100px;
+}
+
+.movePillBottleImage {
+	margin: 48px 0px 0px 0px;
+}
+
+.moveMedicationResults {
+	margin: 0px 0px 6px 0px;
+}
+
+.moveLabel {
+	margin: 14px 0px 0px 0px;
+}
+
+.moveSubmitBtn {
+	margin: 0px 0px 50px 0px;
+}
+
+.whiteFont {
+	color: white;
+}
+
+.whiteBackground {
+	background-color: black;
+}

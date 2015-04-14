@@ -15,9 +15,13 @@ import java.util.Arrays;
 import com.example.farmwebapp.client.dbobjects.PatientData;
 import com.example.farmwebapp.client.services.PatientServiceAsync;
 import com.example.farmwebapp.client.services.PatientServiceInit;
+import com.google.gwt.event.dom.client.KeyPressEvent;
+import com.google.gwt.event.dom.client.KeyPressHandler;
+import com.google.gwt.i18n.client.DateTimeFormat;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.*;
 import com.google.gwt.user.cellview.client.*;
+import com.google.gwt.user.datepicker.client.DateBox;
 
 public class FindPatient 
 {
@@ -25,8 +29,7 @@ public class FindPatient
 	private final int CELLHEIGHT = 15;
 
 	private FlexTable ft = new FlexTable();
-
-	private TextBox tb_dob = new TextBox();
+	
 	private TextBox tb_email = new TextBox();
 	private TextBox tb_phoneNo = new TextBox();
 	private TextBox tb_nameLast = new TextBox();
@@ -35,6 +38,9 @@ public class FindPatient
 	private TextBox tb_nameSuffix = new TextBox();
 	private TextBox tb_addressStreet = new TextBox();
 	private TextBox tb_addressCityStateZip = new TextBox();
+	
+	private final DateTimeFormat dateFormat = DateTimeFormat.getFormat("MM/dd/yyyy");
+	private DateBox db_dob = new DateBox();
 	
 	private ListBox lb_nameSuffix = new ListBox();
 	
@@ -118,10 +124,11 @@ public class FindPatient
 		/**
 		 * DATE OF BIRTH FIELD
 		 */
+		db_dob.setFormat(new DateBox.DefaultFormat(dateFormat));
 		ft.setText(3, 0, "DATE OF BIRTH");
 		ft.getCellFormatter().setVerticalAlignment(3, 0, HasVerticalAlignment.ALIGN_BOTTOM);
-		ft.setWidget(3, 1, tb_dob);
-		tb_dob.setPixelSize(CELLWIDTH, CELLHEIGHT);
+		ft.setWidget(3, 1, db_dob);
+		db_dob.setPixelSize(CELLWIDTH, CELLHEIGHT);
 
 		/**
 		 * EMAIL FIELD
@@ -138,6 +145,16 @@ public class FindPatient
 		ft.getCellFormatter().setVerticalAlignment(2, 2, HasVerticalAlignment.ALIGN_BOTTOM);
 		ft.setWidget(2, 3, tb_phoneNo);
 		tb_phoneNo.setPixelSize(CELLWIDTH, CELLHEIGHT);
+		tb_phoneNo.addKeyPressHandler(new KeyPressHandler() 
+	    {
+	      public void onKeyPress(KeyPressEvent event) 
+	      {
+	        if (!Character.isDigit(event.getCharCode())) 
+	        {
+	          ((TextBox) event.getSource()).cancelKey();
+	        }
+	      }
+	    });
 
 		/**
 		 * LICENSE NUMBER
@@ -155,7 +172,8 @@ public class FindPatient
 		//Add necessary panels 
 		vp.add(ft);
 		vp.add(hp);
-		
+		vp.setCellVerticalAlignment(hp, HasVerticalAlignment.ALIGN_MIDDLE);
+		vp.setCellHorizontalAlignment(hp, HasHorizontalAlignment.ALIGN_CENTER);
 		return vp;
 	}
 	
@@ -220,18 +238,21 @@ public class FindPatient
 		};	
 		
 		//Add the columns to the table
-		ct_Results.addColumn(tc_Name, "Name");
-		ct_Results.addColumn(tc_Address, "Address");
-		ct_Results.addColumn(tc_Email, "Email");
-		ct_Results.addColumn(tc_PhoneNumber, "PhoneNumber");
-		ct_Results.addColumn(tc_DOB, "Date of Birth");
-		ct_Results.addColumn(tc_LicenseNo, "License Number");		
+		ct_Results.addColumn(tc_Name, "");
+		ct_Results.addColumn(tc_Address, "");
+		ct_Results.addColumn(tc_Email, "");
+		ct_Results.addColumn(tc_PhoneNumber, "");
+		ct_Results.addColumn(tc_DOB, "");
+		ct_Results.addColumn(tc_LicenseNo, "");		
 		ct_Results.setRowCount(2,true);
 		ct_Results.setRowData(l_DummyData);
 		
 		//Add table to the horizontal panel
 		//Call the main panel generator again 
 		//after populating to place table in main panel
+		ct_Results.setPageSize(7);
+		ct_Results.setHeight("200px");
+		ct_Results.setWidth("640px");
 		hp.add(ct_Results);
 		getFindPatientPanel();
 	}
