@@ -74,7 +74,6 @@ public class AddPatient
 
 		ft.setWidget(0, 2, tb_nameLast);
 		tb_nameLast.setPixelSize(CELLWIDTH, CELLHEIGHT);
-
 		
 		lb_nameSuffix.addItem("   ");
 		lb_nameSuffix.addItem("Jr.");
@@ -102,7 +101,7 @@ public class AddPatient
 		ft.setText(3, 0, "DATE OF BIRTH");
 		ft.getCellFormatter().setVerticalAlignment(3, 0, HasVerticalAlignment.ALIGN_BOTTOM);
 		ft.setWidget(3, 1, db_dob);
-		tb_dob.setPixelSize(CELLWIDTH, CELLHEIGHT);
+		db_dob.setPixelSize(CELLWIDTH, CELLHEIGHT);
 
 		/**
 		 * EMAIL FIELD
@@ -135,7 +134,7 @@ public class AddPatient
 		/**
 		 * LICENSE NUMBER
 		 */
-		ft.setText(3, 2, "LICENSE NUMBER");
+		ft.setText(3, 2, "POLICY NUMBER");
 		ft.getCellFormatter().setVerticalAlignment(3, 2, HasVerticalAlignment.ALIGN_BOTTOM);
 		ft.setWidget(3, 3, tb_licenseNo);
 		tb_licenseNo.setPixelSize(CELLWIDTH, CELLHEIGHT);
@@ -220,7 +219,6 @@ public class AddPatient
 		});
 		
 		//Add all components to the vertical panel to be added to the root
-		hp.add(addPrescrip.getPanel());
 		vp.add(ft);
 		vp.add(hp);
 		
