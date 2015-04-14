@@ -14,6 +14,17 @@ public class DB_Patient extends DB_Conn
 {
 	public DB_Patient(){}
 	
+	
+	
+	public PatientData[] getPatientsBy(String field, String value) {
+		
+	//	switch field
+		
+	//case value
+		
+		return null;
+	}
+	
 	public PatientData[] getPatients()
 	{
 		String query = "SELECT * FROM view_patient_detail;";
