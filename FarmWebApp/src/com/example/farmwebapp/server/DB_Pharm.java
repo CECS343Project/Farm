@@ -1,5 +1,5 @@
 package com.example.farmwebapp.server;
 
-public class DB_Dcotor {
+public class DB_Pharm {
 
 }
