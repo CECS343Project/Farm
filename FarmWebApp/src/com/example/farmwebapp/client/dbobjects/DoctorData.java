@@ -1,5 +1,19 @@
+/**
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * @author Russell
+ *
+ */
+
 package com.example.farmwebapp.client.dbobjects;
 
-public class DoctorData {
+import com.google.gwt.user.client.rpc.IsSerializable;
+
+public class DoctorData implements IsSerializable 
+{
 
 }

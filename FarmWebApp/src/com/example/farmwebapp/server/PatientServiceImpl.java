@@ -8,7 +8,7 @@
 package com.example.farmwebapp.server;
 
 import com.example.farmwebapp.client.dbobjects.PatientData;
-import com.example.farmwebapp.client.services.PatientService;
+import com.example.farmwebapp.client.services.patient.PatientService;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 
 @SuppressWarnings("serial")

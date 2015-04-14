@@ -1,5 +1,19 @@
+/**
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * @author Russell
+ *
+ */
+
 package com.example.farmwebapp.client.dbobjects;
 
-public class UserData {
+import com.google.gwt.user.client.rpc.IsSerializable;
+
+public class UserData implements IsSerializable 
+{
 
 }

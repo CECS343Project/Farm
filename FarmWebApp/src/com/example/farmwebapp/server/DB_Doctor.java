@@ -1,5 +1,12 @@
 package com.example.farmwebapp.server;
 
-public class DB_Doctor {
+import com.example.farmwebapp.client.dbobjects.DoctorData;
+
+public class DB_Doctor 
+{
+	public DoctorData[] getDoctors()
+	{
+		return null;
+	}
 
 }

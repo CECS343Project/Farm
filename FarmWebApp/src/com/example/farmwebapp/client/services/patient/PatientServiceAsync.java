@@ -6,7 +6,7 @@
  * 
  * @author Russell Tan
  */
-package com.example.farmwebapp.client.services;
+package com.example.farmwebapp.client.services.patient;
 
 import com.example.farmwebapp.client.dbobjects.PatientData;
 import com.google.gwt.user.client.rpc.AsyncCallback;
