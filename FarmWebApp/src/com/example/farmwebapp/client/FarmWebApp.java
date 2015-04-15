@@ -30,6 +30,6 @@ public class FarmWebApp implements EntryPoint
 		
 		//Places gui into the root panel of the client screen
 		RootLayoutPanel rootPanel = RootLayoutPanel.get();
-	    rootPanel.add(gui.getPanel());
+		rootPanel.add(gui.getPanel());
 	}
 }

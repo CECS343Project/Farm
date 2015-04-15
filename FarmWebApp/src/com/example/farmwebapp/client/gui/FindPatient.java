@@ -250,8 +250,7 @@ public class FindPatient
 		//Add table to the horizontal panel
 		//Call the main panel generator again 
 		//after populating to place table in main panel
-		ct_Results.setPageSize(7);
-		ct_Results.setHeight("200px");
+		ct_Results.setPageSize(14);
 		ct_Results.setWidth("640px");
 		hp.add(ct_Results);
 		getFindPatientPanel();

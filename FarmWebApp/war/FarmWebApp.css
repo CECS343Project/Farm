@@ -106,6 +106,7 @@
 	color: white;
 }
 
-.whiteBackground {
-	background-color: black;
+.redBackground {
+	border: none;
+	background-color: #E60000;
 }
