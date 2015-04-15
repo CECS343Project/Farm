@@ -118,3 +118,11 @@
 .moveWarningSign {
 	margin: 0px 0px -2px 0px;
 }
+
+.moveAddMedArrow {
+	margin: 0px 5px 0px 0px;
+}
+
+.moveSubmitBtn {
+	margin: 0px 0px 0px 10px;
+}

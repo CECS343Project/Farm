@@ -181,6 +181,7 @@ public class PrescribeMeds {
 		//Medication button [Design Properties]
 		img_addMeds.setPixelSize(25, 25);
 		img_addMeds.getElement().setAttribute("align", "right");
+		img_addMeds.setStyleName("moveAddMedArrow");
 		
 		//Drug allergy information [Design Properties]
 		ta_drugAllergies.setPixelSize(200, 100);
@@ -255,7 +256,7 @@ public class PrescribeMeds {
 		lbl_medicationList.addStyleName("whiteFont");
 		
 		//Added medication [Design Properties]
-		ta_addedMedication.setPixelSize(315, 100);
+		ta_addedMedication.setPixelSize(300, 100);
 		
 		//Added medication properties
 		vp_rightContainer.add(lbl_medicationList);
@@ -265,12 +266,12 @@ public class PrescribeMeds {
 		//Dosage information [Design Properties]
 		hp_dosageInfo.setSpacing(5);
 		hp_medDuration.setSpacing(5);
-		lb_time.setPixelSize(80, 23);
-		lb_units.setPixelSize(80, 23);
-		tb_notes.setPixelSize(240, 145);
+		lb_time.setPixelSize(73, 23);
+		lb_units.setPixelSize(73, 23);
+		tb_notes.setPixelSize(220, 145);
 		btn_submit.setPixelSize(80, 80);
-		db_endDate.setPixelSize(107, 15);
-		db_startDate.setPixelSize(107, 15);
+		db_endDate.setPixelSize(100, 15);
+		db_startDate.setPixelSize(100, 15);
 		tb_dosageField.setPixelSize(50, 10);
 		lbl_notes.setStyleName("whiteFont");
 		lbl_submit.setStyleName("whiteFont");
@@ -322,6 +323,7 @@ public class PrescribeMeds {
 		vp_btnSubmit.setCellHorizontalAlignment(lbl_submit, HasHorizontalAlignment.ALIGN_CENTER);
 		
 		hp_notes.add(vp_btnSubmit);
+		vp_btnSubmit.setStyleName("moveSubmitBtn");
 		hp_notes.setCellVerticalAlignment(vp_btnSubmit, HasVerticalAlignment.ALIGN_BOTTOM);
 		
 		//Add to main
