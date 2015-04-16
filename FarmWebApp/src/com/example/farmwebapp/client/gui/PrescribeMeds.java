@@ -4,8 +4,8 @@ import java.util.Arrays;
 import java.util.List;
 
 import com.example.farmwebapp.client.dbobjects.PatientData;
-import com.example.farmwebapp.client.services.PatientServiceAsync;
-import com.example.farmwebapp.client.services.PatientServiceInit;
+import com.example.farmwebapp.client.services.patient.PatientServiceAsync;
+import com.example.farmwebapp.client.services.patient.PatientServiceInit;
 import com.google.gwt.dom.client.Style.Cursor;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
