@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="com.google.gwt.eclipse.core.GWT_CONTAINER"/>
+<<<<<<< HEAD
+	<classpathentry kind="con" path="com.google.appengine.eclipse.core.GAE_CONTAINER"/>
+	<classpathentry kind="lib" path="C:/Users/Russell/git/farm/FarmWebApp/war/WEB-INF/lib/mysql-connector.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7">
+=======
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8">
+>>>>>>> 7a5a5215b1cea639e6b3c8de588500dd682ea38f
+		<attributes>
+			<attribute name="owner.project.facets" value="java"/>
+		</attributes>
+	</classpathentry>
+<<<<<<< HEAD
+=======
+	<classpathentry kind="con" path="com.google.appengine.eclipse.core.GAE_CONTAINER"/>
+	<classpathentry kind="lib" path="C:/Users/Russell/git/farm/FarmWebApp/war/WEB-INF/lib/mysql-connector.jar"/>
+>>>>>>> 7a5a5215b1cea639e6b3c8de588500dd682ea38f
+	<classpathentry kind="lib" path="C:/Users/Russell/git/farm/FarmWebApp/war/WEB-INF/lib/mysql-connector-java-5.1.18-bin.jar"/>
+	<classpathentry kind="output" path="war/WEB-INF/classes"/>
+</classpath>

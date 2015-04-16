@@ -13,15 +13,16 @@ import java.util.List;
 import java.util.Arrays;
 
 import com.example.farmwebapp.client.dbobjects.PatientData;
-import com.example.farmwebapp.client.services.patient.PatientServiceAsync;
-import com.example.farmwebapp.client.services.patient.PatientServiceInit;
-import com.google.gwt.event.dom.client.KeyDownEvent;
-import com.google.gwt.event.dom.client.KeyDownHandler;
+<<<<<<< HEAD
+import com.example.farmwebapp.client.services.PatientServiceAsync;
+import com.example.farmwebapp.client.services.PatientServiceInit;
 import com.google.gwt.event.dom.client.KeyPressEvent;
 import com.google.gwt.event.dom.client.KeyPressHandler;
-import com.google.gwt.event.logical.shared.ValueChangeEvent;
-import com.google.gwt.event.logical.shared.ValueChangeHandler;
 import com.google.gwt.i18n.client.DateTimeFormat;
+=======
+import com.example.farmwebapp.client.services.patient.PatientServiceAsync;
+import com.example.farmwebapp.client.services.patient.PatientServiceInit;
+>>>>>>> 7a5a5215b1cea639e6b3c8de588500dd682ea38f
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.*;
 import com.google.gwt.user.cellview.client.*;
@@ -67,7 +68,7 @@ public class FindPatient
 		lb_nameSuffix.addItem("Sr.");
 	
 		rpc = PatientServiceInit.initRpc();
-		//getPatientsDB();
+		getPatientsDB();
 	}
 	
 	/**
@@ -94,27 +95,6 @@ public class FindPatient
 		};
 		rpc.getPatients(callback);
 	}
-	public void getPatientsDB(String field, String value) 
-	{
-		AsyncCallback<PatientData[]> callback = new AsyncCallback<PatientData[]>()
-		{
-			@Override
-			public void onFailure(Throwable caught) {
-				PopUps popUp = new PopUps();		
-				popUp.showDialog(caught.toString());
-			}
-
-			@Override
-			public void onSuccess(PatientData[] result) {
-				PatientsDB = result;
-
-				//Populates the celltable
-				drawTable();
-			}
-		};
-		rpc.getPatients(field,value,callback);
-		
-	}
 
 	/**
 	 * @return Vertical panel with necessary text-boxes to search for a patient
@@ -128,17 +108,6 @@ public class FindPatient
 		ft.getCellFormatter().setVerticalAlignment(0, 0, HasVerticalAlignment.ALIGN_BOTTOM);
 		ft.setWidget(0, 1, tb_nameFirst);
 		tb_nameFirst.setPixelSize(CELLWIDTH, CELLHEIGHT);
-		
-		tb_nameFirst.addValueChangeHandler(new ValueChangeHandler<String>()
-			{
-
-			@Override
-			public void onValueChange(ValueChangeEvent<String> event) 
-			{
-				getPatientsDB("fName",tb_nameFirst.getText());
-				
-			}		
-		});
 
 		ft.setWidget(0, 2, tb_nameLast);
 		tb_nameLast.setPixelSize(CELLWIDTH, CELLHEIGHT);
@@ -213,8 +182,6 @@ public class FindPatient
 		return vp;
 	}
 	
-	
-
 	/**
 	 * Populates the celltable using the PatientData class 
 	 * and the result of the query(PatientData[]) 
