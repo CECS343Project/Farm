@@ -54,7 +54,7 @@ public class FindPatient
 	private HorizontalPanel hp = new HorizontalPanel();
 	
 	private PatientServiceAsync rpc;
-	private PatientData PatientsDB[]; 
+	private PatientData[] patients; 
 	
 	/**
 	 * Default constructor instantiates the rpc async service 
@@ -65,55 +65,14 @@ public class FindPatient
 		lb_nameSuffix.addItem("   ");
 		lb_nameSuffix.addItem("Jr.");
 		lb_nameSuffix.addItem("Sr.");
-	
-		rpc = PatientServiceInit.initRpc();
-		//getPatientsDB();
 	}
-	
-	/**
-	 * Sends an asynchronous call to the database and 
-	 * populates the celltable with the results when query succeeds
-	 */
-	public void getPatientsDB()
+
+	public FindPatient(PatientData[] patientsDB2) 
 	{
-		AsyncCallback<PatientData[]> callback = new AsyncCallback<PatientData[]>()
-		{
-			@Override
-			public void onFailure(Throwable caught) {
-				PopUps popUp = new PopUps();		
-				popUp.showDialog(caught.toString());
-			}
-
-			@Override
-			public void onSuccess(PatientData[] result) {
-				PatientsDB = result;
-
-				//Populates the celltable
-				drawTable();
-			}
-		};
-		rpc.getPatients(callback);
-	}
-	public void getPatientsDB(String field, String value) 
-	{
-		AsyncCallback<PatientData[]> callback = new AsyncCallback<PatientData[]>()
-		{
-			@Override
-			public void onFailure(Throwable caught) {
-				PopUps popUp = new PopUps();		
-				popUp.showDialog(caught.toString());
-			}
-
-			@Override
-			public void onSuccess(PatientData[] result) {
-				PatientsDB = result;
-
-				//Populates the celltable
-				drawTable();
-			}
-		};
-		rpc.getPatients(field,value,callback);
-		
+		lb_nameSuffix.addItem("   ");
+		lb_nameSuffix.addItem("Jr.");
+		lb_nameSuffix.addItem("Sr.");
+		patients = patientsDB2;
 	}
 
 	/**
@@ -135,16 +94,61 @@ public class FindPatient
 			@Override
 			public void onValueChange(ValueChangeEvent<String> event) 
 			{
-				getPatientsDB("fName",tb_nameFirst.getText());
+				//getPatientsDB("fName",tb_nameFirst.getText());
+				PatientData[] temp = new PatientData[patients.length];
+				int count = 0;
+				//drawTable(temp);
+				PopUps pop = new PopUps();
 				
+				int k;
+				for(k = 0; k < patients.length; k++)
+				{
+					pop.showDialog(patients[k].fName);
+					if(patients[k].fName == tb_nameFirst.getText())
+					{
+						pop.showDialog("AAAAAAAAAAHHHHHHHHHHHH");
+						temp[k] = patients[k];
+						
+						
+					}
+					else
+					{
+						temp[k] = null;
+					}
+				}
+				drawTable(temp);
 			}		
 		});
 
 		ft.setWidget(0, 2, tb_nameLast);
 		tb_nameLast.setPixelSize(CELLWIDTH, CELLHEIGHT);
+		tb_nameLast.addValueChangeHandler(new ValueChangeHandler<String>()
+				{
+
+				@Override
+				public void onValueChange(ValueChangeEvent<String> event) 
+				{
+					//getPatientsDB("lname",tb_nameLast.getText());
+					//PatientData[] temp = patients;
+					//drawTable(temp);
+					drawTable(patients);
+				}		
+			});
 		
 		ft.setWidget(0, 3, lb_nameSuffix);
 		tb_nameSuffix.setPixelSize(CELLWIDTH, CELLHEIGHT);
+		tb_nameSuffix.addValueChangeHandler(new ValueChangeHandler<String>()
+				{
+
+				@Override
+				public void onValueChange(ValueChangeEvent<String> event) 
+				{
+					//getPatientsDB("fName",tb_nameSuffix.getText());
+					//PatientData[] temp = patients;
+					//drawTable(temp);
+					drawTable(patients);
+				}		
+			});
 
 		/**
 		 * ADDRESS FIELD
@@ -153,9 +157,35 @@ public class FindPatient
 		ft.getCellFormatter().setVerticalAlignment(1, 0, HasVerticalAlignment.ALIGN_BOTTOM);
 		ft.setWidget(1, 1, tb_addressStreet);
 		tb_addressStreet.setPixelSize(CELLWIDTH, CELLHEIGHT);
+		tb_addressStreet.addValueChangeHandler(new ValueChangeHandler<String>()
+				{
+
+				@Override
+				public void onValueChange(ValueChangeEvent<String> event) 
+				{
+					//getPatientsDB("address",tb_addressStreet.getText());
+					//PatientData[] temp = patients;
+					//drawTable(temp);
+					drawTable(patients);
+					
+				}		
+			});
 
 		ft.setWidget(2, 1, tb_addressCityStateZip);
 		tb_addressCityStateZip.setPixelSize(CELLWIDTH, CELLHEIGHT);
+		tb_addressCityStateZip.addValueChangeHandler(new ValueChangeHandler<String>()
+				{
+
+				@Override
+				public void onValueChange(ValueChangeEvent<String> event) 
+				{
+					//getPatientsDB("address",tb_addressCityStateZip.getText());
+					//PatientData[] temp = patients;
+					//drawTable(temp);
+					drawTable(patients);
+					
+				}		
+			});
 
 		/**
 		 * DATE OF BIRTH FIELD
@@ -173,6 +203,19 @@ public class FindPatient
 		ft.getCellFormatter().setVerticalAlignment(1, 2, HasVerticalAlignment.ALIGN_BOTTOM);
 		ft.setWidget(1, 3, tb_email);
 		tb_email.setPixelSize(CELLWIDTH, CELLHEIGHT);
+		tb_email.addValueChangeHandler(new ValueChangeHandler<String>()
+				{
+
+				@Override
+				public void onValueChange(ValueChangeEvent<String> event) 
+				{
+					//getPatientsDB("fname",tb_email.getText());
+					//PatientData[] temp = patients;
+					//drawTable(temp);
+					drawTable(patients);
+					
+				}		
+			});
 		
 		/**
 		 * PHONE NUMBER FIELD
@@ -181,6 +224,19 @@ public class FindPatient
 		ft.getCellFormatter().setVerticalAlignment(2, 2, HasVerticalAlignment.ALIGN_BOTTOM);
 		ft.setWidget(2, 3, tb_phoneNo);
 		tb_phoneNo.setPixelSize(CELLWIDTH, CELLHEIGHT);
+		tb_phoneNo.addValueChangeHandler(new ValueChangeHandler<String>()
+				{
+
+				@Override
+				public void onValueChange(ValueChangeEvent<String> event) 
+				{
+					//getPatientsDB("cellphone",tb_phoneNo.getText());
+					//PatientData[] temp = patients;
+					//drawTable(temp);
+					drawTable(patients);
+					
+				}		
+			});
 		tb_phoneNo.addKeyPressHandler(new KeyPressHandler() 
 	    {
 	      public void onKeyPress(KeyPressEvent event) 
@@ -195,16 +251,26 @@ public class FindPatient
 		/**
 		 * LICENSE NUMBER
 		 */
-		ft.setText(3, 2, "LICENSE NUMBER");
+		ft.setText(3, 2, "POLICY NUMBER");
 		ft.getCellFormatter().setVerticalAlignment(3, 2, HasVerticalAlignment.ALIGN_BOTTOM);
 		ft.setWidget(3, 3, tb_licenseNo);
 		tb_licenseNo.setPixelSize(CELLWIDTH, CELLHEIGHT);
+		tb_licenseNo.addValueChangeHandler(new ValueChangeHandler<String>()
+				{
+
+				@Override
+				public void onValueChange(ValueChangeEvent<String> event) 
+				{
+					//getPatientsDB("fName",tb_licenseNo.getText());
+					PatientData[] temp = patients;
+					drawTable(temp);
+				}		
+			});
 		
 		/**
 		 * FORM PLACEMENT AND ATTRIBUTES
 		 */
 		ft.getElement().setAttribute("cellpadding", "10");
-
 		//Add necessary panels 
 		vp.add(ft);
 		vp.add(hp);
@@ -219,19 +285,19 @@ public class FindPatient
 	 * Populates the celltable using the PatientData class 
 	 * and the result of the query(PatientData[]) 
 	 */
-	public void drawTable()
+	public void drawTable(PatientData[] temp)
 	{
 		/**
 		 * CELL TABLE FIELD
 		 */
-		final List<PatientData> l_DummyData = Arrays.asList(PatientsDB);
+		final List<PatientData> l_DummyData = Arrays.asList(temp);
 		
 		TextColumn<PatientData> tc_Name = new TextColumn<PatientData>()
 		{
 			@Override
 			public String getValue(PatientData object) 
 			{
-				return object.fName;
+				return ""+object.lName+", "+object.fName;
 			}				
 		};
 		TextColumn<PatientData> tc_Address = new TextColumn<PatientData>()
@@ -239,7 +305,7 @@ public class FindPatient
 			@Override
 			public String getValue(PatientData object)
 			{
-				return object.lName;
+				return object.address;
 			}				
 		};
 		TextColumn<PatientData> tc_Email = new TextColumn<PatientData>()
@@ -247,7 +313,7 @@ public class FindPatient
 			@Override
 			public String getValue(PatientData object) 
 			{
-				return object.fName;
+				return object.testResult;
 			}				
 		};
 		TextColumn<PatientData> tc_PhoneNumber = new TextColumn<PatientData>()
@@ -255,7 +321,18 @@ public class FindPatient
 			@Override
 			public String getValue(PatientData object) 
 			{
-				return object.fName;
+				if(object.cellPhone == null)
+				{
+					return object.cellPhone;
+				}
+				else if(object.homePhone == null)
+				{
+					return object.homePhone;
+				}
+				else
+				{
+					return "No number provided";
+				}
 			}				
 		};
 		TextColumn<PatientData> tc_DOB = new TextColumn<PatientData>()

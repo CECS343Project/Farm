@@ -21,6 +21,8 @@ public class PatientData implements IsSerializable
 	public String city;
 	public String state;
 	public String zip;
+	public String cellPhone;
+	public String homePhone;
 	public Date dob;
 	public String complaint;
 	public String history;
@@ -29,4 +31,5 @@ public class PatientData implements IsSerializable
 	public String sugicalHist;
 	public String testResult;
 	public String treatmentPlan;
+	
 }

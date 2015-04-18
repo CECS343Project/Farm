@@ -41,6 +41,8 @@ public class DB_Patient extends DB_Conn
 				patientData[k].city = result.getString(5);
 				patientData[k].state = result.getString(6);
 				patientData[k].zip = result.getString(7);
+				patientData[k].cellPhone = result.getString(8);
+				patientData[k].homePhone = result.getString(9);
 				patientData[k].dob = result.getDate(10);
 				patientData[k].complaint = result.getString(11);
 				patientData[k].history = result.getString(12);
