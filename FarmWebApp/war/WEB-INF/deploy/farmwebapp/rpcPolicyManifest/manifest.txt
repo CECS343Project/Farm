@@ -1,3 +1,2 @@
 # Module farmwebapp
 # RPC service class, partial path of RPC policy file
-com.example.farmwebapp.client.services.PatientService, 8BAD8C598FBD77D2E94C5C4FF0755907.gwt.rpc

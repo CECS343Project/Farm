@@ -24,8 +24,8 @@ import com.google.gwt.event.dom.client.MouseOverHandler;
 import com.google.gwt.user.client.ui.HasVerticalAlignment;
 import com.example.farmwebapp.client.dbobjects.PatientData;
 import com.google.gwt.user.client.ui.HasHorizontalAlignment;
-import com.example.farmwebapp.client.services.PatientServiceInit;
-import com.example.farmwebapp.client.services.PatientServiceAsync;
+import com.example.farmwebapp.client.services.patient.PatientServiceInit;
+import com.example.farmwebapp.client.services.patient.PatientServiceAsync;
 
 public class PrescribeMeds {
 	private FlexTable ft = new FlexTable();
