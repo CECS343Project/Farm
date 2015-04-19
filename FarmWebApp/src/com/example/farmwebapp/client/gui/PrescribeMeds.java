@@ -1,32 +1,31 @@
 package com.example.farmwebapp.client.gui;
 
-import java.util.Arrays;
 import java.util.List;
-
-import com.example.farmwebapp.client.dbobjects.PatientData;
-import com.example.farmwebapp.client.services.PatientServiceAsync;
-import com.example.farmwebapp.client.services.PatientServiceInit;
-import com.google.gwt.dom.client.Style.Cursor;
-import com.google.gwt.event.dom.client.ClickEvent;
-import com.google.gwt.event.dom.client.ClickHandler;
-import com.google.gwt.event.dom.client.MouseOverEvent;
-import com.google.gwt.event.dom.client.MouseOverHandler;
-import com.google.gwt.i18n.client.DateTimeFormat;
-import com.google.gwt.user.cellview.client.CellTable;
-import com.google.gwt.user.cellview.client.TextColumn;
-import com.google.gwt.user.client.rpc.AsyncCallback;
-import com.google.gwt.user.client.ui.HasHorizontalAlignment;
-import com.google.gwt.user.client.ui.HasVerticalAlignment;
+import java.util.Arrays;
 import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.Label;
-import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.ListBox;
+import com.google.gwt.user.client.ui.TextBox;
+import com.google.gwt.dom.client.Style.Cursor;
+import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.TextArea;
 import com.google.gwt.user.client.ui.FlexTable;
-import com.google.gwt.user.client.ui.TextBox;
-import com.google.gwt.user.client.ui.HorizontalPanel;
+import com.google.gwt.i18n.client.DateTimeFormat;
+import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.user.client.ui.VerticalPanel;
+import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.user.client.rpc.AsyncCallback;
+import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.datepicker.client.DateBox;
+import com.google.gwt.user.cellview.client.CellTable;
+import com.google.gwt.user.cellview.client.TextColumn;
+import com.google.gwt.event.dom.client.MouseOverEvent;
+import com.google.gwt.event.dom.client.MouseOverHandler;
+import com.google.gwt.user.client.ui.HasVerticalAlignment;
+import com.example.farmwebapp.client.dbobjects.PatientData;
+import com.google.gwt.user.client.ui.HasHorizontalAlignment;
+import com.example.farmwebapp.client.services.PatientServiceInit;
+import com.example.farmwebapp.client.services.PatientServiceAsync;
 
 public class PrescribeMeds {
 	private FlexTable ft = new FlexTable();

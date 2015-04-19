@@ -31,8 +31,10 @@ public class MainGUI
 		SignIn signInPage = new SignIn();
 		Doctor doctorMain = new Doctor();
 		Pharmacy pharmacyMain = new Pharmacy();
+		PrintMeds printMedication = new PrintMeds();
 		AddPatient addPatientPanel = new AddPatient();
 		FindPatient findPatientPanel = new FindPatient();
+		PharmacyUpdate pharmacyUpdate = new PharmacyUpdate();
 		PrescribeMeds prescribeMedicaiton = new PrescribeMeds();
 		
 		homePage.setPixelSize(700, 440);
@@ -42,13 +44,16 @@ public class MainGUI
 		homePage.add(doctorMain.getDoctorPanel(), "DOCTOR");
 		homePage.add(pharmacyMain.getPharmacyPanel(), "PHARMACY");
 		homePage.add(findPatientPanel.getFindPatientPanel(), "FIND PATIENT");
+		//homePage.add(pharmacyUpdate.getPharmacyUpdatePanel(), "UPDATE");
 		homePage.add(addPatientPanel.getAddPatientPanel(), "ADD PATIENT");
 		homePage.add(prescribeMedicaiton.getPrescribeMedsPanel(), "PRESCRIBE");
+		homePage.add(printMedication.getPrintMedsPanel(), "PRINT");
 		
 		homePage.addSelectionHandler(new SelectionHandler<Integer>() {
 			@Override
 			public void onSelection(SelectionEvent<Integer> event) {
-				if (homePage.getSelectedIndex() == 4 || homePage.getSelectedIndex() == 6) {
+				if (homePage.getSelectedIndex() == 4 || homePage.getSelectedIndex() == 6 
+						|| homePage.getSelectedIndex() == 7) {
 					homePage.setPixelSize(700, 600);
 			    }
 				else {

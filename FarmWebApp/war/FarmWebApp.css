@@ -111,6 +111,11 @@
 	background-color: #E60000;
 }
 
+.whiteBackground {
+	border: none;
+	background-color: white;
+}
+
 .movePillBottle {
 	margin: 0px 0px -7px 0px;
 }
@@ -125,4 +130,8 @@
 
 .moveSubmitBtn {
 	margin: 0px 0px 0px 10px;
+}
+
+.moveRadioBtn {
+	margin: 0px 0px 0px 40px;
 }
