@@ -97,7 +97,7 @@ public class DB_Conn {
 
 		} else { // production server
 
-			url = "jdbc:mysql://173.254.28.65:3306/";
+			url = "jdbc:mysql:localhost:3306/";
 
 		}
 
