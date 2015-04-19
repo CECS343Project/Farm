@@ -358,7 +358,7 @@ public class FindPatient extends MainGUI
 		//Call the main panel generator again 
 		//after populating to place table in main panel
 		ct_Results.setPageSize(14);
-		ct_Results.setWidth("640px");
+		ct_Results.setWidth("642px");
 		hp.add(ct_Results);
 		getFindPatientPanel();
 	}

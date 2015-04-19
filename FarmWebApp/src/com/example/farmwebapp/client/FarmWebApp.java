@@ -37,10 +37,12 @@ public class FarmWebApp implements EntryPoint
 	
 	public void refreshUI()
 	{
+		
 		gui = new MainGUI();
 		
 		//Places gui into the root panel of the client screen
 		RootLayoutPanel rootPanel = RootLayoutPanel.get();
+		rootPanel.clear();
 		
 		if(userType == "null")
 		{

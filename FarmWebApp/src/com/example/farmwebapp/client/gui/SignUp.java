@@ -79,6 +79,7 @@ public class SignUp
 		hp_profession.add(rb_doctor);
 		hp_profession.add(rb_pharmacist);
 		hp_profession.getElement().setAttribute("cellpadding", "5");
+		rb_pharmacist.setStyleName("moveRadioBtn");
 		vp.add(hp_profession);
 
 		/**
