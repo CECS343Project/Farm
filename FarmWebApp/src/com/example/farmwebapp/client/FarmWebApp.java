@@ -18,7 +18,9 @@ import com.google.gwt.user.client.ui.RootLayoutPanel;
 
 public class FarmWebApp implements EntryPoint 
 {	
+	
 	private MainGUI gui;
+	private String userType = "null";
 	
 	/**
 	 * Defines the entry point of the web application
@@ -31,5 +33,31 @@ public class FarmWebApp implements EntryPoint
 		//Places gui into the root panel of the client screen
 		RootLayoutPanel rootPanel = RootLayoutPanel.get();
 		rootPanel.add(gui.getPanel());
+	}
+	
+	public void refreshUI()
+	{
+		gui = new MainGUI();
+		
+		//Places gui into the root panel of the client screen
+		RootLayoutPanel rootPanel = RootLayoutPanel.get();
+		
+		if(userType == "null")
+		{
+			rootPanel.add(gui.getPanel());
+		}
+		else if(userType == "doctor")
+		{
+			rootPanel.add(gui.getPanelDoc());
+		}
+		else if(userType == "pharmacist")
+		{
+			rootPanel.add(gui.getPanelPharm());
+		}
+	}
+
+	public void setUserType(String string) 
+	{
+		userType = string;
 	}
 }

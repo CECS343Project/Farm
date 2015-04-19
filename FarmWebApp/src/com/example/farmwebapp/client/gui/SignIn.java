@@ -22,7 +22,7 @@ import com.google.gwt.user.client.ui.PasswordTextBox;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.HasVerticalAlignment;
 
-public class SignIn 
+public class SignIn extends MainGUI
 {
 	private final int CELLWIDTH = 200;
 	private final int CELLHEIGHT = 15;
@@ -109,7 +109,23 @@ public class SignIn
 	        	try
 	        	{
 		            PopUps popups = new PopUps();
-		            popups.showDialog("Welcome "  + tb_userName.getText() + "!");
+		            //popups.showDialog("Welcome "  + tb_userName.getText() + "!");
+		            removeLogins();
+		            if(tb_userName.getText().charAt(0) == 'p')
+		            {
+		            	placeInRoot("pharmacist");
+		            }
+		            else if(tb_userName.getText().charAt(0) == 'd')
+		            {
+		            	placeInRoot("doctor");
+		            }
+		            else
+		            {
+		            	popups.showDialog("Not a valid username!!!!");
+		            	placeInRoot("null");
+		            }
+		            
+		            
 	        	}
 	        	catch(Exception e)
 	        	{
@@ -133,4 +149,23 @@ public class SignIn
 		hp.add(ft);
 		return hp;
 	}
+	
+	public void placeInRoot(String username)
+	{
+		FindPatient find = new FindPatient();
+		//super.getHomePage().add(find.getFindPatientPanel(),"FIND PATIENT");
+		super.setUserType(username);
+		super.refreshUI();
+	}
+	
+	public void removeLogins()
+	{
+		this.getSignInPanel().asWidget().removeFromParent();
+	}
+	
+	
+	
+	
+	
+	
 }

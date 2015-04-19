@@ -27,7 +27,7 @@ import com.google.gwt.user.client.ui.*;
 import com.google.gwt.user.cellview.client.*;
 import com.google.gwt.user.datepicker.client.DateBox;
 
-public class FindPatient 
+public class FindPatient extends MainGUI
 {
 	private final int CELLWIDTH = 150;
 	private final int CELLHEIGHT = 15;
@@ -65,16 +65,8 @@ public class FindPatient
 		lb_nameSuffix.addItem("   ");
 		lb_nameSuffix.addItem("Jr.");
 		lb_nameSuffix.addItem("Sr.");
+		patients = super.getPatients();
 	}
-
-	public FindPatient(PatientData[] patientsDB2) 
-	{
-		lb_nameSuffix.addItem("   ");
-		lb_nameSuffix.addItem("Jr.");
-		lb_nameSuffix.addItem("Sr.");
-		patients = patientsDB2;
-	}
-
 	/**
 	 * @return Vertical panel with necessary text-boxes to search for a patient
 	 */
