@@ -155,7 +155,7 @@ public class SignIn extends MainGUI
 		FindPatient find = new FindPatient();
 		//super.getHomePage().add(find.getFindPatientPanel(),"FIND PATIENT");
 		super.setUserType(username);
-		super.refreshUI();
+		super.refreshUI(username);
 	}
 	
 	public void removeLogins()

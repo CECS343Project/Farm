@@ -20,7 +20,7 @@ public class FarmWebApp implements EntryPoint
 {	
 	
 	private MainGUI gui;
-	private String userType = "null";
+	private String userTypeGlobal = "null";
 	
 	/**
 	 * Defines the entry point of the web application
@@ -35,7 +35,7 @@ public class FarmWebApp implements EntryPoint
 		rootPanel.add(gui.getPanel());
 	}
 	
-	public void refreshUI()
+	public void refreshUI(String userType)
 	{
 		
 		gui = new MainGUI();
@@ -57,9 +57,31 @@ public class FarmWebApp implements EntryPoint
 			rootPanel.add(gui.getPanelPharm());
 		}
 	}
-
-	public void setUserType(String string) 
+	public void refreshUI(String userType,int index)
 	{
-		userType = string;
+		
+		gui = new MainGUI(index);
+		
+		//Places gui into the root panel of the client screen
+		RootLayoutPanel rootPanel = RootLayoutPanel.get();
+		rootPanel.clear();
+		
+		if(userType == "null")
+		{
+			rootPanel.add(gui.getPanel());
+		}
+		else if(userType == "doctor")
+		{
+			rootPanel.add(gui.getPanelDoc());
+		}
+		else if(userType == "pharmacist")
+		{
+			rootPanel.add(gui.getPanelPharm());
+		}
+	}
+
+	public void setUserType(String user) 
+	{
+		userTypeGlobal = user;
 	}
 }

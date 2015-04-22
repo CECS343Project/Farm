@@ -9,6 +9,8 @@
 package com.example.farmwebapp.client.gui;
 
 import com.google.gwt.dom.client.Style.Cursor;
+import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.dom.client.MouseOverEvent;
 import com.google.gwt.event.dom.client.MouseOverHandler;
 import com.google.gwt.user.client.ui.Image;
@@ -16,8 +18,9 @@ import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.HasVerticalAlignment;
+import com.google.gwt.user.client.ui.TabLayoutPanel;
 
-public class Doctor {
+public class Doctor extends MainGUI {
 	
 	private FlexTable ft = new FlexTable();
 	private HorizontalPanel hp = new HorizontalPanel();
@@ -68,6 +71,15 @@ public class Doctor {
 				addPatient.getElement().getStyle().setCursor(Cursor.POINTER);		
 			}
 		});
+		addPatient.addClickHandler(new ClickHandler(){
+
+			@Override
+			public void onClick(ClickEvent event) 
+			{
+				setSelectedIndex(1);
+			}
+			
+		});
 		
 		/**
 		 * FIND PATIENT
@@ -89,7 +101,15 @@ public class Doctor {
 			}
 			
 		});
-		
+		findPatient.addClickHandler(new ClickHandler(){
+
+			@Override
+			public void onClick(ClickEvent event) 
+			{
+				setSelectedIndex(2);
+			}
+			
+		});
 		/**
 		 * SETTINGS
 		 */
@@ -107,6 +127,15 @@ public class Doctor {
 			{
 				settings.getElement().getStyle().setCursor(Cursor.POINTER);
 				
+			}
+			
+		});
+		settings.addClickHandler(new ClickHandler(){
+
+			@Override
+			public void onClick(ClickEvent event) 
+			{
+				setSelectedIndex(3);
 			}
 			
 		});
@@ -131,6 +160,15 @@ public class Doctor {
 			}
 			
 		});
+		logout.addClickHandler(new ClickHandler(){
+
+			@Override
+			public void onClick(ClickEvent event) 
+			{
+				logout();
+			}
+			
+		});
 		
 		/**
 		 * FORM PLACEMENT AND ATTRIBUTES
@@ -141,5 +179,21 @@ public class Doctor {
 		//Add components to a flextable for organization
 		hp.add(ft);
 		return hp;
+	}
+	
+	protected void setSelectedIndex(int i) 
+	{
+		super.setDesiredIndex(i);
+		super.refreshUI("doctor", i);
+		
+	}
+	protected void logout()
+	{
+		super.refreshUI("null");
+	}
+
+	public TabLayoutPanel getHomeTab()
+	{
+		return super.getHomePage();
 	}
 }

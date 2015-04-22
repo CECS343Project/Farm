@@ -28,7 +28,8 @@ public class MainGUI extends FarmWebApp
 	private PatientServiceAsync rpc;
 	private PatientData PatientsDB[];
 	private UserServiceAsync rpcUsers;
-	protected FindPatient findPatientPanel; 
+	protected FindPatient findPatientPanel;
+	private int desiredIndex = 0;
 	
 	//Default constructor
 	public MainGUI() 
@@ -39,6 +40,21 @@ public class MainGUI extends FarmWebApp
 		getUsersDB();
 	}
 	
+	public MainGUI(int index) 
+	{
+		desiredIndex = index;
+	}
+	
+	public void  setDesiredIndex(int indx)
+	{
+		desiredIndex = indx;
+	}
+	
+	public int getDesiredIndex()
+	{
+		return desiredIndex;
+	}
+
 	/**
 	 * Sends an asynchronous call to the database and 
 	 * populates the celltable with the results when query succeeds
@@ -163,7 +179,7 @@ public class MainGUI extends FarmWebApp
 				}
 			 }
 		});
-		
+		homePage.selectTab(desiredIndex);
 		return homePage;
 	}
 	/**
@@ -212,7 +228,7 @@ public class MainGUI extends FarmWebApp
 	protected void logout()
 	{
 		super.setUserType("null");
-		super.refreshUI();
+		super.refreshUI("null");
 		
 	}
 
@@ -229,5 +245,9 @@ public class MainGUI extends FarmWebApp
 	{
 		super.setUserType(string);
 		
+	}
+	public void refreshUI(String user,int i)
+	{
+		super.refreshUI(user, i);
 	}
 }
