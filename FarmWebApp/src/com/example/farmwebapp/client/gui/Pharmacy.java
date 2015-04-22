@@ -9,6 +9,8 @@
 package com.example.farmwebapp.client.gui;
 
 import com.google.gwt.dom.client.Style.Cursor;
+import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.dom.client.MouseOverEvent;
 import com.google.gwt.event.dom.client.MouseOverHandler;
 import com.google.gwt.user.client.ui.Image;
@@ -17,7 +19,7 @@ import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.HasVerticalAlignment;
 
-public class Pharmacy 
+public class Pharmacy extends MainGUI
 {	
 	private FlexTable ft = new FlexTable();
 	private HorizontalPanel hp = new HorizontalPanel();
@@ -65,6 +67,15 @@ public class Pharmacy
 				addPatient.getElement().getStyle().setCursor(Cursor.POINTER);
 			}
 		});
+		addPatient.addClickHandler(new ClickHandler(){
+
+			@Override
+			public void onClick(ClickEvent event) 
+			{
+				setSelectedIndex(1);
+			}
+			
+		});
 		/**
 		 * FIND PATIENT
 		 */
@@ -79,6 +90,15 @@ public class Pharmacy
 			{
 				findPatient.getElement().getStyle().setCursor(Cursor.POINTER);
 			}
+		});
+		findPatient.addClickHandler(new ClickHandler(){
+
+			@Override
+			public void onClick(ClickEvent event) 
+			{
+				setSelectedIndex(2);
+			}
+			
 		});
 		/**
 		 * UPDATE
@@ -95,6 +115,15 @@ public class Pharmacy
 				updatePharmacy.getElement().getStyle().setCursor(Cursor.POINTER);
 			}
 		});
+		updatePharmacy.addClickHandler(new ClickHandler(){
+
+			@Override
+			public void onClick(ClickEvent event) 
+			{
+				setSelectedIndex(3);
+			}
+			
+		});
 		/**
 		 * SETTINGS
 		 */
@@ -109,6 +138,15 @@ public class Pharmacy
 			{
 				settings.getElement().getStyle().setCursor(Cursor.POINTER);	
 			}
+		});
+		settings.addClickHandler(new ClickHandler(){
+
+			@Override
+			public void onClick(ClickEvent event) 
+			{
+				setSelectedIndex(4);
+			}
+			
 		});
 		/**
 		 * LOGOUT
@@ -126,6 +164,15 @@ public class Pharmacy
 			}
 			
 		});
+		logout.addClickHandler(new ClickHandler(){
+
+			@Override
+			public void onClick(ClickEvent event) 
+			{
+				logout();
+			}
+			
+		});
 		/**
 		 * FORM PLACEMENT AND ATTRIBUTES
 		 */
@@ -134,5 +181,15 @@ public class Pharmacy
 		
 		hp.add(ft);
 		return hp;
+	}
+
+	protected void setSelectedIndex(int i) 
+	{
+		super.refreshUI("pharmacist", i);
+		
+	}
+	protected void logout()
+	{
+		super.refreshUI("null");
 	}
 }

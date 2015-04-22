@@ -158,7 +158,7 @@ public class MainGUI extends FarmWebApp
 		
 		homePage.setPixelSize(700, 440);
 		homePage.setAnimationDuration(1000);
-		homePage.add(doctorMain.getDoctorPanel(), "DOCTOR");
+		homePage.add(doctorMain.getDoctorPanel(), "MAIN MENU");
 		homePage.add(addPatientPanel.getAddPatientPanel(), "ADD PATIENT");
 		homePage.add(findPatientPanel.getFindPatientPanel(), "FIND PATIENT");
 		homePage.add(prescribeMedicaiton.getPrescribeMedsPanel(), "PRESCRIBE");
@@ -198,10 +198,10 @@ public class MainGUI extends FarmWebApp
 		
 		homePage.setPixelSize(700, 440);
 		homePage.setAnimationDuration(1000);
-		homePage.add(pharmacyMain.getPharmacyPanel(), "PHARMACY");
+		homePage.add(pharmacyMain.getPharmacyPanel(), "MAIN MENU");
+		homePage.add(addPatientPanel.getAddPatientPanel(), "ADD PATIENT");
 		homePage.add(findPatientPanel.getFindPatientPanel(), "FIND PATIENT");
 		homePage.add(pharmacyUpdate.getPharmacyUpdatePanel(), "UPDATE");
-		homePage.add(addPatientPanel.getAddPatientPanel(), "ADD PATIENT");
 		homePage.add(printMedication.getPrintMedsPanel(), "PRINT");
 		homePage.add(logoutPanel.getLogoutPanel(), "LOGOUT");
 		
@@ -222,6 +222,7 @@ public class MainGUI extends FarmWebApp
 				}
 			 }
 		});
+		homePage.selectTab(desiredIndex);
 		return homePage;
 	}
 
