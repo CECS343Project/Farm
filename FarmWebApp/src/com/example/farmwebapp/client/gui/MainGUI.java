@@ -32,6 +32,7 @@ public class MainGUI extends FarmWebApp
 	private int desiredIndex = 0;
 
 	private String selectedPatient;
+	private String userType = "doctor";
 	
 	//Default constructor
 	public MainGUI() 
@@ -159,12 +160,12 @@ public class MainGUI extends FarmWebApp
 	 */
 	public TabLayoutPanel getPanelDoc()
 	{
+		userType = "doctor";
 		new SignUp();
 		new SignIn();
 		Doctor doctorMain = new Doctor();
-		PrintMeds printMedication = new PrintMeds();
 		AddPatient addPatientPanel = new AddPatient();
-		findPatientPanel = new FindPatient();
+		findPatientPanel = new FindPatient("doctor");
 		PrescribeMeds prescribeMedicaiton = new PrescribeMeds();
 		Logout logoutPanel = new Logout();
 		
@@ -199,6 +200,7 @@ public class MainGUI extends FarmWebApp
 	 */
 	public TabLayoutPanel getPanelPharm()
 	{
+		userType = "pharmacist";
 		new SignUp();
 		new SignIn();
 		Pharmacy pharmacyMain = new Pharmacy();
@@ -206,7 +208,7 @@ public class MainGUI extends FarmWebApp
 		PharmacyUpdate pharmacyUpdate = new PharmacyUpdate();
 		PrintMeds printMedication = new PrintMeds();
 		Logout logoutPanel = new Logout();
-		findPatientPanel = new FindPatient();
+		findPatientPanel = new FindPatient("pharmacist");
 		
 		homePage.setPixelSize(700, 440);
 		homePage.setAnimationDuration(1000);
@@ -286,11 +288,11 @@ public class MainGUI extends FarmWebApp
 				rpc.insertPatient(patient2,callback);
 	}
 
-	public String getUserType() 
-	{
+	//public String getUserType() 
+	//{
 		
-		return super.getUserType();
-	}
+	//	return super.getUserType();
+	//}
 
 	public void refreshUI(String string, int i, String tempID) 
 	{
@@ -304,5 +306,10 @@ public class MainGUI extends FarmWebApp
 
 	public void setSelectedPatient(String selectedPatient) {
 		this.selectedPatient = selectedPatient;
+	}
+	
+	public String getUserType()
+	{
+		return userType;
 	}
 }
