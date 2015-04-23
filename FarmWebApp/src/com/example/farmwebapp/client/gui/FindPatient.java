@@ -353,6 +353,7 @@ public class FindPatient extends MainGUI
 		ct_Results.getColumnSortList().push(tc_Name);
 		
 		ct_Results.addColumnSortHandler(columnSortHandler);
+		
 		//Add the columns to the table
 		ct_Results.addColumn(tc_Name, "Name");
 		ct_Results.addColumn(tc_Address, "Address");

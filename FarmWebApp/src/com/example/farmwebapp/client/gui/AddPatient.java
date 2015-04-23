@@ -150,7 +150,7 @@ public class AddPatient extends MainGUI
 		/**
 		 * On button click - send data to database
 		 */
-		signUpArrow.addClickHandler(new ClickHandler() 
+		/*signUpArrow.addClickHandler(new ClickHandler() 
 		{
 	        public void onClick(ClickEvent event) 
 	        {
@@ -180,7 +180,7 @@ public class AddPatient extends MainGUI
 	        	}
 	        }
 	    });
-		
+		*/
 		/**
 		 * LOGIN BUTTON
 		 */
@@ -197,14 +197,24 @@ public class AddPatient extends MainGUI
 		{
 	        public void onClick(ClickEvent event) 
 	        {
+
+	        	HTML s_DBData;
 	        	try
 	        	{
+	        		s_DBData = new HTML("User Type: Patient"
+	        				+"<br>Name: " + tb_nameFirst.getText() + "," + tb_nameLast.getText() + ", " + lb_nameSuffix.getSelectedItemText()
+	        				+ "<br>Address: " + tb_addressStreet.getText() + " City, State, Zip: " + tb_addressCityStateZip.getText()
+	        				+ "<br>Email: " + tb_email.getText()
+	        				+ "<br>Date of Birth: " + db_dob.getValue()
+	        				+ "<br>License Number: " + tb_licenseNo.getText());
+	        		
+	        		//s_DBData += new HTML();
+	        		
 		            PopUps popups = new PopUps();
-		            popups.showDialog("Patient Added!");
+		            popups.showDialog("Patient added to the DB:\r\n"  + s_DBData);
 	        	}
 	        	catch(Exception e)
-	        	{
-	        		
+	        	{	        		
 	        	}
 	        }
 
