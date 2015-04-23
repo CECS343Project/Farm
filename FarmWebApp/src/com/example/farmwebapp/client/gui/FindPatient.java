@@ -16,6 +16,8 @@ import java.util.Arrays;
 import com.example.farmwebapp.client.dbobjects.PatientData;
 import com.example.farmwebapp.client.services.patient.PatientServiceAsync;
 import com.example.farmwebapp.client.services.patient.PatientServiceInit;
+import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.dom.client.KeyDownEvent;
 import com.google.gwt.event.dom.client.KeyDownHandler;
 import com.google.gwt.event.dom.client.KeyPressEvent;
@@ -48,6 +50,8 @@ public class FindPatient extends MainGUI
 	
 	private final DateTimeFormat dateFormat = DateTimeFormat.getFormat("MM/dd/yyyy");
 	private DateBox db_dob = new DateBox();
+	private Button b_Select = new Button("Select Patient");
+	private Button b_Delete = new Button("Delete Patient");
 	
 	private ListBox lb_nameSuffix = new ListBox();
 	
@@ -57,6 +61,7 @@ public class FindPatient extends MainGUI
 	
 	private VerticalPanel vp = new VerticalPanel();
 	private VerticalPanel vpTable = new VerticalPanel();
+	private HorizontalPanel hpCRUD = new HorizontalPanel();
 	
 	private PatientData[] patients; 
 	
@@ -359,11 +364,34 @@ public class FindPatient extends MainGUI
 		ct_Results.setPageSize(5);
 		ct_Results.setWidth("642px");
 		pager.setDisplay(ct_Results);
+		
+		b_Select.addClickHandler(new ClickHandler(){
+
+			@Override
+			public void onClick(ClickEvent event) 
+			{
+				PopUps pop = new PopUps();
+				String tempID = ct_Results.getRowElement(ct_Results.getKeyboardSelectedRow()).getLastChild().toString();
+				pop.showDialog(tempID);
+				moveToPrescribe(tempID);
+			}
+			
+		});
+		
+		hpCRUD.add(b_Select);
+		hpCRUD.add(b_Delete);
+		
 		vpTable.add(ct_Results);
 		vpTable.add(pager);
+		vpTable.add(hpCRUD);
 		getFindPatientPanel();
 	}
 	
+	protected void moveToPrescribe(String tempID) 
+	{
+		super.refreshUI("doctor", 3);
+		
+	}
 	public void getPatientsSuper()
 	{
 		patients = super.getPatients();
