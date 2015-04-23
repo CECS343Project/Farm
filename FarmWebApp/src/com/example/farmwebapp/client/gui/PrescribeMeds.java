@@ -128,9 +128,9 @@ public class PrescribeMeds //extends FindPatient
 		 * PATIENT INFO
 		 */
 		//Hard coded information for demo purposes
-		ta_patientInfo.setText("Napoleon Fulinara Jr" + "\n" + "727 W 7th St. Unit 1113" + "\n" 
-				+ "Los Angeles, Ca 90017" + "\n" + "jrfulinara@gmail.com" + "\n" 
-				+ "(858) 216-5155" + "\n" + "Policy No: 0000000000" + "\n" + "D.O.B: 06/22/1984");
+		ta_patientInfo.setText("Jimmy Jame" + "\n" + "109090 Tammy Blvd" + "\n" 
+				+ "Los Angeles, Ca 90063" + "\n" + "jjTammy@gmail.com" + "\n" 
+				+ "(562) 867-5309" + "\n" + "Policy No: 548613543" + "\n" + "D.O.B: 05/10/1985");
 		//Design parameters
 		ta_patientInfo.setVisibleLines(7);
 		ta_patientInfo.setCharacterWidth(42);

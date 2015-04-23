@@ -64,6 +64,7 @@ public class FindPatient extends MainGUI
 	private HorizontalPanel hpCRUD = new HorizontalPanel();
 	
 	private PatientData[] patients; 
+	private String userType = "pharmacist";
 	
 	/**
 	 * Default constructor instantiates the rpc async service 
@@ -367,13 +368,15 @@ public class FindPatient extends MainGUI
 		
 		b_Select.addClickHandler(new ClickHandler(){
 
+			
+
 			@Override
 			public void onClick(ClickEvent event) 
 			{
 				PopUps pop = new PopUps();
 				String tempID = ct_Results.getRowElement(ct_Results.getKeyboardSelectedRow()).getLastChild().toString();
 				pop.showDialog(tempID);
-				moveToPrescribe(tempID);
+				moveToPrescribe(userType,tempID);
 			}
 			
 		});
@@ -387,9 +390,17 @@ public class FindPatient extends MainGUI
 		getFindPatientPanel();
 	}
 	
-	protected void moveToPrescribe(String tempID) 
+	protected void moveToPrescribe(String userID,String tempID) 
 	{
-		super.refreshUI("doctor", 3,tempID);
+		if(userID == "doctor")
+		{
+			super.refreshUI("doctor", 3,tempID);
+		}
+		else if(userID == "pharmacist")
+		{
+			super.refreshUI("pharmacist", 4,tempID);
+		}
+		
 		
 	}
 	public void getPatientsSuper()

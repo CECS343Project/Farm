@@ -221,7 +221,7 @@ public class MainGUI extends FarmWebApp
 		homePage.addSelectionHandler(new SelectionHandler<Integer>() {
 			@Override
 			public void onSelection(SelectionEvent<Integer> event) {
-				if (homePage.getSelectedIndex() == 1 || homePage.getSelectedIndex() == 2 || homePage.getSelectedIndex() == 4) {
+				if (homePage.getSelectedIndex() == 2 || homePage.getSelectedIndex() == 4) {
 						
 					homePage.setPixelSize(700, 600);
 			    }
