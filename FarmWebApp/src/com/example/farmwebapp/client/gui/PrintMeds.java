@@ -218,6 +218,15 @@ public class PrintMeds {
 		vp_btnSubmit.setStyleName("moveSubmitBtn");
 		ta_pharmInfo.getElement().setAttribute("disabled", "disabled");
 		ta_dosageInfo.getElement().setAttribute("disabled", "disabled");
+		ta_dosageInfo.setText("Jimmy Jame" + "\n" + "109090 Tammy Blvd" + "\n" 
+				+ "Los Angeles, Ca 90063" + "\n" + "jjTammy@gmail.com" + "\n" 
+				+ "(562) 867-5309" + "\n" + "Policy No: 548613543" + "\n" + "D.O.B: 05/10/1985"
+				+ "\n_____________"
+				+"\nTake 2 capsules of Ibuprofyn" + "\n" 
+				+ "b.i.d." + "\n" 
+				+ "From 04/23/2015 Until 04/24/2015"+ "\n" 
+				+ "NOTES:"
+				+ "\n_____________");
 		//Add to panels
 		hp_pharmInfo.add(img_pharmBottle);
 		hp_pharmInfo.add(ta_pharmInfo);
@@ -249,7 +258,11 @@ public class PrintMeds {
 		btn_submit.addClickHandler(new ClickHandler() {
 			public void onClick(ClickEvent event) {
 				try {
-					//Add click event
+					PopUps pop = new PopUps();
+					
+					pop.showDialog("Prescription has been filled for Jimmy Jame");
+					MainGUI gui = new MainGUI();
+					gui.refreshUI("pharmacist", 0);
 					}
 				catch(Exception e) {
 					//Add click event exception
