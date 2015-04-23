@@ -9,6 +9,7 @@
  */
 package com.example.farmwebapp.client.gui;
 
+import com.example.farmwebapp.client.dbobjects.PatientData;
 import com.google.gwt.dom.client.Style.Cursor;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
@@ -28,7 +29,7 @@ import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.HasVerticalAlignment;
 import com.google.gwt.user.datepicker.client.DateBox;
 
-public class AddPatient 
+public class AddPatient extends MainGUI
 {
 	private final int CELLWIDTH = 150;
 	private final int CELLHEIGHT = 15;
@@ -55,6 +56,8 @@ public class AddPatient
 	
 	private VerticalPanel vp = new VerticalPanel();
 	private HorizontalPanel hp = new HorizontalPanel();
+	
+	private PatientData patient = new PatientData();
 
 	//Default Constructor
 	public AddPatient(){}
@@ -147,26 +150,30 @@ public class AddPatient
 		/**
 		 * On button click - send data to database
 		 */
-		addPrescrip.getSignUpArrow().addClickHandler(new ClickHandler() 
+		signUpArrow.addClickHandler(new ClickHandler() 
 		{
 	        public void onClick(ClickEvent event) 
 	        {
-	        	HTML s_DBData;
 	        	try
 	        	{
-	        		s_DBData = new HTML("User Type: Patient"
-	        				+"<br>Name: " + tb_nameFirst.getText() + "," + tb_nameLast.getText() + ", " + lb_nameSuffix.getSelectedItemText()
-	        				+ "<br>Address: " + tb_addressStreet.getText() + " City, State, Zip: " + tb_addressCityStateZip.getText()
-	        				+ "<br>Email: " + tb_email.getText()
-	        				+ "<br>Date of Birth: " + db_dob.getValue()
-	        				+ "<br>License Number: " + tb_licenseNo.getText()
-	        				+ "<br>PRESCRIPTION INFORMATION"
-	        				+ "<br>"+addPrescrip.getPrescriptionInstructions());
+	        		patient.address= tb_addressStreet.getText();
+	        		patient.cellPhone = tb_licenseNo.getText();
+	        		patient.city = tb_addressCityStateZip.getText();
+	        		patient.complaint = null;
+	        		patient.dob = db_dob.getValue();
+	        		patient.fName = tb_nameFirst.getText();
+	        		patient.lName = tb_nameLast.getText();
+	        		patient.history = null;
+	        		patient.homePhone = tb_licenseNo.getText();
+	        		patient.medRecord = null;
+	        		patient.pID = generateNewPatient();
+	        		patient.zip = tb_addressCityStateZip.getText();
+	        		patient.state = tb_addressCityStateZip.getText();
+	        		patient.sugicalHist = null;
+	        		patient.testResult = null;
+	        		patient.treatmentPlan = null;
 	        		
-	        		//s_DBData += new HTML();
-	        		
-		            PopUps popups = new PopUps();
-		            popups.showDialog("Patient to add to the DB:\r\n"  + s_DBData);
+	        		insertIntoDB(patient);
 	        	}
 	        	catch(Exception e)
 	        	{	        		
@@ -223,5 +230,20 @@ public class AddPatient
 		vp.add(hp);
 		
 		return vp;
+	}
+
+	protected void insertIntoDB(PatientData patient2) 
+	{
+		super.insertIntoDB(patient2);
+		
+	}
+
+	protected String generateNewPatient() 
+	{
+		PatientData patients[] = super.getPatientsDB(1);
+		int temp = Integer.parseInt(patients[patients.length-1].pID.substring(8, 10));
+		temp++;
+
+		return "P0000000"+temp;
 	}
 }

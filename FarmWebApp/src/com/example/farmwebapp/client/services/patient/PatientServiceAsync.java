@@ -15,4 +15,5 @@ public interface PatientServiceAsync
 {
 	public void getPatients(AsyncCallback<PatientData[]> callback);
 	public void getPatients(String field, String value,AsyncCallback<PatientData[]> callback);
+	public void insertPatient(PatientData patient,AsyncCallback callback);
 }

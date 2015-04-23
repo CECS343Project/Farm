@@ -84,6 +84,10 @@ public class MainGUI extends FarmWebApp
 		};
 		rpc.getPatients(callback);
 	}
+	public PatientData[] getPatientsDB(int temp)
+	{
+		return this.PatientsDB;
+	}
 	/**
 	 * Sends an asynchronous call to the database and 
 	 * populates the celltable with the results when query succeeds
@@ -250,5 +254,27 @@ public class MainGUI extends FarmWebApp
 	public void refreshUI(String user,int i)
 	{
 		super.refreshUI(user, i);
+	}
+
+	protected void insertIntoDB(PatientData patient2) 
+	{
+		AsyncCallback<PatientData[]> callback = new AsyncCallback<PatientData[]>()
+				{
+					@Override
+					public void onFailure(Throwable caught) 
+					{
+						PopUps popUp = new PopUps();		
+						popUp.showDialog(caught.toString());
+					}
+
+					@Override
+					public void onSuccess(PatientData[] result) 
+					{
+						PopUps popUp = new PopUps();		
+						popUp.showDialog("added the patient");
+
+					}
+				};
+				rpc.insertPatient(patient2,callback);
 	}
 }

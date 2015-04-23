@@ -31,4 +31,11 @@ public class PatientServiceImpl extends RemoteServiceServlet implements PatientS
 		
 		return patients;
 	}
+	@Override
+	public void insertPatient(PatientData patient) 
+	{
+		DB_Patient db = new DB_Patient();
+		db.insertPatient(patient);
+		
+	}
 }
