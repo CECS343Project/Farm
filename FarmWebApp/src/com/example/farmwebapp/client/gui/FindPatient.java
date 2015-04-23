@@ -9,6 +9,7 @@
  */
 package com.example.farmwebapp.client.gui;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.Arrays;
 
@@ -25,6 +26,7 @@ import com.google.gwt.i18n.client.DateTimeFormat;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.*;
 import com.google.gwt.user.cellview.client.*;
+import com.google.gwt.user.cellview.client.ColumnSortEvent.ListHandler;
 import com.google.gwt.user.datepicker.client.DateBox;
 
 public class FindPatient extends MainGUI
@@ -49,11 +51,12 @@ public class FindPatient extends MainGUI
 	private ListBox lb_nameSuffix = new ListBox();
 	
 	private CellTable<PatientData> ct_Results = new CellTable<PatientData>();
+	private ScrollPanel sp_ctContainer = new ScrollPanel();
+	private SimplePager pager = new SimplePager();
 	
 	private VerticalPanel vp = new VerticalPanel();
 	private HorizontalPanel hp = new HorizontalPanel();
 	
-	private PatientServiceAsync rpc;
 	private PatientData[] patients; 
 	
 	/**
@@ -86,8 +89,7 @@ public class FindPatient extends MainGUI
 			@Override
 			public void onValueChange(ValueChangeEvent<String> event) 
 			{
-				PopUps pop = new PopUps();
-				pop.showDialog("AAAAAAAAAAHHHHHHHHHHHH");
+				getPatientsSuper();
 				drawTable(patients);
 			}		
 		});
@@ -100,9 +102,7 @@ public class FindPatient extends MainGUI
 				@Override
 				public void onValueChange(ValueChangeEvent<String> event) 
 				{
-					//getPatientsDB("lname",tb_nameLast.getText());
-					//PatientData[] temp = patients;
-					//drawTable(temp);
+					getPatientsSuper();
 					drawTable(patients);
 				}		
 			});
@@ -115,9 +115,7 @@ public class FindPatient extends MainGUI
 				@Override
 				public void onValueChange(ValueChangeEvent<String> event) 
 				{
-					//getPatientsDB("fName",tb_nameSuffix.getText());
-					//PatientData[] temp = patients;
-					//drawTable(temp);
+					getPatientsSuper();
 					drawTable(patients);
 				}		
 			});
@@ -135,9 +133,7 @@ public class FindPatient extends MainGUI
 				@Override
 				public void onValueChange(ValueChangeEvent<String> event) 
 				{
-					//getPatientsDB("address",tb_addressStreet.getText());
-					//PatientData[] temp = patients;
-					//drawTable(temp);
+					getPatientsSuper();
 					drawTable(patients);
 					
 				}		
@@ -151,9 +147,7 @@ public class FindPatient extends MainGUI
 				@Override
 				public void onValueChange(ValueChangeEvent<String> event) 
 				{
-					//getPatientsDB("address",tb_addressCityStateZip.getText());
-					//PatientData[] temp = patients;
-					//drawTable(temp);
+					getPatientsSuper();
 					drawTable(patients);
 					
 				}		
@@ -181,9 +175,7 @@ public class FindPatient extends MainGUI
 				@Override
 				public void onValueChange(ValueChangeEvent<String> event) 
 				{
-					//getPatientsDB("fname",tb_email.getText());
-					//PatientData[] temp = patients;
-					//drawTable(temp);
+					getPatientsSuper();
 					drawTable(patients);
 					
 				}		
@@ -202,9 +194,7 @@ public class FindPatient extends MainGUI
 				@Override
 				public void onValueChange(ValueChangeEvent<String> event) 
 				{
-					//getPatientsDB("cellphone",tb_phoneNo.getText());
-					//PatientData[] temp = patients;
-					//drawTable(temp);
+					getPatientsSuper();
 					drawTable(patients);
 					
 				}		
@@ -233,9 +223,8 @@ public class FindPatient extends MainGUI
 				@Override
 				public void onValueChange(ValueChangeEvent<String> event) 
 				{
-					//getPatientsDB("fName",tb_licenseNo.getText());
-					PatientData[] temp = patients;
-					drawTable(temp);
+					getPatientsSuper();
+					drawTable(patients);
 				}		
 			});
 		
@@ -272,6 +261,7 @@ public class FindPatient extends MainGUI
 				return ""+object.lName+", "+object.fName;
 			}				
 		};
+		tc_Name.setSortable(true);
 		TextColumn<PatientData> tc_Address = new TextColumn<PatientData>()
 		{
 			@Override
@@ -280,6 +270,7 @@ public class FindPatient extends MainGUI
 				return object.address;
 			}				
 		};
+		tc_Address.setSortable(true);
 		TextColumn<PatientData> tc_Email = new TextColumn<PatientData>()
 		{
 			@Override
@@ -288,6 +279,7 @@ public class FindPatient extends MainGUI
 				return object.testResult;
 			}				
 		};
+		tc_Email.setSortable(true);
 		TextColumn<PatientData> tc_PhoneNumber = new TextColumn<PatientData>()
 		{
 			@Override
@@ -307,6 +299,7 @@ public class FindPatient extends MainGUI
 				}
 			}				
 		};
+		tc_PhoneNumber.setSortable(true);
 		TextColumn<PatientData> tc_DOB = new TextColumn<PatientData>()
 		{
 			@Override
@@ -315,6 +308,7 @@ public class FindPatient extends MainGUI
 				return object.dob.toString();
 			}				
 		};
+		tc_DOB.setSortable(true);
 		TextColumn<PatientData> tc_LicenseNo = new TextColumn<PatientData>()
 		{
 			@Override
@@ -323,7 +317,23 @@ public class FindPatient extends MainGUI
 				return object.pID;
 			}				
 		};	
+		tc_LicenseNo.setSortable(true);
 		
+		ListHandler<PatientData> columnSortHandler = new ListHandler<PatientData>(l_DummyData);
+		    columnSortHandler.setComparator(tc_Name,new Comparator<PatientData>() {
+		          public int compare(PatientData o1, PatientData o2) {
+		            if (o1 == o2) {
+		              return 0;
+		            }
+
+		            // Compare the name columns.
+		            if (o1 != null) {
+		              return (o2 != null) ? o1.fName.compareTo(o2.fName) : 1;
+		            }
+		            return -1;
+		          }
+		        });
+		ct_Results.addColumnSortHandler(columnSortHandler);
 		//Add the columns to the table
 		ct_Results.addColumn(tc_Name, "Name");
 		ct_Results.addColumn(tc_Address, "Address");
@@ -337,9 +347,22 @@ public class FindPatient extends MainGUI
 		//Add table to the horizontal panel
 		//Call the main panel generator again 
 		//after populating to place table in main panel
-		ct_Results.setPageSize(14);
+		ct_Results.setPageSize(5);
 		ct_Results.setWidth("642px");
-		hp.add(ct_Results);
+		pager.setDisplay(ct_Results);
+		sp_ctContainer.add(ct_Results);
+		hp.add(sp_ctContainer);
 		getFindPatientPanel();
+	}
+	
+	public void getPatientsSuper()
+	{
+		patients = super.getPatients();
+	}
+	
+	public PatientData[] filterPatients(String field)
+	{
+		return null;
+	
 	}
 }
