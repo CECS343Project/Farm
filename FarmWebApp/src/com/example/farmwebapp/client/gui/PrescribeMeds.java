@@ -27,7 +27,8 @@ import com.google.gwt.user.client.ui.HasHorizontalAlignment;
 import com.example.farmwebapp.client.services.patient.PatientServiceInit;
 import com.example.farmwebapp.client.services.patient.PatientServiceAsync;
 
-public class PrescribeMeds {
+public class PrescribeMeds //extends FindPatient
+{
 	private FlexTable ft = new FlexTable();
 	
 	private HorizontalPanel hp_notes = new HorizontalPanel();
@@ -83,6 +84,7 @@ public class PrescribeMeds {
 	private PatientServiceAsync rpc;
 	
 	private PatientData PatientsDB[];
+	private String selectedID;
 	
 	/**
 	 * Default constructor instantiates the rpc async service 
@@ -119,7 +121,9 @@ public class PrescribeMeds {
 		rpc.getPatients(callback);
 	}
 	
-	public IsWidget getPrescribeMedsPanel() {
+	public IsWidget getPrescribeMedsPanel() 
+	{
+		//selectedID = super.getSelectedPatient();
 		/**
 		 * PATIENT INFO
 		 */

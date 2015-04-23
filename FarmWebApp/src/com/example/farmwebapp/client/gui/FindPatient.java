@@ -389,7 +389,7 @@ public class FindPatient extends MainGUI
 	
 	protected void moveToPrescribe(String tempID) 
 	{
-		super.refreshUI("doctor", 3);
+		super.refreshUI("doctor", 3,tempID);
 		
 	}
 	public void getPatientsSuper()

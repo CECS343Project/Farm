@@ -30,6 +30,8 @@ public class MainGUI extends FarmWebApp
 	private UserServiceAsync rpcUsers;
 	protected FindPatient findPatientPanel;
 	private int desiredIndex = 0;
+
+	private String selectedPatient;
 	
 	//Default constructor
 	public MainGUI() 
@@ -45,6 +47,12 @@ public class MainGUI extends FarmWebApp
 		desiredIndex = index;
 	}
 	
+	public MainGUI(int i, String tempID) 
+	{
+		desiredIndex = i;
+		setSelectedPatient(tempID);
+	}
+
 	public void  setDesiredIndex(int indx)
 	{
 		desiredIndex = indx;
@@ -276,5 +284,25 @@ public class MainGUI extends FarmWebApp
 					}
 				};
 				rpc.insertPatient(patient2,callback);
+	}
+
+	public String getUserType() 
+	{
+		
+		return super.getUserType();
+	}
+
+	public void refreshUI(String string, int i, String tempID) 
+	{
+		super.refreshUI(string, i,tempID);
+		
+	}
+
+	public String getSelectedPatient() {
+		return selectedPatient;
+	}
+
+	public void setSelectedPatient(String selectedPatient) {
+		this.selectedPatient = selectedPatient;
 	}
 }
