@@ -86,29 +86,9 @@ public class FindPatient extends MainGUI
 			@Override
 			public void onValueChange(ValueChangeEvent<String> event) 
 			{
-				//getPatientsDB("fName",tb_nameFirst.getText());
-				PatientData[] temp = new PatientData[patients.length];
-				int count = 0;
-				//drawTable(temp);
 				PopUps pop = new PopUps();
-				
-				int k;
-				for(k = 0; k < patients.length; k++)
-				{
-					pop.showDialog(patients[k].fName);
-					if(patients[k].fName == tb_nameFirst.getText())
-					{
-						pop.showDialog("AAAAAAAAAAHHHHHHHHHHHH");
-						temp[k] = patients[k];
-						
-						
-					}
-					else
-					{
-						temp[k] = null;
-					}
-				}
-				drawTable(temp);
+				pop.showDialog("AAAAAAAAAAHHHHHHHHHHHH");
+				drawTable(patients);
 			}		
 		});
 
@@ -345,13 +325,13 @@ public class FindPatient extends MainGUI
 		};	
 		
 		//Add the columns to the table
-		ct_Results.addColumn(tc_Name, "");
-		ct_Results.addColumn(tc_Address, "");
-		ct_Results.addColumn(tc_Email, "");
-		ct_Results.addColumn(tc_PhoneNumber, "");
-		ct_Results.addColumn(tc_DOB, "");
-		ct_Results.addColumn(tc_LicenseNo, "");		
-		ct_Results.setRowCount(2,true);
+		ct_Results.addColumn(tc_Name, "Name");
+		ct_Results.addColumn(tc_Address, "Address");
+		ct_Results.addColumn(tc_Email, "Email");
+		ct_Results.addColumn(tc_PhoneNumber, "Phone");
+		ct_Results.addColumn(tc_DOB, "Date Of Birth");
+		ct_Results.addColumn(tc_LicenseNo, "Policy Number");		
+		ct_Results.setRowCount(7,true);
 		ct_Results.setRowData(l_DummyData);
 		
 		//Add table to the horizontal panel

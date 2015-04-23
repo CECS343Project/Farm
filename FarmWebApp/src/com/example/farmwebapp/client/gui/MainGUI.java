@@ -75,7 +75,7 @@ public class MainGUI extends FarmWebApp
 			public void onSuccess(PatientData[] result) 
 			{
 				PopUps popUp = new PopUps();		
-				//popUp.showDialog("Got the patients!");
+				popUp.showDialog("Got the patients!");
 				PatientsDB = result;
 				//findPatientPanel = new FindPatient(PatientsDB);
 				//findPatientPanel.getFindPatientPanel().asWidget().removeFromParent();
