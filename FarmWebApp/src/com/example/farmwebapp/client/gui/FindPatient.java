@@ -28,6 +28,7 @@ import com.google.gwt.user.client.ui.*;
 import com.google.gwt.user.cellview.client.*;
 import com.google.gwt.user.cellview.client.ColumnSortEvent.ListHandler;
 import com.google.gwt.user.datepicker.client.DateBox;
+import com.google.gwt.view.client.ListDataProvider;
 
 public class FindPatient extends MainGUI
 {
@@ -55,7 +56,7 @@ public class FindPatient extends MainGUI
 	private SimplePager pager = new SimplePager();
 	
 	private VerticalPanel vp = new VerticalPanel();
-	private HorizontalPanel hp = new HorizontalPanel();
+	private VerticalPanel vpTable = new VerticalPanel();
 	
 	private PatientData[] patients; 
 	
@@ -234,9 +235,9 @@ public class FindPatient extends MainGUI
 		ft.getElement().setAttribute("cellpadding", "10");
 		//Add necessary panels 
 		vp.add(ft);
-		vp.add(hp);
-		vp.setCellVerticalAlignment(hp, HasVerticalAlignment.ALIGN_MIDDLE);
-		vp.setCellHorizontalAlignment(hp, HasHorizontalAlignment.ALIGN_CENTER);
+		vp.add(vpTable);
+		vp.setCellVerticalAlignment(vpTable, HasVerticalAlignment.ALIGN_MIDDLE);
+		vp.setCellHorizontalAlignment(vpTable, HasHorizontalAlignment.ALIGN_CENTER);
 		return vp;
 	}
 	
@@ -252,6 +253,7 @@ public class FindPatient extends MainGUI
 		 * CELL TABLE FIELD
 		 */
 		final List<PatientData> l_DummyData = Arrays.asList(temp);
+		ListDataProvider<PatientData> ldp_CellData = new ListDataProvider<PatientData>();
 		
 		TextColumn<PatientData> tc_Name = new TextColumn<PatientData>()
 		{
@@ -320,19 +322,26 @@ public class FindPatient extends MainGUI
 		tc_LicenseNo.setSortable(true);
 		
 		ListHandler<PatientData> columnSortHandler = new ListHandler<PatientData>(l_DummyData);
-		    columnSortHandler.setComparator(tc_Name,new Comparator<PatientData>() {
-		          public int compare(PatientData o1, PatientData o2) {
+		columnSortHandler.setComparator(tc_Name,new Comparator<PatientData>() 
+			{
+		          public int compare(PatientData o1, PatientData o2) 
+		          {
 		            if (o1 == o2) {
 		              return 0;
 		            }
 
 		            // Compare the name columns.
 		            if (o1 != null) {
-		              return (o2 != null) ? o1.fName.compareTo(o2.fName) : 1;
+		              return (o2 != null) ? o1.lName.compareTo(o2.lName) : 1;
 		            }
 		            return -1;
 		          }
-		        });
+		    });
+		    
+		ldp_CellData.setList(l_DummyData);
+		ldp_CellData.addDataDisplay(ct_Results);
+		ct_Results.getColumnSortList().push(tc_Name);
+		
 		ct_Results.addColumnSortHandler(columnSortHandler);
 		//Add the columns to the table
 		ct_Results.addColumn(tc_Name, "Name");
@@ -350,8 +359,8 @@ public class FindPatient extends MainGUI
 		ct_Results.setPageSize(5);
 		ct_Results.setWidth("642px");
 		pager.setDisplay(ct_Results);
-		sp_ctContainer.add(ct_Results);
-		hp.add(sp_ctContainer);
+		vpTable.add(ct_Results);
+		vpTable.add(pager);
 		getFindPatientPanel();
 	}
 	
