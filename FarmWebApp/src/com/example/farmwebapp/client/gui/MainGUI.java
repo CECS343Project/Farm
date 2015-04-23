@@ -30,6 +30,9 @@ public class MainGUI extends FarmWebApp
 	private UserServiceAsync rpcUsers;
 	protected FindPatient findPatientPanel;
 	private int desiredIndex = 0;
+
+	private String selectedPatient;
+	private String userType = "doctor";
 	
 	//Default constructor
 	public MainGUI() 
@@ -45,6 +48,12 @@ public class MainGUI extends FarmWebApp
 		desiredIndex = index;
 	}
 	
+	public MainGUI(int i, String tempID) 
+	{
+		desiredIndex = i;
+		setSelectedPatient(tempID);
+	}
+
 	public void  setDesiredIndex(int indx)
 	{
 		desiredIndex = indx;
@@ -83,6 +92,10 @@ public class MainGUI extends FarmWebApp
 			}
 		};
 		rpc.getPatients(callback);
+	}
+	public PatientData[] getPatientsDB(int temp)
+	{
+		return this.PatientsDB;
 	}
 	/**
 	 * Sends an asynchronous call to the database and 
@@ -147,12 +160,12 @@ public class MainGUI extends FarmWebApp
 	 */
 	public TabLayoutPanel getPanelDoc()
 	{
+		userType = "doctor";
 		new SignUp();
 		new SignIn();
 		Doctor doctorMain = new Doctor();
-		PrintMeds printMedication = new PrintMeds();
 		AddPatient addPatientPanel = new AddPatient();
-		findPatientPanel = new FindPatient();
+		findPatientPanel = new FindPatient("doctor");
 		PrescribeMeds prescribeMedicaiton = new PrescribeMeds();
 		Logout logoutPanel = new Logout();
 		
@@ -187,6 +200,7 @@ public class MainGUI extends FarmWebApp
 	 */
 	public TabLayoutPanel getPanelPharm()
 	{
+		userType = "pharmacist";
 		new SignUp();
 		new SignIn();
 		Pharmacy pharmacyMain = new Pharmacy();
@@ -194,7 +208,7 @@ public class MainGUI extends FarmWebApp
 		PharmacyUpdate pharmacyUpdate = new PharmacyUpdate();
 		PrintMeds printMedication = new PrintMeds();
 		Logout logoutPanel = new Logout();
-		findPatientPanel = new FindPatient();
+		findPatientPanel = new FindPatient("pharmacist");
 		
 		homePage.setPixelSize(700, 440);
 		homePage.setAnimationDuration(1000);
@@ -209,7 +223,7 @@ public class MainGUI extends FarmWebApp
 		homePage.addSelectionHandler(new SelectionHandler<Integer>() {
 			@Override
 			public void onSelection(SelectionEvent<Integer> event) {
-				if (homePage.getSelectedIndex() == 1 || homePage.getSelectedIndex() == 2 || homePage.getSelectedIndex() == 4) {
+				if (homePage.getSelectedIndex() == 2 || homePage.getSelectedIndex() == 4) {
 						
 					homePage.setPixelSize(700, 600);
 			    }
@@ -250,5 +264,52 @@ public class MainGUI extends FarmWebApp
 	public void refreshUI(String user,int i)
 	{
 		super.refreshUI(user, i);
+	}
+
+	protected void insertIntoDB(PatientData patient2) 
+	{
+		AsyncCallback<PatientData[]> callback = new AsyncCallback<PatientData[]>()
+				{
+					@Override
+					public void onFailure(Throwable caught) 
+					{
+						PopUps popUp = new PopUps();		
+						popUp.showDialog(caught.toString());
+					}
+
+					@Override
+					public void onSuccess(PatientData[] result) 
+					{
+						PopUps popUp = new PopUps();		
+						popUp.showDialog("added the patient");
+
+					}
+				};
+				rpc.insertPatient(patient2,callback);
+	}
+
+	//public String getUserType() 
+	//{
+		
+	//	return super.getUserType();
+	//}
+
+	public void refreshUI(String string, int i, String tempID) 
+	{
+		super.refreshUI(string, i,tempID);
+		
+	}
+
+	public String getSelectedPatient() {
+		return selectedPatient;
+	}
+
+	public void setSelectedPatient(String selectedPatient) {
+		this.selectedPatient = selectedPatient;
+	}
+	
+	public String getUserType()
+	{
+		return userType;
 	}
 }
