@@ -2,6 +2,8 @@ package com.example.farmwebapp.client.gui;
 
 import java.util.List;
 import java.util.Arrays;
+
+import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.ListBox;
@@ -86,12 +88,40 @@ public class PrescribeMeds //extends FindPatient
 	private PatientData PatientsDB[];
 	private String selectedID;
 	
+	private String patientName = "Jimmy Jame";
+	private String patientStAddress = "109090 Tammy Blvd";
+	private String patientCityAddress = "Los Angeles, Ca 90063";
+	private String patientEmailAddress = "jjTammy@gmail.com";
+	private String patientPhoneNumber = "(562) 867 - 5309";
+	private String patientPolicyNumber = "Policy No: 548613543";
+	private String patientDOB = "D.O.B: 05/10/1985";
+	
 	/**
 	 * Default constructor instantiates the rpc async service 
 	 * for querying the database
 	 */
 	public PrescribeMeds() 
 	{
+		lb_units.addItem("--");
+		lb_units.addItem("mg");
+		lb_units.addItem("ml");
+		lb_units.addItem("puff");
+		lb_units.addItem("puffs");
+		lb_units.addItem("capsule");
+		lb_units.addItem("capsules");
+		
+		lb_time.addItem("--");
+		lb_time.addItem("o.d.");
+		lb_time.addItem("q.d.");
+		lb_time.addItem("b.i.d");
+		lb_time.addItem("b.i.d");
+		lb_time.addItem("q.i.d");
+		lb_time.addItem("q.o.d");
+		lb_time.addItem("t.i.d");
+		lb_time.addItem("n.p.o");
+		lb_time.addItem("disp.");
+		lb_time.addItem("ad.lib.");
+		
 		rpc = PatientServiceInit.initRpc();
 		getPatientsDB();
 	}
@@ -128,9 +158,9 @@ public class PrescribeMeds //extends FindPatient
 		 * PATIENT INFO
 		 */
 		//Hard coded information for demo purposes
-		ta_patientInfo.setText("Jimmy Jame" + "\n" + "109090 Tammy Blvd" + "\n" 
-				+ "Los Angeles, Ca 90063" + "\n" + "jjTammy@gmail.com" + "\n" 
-				+ "(562) 867-5309" + "\n" + "Policy No: 548613543" + "\n" + "D.O.B: 05/10/1985");
+		ta_patientInfo.setText(patientName + "\n" + patientStAddress + "\n" 
+				+ patientCityAddress + "\n" + patientEmailAddress + "\n" 
+				+ patientPhoneNumber + "\n" + patientPolicyNumber + "\n" + patientDOB);
 		//Design parameters
 		ta_patientInfo.setVisibleLines(7);
 		ta_patientInfo.setCharacterWidth(42);
@@ -335,8 +365,25 @@ public class PrescribeMeds //extends FindPatient
 		//Click event
 		btn_submit.addClickHandler(new ClickHandler() {
 			public void onClick(ClickEvent event) {
+				HTML s_DBData;
 				try {
-					//Add click event
+					s_DBData = new HTML ("User Type: Patient"
+					+ "<br>" + patientName
+					+ "<br>" + patientStAddress
+					+ "<br>" + patientCityAddress
+					+ "<br>" + patientEmailAddress
+					+ "<br>" + patientPhoneNumber
+					+ "<br>" + patientPolicyNumber
+					+ "<br>" + patientDOB
+					+ "<br>" + "Take: " + tb_dosageField.getText() 
+						+ " " + lb_units.getSelectedItemText()
+					+ "<br>" + "Medication: " + ta_addedMedication.getText()
+					+ "<br>" + "Duration: " + lb_time.getSelectedItemText()
+					+ "<br>" + "Start: " + db_startDate.getValue()
+					+ "<br>" + "End: " + db_endDate.getValue());
+					
+					PopUps popups = new PopUps();
+					popups.showDialog("Prescription Sent!\r\n" + s_DBData);
 					}
 				catch(Exception e) {
 					//Add click event exception
