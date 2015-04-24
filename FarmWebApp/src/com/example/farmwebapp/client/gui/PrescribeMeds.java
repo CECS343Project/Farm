@@ -137,7 +137,7 @@ public class PrescribeMeds //extends FindPatient
 			@Override
 			public void onFailure(Throwable caught) {
 				PopUps popUp = new PopUps();		
-				popUp.showDialog(caught.toString());
+				//popUp.showDialog(caught.toString());
 			}
 
 			@Override
