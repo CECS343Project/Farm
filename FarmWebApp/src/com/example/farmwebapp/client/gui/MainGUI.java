@@ -77,7 +77,7 @@ public class MainGUI extends FarmWebApp
 			public void onFailure(Throwable caught) 
 			{
 				PopUps popUp = new PopUps();		
-				popUp.showDialog(caught.toString());
+				//popUp.showDialog(caught.toString());
 			}
 
 			@Override
@@ -110,7 +110,7 @@ public class MainGUI extends FarmWebApp
 			public void onFailure(Throwable caught) 
 			{
 				PopUps popUp = new PopUps();		
-				popUp.showDialog(caught.toString());
+				//popUp.showDialog(caught.toString());
 			}
 
 			@Override
