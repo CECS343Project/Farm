@@ -31,5 +31,4 @@ public class PatientData implements IsSerializable
 	public String sugicalHist;
 	public String testResult;
 	public String treatmentPlan;
-	
 }

@@ -18,6 +18,7 @@ import com.example.farmwebapp.client.services.user.UserServiceInit;
 import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.event.logical.shared.SelectionEvent;
 import com.google.gwt.event.logical.shared.SelectionHandler;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.TabLayoutPanel;
 
@@ -68,7 +69,7 @@ public class MainGUI extends FarmWebApp
 			public void onFailure(Throwable caught) 
 			{
 				PopUps popUp = new PopUps();		
-				popUp.showDialog(caught.toString());
+				//popUp.showDialog(caught.toString());
 			}
 
 			@Override
@@ -97,7 +98,7 @@ public class MainGUI extends FarmWebApp
 			public void onFailure(Throwable caught) 
 			{
 				PopUps popUp = new PopUps();		
-				popUp.showDialog(caught.toString());
+				//popUp.showDialog(caught.toString());
 			}
 
 			@Override
