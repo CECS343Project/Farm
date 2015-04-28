@@ -9,12 +9,15 @@
  */
 package com.example.farmwebapp.client.gui;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.Arrays;
 
 import com.example.farmwebapp.client.dbobjects.PatientData;
 import com.example.farmwebapp.client.services.patient.PatientServiceAsync;
 import com.example.farmwebapp.client.services.patient.PatientServiceInit;
+import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.dom.client.KeyDownEvent;
 import com.google.gwt.event.dom.client.KeyDownHandler;
 import com.google.gwt.event.dom.client.KeyPressEvent;
@@ -25,7 +28,9 @@ import com.google.gwt.i18n.client.DateTimeFormat;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.*;
 import com.google.gwt.user.cellview.client.*;
+import com.google.gwt.user.cellview.client.ColumnSortEvent.ListHandler;
 import com.google.gwt.user.datepicker.client.DateBox;
+import com.google.gwt.view.client.ListDataProvider;
 
 public class FindPatient extends MainGUI
 {
@@ -45,16 +50,21 @@ public class FindPatient extends MainGUI
 	
 	private final DateTimeFormat dateFormat = DateTimeFormat.getFormat("MM/dd/yyyy");
 	private DateBox db_dob = new DateBox();
+	private Button b_Select = new Button("Select Patient");
+	private Button b_Delete = new Button("Delete Patient");
 	
 	private ListBox lb_nameSuffix = new ListBox();
 	
 	private CellTable<PatientData> ct_Results = new CellTable<PatientData>();
+	private ScrollPanel sp_ctContainer = new ScrollPanel();
+	private SimplePager pager = new SimplePager();
 	
 	private VerticalPanel vp = new VerticalPanel();
-	private HorizontalPanel hp = new HorizontalPanel();
+	private VerticalPanel vpTable = new VerticalPanel();
+	private HorizontalPanel hpCRUD = new HorizontalPanel();
 	
-	private PatientServiceAsync rpc;
 	private PatientData[] patients; 
+	private String userType = super.getUserType();
 	
 	/**
 	 * Default constructor instantiates the rpc async service 
@@ -66,6 +76,10 @@ public class FindPatient extends MainGUI
 		lb_nameSuffix.addItem("Jr.");
 		lb_nameSuffix.addItem("Sr.");
 		patients = super.getPatients();
+	}
+	public FindPatient(String string) 
+	{
+		userType = string;
 	}
 	/**
 	 * @return Vertical panel with necessary text-boxes to search for a patient
@@ -86,29 +100,8 @@ public class FindPatient extends MainGUI
 			@Override
 			public void onValueChange(ValueChangeEvent<String> event) 
 			{
-				//getPatientsDB("fName",tb_nameFirst.getText());
-				PatientData[] temp = new PatientData[patients.length];
-				int count = 0;
-				//drawTable(temp);
-				PopUps pop = new PopUps();
-				
-				int k;
-				for(k = 0; k < patients.length; k++)
-				{
-					pop.showDialog(patients[k].fName);
-					if(patients[k].fName == tb_nameFirst.getText())
-					{
-						pop.showDialog("AAAAAAAAAAHHHHHHHHHHHH");
-						temp[k] = patients[k];
-						
-						
-					}
-					else
-					{
-						temp[k] = null;
-					}
-				}
-				drawTable(temp);
+				getPatientsSuper();
+				drawTable(patients);
 			}		
 		});
 
@@ -120,9 +113,7 @@ public class FindPatient extends MainGUI
 				@Override
 				public void onValueChange(ValueChangeEvent<String> event) 
 				{
-					//getPatientsDB("lname",tb_nameLast.getText());
-					//PatientData[] temp = patients;
-					//drawTable(temp);
+					getPatientsSuper();
 					drawTable(patients);
 				}		
 			});
@@ -135,9 +126,7 @@ public class FindPatient extends MainGUI
 				@Override
 				public void onValueChange(ValueChangeEvent<String> event) 
 				{
-					//getPatientsDB("fName",tb_nameSuffix.getText());
-					//PatientData[] temp = patients;
-					//drawTable(temp);
+					getPatientsSuper();
 					drawTable(patients);
 				}		
 			});
@@ -155,9 +144,7 @@ public class FindPatient extends MainGUI
 				@Override
 				public void onValueChange(ValueChangeEvent<String> event) 
 				{
-					//getPatientsDB("address",tb_addressStreet.getText());
-					//PatientData[] temp = patients;
-					//drawTable(temp);
+					getPatientsSuper();
 					drawTable(patients);
 					
 				}		
@@ -171,9 +158,7 @@ public class FindPatient extends MainGUI
 				@Override
 				public void onValueChange(ValueChangeEvent<String> event) 
 				{
-					//getPatientsDB("address",tb_addressCityStateZip.getText());
-					//PatientData[] temp = patients;
-					//drawTable(temp);
+					getPatientsSuper();
 					drawTable(patients);
 					
 				}		
@@ -201,9 +186,7 @@ public class FindPatient extends MainGUI
 				@Override
 				public void onValueChange(ValueChangeEvent<String> event) 
 				{
-					//getPatientsDB("fname",tb_email.getText());
-					//PatientData[] temp = patients;
-					//drawTable(temp);
+					getPatientsSuper();
 					drawTable(patients);
 					
 				}		
@@ -222,9 +205,7 @@ public class FindPatient extends MainGUI
 				@Override
 				public void onValueChange(ValueChangeEvent<String> event) 
 				{
-					//getPatientsDB("cellphone",tb_phoneNo.getText());
-					//PatientData[] temp = patients;
-					//drawTable(temp);
+					getPatientsSuper();
 					drawTable(patients);
 					
 				}		
@@ -253,9 +234,8 @@ public class FindPatient extends MainGUI
 				@Override
 				public void onValueChange(ValueChangeEvent<String> event) 
 				{
-					//getPatientsDB("fName",tb_licenseNo.getText());
-					PatientData[] temp = patients;
-					drawTable(temp);
+					getPatientsSuper();
+					drawTable(patients);
 				}		
 			});
 		
@@ -265,9 +245,9 @@ public class FindPatient extends MainGUI
 		ft.getElement().setAttribute("cellpadding", "10");
 		//Add necessary panels 
 		vp.add(ft);
-		vp.add(hp);
-		vp.setCellVerticalAlignment(hp, HasVerticalAlignment.ALIGN_MIDDLE);
-		vp.setCellHorizontalAlignment(hp, HasHorizontalAlignment.ALIGN_CENTER);
+		vp.add(vpTable);
+		vp.setCellVerticalAlignment(vpTable, HasVerticalAlignment.ALIGN_MIDDLE);
+		vp.setCellHorizontalAlignment(vpTable, HasHorizontalAlignment.ALIGN_CENTER);
 		return vp;
 	}
 	
@@ -283,6 +263,7 @@ public class FindPatient extends MainGUI
 		 * CELL TABLE FIELD
 		 */
 		final List<PatientData> l_DummyData = Arrays.asList(temp);
+		ListDataProvider<PatientData> ldp_CellData = new ListDataProvider<PatientData>();
 		
 		TextColumn<PatientData> tc_Name = new TextColumn<PatientData>()
 		{
@@ -292,6 +273,7 @@ public class FindPatient extends MainGUI
 				return ""+object.lName+", "+object.fName;
 			}				
 		};
+		tc_Name.setSortable(true);
 		TextColumn<PatientData> tc_Address = new TextColumn<PatientData>()
 		{
 			@Override
@@ -300,6 +282,7 @@ public class FindPatient extends MainGUI
 				return object.address;
 			}				
 		};
+		tc_Address.setSortable(true);
 		TextColumn<PatientData> tc_Email = new TextColumn<PatientData>()
 		{
 			@Override
@@ -308,6 +291,7 @@ public class FindPatient extends MainGUI
 				return object.testResult;
 			}				
 		};
+		tc_Email.setSortable(true);
 		TextColumn<PatientData> tc_PhoneNumber = new TextColumn<PatientData>()
 		{
 			@Override
@@ -327,6 +311,7 @@ public class FindPatient extends MainGUI
 				}
 			}				
 		};
+		tc_PhoneNumber.setSortable(true);
 		TextColumn<PatientData> tc_DOB = new TextColumn<PatientData>()
 		{
 			@Override
@@ -335,6 +320,7 @@ public class FindPatient extends MainGUI
 				return object.dob.toString();
 			}				
 		};
+		tc_DOB.setSortable(true);
 		TextColumn<PatientData> tc_LicenseNo = new TextColumn<PatientData>()
 		{
 			@Override
@@ -343,23 +329,98 @@ public class FindPatient extends MainGUI
 				return object.pID;
 			}				
 		};	
+		tc_LicenseNo.setSortable(true);
+		
+		ListHandler<PatientData> columnSortHandler = new ListHandler<PatientData>(l_DummyData);
+		columnSortHandler.setComparator(tc_Name,new Comparator<PatientData>() 
+			{
+		          public int compare(PatientData o1, PatientData o2) 
+		          {
+		            if (o1 == o2) {
+		              return 0;
+		            }
+
+		            // Compare the name columns.
+		            if (o1 != null) {
+		              return (o2 != null) ? o1.lName.compareTo(o2.lName) : 1;
+		            }
+		            return -1;
+		          }
+		    });
+		    
+		ldp_CellData.setList(l_DummyData);
+		ldp_CellData.addDataDisplay(ct_Results);
+		ct_Results.getColumnSortList().push(tc_Name);
+		
+		ct_Results.addColumnSortHandler(columnSortHandler);
 		
 		//Add the columns to the table
-		ct_Results.addColumn(tc_Name, "");
-		ct_Results.addColumn(tc_Address, "");
-		ct_Results.addColumn(tc_Email, "");
-		ct_Results.addColumn(tc_PhoneNumber, "");
-		ct_Results.addColumn(tc_DOB, "");
-		ct_Results.addColumn(tc_LicenseNo, "");		
-		ct_Results.setRowCount(2,true);
+		ct_Results.addColumn(tc_Name, "Name");
+		ct_Results.addColumn(tc_Address, "Address");
+		ct_Results.addColumn(tc_Email, "Email");
+		ct_Results.addColumn(tc_PhoneNumber, "Phone");
+		ct_Results.addColumn(tc_DOB, "Date Of Birth");
+		ct_Results.addColumn(tc_LicenseNo, "Policy Number");		
+		ct_Results.setRowCount(7,true);
 		ct_Results.setRowData(l_DummyData);
 		
 		//Add table to the horizontal panel
 		//Call the main panel generator again 
 		//after populating to place table in main panel
-		ct_Results.setPageSize(14);
+		ct_Results.setPageSize(5);
 		ct_Results.setWidth("642px");
-		hp.add(ct_Results);
+		pager.setDisplay(ct_Results);
+		
+		b_Select.addClickHandler(new ClickHandler(){
+
+			
+
+			@Override
+			public void onClick(ClickEvent event) 
+			{
+				PopUps pop = new PopUps();
+				String tempID = ct_Results.getRowElement(ct_Results.getKeyboardSelectedRow()).getLastChild().toString();
+				moveToPrescribe(userType,tempID);
+			}
+			
+		});
+		
+		hpCRUD.add(b_Select);
+		hpCRUD.add(b_Delete);
+		
+		vpTable.add(ct_Results);
+		vpTable.add(pager);
+		vpTable.add(hpCRUD);
 		getFindPatientPanel();
+	}
+	
+	protected void moveToPrescribe(String userID,String tempID) 
+	{
+		if(userID == "doctor")
+		{
+			super.refreshUI("doctor", 3,tempID);
+		}
+		else if(userID == "pharmacist")
+		{
+			super.refreshUI("pharmacist", 4,tempID);
+		}
+		
+		
+	}
+	public void getPatientsSuper()
+	{
+		patients = super.getPatients();
+	}
+	
+	public PatientData[] filterPatients(String field)
+	{
+		return null;
+	
+	}
+	
+	public String getUserType()
+	{
+		return super.getUserType();
+	
 	}
 }

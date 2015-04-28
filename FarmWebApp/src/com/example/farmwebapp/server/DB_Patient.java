@@ -7,6 +7,8 @@
 package com.example.farmwebapp.server;
 
 import java.sql.*;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 
 import com.example.farmwebapp.client.dbobjects.PatientData;
 
@@ -173,4 +175,45 @@ public class DB_Patient extends DB_Conn
 				
 	}
 
+	public void insertPatient(PatientData patient) 
+	{
+		SimpleDateFormat sdf1 = new SimpleDateFormat("MM-dd-yyyy");
+		String query = null;
+		try {
+			query = "INSERT INTO view_patient_detail (user_id,first_name,address,city,state,"
+					+ "zipcode,cellphone,homephone,birthdate,chief_complain,history,medication_record,"
+					+ "progress_note,sugical_history,test_result,treatment_plan) VALUES ("
+					+ " '" + patient.pID + "',"
+					+ " '" + patient.fName + "',"
+					+ " '" +patient.address + "',"
+					+ " '" +patient.city + "',"
+					+ " '" + patient.state+ "',"
+					+ " '" +patient.zip + "',"
+					+ " '" +patient.cellPhone + "',"
+					+ " '" +patient.homePhone + "',"
+					+ " '" +sdf1.parse(patient.dob.toString()) + "',"
+					+ " '" +patient.complaint + "',"
+					+ " '" +patient.history + "',"
+					+ " '" +patient.medRecord + "',"
+					+ " '" +patient.progress + "',"
+					+ " '" +patient.sugicalHist + "',"
+					+ " '" +patient.testResult + "',"
+					+ " '" +patient.treatmentPlan + "');";
+		} catch (ParseException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+				
+		try
+		{
+			Connection conn = getConn();
+			Statement select = conn.createStatement();
+			select.executeUpdate(query);
+			conn.close();
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}		
+	}
 }
