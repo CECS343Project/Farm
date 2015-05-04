@@ -1,0 +1,26 @@
+<?xml versin="1.0" encoding="utf-8" ?>
+<application xmlns="http://ns.adobe.com/air/application/3.0">
+    <id>com.example.farmwebapp</id>
+    <filename>Farm Web App</filename>
+    <name>FarmWebApp</name>
+    <versionNumber>1.0</versionNumber>
+    <description></description>
+    <copyright/>
+    <initialWindow>
+        <content>
+            FarmWebApp.html
+            </content>
+        <systemChrome>none</systemChrome>
+        <transparent>false</transparent>
+        <visible>true</visible>
+        <minimizable>true</minimizable>
+        <maximizable>true</maximizable>
+        <resizable>true</resizable>
+        <width>1024</width>
+        <height>768</height>
+        <x>100</x>
+        <y>10</y>
+    </initialWindow>
+    <fileTypes>
+    </fileTypes>
+</application>
