@@ -131,7 +131,6 @@ public class SignUp
 				
 		ptb_passwordConfirm.addKeyDownHandler(new KeyDownHandler(){
 
-			@Override
 			public void onKeyDown(KeyDownEvent event) {
 				String originalPassword = ptb_password.getText();
 				
@@ -173,7 +172,6 @@ public class SignUp
 			
 		tb_emailConfirm.addKeyDownHandler(new KeyDownHandler()
 		{
-			@Override
 			public void onKeyDown(KeyDownEvent event) {
 				String originalEmail = tb_email.getText();
 				
@@ -253,7 +251,6 @@ public class SignUp
 		
 		signUpArrow.addMouseOverHandler(new MouseOverHandler()
 		{
-			@Override
 			public void onMouseOver(MouseOverEvent event) 
 			{
 				signUpArrow.getElement().getStyle().setCursor(Cursor.POINTER);	

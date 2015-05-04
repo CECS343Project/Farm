@@ -8,7 +8,6 @@ import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 public class UserServiceImpl  extends RemoteServiceServlet implements UserService
 {
 
-	@Override
 	public UserData[] getUsers() {
 		// TODO Auto-generated method stub
 		return null;

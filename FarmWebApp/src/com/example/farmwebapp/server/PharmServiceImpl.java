@@ -8,7 +8,6 @@ import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 public class PharmServiceImpl  extends RemoteServiceServlet implements PharmService
 {
 
-	@Override
 	public PharmData[] getPharms() {
 		// TODO Auto-generated method stub
 		return null;

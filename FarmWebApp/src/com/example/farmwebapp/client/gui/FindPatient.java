@@ -97,7 +97,6 @@ public class FindPatient extends MainGUI
 		tb_nameFirst.addValueChangeHandler(new ValueChangeHandler<String>()
 			{
 
-			@Override
 			public void onValueChange(ValueChangeEvent<String> event) 
 			{
 				getPatientsSuper();
@@ -110,7 +109,6 @@ public class FindPatient extends MainGUI
 		tb_nameLast.addValueChangeHandler(new ValueChangeHandler<String>()
 				{
 
-				@Override
 				public void onValueChange(ValueChangeEvent<String> event) 
 				{
 					getPatientsSuper();
@@ -123,7 +121,6 @@ public class FindPatient extends MainGUI
 		tb_nameSuffix.addValueChangeHandler(new ValueChangeHandler<String>()
 				{
 
-				@Override
 				public void onValueChange(ValueChangeEvent<String> event) 
 				{
 					getPatientsSuper();
@@ -141,7 +138,6 @@ public class FindPatient extends MainGUI
 		tb_addressStreet.addValueChangeHandler(new ValueChangeHandler<String>()
 				{
 
-				@Override
 				public void onValueChange(ValueChangeEvent<String> event) 
 				{
 					getPatientsSuper();
@@ -155,7 +151,6 @@ public class FindPatient extends MainGUI
 		tb_addressCityStateZip.addValueChangeHandler(new ValueChangeHandler<String>()
 				{
 
-				@Override
 				public void onValueChange(ValueChangeEvent<String> event) 
 				{
 					getPatientsSuper();
@@ -183,7 +178,6 @@ public class FindPatient extends MainGUI
 		tb_email.addValueChangeHandler(new ValueChangeHandler<String>()
 				{
 
-				@Override
 				public void onValueChange(ValueChangeEvent<String> event) 
 				{
 					getPatientsSuper();
@@ -202,7 +196,6 @@ public class FindPatient extends MainGUI
 		tb_phoneNo.addValueChangeHandler(new ValueChangeHandler<String>()
 				{
 
-				@Override
 				public void onValueChange(ValueChangeEvent<String> event) 
 				{
 					getPatientsSuper();
@@ -231,7 +224,6 @@ public class FindPatient extends MainGUI
 		tb_licenseNo.addValueChangeHandler(new ValueChangeHandler<String>()
 				{
 
-				@Override
 				public void onValueChange(ValueChangeEvent<String> event) 
 				{
 					getPatientsSuper();
@@ -375,7 +367,6 @@ public class FindPatient extends MainGUI
 
 			
 
-			@Override
 			public void onClick(ClickEvent event) 
 			{
 				PopUps pop = new PopUps();

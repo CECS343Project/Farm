@@ -226,7 +226,6 @@ public class AddPatient extends MainGUI
 		signUpArrow.addMouseOverHandler(new MouseOverHandler()
 		{
 
-			@Override
 			public void onMouseOver(MouseOverEvent event) 
 			{
 				signUpArrow.getElement().getStyle().setCursor(Cursor.POINTER);

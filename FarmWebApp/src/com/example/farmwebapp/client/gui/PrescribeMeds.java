@@ -134,13 +134,11 @@ public class PrescribeMeds //extends FindPatient
 	{
 		AsyncCallback<PatientData[]> callback = new AsyncCallback<PatientData[]>()
 		{
-			@Override
 			public void onFailure(Throwable caught) {
 				PopUps popUp = new PopUps();		
 				popUp.showDialog(caught.toString());
 			}
 
-			@Override
 			public void onSuccess(PatientData[] result) {
 				PatientsDB = result;
 
@@ -254,7 +252,6 @@ public class PrescribeMeds //extends FindPatient
 	    });
 		
 		img_addMeds.addMouseOverHandler(new MouseOverHandler() {
-			@Override
 			public void onMouseOver(MouseOverEvent event) {
 				img_addMeds.getElement().getStyle().setCursor(Cursor.POINTER);
 			}
@@ -392,7 +389,6 @@ public class PrescribeMeds //extends FindPatient
 			});
 		
 		btn_submit.addMouseOverHandler(new MouseOverHandler() {
-			@Override
 			public void onMouseOver(MouseOverEvent event) {
 				btn_submit.getElement().getStyle().setCursor(Cursor.POINTER);
 				}

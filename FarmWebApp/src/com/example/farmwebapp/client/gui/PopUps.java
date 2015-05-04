@@ -31,7 +31,6 @@ public class PopUps extends DialogBox
 		
 		ClickHandler chOkButton = new ClickHandler()
 		{
-			@Override
 			public void onClick(ClickEvent event) 
 			{
 				hide();				
@@ -57,7 +56,6 @@ public class PopUps extends DialogBox
 		
 		ClickHandler chOkButton = new ClickHandler()
 		{
-			@Override
 			public void onClick(ClickEvent event) 
 			{
 				hide();				

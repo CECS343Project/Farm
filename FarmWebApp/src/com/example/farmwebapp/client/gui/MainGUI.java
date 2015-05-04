@@ -15,6 +15,7 @@ import com.example.farmwebapp.client.services.patient.PatientServiceAsync;
 import com.example.farmwebapp.client.services.patient.PatientServiceInit;
 import com.example.farmwebapp.client.services.user.UserServiceAsync;
 import com.example.farmwebapp.client.services.user.UserServiceInit;
+import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.event.logical.shared.SelectionEvent;
 import com.google.gwt.event.logical.shared.SelectionHandler;
@@ -38,6 +39,10 @@ public class MainGUI extends FarmWebApp
 	//Default constructor
 	public MainGUI() 
 	{
+		PopUps pop = new PopUps();
+		
+		pop.showDialog("Host Base: " + GWT.getHostPageBaseURL());
+		pop.showDialog("Module Base: " + GWT.getModuleBaseURL());
 		rpc = PatientServiceInit.initRpc();
 		rpcUsers = UserServiceInit.initRpc();
 		getPatientsDB();
@@ -74,14 +79,12 @@ public class MainGUI extends FarmWebApp
 	{
 		AsyncCallback<PatientData[]> callback = new AsyncCallback<PatientData[]>()
 		{
-			@Override
 			public void onFailure(Throwable caught) 
 			{
 				PopUps popUp = new PopUps();		
 				//popUp.showDialog(caught.toString());
 			}
 
-			@Override
 			public void onSuccess(PatientData[] result) 
 			{
 				PopUps popUp = new PopUps();		
@@ -107,14 +110,12 @@ public class MainGUI extends FarmWebApp
 	{
 		AsyncCallback<UserData[]> callback = new AsyncCallback<UserData[]>()
 		{
-			@Override
 			public void onFailure(Throwable caught) 
 			{
 				PopUps popUp = new PopUps();		
 				//popUp.showDialog(caught.toString());
 			}
 
-			@Override
 			public void onSuccess(UserData[] result) 
 			{
 				PopUps popUp = new PopUps();		
@@ -143,7 +144,6 @@ public class MainGUI extends FarmWebApp
 		homePage.add(signUpPage.getSignUpPanel(), "SIGN UP");
 		
 		homePage.addSelectionHandler(new SelectionHandler<Integer>() {
-			@Override
 			public void onSelection(SelectionEvent<Integer> event) {
 				if (homePage.getSelectedIndex() == 4 || homePage.getSelectedIndex() == 6) {
 					homePage.setPixelSize(700, 600);
@@ -179,7 +179,6 @@ public class MainGUI extends FarmWebApp
 		homePage.add(logoutPanel.getLogoutPanel(),"LOGOUT");
 		
 		homePage.addSelectionHandler(new SelectionHandler<Integer>() {
-			@Override
 			public void onSelection(SelectionEvent<Integer> event) {
 				if (homePage.getSelectedIndex() == 2 || homePage.getSelectedIndex() == 3) {
 					homePage.setPixelSize(700, 600);
@@ -222,7 +221,6 @@ public class MainGUI extends FarmWebApp
 		
 		
 		homePage.addSelectionHandler(new SelectionHandler<Integer>() {
-			@Override
 			public void onSelection(SelectionEvent<Integer> event) {
 				if (homePage.getSelectedIndex() == 2 || homePage.getSelectedIndex() == 4) {
 						
@@ -271,14 +269,12 @@ public class MainGUI extends FarmWebApp
 	{
 		AsyncCallback<PatientData[]> callback = new AsyncCallback<PatientData[]>()
 				{
-					@Override
 					public void onFailure(Throwable caught) 
 					{
 						PopUps popUp = new PopUps();		
 						popUp.showDialog(caught.toString());
 					}
 
-					@Override
 					public void onSuccess(PatientData[] result) 
 					{
 						PopUps popUp = new PopUps();		

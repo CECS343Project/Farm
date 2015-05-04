@@ -61,7 +61,6 @@ public class Pharmacy extends MainGUI
 		addPatient.setTitle("Add a patient");
 		addPatient.addMouseOverHandler(new MouseOverHandler()
 		{
-			@Override
 			public void onMouseOver(MouseOverEvent event) 
 			{
 				addPatient.getElement().getStyle().setCursor(Cursor.POINTER);
@@ -69,7 +68,6 @@ public class Pharmacy extends MainGUI
 		});
 		addPatient.addClickHandler(new ClickHandler(){
 
-			@Override
 			public void onClick(ClickEvent event) 
 			{
 				setSelectedIndex(1);
@@ -85,7 +83,6 @@ public class Pharmacy extends MainGUI
 		findPatient.setTitle("Search patient database");
 		findPatient.addMouseOverHandler(new MouseOverHandler()
 		{
-			@Override
 			public void onMouseOver(MouseOverEvent event) 
 			{
 				findPatient.getElement().getStyle().setCursor(Cursor.POINTER);
@@ -93,7 +90,6 @@ public class Pharmacy extends MainGUI
 		});
 		findPatient.addClickHandler(new ClickHandler(){
 
-			@Override
 			public void onClick(ClickEvent event) 
 			{
 				setSelectedIndex(2);
@@ -109,7 +105,6 @@ public class Pharmacy extends MainGUI
 		updatePharmacy.setTitle("Check for updated prescriptions");
 		updatePharmacy.addMouseOverHandler(new MouseOverHandler()
 		{
-			@Override
 			public void onMouseOver(MouseOverEvent event) 
 			{
 				updatePharmacy.getElement().getStyle().setCursor(Cursor.POINTER);
@@ -117,7 +112,6 @@ public class Pharmacy extends MainGUI
 		});
 		updatePharmacy.addClickHandler(new ClickHandler(){
 
-			@Override
 			public void onClick(ClickEvent event) 
 			{
 				setSelectedIndex(3);
@@ -133,7 +127,6 @@ public class Pharmacy extends MainGUI
 		settings.setTitle("Change application settings");
 		settings.addMouseOverHandler(new MouseOverHandler()
 		{
-			@Override
 			public void onMouseOver(MouseOverEvent event) 
 			{
 				settings.getElement().getStyle().setCursor(Cursor.POINTER);	
@@ -141,7 +134,6 @@ public class Pharmacy extends MainGUI
 		});
 		settings.addClickHandler(new ClickHandler(){
 
-			@Override
 			public void onClick(ClickEvent event) 
 			{
 				setSelectedIndex(4);
@@ -157,7 +149,6 @@ public class Pharmacy extends MainGUI
 		logout.setTitle("Logout");
 		logout.addMouseOverHandler(new MouseOverHandler()
 		{
-			@Override
 			public void onMouseOver(MouseOverEvent event) 
 			{
 				logout.getElement().getStyle().setCursor(Cursor.POINTER);
@@ -166,7 +157,6 @@ public class Pharmacy extends MainGUI
 		});
 		logout.addClickHandler(new ClickHandler(){
 
-			@Override
 			public void onClick(ClickEvent event) 
 			{
 				logout();

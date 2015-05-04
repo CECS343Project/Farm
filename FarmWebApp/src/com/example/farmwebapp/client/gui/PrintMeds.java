@@ -85,13 +85,11 @@ public class PrintMeds {
 	{
 		AsyncCallback<PatientData[]> callback = new AsyncCallback<PatientData[]>()
 		{
-			@Override
 			public void onFailure(Throwable caught) {
 				PopUps popUp = new PopUps();		
 				popUp.showDialog(caught.toString());
 			}
 
-			@Override
 			public void onSuccess(PatientData[] result) {
 				PatientsDB = result;
 
@@ -271,7 +269,6 @@ public class PrintMeds {
 			});
 		
 		btn_submit.addMouseOverHandler(new MouseOverHandler() {
-			@Override
 			public void onMouseOver(MouseOverEvent event) {
 				btn_submit.getElement().getStyle().setCursor(Cursor.POINTER);
 				}

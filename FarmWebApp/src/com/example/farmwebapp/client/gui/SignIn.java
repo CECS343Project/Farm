@@ -134,7 +134,6 @@ public class SignIn extends MainGUI
 	    });
 		loginArrow.addMouseOverHandler(new MouseOverHandler()
 		{
-			@Override
 			public void onMouseOver(MouseOverEvent event) 
 			{
 				loginArrow.getElement().getStyle().setCursor(Cursor.POINTER);

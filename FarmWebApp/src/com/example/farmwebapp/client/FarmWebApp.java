@@ -13,7 +13,9 @@
 package com.example.farmwebapp.client;
 
 import com.example.farmwebapp.client.gui.MainGUI;
+import com.example.farmwebapp.client.gui.PopUps;
 import com.google.gwt.core.client.EntryPoint;
+import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
 
 public class FarmWebApp implements EntryPoint 
@@ -28,6 +30,7 @@ public class FarmWebApp implements EntryPoint
 	 */
 	public void onModuleLoad() 
 	{
+		
 		gui = new MainGUI();
 		
 		//Places gui into the root panel of the client screen

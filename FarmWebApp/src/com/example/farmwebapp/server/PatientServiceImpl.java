@@ -14,7 +14,6 @@ import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 @SuppressWarnings("serial")
 public class PatientServiceImpl extends RemoteServiceServlet implements PatientService
 {
-	@Override
 	public PatientData[] getPatients() 
 	{
 		DB_Patient db = new DB_Patient();
@@ -22,7 +21,6 @@ public class PatientServiceImpl extends RemoteServiceServlet implements PatientS
 		
 		return patients;
 	}
-	@Override
 	public PatientData[] getPatients(String field, String value) 
 	{
 		DB_Patient db = new DB_Patient();
@@ -31,7 +29,6 @@ public class PatientServiceImpl extends RemoteServiceServlet implements PatientS
 		
 		return patients;
 	}
-	@Override
 	public void insertPatient(PatientData patient) 
 	{
 		DB_Patient db = new DB_Patient();

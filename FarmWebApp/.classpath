@@ -124,7 +124,10 @@
 	</classpathentry>
 	<classpathentry kind="lib" path="C:/Users/Russell/git/farm/FarmWebApp/war/WEB-INF/lib/mysql-connector.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Russell/git/farm/FarmWebApp/war/WEB-INF/lib/mysql-connector-java-5.1.18-bin.jar"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7">
+	<classpathentry kind="lib" path="C:/Users/Russell/git/farm/FarmWebApp/war/WEB-INF/gwt-browserplus.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Russell/git/farm/FarmWebApp/war/WEB-INF/gwt-in-the-air.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Russell/git/farm/FarmWebApp/war/WEB-INF/gwt-jscollections.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/J2SE-1.5">
 		<attributes>
 			<attribute name="owner.project.facets" value="java"/>
 		</attributes>

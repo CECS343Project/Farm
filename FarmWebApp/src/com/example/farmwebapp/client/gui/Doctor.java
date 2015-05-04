@@ -65,7 +65,6 @@ public class Doctor extends MainGUI {
 		//Change mouse to pointer to  indicate that it is a button
 		addPatient.addMouseOverHandler(new MouseOverHandler()
 		{
-			@Override
 			public void onMouseOver(MouseOverEvent event) 
 			{
 				addPatient.getElement().getStyle().setCursor(Cursor.POINTER);		
@@ -73,7 +72,6 @@ public class Doctor extends MainGUI {
 		});
 		addPatient.addClickHandler(new ClickHandler(){
 
-			@Override
 			public void onClick(ClickEvent event) 
 			{
 				setSelectedIndex(1);
@@ -93,7 +91,6 @@ public class Doctor extends MainGUI {
 		findPatient.addMouseOverHandler(new MouseOverHandler()
 		{
 
-			@Override
 			public void onMouseOver(MouseOverEvent event) 
 			{
 				findPatient.getElement().getStyle().setCursor(Cursor.POINTER);
@@ -103,7 +100,6 @@ public class Doctor extends MainGUI {
 		});
 		findPatient.addClickHandler(new ClickHandler(){
 
-			@Override
 			public void onClick(ClickEvent event) 
 			{
 				setSelectedIndex(2);
@@ -122,7 +118,6 @@ public class Doctor extends MainGUI {
 		settings.addMouseOverHandler(new MouseOverHandler()
 		{
 
-			@Override
 			public void onMouseOver(MouseOverEvent event) 
 			{
 				settings.getElement().getStyle().setCursor(Cursor.POINTER);
@@ -132,7 +127,6 @@ public class Doctor extends MainGUI {
 		});
 		settings.addClickHandler(new ClickHandler(){
 
-			@Override
 			public void onClick(ClickEvent event) 
 			{
 				setSelectedIndex(3);
@@ -152,7 +146,6 @@ public class Doctor extends MainGUI {
 		logout.addMouseOverHandler(new MouseOverHandler()
 		{
 
-			@Override
 			public void onMouseOver(MouseOverEvent event) 
 			{
 				logout.getElement().getStyle().setCursor(Cursor.POINTER);
@@ -162,7 +155,6 @@ public class Doctor extends MainGUI {
 		});
 		logout.addClickHandler(new ClickHandler(){
 
-			@Override
 			public void onClick(ClickEvent event) 
 			{
 				logout();

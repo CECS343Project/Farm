@@ -71,12 +71,12 @@ public class DB_Patient extends DB_Conn
 	{
 		String query = "SELECT * FROM view_patient_detail ";
 		
-		switch(field.toLowerCase())
+		switch(field.charAt(0))
 		{
-		case "id":
+		case 'i':
 			query += "WHERE user_id = '" + value+ "';";
 			break;
-		case "fname":
+		/*case "fname":
 			query += "WHERE first_name = '" + value+ "';";
 			break;
 		case "lname":
@@ -124,6 +124,7 @@ public class DB_Patient extends DB_Conn
 		case "treatmentplan":
 			query += "WHERE treatment_plan = '" + value+ "';";
 			break;
+			*/
 		default:
 			query += ";";
 			break;

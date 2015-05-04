@@ -92,7 +92,6 @@ public class PrescriptionInfo
 		signUpArrow.setTitle("Add Patient");
 		signUpArrow.addMouseOverHandler(new MouseOverHandler()
 		{
-			@Override
 			public void onMouseOver(MouseOverEvent event) 
 			{
 				signUpArrow.getElement().getStyle().setCursor(Cursor.POINTER);

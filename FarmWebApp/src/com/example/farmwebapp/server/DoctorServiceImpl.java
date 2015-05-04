@@ -8,7 +8,6 @@ import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 public class DoctorServiceImpl  extends RemoteServiceServlet implements DoctorService
 {
 
-	@Override
 	public DoctorData[] getDoctors() {
 		// TODO Auto-generated method stub
 		return null;

@@ -80,13 +80,11 @@ public class PharmacyUpdate //extends MainGUI
 	{
 		AsyncCallback<PatientData[]> callback = new AsyncCallback<PatientData[]>()
 		{
-			@Override
 			public void onFailure(Throwable caught) {
 				PopUps popUp = new PopUps();		
 				popUp.showDialog(caught.toString());
 			}
 
-			@Override
 			public void onSuccess(PatientData[] result) {
 				PatientsDB = result;
 
@@ -194,7 +192,6 @@ b_Select.addClickHandler(new ClickHandler(){
 
 			
 
-			@Override
 			public void onClick(ClickEvent event) 
 			{
 				PopUps pop = new PopUps();
