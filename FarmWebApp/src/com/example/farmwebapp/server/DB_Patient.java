@@ -18,7 +18,7 @@ public class DB_Patient extends DB_Conn
 	
 	public PatientData[] getPatients()
 	{
-		String query = "SELECT * FROM view_patient_detail;";
+		String query = "SELECT * FROM Patients;";
 		
 		PatientData[] patientData = null;
 		
@@ -36,9 +36,9 @@ public class DB_Patient extends DB_Conn
 			{
 				patientData[k] = new PatientData();
 				
-				patientData[k].pID = result.getString(1);
 				patientData[k].fName = result.getString(2);
 				patientData[k].lName = result.getString(3);
+				/*patientData[k].lName = result.getString(3);
 				patientData[k].address = result.getString(4);
 				patientData[k].city = result.getString(5);
 				patientData[k].state = result.getString(6);
@@ -53,6 +53,7 @@ public class DB_Patient extends DB_Conn
 				patientData[k].sugicalHist = result.getString(15);
 				patientData[k].testResult = result.getString(16);
 				patientData[k].treatmentPlan = result.getString(17);
+				*/
 				
 				k++;
 			}

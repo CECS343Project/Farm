@@ -15,6 +15,7 @@ import com.example.farmwebapp.client.services.patient.PatientServiceAsync;
 import com.example.farmwebapp.client.services.patient.PatientServiceInit;
 import com.example.farmwebapp.client.services.user.UserServiceAsync;
 import com.example.farmwebapp.client.services.user.UserServiceInit;
+import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.event.logical.shared.SelectionEvent;
 import com.google.gwt.event.logical.shared.SelectionHandler;
@@ -38,10 +39,13 @@ public class MainGUI extends FarmWebApp
 	//Default constructor
 	public MainGUI() 
 	{
+		//PopUps popUp = new PopUps();
+		//popUp.showDialog("BaseURL " + GWT.getHostPageBaseURL());
+		//popUp.showDialog("Base Server URL " + GWT.getModuleBaseURL());
 		rpc = PatientServiceInit.initRpc();
-		rpcUsers = UserServiceInit.initRpc();
+		//rpcUsers = UserServiceInit.initRpc();
 		getPatientsDB();
-		getUsersDB();
+		//getUsersDB();
 	}
 	
 	public MainGUI(int index) 
@@ -84,9 +88,12 @@ public class MainGUI extends FarmWebApp
 			@Override
 			public void onSuccess(PatientData[] result) 
 			{
-				PopUps popUp = new PopUps();		
+				//PopUps popUp = new PopUps();		
 				//popUp.showDialog("Got the patients!");
+				
 				PatientsDB = result;
+				Window.alert(PatientsDB[0].fName);
+				//popUp.showDialog("First name"+PatientsDB[0].fName);
 				//findPatientPanel = new FindPatient(PatientsDB);
 				//findPatientPanel.getFindPatientPanel().asWidget().removeFromParent();
 				//homePage.add(findPatientPanel.getFindPatientPanel(), "FIND PATIENT");
