@@ -8,7 +8,6 @@
  */
 package com.example.farmwebapp.client.gui;
 
-import com.example.farmwebapp.client.dbobjects.PatientData;
 import com.example.farmwebapp.client.dbobjects.UserData;
 import com.example.farmwebapp.client.services.UserServiceAsync;
 import com.example.farmwebapp.client.services.UserServiceInit;
@@ -59,7 +58,7 @@ public class SignIn extends MainGUI
 			public void onFailure(Throwable caught) 
 			{
 				PopUps popUp = new PopUps();		
-				//popUp.showDialog(caught.toString());
+				popUp.showDialog(caught.toString());
 			}
 
 			@Override
@@ -143,21 +142,46 @@ public class SignIn extends MainGUI
 	        	{
 		            PopUps popups = new PopUps();
 		            //popups.showDialog("Welcome "  + tb_userName.getText() + "!");
-		            removeLogins();
+		           // removeLogins();
+		            int k;
+		            
+		            for(k = 0; k < users.length; k++)
+		            {
+		            	if(tb_userName.getText() == users[k].uName)
+		            	{
+		            		if(ptb_password.getText() == users[k].password)
+		            		{
+		            			switch(tb_userName.getText().charAt(0))
+		            			{
+		            			case 'd':
+		            				placeInRoot("doctor");
+		            				break;
+		            			case 'p':
+		            				placeInRoot("pharmacist");
+		            				break;
+		            			default:
+		            				placeInRoot("null");
+		            				break;
+		            			}
+		            		}
+			
+		            	}
+		            }
+		            /*
 		            if(tb_userName.getText().charAt(0) == 'p')
 		            {
-		            	placeInRoot("pharmacist");
+		            	
 		            }
 		            else if(tb_userName.getText().charAt(0) == 'd')
 		            {
-		            	placeInRoot("doctor");
+		            	
 		            }
 		            else
 		            {
 		            	popups.showDialog("Not a valid username!!!!");
 		            	placeInRoot("null");
 		            }
-		            
+		            */
 		            
 	        	}
 	        	catch(Exception e)
@@ -194,6 +218,7 @@ public class SignIn extends MainGUI
 	public void removeLogins()
 	{
 		this.getSignInPanel().asWidget().removeFromParent();
+		super.getHomePage().removeFromParent();
 	}
 	
 	
