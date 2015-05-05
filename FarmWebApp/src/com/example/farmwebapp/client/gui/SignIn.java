@@ -64,8 +64,6 @@ public class SignIn extends MainGUI
 			@Override
 			public void onSuccess(UserData[] result) 
 			{
-				PopUps popUp = new PopUps();
-				popUp.showDialog("HELLO" + result[0].address);
 				users = result;
 			}
 		};
