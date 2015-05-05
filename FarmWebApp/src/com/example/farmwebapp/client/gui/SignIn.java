@@ -219,11 +219,5 @@ public class SignIn extends MainGUI
 	{
 		this.getSignInPanel().asWidget().removeFromParent();
 		super.getHomePage().removeFromParent();
-	}
-	
-	
-	
-	
-	
-	
+	}	
 }
