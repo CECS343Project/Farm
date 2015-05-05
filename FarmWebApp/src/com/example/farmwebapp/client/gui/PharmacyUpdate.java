@@ -94,7 +94,7 @@ public class PharmacyUpdate //extends MainGUI
 				drawTable();
 			}
 		};
-		rpc.getPatients(callback);
+		rpc.getPatientsUnfilled(callback);
 	}
 
 	/**
@@ -183,17 +183,14 @@ public class PharmacyUpdate //extends MainGUI
 		pager.setDisplay(ct_Results);
 		
 b_Select.addClickHandler(new ClickHandler(){
-
-			
-
 			@Override
 			public void onClick(ClickEvent event) 
 			{
 				PopUps pop = new PopUps();
-				String tempID = ct_Results.getRowElement(ct_Results.getKeyboardSelectedRow()).getLastChild().toString();
+				String tempID = ct_Results.getRowElement(ct_Results.getKeyboardSelectedRow()).getFirstChild().toString();
+				pop.showDialog(tempID);
 				moveToPrescribe("pharmacist",tempID);
 			}
-			
 		});
 
 		hpCRUD.add(b_Select);

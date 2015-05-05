@@ -23,6 +23,14 @@ public class PatientServiceImpl extends RemoteServiceServlet implements PatientS
 		return patients;
 	}
 	@Override
+	public PatientData[] getPatientsUnfilled() 
+	{
+		DB_Patient db = new DB_Patient();
+		PatientData[] patients = db.getPatientsUnfilled();
+		
+		return patients;
+	}
+	@Override
 	public PatientData[] getPatients(String field, String value) 
 	{
 		DB_Patient db = new DB_Patient();

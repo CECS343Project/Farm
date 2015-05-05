@@ -59,6 +59,53 @@ public class DB_Patient extends DB_Conn
 		return patientData;
 				
 	}
+	
+	public PatientData[] getPatientsUnfilled()
+	{
+		String query = "SELECT * FROM patients WHERE status = 'Unfilled';";
+		
+		PatientData[] patientData = null;
+		
+		try
+		{
+			Connection conn = getConn();
+			Statement select = conn.createStatement();
+			ResultSet result = select.executeQuery(query);
+			
+			int rSize = getResultSetSize(result);
+			patientData = new PatientData[rSize];
+			
+			int k = 0;
+			while(result.next())
+			{
+				patientData[k] = new PatientData();
+				
+				patientData[k].patientID = result.getInt(1);
+				patientData[k].fName = result.getString(2);
+				patientData[k].lName = result.getString(3);
+				patientData[k].email = result.getString(4);
+				patientData[k].phone = result.getInt(5);
+				patientData[k].dateOfBirth = result.getString(6);
+				patientData[k].address = result.getString(7);
+				patientData[k].city = result.getString(8);
+				patientData[k].state = result.getString(9);
+				patientData[k].zip = result.getInt(10);
+				patientData[k].status = result.getString(11);
+				patientData[k].prescription = result.getString(12);
+				patientData[k].userID = result.getInt(13);				
+				k++;
+			}
+			result.close();
+			conn.close();
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		
+		return patientData;
+				
+	}
 	public PatientData[] getPatients(String field, String value)
 	{
 		String query = "SELECT * FROM patients ";

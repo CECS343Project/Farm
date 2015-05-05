@@ -14,7 +14,9 @@ import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
 public interface PatientService extends RemoteService 
 {
 	public PatientData[] getPatients();
+	public PatientData[] getPatientsUnfilled();
 	public PatientData[] getPatients(String field, String value);
 	public void insertPatient(PatientData patient);
 	public void updatePatient(PatientData patient);
+	
 }

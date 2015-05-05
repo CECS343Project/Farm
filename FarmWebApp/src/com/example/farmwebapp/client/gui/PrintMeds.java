@@ -24,7 +24,8 @@ import com.google.gwt.user.client.ui.HasHorizontalAlignment;
 import com.example.farmwebapp.client.services.PatientServiceAsync;
 import com.example.farmwebapp.client.services.PatientServiceInit;
 
-public class PrintMeds {
+public class PrintMeds extends MainGUI
+{
 	private FlexTable ft = new FlexTable();
 	
 	private HorizontalPanel hp_pharmInfo = new HorizontalPanel();
@@ -76,6 +77,9 @@ public class PrintMeds {
 	{
 		rpc = PatientServiceInit.initRpc();
 		getPatientsDB();
+		PopUps pop = new PopUps();
+		
+		pop.showDialog(super.getSelectedPatient());
 	}
 	
 	/**
