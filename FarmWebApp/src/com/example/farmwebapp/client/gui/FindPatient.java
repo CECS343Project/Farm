@@ -50,6 +50,7 @@ public class FindPatient extends MainGUI
 	
 	private final DateTimeFormat dateFormat = DateTimeFormat.getFormat("MM/dd/yyyy");
 	private DateBox db_dob = new DateBox();
+	private Button b_Search = new Button("SEARCH");
 	private Button b_Select = new Button("Select Patient");
 	private Button b_Delete = new Button("Delete Patient");
 	
@@ -65,6 +66,8 @@ public class FindPatient extends MainGUI
 	
 	private PatientData[] patients; 
 	private String userType = super.getUserType();
+	private PatientServiceAsync rpc;
+	
 	
 	/**
 	 * Default constructor instantiates the rpc async service 
@@ -81,6 +84,41 @@ public class FindPatient extends MainGUI
 	{
 		userType = string;
 	}
+	
+	/**
+	 * Sends an asynchronous call to the database and 
+	 * populates the celltable with the results when query succeeds
+	 * @return 
+	 */
+	public void getPatientsDB()
+	{
+		rpc = PatientServiceInit.initRpc();
+		AsyncCallback<PatientData[]> callback = new AsyncCallback<PatientData[]>()
+		{
+			@Override
+			public void onFailure(Throwable caught) 
+			{
+				PopUps popUp = new PopUps();		
+				//popUp.showDialog(caught.toString());
+			}
+
+			@Override
+			public void onSuccess(PatientData[] result) 
+			{
+				PopUps popUp = new PopUps();		
+				//popUp.showDialog("Got the patients!");
+				patients = result;
+				drawTable(patients);
+				//findPatientPanel = new FindPatient(PatientsDB);
+				//findPatientPanel.getFindPatientPanel().asWidget().removeFromParent();
+				//homePage.add(findPatientPanel.getFindPatientPanel(), "FIND PATIENT");
+			}
+		};
+		rpc.getPatients(callback);
+	}
+	
+	
+	
 	/**
 	 * @return Vertical panel with necessary text-boxes to search for a patient
 	 */
@@ -239,6 +277,18 @@ public class FindPatient extends MainGUI
 				}		
 			});
 		
+		b_Search.addClickHandler(new ClickHandler()
+		{
+
+			@Override
+			public void onClick(ClickEvent event) 
+			{
+				getPatientsDB();
+			}
+		});
+		
+		ft.setWidget(4, 2, b_Search);
+		
 		/**
 		 * FORM PLACEMENT AND ATTRIBUTES
 		 */
@@ -279,7 +329,8 @@ public class FindPatient extends MainGUI
 			@Override
 			public String getValue(PatientData object)
 			{
-				return object.address;
+				return object.address+", " + object.city + " " +object.state
+						+" "+ object.zip;
 			}				
 		};
 		tc_Address.setSortable(true);
@@ -288,7 +339,7 @@ public class FindPatient extends MainGUI
 			@Override
 			public String getValue(PatientData object) 
 			{
-				return object.testResult;
+				return object.email;
 			}				
 		};
 		tc_Email.setSortable(true);
@@ -297,18 +348,7 @@ public class FindPatient extends MainGUI
 			@Override
 			public String getValue(PatientData object) 
 			{
-				if(object.cellPhone == null)
-				{
-					return object.cellPhone;
-				}
-				else if(object.homePhone == null)
-				{
-					return object.homePhone;
-				}
-				else
-				{
-					return "No number provided";
-				}
+				return ""+object.phone;
 			}				
 		};
 		tc_PhoneNumber.setSortable(true);
@@ -317,19 +357,10 @@ public class FindPatient extends MainGUI
 			@Override
 			public String getValue(PatientData object)
 			{
-				return object.dob.toString();
+				return object.dateOfBirth;
 			}				
 		};
 		tc_DOB.setSortable(true);
-		TextColumn<PatientData> tc_LicenseNo = new TextColumn<PatientData>()
-		{
-			@Override
-			public String getValue(PatientData object) 
-			{
-				return object.pID;
-			}				
-		};	
-		tc_LicenseNo.setSortable(true);
 		
 		ListHandler<PatientData> columnSortHandler = new ListHandler<PatientData>(l_DummyData);
 		columnSortHandler.setComparator(tc_Name,new Comparator<PatientData>() 
@@ -359,8 +390,7 @@ public class FindPatient extends MainGUI
 		ct_Results.addColumn(tc_Address, "Address");
 		ct_Results.addColumn(tc_Email, "Email");
 		ct_Results.addColumn(tc_PhoneNumber, "Phone");
-		ct_Results.addColumn(tc_DOB, "Date Of Birth");
-		ct_Results.addColumn(tc_LicenseNo, "Policy Number");		
+		ct_Results.addColumn(tc_DOB, "Date Of Birth");		
 		ct_Results.setRowCount(7,true);
 		ct_Results.setRowData(l_DummyData);
 		

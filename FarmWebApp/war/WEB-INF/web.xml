@@ -27,13 +27,13 @@
   </servlet-mapping>  
 
   <servlet>
-      <servlet-name>pharmServlet</servlet-name>
-      <servlet-class>com.example.farmwebapp.server.PharmServiceImpl</servlet-class>
+      <servlet-name>medicationServlet</servlet-name>
+      <servlet-class>com.example.farmwebapp.server.MedicationServiceImpl</servlet-class>
   </servlet>
   
   <servlet-mapping>
-      <servlet-name>pharmServlet</servlet-name>
-      <url-pattern>/farmwebapp/pharmService</url-pattern>
+      <servlet-name>medicationServlet</servlet-name>
+      <url-pattern>/farmwebapp/medicationService</url-pattern>
   </servlet-mapping>    
   
   <servlet>

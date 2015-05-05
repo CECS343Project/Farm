@@ -24,10 +24,10 @@ import com.google.gwt.user.cellview.client.TextColumn;
 import com.google.gwt.event.dom.client.MouseOverEvent;
 import com.google.gwt.event.dom.client.MouseOverHandler;
 import com.google.gwt.user.client.ui.HasVerticalAlignment;
-import com.example.farmwebapp.client.dbobjects.PatientData;
+import com.example.farmwebapp.client.dbobjects.MedicationData;
 import com.google.gwt.user.client.ui.HasHorizontalAlignment;
-import com.example.farmwebapp.client.services.PatientServiceAsync;
-import com.example.farmwebapp.client.services.PatientServiceInit;
+import com.example.farmwebapp.client.services.MedicationServiceAsync;
+import com.example.farmwebapp.client.services.MedicationServiceInit;
 
 public class PrescribeMeds //extends FindPatient
 {
@@ -81,11 +81,11 @@ public class PrescribeMeds //extends FindPatient
 	private VerticalPanel vp_rightContainer = new VerticalPanel();
 	private VerticalPanel vp_drugAllergyInfo = new VerticalPanel();
 	
-	private CellTable<PatientData> ct_Results = new CellTable<PatientData>();
+	private CellTable<MedicationData> ct_Results = new CellTable<MedicationData>();
 	
-	private PatientServiceAsync rpc;
+	private MedicationServiceAsync rpc;
 	
-	private PatientData PatientsDB[];
+	private MedicationData medications[];
 	private String selectedID;
 	
 	private String patientName = "Jimmy Jame";
@@ -122,17 +122,17 @@ public class PrescribeMeds //extends FindPatient
 		lb_time.addItem("disp.");
 		lb_time.addItem("ad.lib.");
 		
-		rpc = PatientServiceInit.initRpc();
-		getPatientsDB();
+		rpc = MedicationServiceInit.initRpc();
+		getMedicationsDB();
 	}
 	
 	/**
 	 * Sends an asynchronous call to the database and 
 	 * populates the celltable with the results when query succeeds
 	 */
-	public void getPatientsDB()
+	public void getMedicationsDB()
 	{
-		AsyncCallback<PatientData[]> callback = new AsyncCallback<PatientData[]>()
+		AsyncCallback<MedicationData[]> callback = new AsyncCallback<MedicationData[]>()
 		{
 			@Override
 			public void onFailure(Throwable caught) {
@@ -141,14 +141,14 @@ public class PrescribeMeds //extends FindPatient
 			}
 
 			@Override
-			public void onSuccess(PatientData[] result) {
-				PatientsDB = result;
+			public void onSuccess(MedicationData[] result) {
+				medications = result;
 
 				//Populates the celltable
 				drawTable();
 			}
 		};
-		rpc.getPatients(callback);
+		rpc.getMedications(callback);
 	}
 	
 	public IsWidget getPrescribeMedsPanel() 
@@ -417,19 +417,19 @@ public class PrescribeMeds //extends FindPatient
 		/**
 		 * CELL TABLE FIELD
 		 */
-		final List<PatientData> l_DummyData = Arrays.asList(PatientsDB);
+		final List<MedicationData> l_DummyData = Arrays.asList(medications);
 		
-		TextColumn<PatientData> tc_Name = new TextColumn<PatientData>()
+		TextColumn<MedicationData> tc_MedName = new TextColumn<MedicationData>()
 		{
 			@Override
-			public String getValue(PatientData object) 
+			public String getValue(MedicationData object) 
 			{
-				return object.fName;
+				return object.medicationName;
 			}				
 		};
 		
 		//Add the columns to the table
-		ct_Results.addColumn(tc_Name, "");
+		ct_Results.addColumn(tc_MedName, "");
 		ct_Results.setRowCount(2,true);
 		ct_Results.setRowData(l_DummyData);
 		

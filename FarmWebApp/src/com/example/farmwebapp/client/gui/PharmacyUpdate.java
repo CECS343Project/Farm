@@ -126,7 +126,7 @@ public class PharmacyUpdate //extends MainGUI
 			@Override
 			public String getValue(PatientData object) 
 			{
-				return object.fName;
+				return object.lName+", " +object.fName;
 			}				
 		};
 		TextColumn<PatientData> tc_Address = new TextColumn<PatientData>()
@@ -134,7 +134,7 @@ public class PharmacyUpdate //extends MainGUI
 			@Override
 			public String getValue(PatientData object)
 			{
-				return object.lName;
+				return object.address+", " +object.city+" "+object.state+" "+object.zip;
 			}				
 		};
 		TextColumn<PatientData> tc_Email = new TextColumn<PatientData>()
@@ -142,7 +142,7 @@ public class PharmacyUpdate //extends MainGUI
 			@Override
 			public String getValue(PatientData object) 
 			{
-				return object.fName;
+				return object.email;
 			}				
 		};
 		TextColumn<PatientData> tc_PhoneNumber = new TextColumn<PatientData>()
@@ -150,7 +150,7 @@ public class PharmacyUpdate //extends MainGUI
 			@Override
 			public String getValue(PatientData object) 
 			{
-				return object.fName;
+				return ""+object.phone;
 			}				
 		};
 		TextColumn<PatientData> tc_DOB = new TextColumn<PatientData>()
@@ -158,17 +158,10 @@ public class PharmacyUpdate //extends MainGUI
 			@Override
 			public String getValue(PatientData object)
 			{
-				return object.dob.toString();
+				return object.dateOfBirth;
 			}				
 		};
-		TextColumn<PatientData> tc_LicenseNo = new TextColumn<PatientData>()
-		{
-			@Override
-			public String getValue(PatientData object) 
-			{
-				return object.pID;
-			}				
-		};	
+		
 		ldp_CellData.setList(l_DummyData);
 		ldp_CellData.addDataDisplay(ct_Results);
 		ct_Results.getColumnSortList().push(tc_Name);
@@ -178,8 +171,7 @@ public class PharmacyUpdate //extends MainGUI
 		ct_Results.addColumn(tc_Address, "Address");
 		ct_Results.addColumn(tc_Email, "Email");
 		ct_Results.addColumn(tc_PhoneNumber, "Phone");
-		ct_Results.addColumn(tc_DOB, "Date Of Birth");
-		ct_Results.addColumn(tc_LicenseNo, "Policy Number");		
+		ct_Results.addColumn(tc_DOB, "Date Of Birth");		
 		ct_Results.setRowCount(7,true);
 		ct_Results.setRowData(l_DummyData);
 		

@@ -48,10 +48,10 @@ public class DB_Conn {
 		// figure out what server this application is being hosted on
 		String url 		= getServerURL();
 
-		String db 		= "thejoeja_ePrescription_version_1";
+		String db 		= "pillbug";
 		String driver = "com.mysql.jdbc.Driver";
-		String user 	= "thejoeja_client";
-		String pass 	= "farmClient6$";
+		String user 	= "pillbugclient";
+		String pass 	= "passwordpillbug";
 
 		
 		url = url + db;
@@ -97,7 +97,7 @@ public class DB_Conn {
 
 		} else { // production server
 
-			url = "jdbc:mysql://173.254.28.65:3306/";
+			url = "jdbc:mysql://85.10.205.173:3306/";
 
 		}
 

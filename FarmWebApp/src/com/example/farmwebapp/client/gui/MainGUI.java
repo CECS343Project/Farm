@@ -40,8 +40,8 @@ public class MainGUI extends FarmWebApp
 	{
 		rpc = PatientServiceInit.initRpc();
 		rpcUsers = UserServiceInit.initRpc();
-		getPatientsDB();
-		getUsersDB();
+		//getPatientsDB();
+		//getUsersDB();
 	}
 	
 	public MainGUI(int index) 
