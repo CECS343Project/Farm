@@ -8,11 +8,16 @@
  */
 package com.example.farmwebapp.client.gui;
 
+import com.example.farmwebapp.client.dbobjects.PatientData;
+import com.example.farmwebapp.client.dbobjects.UserData;
+import com.example.farmwebapp.client.services.UserServiceAsync;
+import com.example.farmwebapp.client.services.UserServiceInit;
 import com.google.gwt.dom.client.Style.Cursor;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.dom.client.MouseOverEvent;
 import com.google.gwt.event.dom.client.MouseOverHandler;
+import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.CheckBox;
@@ -36,9 +41,32 @@ public class SignIn extends MainGUI
 	private Image pillBugLogo = new Image("/images/pillBugLogo.png");
 	
 	private CheckBox cb_showPassword = new CheckBox("Show Password");
+	
+	public UserData[] users;
+	private UserServiceAsync rpc;
+	private UserServiceInit initRPC;
 
 	//Default Constructor
-	public SignIn() {}
+	public SignIn() 
+	{
+		initRPC.initRpc();
+		AsyncCallback<UserData[]> callback = new AsyncCallback<UserData[]>()
+		{
+			@Override
+			public void onFailure(Throwable caught) 
+			{
+			}
+
+			@Override
+			public void onSuccess(UserData[] result) 
+			{
+				users = result;
+				PopUps pop = new PopUps();
+				pop.showDialog("HELLO");
+			}
+		};		
+		rpc.getUsers(callback);
+	}
 
 	public IsWidget getSignInPanel() {
 		/**
@@ -111,26 +139,29 @@ public class SignIn extends MainGUI
 		            PopUps popups = new PopUps();
 		            //popups.showDialog("Welcome "  + tb_userName.getText() + "!");
 		            removeLogins();
-		            if(tb_userName.getText().charAt(0) == 'p')
+		            if(checkUser(tb_userName.getText(),ptb_password.getText()))
 		            {
-		            	placeInRoot("pharmacist");
-		            }
-		            else if(tb_userName.getText().charAt(0) == 'd')
-		            {
-		            	placeInRoot("doctor");
+		            	if(tb_userName.getText().charAt(0) == 'd')
+		            	{
+		            		placeInRoot("doctor");
+		            	}
+		            	if(tb_userName.getText().charAt(0) == 'p')
+		            	{
+		            		placeInRoot("pharmacist");
+		            	}
 		            }
 		            else
 		            {
 		            	popups.showDialog("Not a valid username!!!!");
 		            	placeInRoot("null");
 		            }
-		            
-		            
 	        	}
 	        	catch(Exception e)
 	        	{
 	        	}
 	        }
+
+			
 	    });
 		loginArrow.addMouseOverHandler(new MouseOverHandler()
 		{
@@ -163,6 +194,26 @@ public class SignIn extends MainGUI
 		this.getSignInPanel().asWidget().removeFromParent();
 	}
 	
+	public boolean checkUser(String uname, String password) 
+	{
+		int k,m;
+		boolean var = false;
+		for( k = 0; k < users.length; k++)
+		{
+			if(uname == users[k].uName )
+			{
+				for(m = 0; m < users.length; m++)
+				{
+					if(password == users[k].password )
+					{
+						var = true;
+						break;
+					}
+				}
+			}
+		}
+		return var;
+	}
 	
 	
 	

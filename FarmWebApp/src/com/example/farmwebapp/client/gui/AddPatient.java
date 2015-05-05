@@ -244,13 +244,13 @@ public class AddPatient extends MainGUI
 
 	protected void insertIntoDB(PatientData patient2) 
 	{
-		super.insertIntoDB(patient2);
+		//super.insertIntoDB(patient2);
 		
 	}
 
 	protected String generateNewPatient() 
 	{
-		PatientData patients[] = super.getPatientsDB(1);
+		//PatientData patients[] = super.getPatientsDB(1);
 		//int temp = Integer.parseInt(patients[patients.length-1].pID.substring(8, 10));
 		//temp++;
 

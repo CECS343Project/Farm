@@ -38,12 +38,8 @@ public class MainGUI extends FarmWebApp
 	//Default constructor
 	public MainGUI() 
 	{
-		rpc = PatientServiceInit.initRpc();
-		rpcUsers = UserServiceInit.initRpc();
-		//getPatientsDB();
-		//getUsersDB();
 	}
-	
+
 	public MainGUI(int index) 
 	{
 		desiredIndex = index;
@@ -94,65 +90,17 @@ public class MainGUI extends FarmWebApp
 		};
 		rpc.getPatients(callback);
 	}
-	public PatientData[] getPatientsDB(int temp)
-	{
-		return this.PatientsDB;
-	}
-	/**
-	 * Sends an asynchronous call to the database and 
-	 * populates the celltable with the results when query succeeds
-	 * @return 
-	 */
-	public void getUsersDB()
-	{
-		AsyncCallback<UserData[]> callback = new AsyncCallback<UserData[]>()
-		{
-			@Override
-			public void onFailure(Throwable caught) 
-			{
-				PopUps popUp = new PopUps();		
-				//popUp.showDialog(caught.toString());
-			}
-
-			@Override
-			public void onSuccess(UserData[] result) 
-			{
-				PopUps popUp = new PopUps();		
-				//popUp.showDialog("Got the users!");
-			}
-		};
-		rpcUsers.getUsers(callback);
-	}	
 	
 	/**
 	 * @return
 	 */
 	public TabLayoutPanel getPanel()
 	{
-		SignUp signUpPage = new SignUp();
 		SignIn signInPage = new SignIn();
-		new Doctor();
-		new Pharmacy();
-		new AddPatient();
-		findPatientPanel = new FindPatient();
-		new PrescribeMeds();
 		
 		homePage.setPixelSize(700, 440);
 		homePage.setAnimationDuration(1000);
 		homePage.add(signInPage.getSignInPanel(), "SIGN IN");
-		homePage.add(signUpPage.getSignUpPanel(), "SIGN UP");
-		
-		homePage.addSelectionHandler(new SelectionHandler<Integer>() {
-			@Override
-			public void onSelection(SelectionEvent<Integer> event) {
-				if (homePage.getSelectedIndex() == 4 || homePage.getSelectedIndex() == 6) {
-					homePage.setPixelSize(700, 600);
-			    }
-				else {
-					homePage.setPixelSize(700, 440);
-				}
-			 }
-		});
 		
 		return homePage;
 	}
@@ -162,11 +110,9 @@ public class MainGUI extends FarmWebApp
 	public TabLayoutPanel getPanelDoc()
 	{
 		userType = "doctor";
-		new SignUp();
-		new SignIn();
 		Doctor doctorMain = new Doctor();
 		AddPatient addPatientPanel = new AddPatient();
-		findPatientPanel = new FindPatient("doctor");
+		findPatientPanel = new FindPatient(userType);
 		PrescribeMeds prescribeMedicaiton = new PrescribeMeds();
 		Logout logoutPanel = new Logout();
 		
@@ -202,14 +148,12 @@ public class MainGUI extends FarmWebApp
 	public TabLayoutPanel getPanelPharm()
 	{
 		userType = "pharmacist";
-		new SignUp();
-		new SignIn();
 		Pharmacy pharmacyMain = new Pharmacy();
 		AddPatient addPatientPanel = new AddPatient();
 		PharmacyUpdate pharmacyUpdate = new PharmacyUpdate();
 		PrintMeds printMedication = new PrintMeds();
 		Logout logoutPanel = new Logout();
-		findPatientPanel = new FindPatient("pharmacist");
+		findPatientPanel = new FindPatient(userType);
 		
 		homePage.setPixelSize(700, 440);
 		homePage.setAnimationDuration(1000);
@@ -219,7 +163,6 @@ public class MainGUI extends FarmWebApp
 		homePage.add(pharmacyUpdate.getPharmacyUpdatePanel(), "UPDATE");
 		homePage.add(printMedication.getPrintMedsPanel(), "PRINT");
 		homePage.add(logoutPanel.getLogoutPanel(), "LOGOUT");
-		
 		
 		homePage.addSelectionHandler(new SelectionHandler<Integer>() {
 			@Override
@@ -245,7 +188,6 @@ public class MainGUI extends FarmWebApp
 	{
 		super.setUserType("null");
 		super.refreshUI("null");
-		
 	}
 
 	public PatientData[] getPatients() 
@@ -267,41 +209,13 @@ public class MainGUI extends FarmWebApp
 		super.refreshUI(user, i);
 	}
 
-	protected void insertIntoDB(PatientData patient2) 
-	{
-		AsyncCallback<PatientData[]> callback = new AsyncCallback<PatientData[]>()
-				{
-					@Override
-					public void onFailure(Throwable caught) 
-					{
-						PopUps popUp = new PopUps();		
-						popUp.showDialog(caught.toString());
-					}
-
-					@Override
-					public void onSuccess(PatientData[] result) 
-					{
-						PopUps popUp = new PopUps();		
-						popUp.showDialog("added the patient");
-
-					}
-				};
-				rpc.insertPatient(patient2,callback);
-	}
-
-	//public String getUserType() 
-	//{
-		
-	//	return super.getUserType();
-	//}
-
 	public void refreshUI(String string, int i, String tempID) 
 	{
 		super.refreshUI(string, i,tempID);
-		
 	}
 
-	public String getSelectedPatient() {
+	public String getSelectedPatient() 
+	{
 		return selectedPatient;
 	}
 
