@@ -66,6 +66,7 @@ public class PrintMeds extends MainGUI
 	private CellTable<PatientData> ct_Results = new CellTable<PatientData>();
 	
 	private PatientServiceAsync rpc;
+	private String name[];
 	
 	private PatientData PatientsDB[];
 	
@@ -75,11 +76,17 @@ public class PrintMeds extends MainGUI
 	 */
 	public PrintMeds() 
 	{
+		int k;
+		
 		rpc = PatientServiceInit.initRpc();
 		getPatientsDB();
 		PopUps pop = new PopUps();
 		
-		pop.showDialog(super.getSelectedPatient());
+		//pop.showDialog(first + "FIRST LAST " +last);
+		//for(k = 0; k < PatientsDB.length; k++)
+		//{
+			
+		//}
 	}
 	
 	/**
@@ -98,16 +105,22 @@ public class PrintMeds extends MainGUI
 
 			@Override
 			public void onSuccess(PatientData[] result) {
+				//name = getSelectedPatient().split(",[ ]*");
 				PatientsDB = result;
 
 				//Populates the cell table
 				drawTable();
+				
 			}
 		};
 		rpc.getPatients(callback);
 	}
 	
 	public IsWidget getPrintMedsPanel() {
+		
+		PopUps pop = new PopUps();
+		
+		//pop.showDialog(name[0] + "FIRST LAST " + name[1]);
 		/**
 		 * PATIENT INFO
 		 */
