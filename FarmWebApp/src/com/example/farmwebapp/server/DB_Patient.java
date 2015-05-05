@@ -7,9 +7,6 @@
 package com.example.farmwebapp.server;
 
 import java.sql.*;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-
 import com.example.farmwebapp.client.dbobjects.PatientData;
 
 public class DB_Patient extends DB_Conn

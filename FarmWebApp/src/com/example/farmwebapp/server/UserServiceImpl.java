@@ -9,8 +9,14 @@ public class UserServiceImpl  extends RemoteServiceServlet implements UserServic
 {
 
 	@Override
-	public UserData[] getUsers() {
-		// TODO Auto-generated method stub
+	public UserData[] getUsers() 
+	{
+		return null;
+	}
+
+	@Override
+	public UserData[] getUsers(String field, String value) 
+	{
 		return null;
 	}
 
