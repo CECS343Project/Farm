@@ -13,8 +13,8 @@ import java.util.List;
 import java.util.Arrays;
 
 import com.example.farmwebapp.client.dbobjects.PatientData;
-import com.example.farmwebapp.client.services.patient.PatientServiceAsync;
-import com.example.farmwebapp.client.services.patient.PatientServiceInit;
+import com.example.farmwebapp.client.services.PatientServiceAsync;
+import com.example.farmwebapp.client.services.PatientServiceInit;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.dom.client.KeyPressEvent;

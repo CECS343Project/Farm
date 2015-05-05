@@ -2,6 +2,7 @@ package com.example.farmwebapp.client.gui;
 
 import java.util.List;
 import java.util.Arrays;
+
 import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.dom.client.Style.Cursor;
@@ -20,8 +21,8 @@ import com.google.gwt.event.dom.client.MouseOverHandler;
 import com.google.gwt.user.client.ui.HasVerticalAlignment;
 import com.example.farmwebapp.client.dbobjects.PatientData;
 import com.google.gwt.user.client.ui.HasHorizontalAlignment;
-import com.example.farmwebapp.client.services.patient.PatientServiceInit;
-import com.example.farmwebapp.client.services.patient.PatientServiceAsync;
+import com.example.farmwebapp.client.services.PatientServiceAsync;
+import com.example.farmwebapp.client.services.PatientServiceInit;
 
 public class PrintMeds {
 	private FlexTable ft = new FlexTable();

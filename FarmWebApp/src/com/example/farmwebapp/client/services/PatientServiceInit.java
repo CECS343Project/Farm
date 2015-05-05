@@ -5,7 +5,7 @@
  * 
  * @author Russell Tan
  */
-package com.example.farmwebapp.client.services.patient;
+package com.example.farmwebapp.client.services;
 
 import com.google.gwt.core.client.GWT;
 

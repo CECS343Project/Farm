@@ -251,9 +251,9 @@ public class AddPatient extends MainGUI
 	protected String generateNewPatient() 
 	{
 		PatientData patients[] = super.getPatientsDB(1);
-		int temp = Integer.parseInt(patients[patients.length-1].pID.substring(8, 10));
-		temp++;
+		//int temp = Integer.parseInt(patients[patients.length-1].pID.substring(8, 10));
+		//temp++;
 
-		return "P0000000"+temp;
+		return "P0000000";//+temp;
 	}
 }

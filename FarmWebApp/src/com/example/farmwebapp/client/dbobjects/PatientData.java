@@ -8,27 +8,21 @@
 
 package com.example.farmwebapp.client.dbobjects;
 
-import java.util.Date;
-
 import com.google.gwt.user.client.rpc.IsSerializable;
 
 public class PatientData implements IsSerializable
 {
-	public String pID;
+	public int    patientID;
 	public String fName;
 	public String lName;
+	public String email;
+	public int    phone;
+	public String dateOfBirth;
 	public String address;
 	public String city;
 	public String state;
-	public String zip;
-	public String cellPhone;
-	public String homePhone;
-	public Date dob;
-	public String complaint;
-	public String history;
-	public String medRecord;
-	public String progress;
-	public String sugicalHist;
-	public String testResult;
-	public String treatmentPlan;
+	public int    zip;
+	public String status;
+	public String prescription;
+	public int    userID;
 }

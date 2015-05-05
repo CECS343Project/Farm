@@ -8,7 +8,7 @@
 package com.example.farmwebapp.server;
 
 import com.example.farmwebapp.client.dbobjects.PatientData;
-import com.example.farmwebapp.client.services.patient.PatientService;
+import com.example.farmwebapp.client.services.PatientService;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 
 @SuppressWarnings("serial")
@@ -36,6 +36,13 @@ public class PatientServiceImpl extends RemoteServiceServlet implements PatientS
 	{
 		DB_Patient db = new DB_Patient();
 		db.insertPatient(patient);
+		
+	}
+	@Override
+	public void updatePatient(PatientData patient) 
+	{
+		DB_Patient db = new DB_Patient();
+		db.updatePatient(patient);
 		
 	}
 }
