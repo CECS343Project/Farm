@@ -36,6 +36,8 @@ public class MainGUI extends FarmWebApp
 	private String userType = "doctor";
 
 	private int selectedID;
+
+	private int userIndex;
 	
 	//Default constructor
 	public MainGUI() 
@@ -333,5 +335,10 @@ public class MainGUI extends FarmWebApp
 	{
 		super.refreshUI(string, i,tempID);
 		
+	}
+
+	public void setUser(int val) 
+	{
+		userIndex = val;	
 	}
 }

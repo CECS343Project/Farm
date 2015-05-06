@@ -149,6 +149,10 @@ public class SignIn extends MainGUI
 		            	{
 		            		if(ptb_password.getText() == users[k].password)
 		            		{
+		            			setUser(k);
+		            			PrintMeds print = new PrintMeds();
+		            			
+		            			print.setUInd(k);
 		            			switch(tb_userName.getText().charAt(0))
 		            			{
 		            			case 'd':
@@ -218,4 +222,9 @@ public class SignIn extends MainGUI
 		this.getSignInPanel().asWidget().removeFromParent();
 		super.getHomePage().removeFromParent();
 	}	
+	
+	public void setUser(int val)
+	{
+		super.setUser(val);
+	}
 }

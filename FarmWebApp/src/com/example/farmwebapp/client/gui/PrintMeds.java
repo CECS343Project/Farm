@@ -20,9 +20,12 @@ import com.google.gwt.event.dom.client.MouseOverEvent;
 import com.google.gwt.event.dom.client.MouseOverHandler;
 import com.google.gwt.user.client.ui.HasVerticalAlignment;
 import com.example.farmwebapp.client.dbobjects.PatientData;
+import com.example.farmwebapp.client.dbobjects.UserData;
 import com.google.gwt.user.client.ui.HasHorizontalAlignment;
 import com.example.farmwebapp.client.services.PatientServiceAsync;
 import com.example.farmwebapp.client.services.PatientServiceInit;
+import com.example.farmwebapp.client.services.UserServiceAsync;
+import com.example.farmwebapp.client.services.UserServiceInit;
 
 public class PrintMeds extends MainGUI
 {
@@ -66,11 +69,19 @@ public class PrintMeds extends MainGUI
 	private CellTable<PatientData> ct_Results = new CellTable<PatientData>();
 	
 	private PatientServiceAsync rpc;
+	private UserServiceAsync uRpc;
 	private static String name;
 	private static int ind;
+	private static int uInd;
 	
 	private PatientData patient[];
+	private UserData user[];
 	private int indx;
+	
+	public void setUInd(int in)
+	{
+		uInd = in;
+	}
 	
 	public void setInd(int in)
 	{
@@ -89,7 +100,46 @@ public class PrintMeds extends MainGUI
 	public PrintMeds() 
 	{		
 		rpc = PatientServiceInit.initRpc();
+		uRpc = UserServiceInit.initRpc();
 		getPatientsDB();
+		getUsersDB();
+	}
+	
+	public void getUsersDB()
+	{
+		AsyncCallback<UserData[]> callback = new AsyncCallback<UserData[]>()
+		{
+
+			@Override
+			public void onFailure(Throwable caught) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void onSuccess(UserData[] result) {
+				user = result;
+				ta_doctorInfo.setText(user[uInd].fName+" "+user[uInd].lName + 
+						"\n" + 
+						user[uInd].address + 
+						"\n"+ 
+						user[uInd].city+","+user[uInd].state+" "+user[uInd].zip + 
+						"\n" + 
+						user[uInd].email+ 
+						"\n" +
+						user[uInd].phone);
+				
+				ta_pharmInfo.setText(user[uInd].pharmacy + 
+						"\n" + 
+						user[uInd].pharmAddress+ 
+						"\n"+ 
+						user[uInd].pharmCity+", " +user[uInd].pharmState+" " +user[uInd].pharmZip);
+				
+				
+			}
+	
+		};
+		uRpc.getUsers(callback);
 	}
 	
 	/**
@@ -108,17 +158,7 @@ public class PrintMeds extends MainGUI
 
 			@Override
 			public void onSuccess(PatientData[] result) {
-				//name = getSelectedPatient().split(",[ ]*");
-				PopUps pop = new PopUps();
 				patient = result;
-				int k;
-				for(k = 0; k < 2; k++)
-				{
-					if(patient[k].lName == name)
-					{
-						indx = k;
-					}
-				}
 				ta_patientInfo.setText(patient[ind].fName+
 						" " +
 						patient[ind].lName+
@@ -196,9 +236,7 @@ public class PrintMeds extends MainGUI
 		 * DOCTOR INFO
 		 */
 		//Hard coded information for demo purposes
-		ta_doctorInfo.setText("Napoleon Fulinara Jr" + "\n" + "727 W 7th St. Unit 1113" + "\n" 
-				+ "Los Angeles, Ca 90017" + "\n" + "jrfulinara@gmail.com" + "\n" 
-				+ "(858) 216-5155" + "\n" + "Policy No: 0000000000" + "\n" + "D.O.B: 06/22/1984");
+		
 		//Design parameters
 		ta_doctorInfo.setVisibleLines(7);
 		ta_doctorInfo.setCharacterWidth(42);
@@ -279,8 +317,7 @@ public class PrintMeds extends MainGUI
 		vp_rightContainer.setCellVerticalAlignment(lbl_medicationLabel, HasVerticalAlignment.ALIGN_BOTTOM);
 		
 		//Pharmacy info [Hard coded for demo purposes]
-		ta_pharmInfo.setText("CVS Pharmacy" + "\n" + "210 W 7th St." + "\n" 
-				+ "Los Angeles, Ca 90014" + "\n" + "(213) 327-0062");
+		
 		//Design parameters
 		ta_pharmInfo.setVisibleLines(7);
 		ta_pharmInfo.setCharacterWidth(18);
