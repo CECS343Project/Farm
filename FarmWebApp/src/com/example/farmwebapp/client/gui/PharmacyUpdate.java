@@ -51,7 +51,7 @@ public class PharmacyUpdate // extends MainGUI
 	 */
 	public PharmacyUpdate() {
 		rpc = PatientServiceInit.initRpc();
-		getPatientsDB();
+		//getPatientsDB();
 	}
 
 	/**
@@ -81,9 +81,36 @@ public class PharmacyUpdate // extends MainGUI
 	 * @return Vertical panel with necessary text-boxes to search for a patient
 	 */
 	public IsWidget getPharmacyUpdatePanel() {
+
+		/**
+		 * UPDATE IMAGE BUTTON
+		 */
+		img_update.setPixelSize(100, 100);
+		img_update.addStyleName("moveRefresh");
+		img_update.setTitle("REFRESH PRESCRIPTIONS");
+		/**
+		 * PRESCRIPTION REFRESH
+		 */
+		img_update.addClickHandler(new ClickHandler() {
+			public void onClick(ClickEvent event) {
+				getPatientsDB();
+			}
+		});
+
+		/**
+		 * Change mouse to pointer to indicate the arrow is a button
+		 */
+		img_update.addMouseOverHandler(new MouseOverHandler() {
+			@Override
+			public void onMouseOver(MouseOverEvent event) {
+				img_update.getElement().getStyle().setCursor(Cursor.POINTER);
+			}
+		});
+		
 		// Add necessary panels
 		vp.setSpacing(5);
 		vp.add(ft);
+		vpTable.add(img_update);
 		vp.add(vpTable);
 		vp.setCellVerticalAlignment(vpTable, HasVerticalAlignment.ALIGN_MIDDLE);
 		vp.setCellHorizontalAlignment(vpTable,
@@ -171,35 +198,11 @@ public class PharmacyUpdate // extends MainGUI
 			}
 		});
 
-		/**
-		 * UPDATE IMAGE BUTTON
-		 */
-		img_update.setPixelSize(100, 100);
-		img_update.addStyleName("moveRefresh");
-		img_update.setTitle("REFRESH PRESCRIPTIONS");
-		/**
-		 * PRESCRIPTION REFRESH
-		 */
-		img_update.addClickHandler(new ClickHandler() {
-			public void onClick(ClickEvent event) {
-				// DO SOMETHING
-			}
-		});
 
-		/**
-		 * Change mouse to pointer to indicate the arrow is a button
-		 */
-		img_update.addMouseOverHandler(new MouseOverHandler() {
-			@Override
-			public void onMouseOver(MouseOverEvent event) {
-				img_update.getElement().getStyle().setCursor(Cursor.POINTER);
-			}
-		});
 		
 		hpCRUD.add(b_Select);
 		hpCRUD.add(b_Delete);
 		hpCRUD.addStyleName("moveRefreshBTN");
-		vpTable.add(img_update);
 		vpTable.add(ct_Results);
 		pager.addStyleName("movePager");
 		vpTable.add(pager);
