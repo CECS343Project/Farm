@@ -175,6 +175,7 @@ public class PharmacyUpdate // extends MainGUI
 		 */
 		img_update.setPixelSize(100, 100);
 		img_update.addStyleName("moveRefresh");
+		img_update.setTitle("REFRESH PRESCRIPTIONS");
 		/**
 		 * PRESCRIPTION REFRESH
 		 */
