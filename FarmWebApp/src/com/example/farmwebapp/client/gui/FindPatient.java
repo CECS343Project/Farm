@@ -44,9 +44,10 @@ public class FindPatient extends MainGUI
 	private TextBox tb_nameLast = new TextBox();
 	private TextBox tb_licenseNo = new TextBox();
 	private TextBox tb_nameFirst = new TextBox();
-	private TextBox tb_nameSuffix = new TextBox();
 	private TextBox tb_addressStreet = new TextBox();
-	private TextBox tb_addressCityStateZip = new TextBox();
+	private TextBox tb_addressCity = new TextBox();
+	private TextBox tb_addressState = new TextBox();
+	private TextBox tb_addressZip = new TextBox();
 	
 	private final DateTimeFormat dateFormat = DateTimeFormat.getFormat("MM/dd/yyyy");
 	private DateBox db_dob = new DateBox();
@@ -123,15 +124,14 @@ public class FindPatient extends MainGUI
 	 * @return Vertical panel with necessary text-boxes to search for a patient
 	 */
 	public IsWidget getFindPatientPanel() {
-		
 		/**
 		 * NAME FIELD
 		 */
-		ft.setText(0, 0, "NAME");
+		ft.setText(0, 0, "FIRST NAME");
 		ft.getCellFormatter().setVerticalAlignment(0, 0, HasVerticalAlignment.ALIGN_BOTTOM);
 		ft.setWidget(0, 1, tb_nameFirst);
 		tb_nameFirst.setPixelSize(CELLWIDTH, CELLHEIGHT);
-		
+		tb_nameFirst.setTitle("First Name");
 		tb_nameFirst.addValueChangeHandler(new ValueChangeHandler<String>()
 			{
 
@@ -143,22 +143,12 @@ public class FindPatient extends MainGUI
 			}		
 		});
 
-		ft.setWidget(0, 2, tb_nameLast);
+		ft.setText(0, 2, "LAST NAME");
+		ft.getCellFormatter().setVerticalAlignment(0, 2, HasVerticalAlignment.ALIGN_BOTTOM);
+		ft.setWidget(0, 3, tb_nameLast);
 		tb_nameLast.setPixelSize(CELLWIDTH, CELLHEIGHT);
+		tb_nameLast.setTitle("Last Name");
 		tb_nameLast.addValueChangeHandler(new ValueChangeHandler<String>()
-				{
-
-				@Override
-				public void onValueChange(ValueChangeEvent<String> event) 
-				{
-					getPatientsSuper();
-					drawTable(patients);
-				}		
-			});
-		
-		ft.setWidget(0, 3, lb_nameSuffix);
-		tb_nameSuffix.setPixelSize(CELLWIDTH, CELLHEIGHT);
-		tb_nameSuffix.addValueChangeHandler(new ValueChangeHandler<String>()
 				{
 
 				@Override
@@ -176,6 +166,7 @@ public class FindPatient extends MainGUI
 		ft.getCellFormatter().setVerticalAlignment(1, 0, HasVerticalAlignment.ALIGN_BOTTOM);
 		ft.setWidget(1, 1, tb_addressStreet);
 		tb_addressStreet.setPixelSize(CELLWIDTH, CELLHEIGHT);
+		tb_addressStreet.setTitle("Address");
 		tb_addressStreet.addValueChangeHandler(new ValueChangeHandler<String>()
 				{
 
@@ -188,9 +179,12 @@ public class FindPatient extends MainGUI
 				}		
 			});
 
-		ft.setWidget(2, 1, tb_addressCityStateZip);
-		tb_addressCityStateZip.setPixelSize(CELLWIDTH, CELLHEIGHT);
-		tb_addressCityStateZip.addValueChangeHandler(new ValueChangeHandler<String>()
+		ft.setText(1, 2, "CITY");
+		ft.getCellFormatter().setVerticalAlignment(1, 2, HasVerticalAlignment.ALIGN_BOTTOM);
+		ft.setWidget(1, 3, tb_addressCity);
+		tb_addressCity.setPixelSize(CELLWIDTH, CELLHEIGHT);
+		tb_addressCity.setTitle("City");
+		tb_addressCity.addValueChangeHandler(new ValueChangeHandler<String>()
 				{
 
 				@Override
@@ -201,6 +195,52 @@ public class FindPatient extends MainGUI
 					
 				}		
 			});
+		
+		ft.setText(2, 0, "STATE");
+		ft.getCellFormatter().setVerticalAlignment(2, 0, HasVerticalAlignment.ALIGN_BOTTOM);
+		ft.setWidget(2, 1, tb_addressState);
+		tb_addressState.setPixelSize(CELLWIDTH, CELLHEIGHT);
+		tb_addressState.setTitle("State");
+		tb_addressState.addValueChangeHandler(new ValueChangeHandler<String>()
+				{
+
+				@Override
+				public void onValueChange(ValueChangeEvent<String> event) 
+				{
+					getPatientsSuper();
+					drawTable(patients);
+					
+				}		
+			});
+		
+		ft.setText(2, 2, "ZIP CODE");
+		ft.getCellFormatter().setVerticalAlignment(2, 2, HasVerticalAlignment.ALIGN_BOTTOM);
+		ft.setWidget(2, 3, tb_addressZip);
+		tb_addressZip.setPixelSize(CELLWIDTH, CELLHEIGHT);
+		tb_addressZip.setTitle("Zip Code");
+		tb_addressZip.addValueChangeHandler(new ValueChangeHandler<String>()
+				{
+
+				@Override
+				public void onValueChange(ValueChangeEvent<String> event) 
+				{
+					getPatientsSuper();
+					drawTable(patients);
+					
+				}		
+			});
+		
+		/**
+		 * Restricts box to only accept numbers
+		 */
+		tb_addressZip.addKeyPressHandler(new KeyPressHandler() {
+
+		      public void onKeyPress(KeyPressEvent event) {
+		        if (!Character.isDigit(event.getCharCode())) {
+		          ((TextBox) event.getSource()).cancelKey();
+		        }
+		      }
+		    });
 
 		/**
 		 * DATE OF BIRTH FIELD
@@ -210,14 +250,16 @@ public class FindPatient extends MainGUI
 		ft.getCellFormatter().setVerticalAlignment(3, 0, HasVerticalAlignment.ALIGN_BOTTOM);
 		ft.setWidget(3, 1, db_dob);
 		db_dob.setPixelSize(CELLWIDTH, CELLHEIGHT);
+		db_dob.setTitle("MM/DD/YYYY");
 
 		/**
 		 * EMAIL FIELD
 		 */
-		ft.setText(1, 2, "EMAIL");
-		ft.getCellFormatter().setVerticalAlignment(1, 2, HasVerticalAlignment.ALIGN_BOTTOM);
-		ft.setWidget(1, 3, tb_email);
+		ft.setText(3, 2, "EMAIL");
+		ft.getCellFormatter().setVerticalAlignment(3, 2, HasVerticalAlignment.ALIGN_BOTTOM);
+		ft.setWidget(3, 3, tb_email);
 		tb_email.setPixelSize(CELLWIDTH, CELLHEIGHT);
+		tb_email.setTitle("Email");
 		tb_email.addValueChangeHandler(new ValueChangeHandler<String>()
 				{
 
@@ -233,10 +275,11 @@ public class FindPatient extends MainGUI
 		/**
 		 * PHONE NUMBER FIELD
 		 */
-		ft.setText(2, 2, "PHONE NUMBER");
-		ft.getCellFormatter().setVerticalAlignment(2, 2, HasVerticalAlignment.ALIGN_BOTTOM);
-		ft.setWidget(2, 3, tb_phoneNo);
+		ft.setText(4, 0, "PHONE NUMBER");
+		ft.getCellFormatter().setVerticalAlignment(4, 0, HasVerticalAlignment.ALIGN_BOTTOM);
+		ft.setWidget(4, 1, tb_phoneNo);
 		tb_phoneNo.setPixelSize(CELLWIDTH, CELLHEIGHT);
+		tb_phoneNo.setTitle("Phone Number");
 		tb_phoneNo.addValueChangeHandler(new ValueChangeHandler<String>()
 				{
 
@@ -248,6 +291,7 @@ public class FindPatient extends MainGUI
 					
 				}		
 			});
+		
 		tb_phoneNo.addKeyPressHandler(new KeyPressHandler() 
 	    {
 	      public void onKeyPress(KeyPressEvent event) 
@@ -258,24 +302,6 @@ public class FindPatient extends MainGUI
 	        }
 	      }
 	    });
-
-		/**
-		 * LICENSE NUMBER
-		 */
-		ft.setText(3, 2, "POLICY NUMBER");
-		ft.getCellFormatter().setVerticalAlignment(3, 2, HasVerticalAlignment.ALIGN_BOTTOM);
-		ft.setWidget(3, 3, tb_licenseNo);
-		tb_licenseNo.setPixelSize(CELLWIDTH, CELLHEIGHT);
-		tb_licenseNo.addValueChangeHandler(new ValueChangeHandler<String>()
-				{
-
-				@Override
-				public void onValueChange(ValueChangeEvent<String> event) 
-				{
-					getPatientsSuper();
-					drawTable(patients);
-				}		
-			});
 		
 		b_Search.addClickHandler(new ClickHandler()
 		{
@@ -287,7 +313,7 @@ public class FindPatient extends MainGUI
 			}
 		});
 		
-		ft.setWidget(4, 2, b_Search);
+		ft.setWidget(5, 2, b_Search);
 		
 		/**
 		 * FORM PLACEMENT AND ATTRIBUTES

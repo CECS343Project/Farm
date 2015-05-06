@@ -129,7 +129,7 @@ public class MainGUI extends FarmWebApp
 	 */
 	public TabLayoutPanel getPanel()
 	{
-		SignUp signUpPage = new SignUp();
+		//SignUp signUpPage = new SignUp();
 		SignIn signInPage = new SignIn();
 		new Doctor();
 		new Pharmacy();
@@ -140,7 +140,7 @@ public class MainGUI extends FarmWebApp
 		homePage.setPixelSize(700, 440);
 		homePage.setAnimationDuration(1000);
 		homePage.add(signInPage.getSignInPanel(), "SIGN IN");
-		homePage.add(signUpPage.getSignUpPanel(), "SIGN UP");
+		//homePage.add(signUpPage.getSignUpPanel(), "SIGN UP");
 		
 		homePage.addSelectionHandler(new SelectionHandler<Integer>() {
 			@Override
@@ -181,7 +181,10 @@ public class MainGUI extends FarmWebApp
 		homePage.addSelectionHandler(new SelectionHandler<Integer>() {
 			@Override
 			public void onSelection(SelectionEvent<Integer> event) {
-				if (homePage.getSelectedIndex() == 2 || homePage.getSelectedIndex() == 3) {
+				if (homePage.getSelectedIndex() == 1) {
+					homePage.setPixelSize(700, 300);
+				}
+				else if (homePage.getSelectedIndex() == 2 || homePage.getSelectedIndex() == 3) {
 					homePage.setPixelSize(700, 600);
 			    }
 				else if(homePage.getSelectedIndex() == 4)

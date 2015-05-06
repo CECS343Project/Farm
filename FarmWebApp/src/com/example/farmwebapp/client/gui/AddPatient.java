@@ -38,16 +38,16 @@ public class AddPatient extends MainGUI
 	private PrescriptionInfo addPrescrip = new PrescriptionInfo();
 
 	private FlexTable ft = new FlexTable();
-
-	private TextBox tb_dob = new TextBox();
+	
 	private TextBox tb_email = new TextBox();
 	private TextBox tb_phoneNo = new TextBox();
 	private TextBox tb_nameLast = new TextBox();
 	private TextBox tb_licenseNo = new TextBox();
 	private TextBox tb_nameFirst = new TextBox();
-	private TextBox tb_nameSuffix = new TextBox();
 	private TextBox tb_addressStreet = new TextBox();
-	private TextBox tb_addressCityStateZip = new TextBox();
+	private TextBox tb_addressCity = new TextBox();
+	private TextBox tb_addressState = new TextBox();
+	private TextBox tb_addressZip = new TextBox();
 	
 	private ListBox lb_nameSuffix = new ListBox();
 	
@@ -70,20 +70,17 @@ public class AddPatient extends MainGUI
 		/**
 		 * NAME FIELD
 		 */
-		ft.setText(0, 0, "NAME");
+		ft.setText(0, 0, "FIRST NAME");
 		ft.getCellFormatter().setVerticalAlignment(0, 0, HasVerticalAlignment.ALIGN_BOTTOM);
 		ft.setWidget(0, 1, tb_nameFirst);
 		tb_nameFirst.setPixelSize(CELLWIDTH, CELLHEIGHT);
-
-		ft.setWidget(0, 2, tb_nameLast);
+		tb_nameFirst.setTitle("First Name");
+		
+		ft.setText(0, 2, "LAST NAME");
+		ft.getCellFormatter().setVerticalAlignment(0, 2, HasVerticalAlignment.ALIGN_BOTTOM);
+		ft.setWidget(0, 3, tb_nameLast);
 		tb_nameLast.setPixelSize(CELLWIDTH, CELLHEIGHT);
-		
-		lb_nameSuffix.addItem("   ");
-		lb_nameSuffix.addItem("Jr.");
-		lb_nameSuffix.addItem("Sr.");
-		
-		ft.setWidget(0, 3, lb_nameSuffix);
-		tb_nameSuffix.setPixelSize(CELLWIDTH, CELLHEIGHT);
+		tb_nameLast.setTitle("Last Name");
 
 		/**
 		 * ADDRESS FIELD
@@ -92,10 +89,37 @@ public class AddPatient extends MainGUI
 		ft.getCellFormatter().setVerticalAlignment(1, 0, HasVerticalAlignment.ALIGN_BOTTOM);
 		ft.setWidget(1, 1, tb_addressStreet);
 		tb_addressStreet.setPixelSize(CELLWIDTH, CELLHEIGHT);
+		tb_addressStreet.setTitle("Address");
+		
+		ft.setText(1, 2, "CITY");
+		ft.getCellFormatter().setVerticalAlignment(1, 2, HasVerticalAlignment.ALIGN_BOTTOM);
+		ft.setWidget(1, 3, tb_addressCity);
+		tb_addressCity.setPixelSize(CELLWIDTH, CELLHEIGHT);
+		tb_addressCity.setTitle("City");
+		
+		ft.setText(2, 0, "STATE");
+		ft.getCellFormatter().setVerticalAlignment(2, 0, HasVerticalAlignment.ALIGN_BOTTOM);
+		ft.setWidget(2, 1, tb_addressState);
+		tb_addressState.setPixelSize(CELLWIDTH, CELLHEIGHT);
+		tb_addressState.setTitle("State");
+		
+		ft.setText(2, 2, "ZIP CODE");
+		ft.getCellFormatter().setVerticalAlignment(2, 2, HasVerticalAlignment.ALIGN_BOTTOM);
+		ft.setWidget(2, 3, tb_addressZip);
+		tb_addressZip.setPixelSize(CELLWIDTH, CELLHEIGHT);
+		tb_addressZip.setTitle("Zip Code");
+		
+		/**
+		 * Restricts box to only accept numbers
+		 */
+		tb_addressZip.addKeyPressHandler(new KeyPressHandler() {
 
-		ft.setWidget(2, 1, tb_addressCityStateZip);
-		tb_addressCityStateZip.setPixelSize(CELLWIDTH, CELLHEIGHT);
-		tb_addressCityStateZip.setTitle("City, State, Zip");
+		      public void onKeyPress(KeyPressEvent event) {
+		        if (!Character.isDigit(event.getCharCode())) {
+		          ((TextBox) event.getSource()).cancelKey();
+		        }
+		      }
+		    });
 
 		/**
 		 * DATE OF BIRTH FIELD
@@ -105,22 +129,25 @@ public class AddPatient extends MainGUI
 		ft.getCellFormatter().setVerticalAlignment(3, 0, HasVerticalAlignment.ALIGN_BOTTOM);
 		ft.setWidget(3, 1, db_dob);
 		db_dob.setPixelSize(CELLWIDTH, CELLHEIGHT);
+		db_dob.setTitle("MM/DD/YYYY");
 
 		/**
 		 * EMAIL FIELD
 		 */
-		ft.setText(1, 2, "EMAIL");
-		ft.getCellFormatter().setVerticalAlignment(1, 2, HasVerticalAlignment.ALIGN_BOTTOM);
-		ft.setWidget(1, 3, tb_email);
+		ft.setText(3, 2, "EMAIL");
+		ft.getCellFormatter().setVerticalAlignment(3, 2, HasVerticalAlignment.ALIGN_BOTTOM);
+		ft.setWidget(3, 3, tb_email);
 		tb_email.setPixelSize(CELLWIDTH, CELLHEIGHT);
+		tb_email.setTitle("Email");
 		
 		/**
 		 * PHONE NUMBER FIELD
 		 */
-		ft.setText(2, 2, "PHONE NUMBER");
-		ft.getCellFormatter().setVerticalAlignment(2, 2, HasVerticalAlignment.ALIGN_BOTTOM);
-		ft.setWidget(2, 3, tb_phoneNo);
+		ft.setText(4, 0, "PHONE NUMBER");
+		ft.getCellFormatter().setVerticalAlignment(4, 0, HasVerticalAlignment.ALIGN_BOTTOM);
+		ft.setWidget(4, 1, tb_phoneNo);
 		tb_phoneNo.setPixelSize(CELLWIDTH, CELLHEIGHT);
+		tb_phoneNo.setTitle("Phone Number");
 		
 		/**
 		 * Restricts box to only accept numbers
@@ -133,14 +160,6 @@ public class AddPatient extends MainGUI
 		        }
 		      }
 		    });
-
-		/**
-		 * LICENSE NUMBER
-		 */
-		ft.setText(3, 2, "POLICY NUMBER");
-		ft.getCellFormatter().setVerticalAlignment(3, 2, HasVerticalAlignment.ALIGN_BOTTOM);
-		ft.setWidget(3, 3, tb_licenseNo);
-		tb_licenseNo.setPixelSize(CELLWIDTH, CELLHEIGHT);
 		
 		/**
 		 * FORM PLACEMENT AND ATTRIBUTES
@@ -202,8 +221,11 @@ public class AddPatient extends MainGUI
 	        	try
 	        	{
 	        		s_DBData = new HTML("User Type: Patient"
-	        				+"<br>Name: " + tb_nameFirst.getText() + "," + tb_nameLast.getText() + ", " + lb_nameSuffix.getSelectedItemText()
-	        				+ "<br>Address: " + tb_addressStreet.getText() + " City, State, Zip: " + tb_addressCityStateZip.getText()
+	        				+"<br>Name: " + tb_nameFirst.getText() + "," + tb_nameLast.getText()
+	        				+ "<br>Address: " + tb_addressStreet.getText()
+	        				+ "<br>City: " + tb_addressCity.getText()
+	        				+ "<br>State: " + tb_addressState.getText()
+	        				+ "<br>Zip: " + tb_addressZip.getText()
 	        				+ "<br>Email: " + tb_email.getText()
 	        				+ "<br>Date of Birth: " + db_dob.getValue()
 	        				+ "<br>License Number: " + tb_licenseNo.getText());
