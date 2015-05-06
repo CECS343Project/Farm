@@ -10,8 +10,10 @@
 package com.example.farmwebapp.client.gui;
 import java.util.List;
 import java.util.Arrays;
+
 import com.google.gwt.user.client.ui.*;
 import com.google.gwt.user.cellview.client.*;
+import com.google.gwt.cell.client.ButtonCellBase.DefaultAppearance.Style;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.view.client.ListDataProvider;
 import com.google.gwt.event.dom.client.ClickHandler;
@@ -35,6 +37,8 @@ public class PharmacyUpdate // extends MainGUI
 	private VerticalPanel vp = new VerticalPanel();
 	private VerticalPanel vpTable = new VerticalPanel();
 	private HorizontalPanel hpCRUD = new HorizontalPanel();
+	
+	private Image img_update = new Image("/images/updatePharmacy.png");
 
 	private CellTable<PatientData> ct_Results = new CellTable<PatientData>();
 
@@ -163,9 +167,17 @@ public class PharmacyUpdate // extends MainGUI
 			}
 		});
 
+		/**
+		 * UPDATE IMAGE BUTTON
+		 */
+		img_update.setPixelSize(100, 100);
+		img_update.addStyleName("moveRefresh");
 		hpCRUD.add(b_Select);
 		hpCRUD.add(b_Delete);
+		hpCRUD.addStyleName("moveRefreshBTN");
+		vpTable.add(img_update);
 		vpTable.add(ct_Results);
+		pager.addStyleName("movePager");
 		vpTable.add(pager);
 		vpTable.add(hpCRUD);
 		getPharmacyUpdatePanel();
