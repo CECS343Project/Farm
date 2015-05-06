@@ -136,15 +136,26 @@ public class PharmacyUpdate // extends MainGUI
 		ct_Results.addColumn(tc_Address, "Address");
 		ct_Results.addColumn(tc_Email, "Email");
 		ct_Results.addColumn(tc_PhoneNumber, "Phone");
-		ct_Results.addColumn(tc_DOB, "D.O.B");
+<<<<<<< HEAD
+		ct_Results.addColumn(tc_DOB, "Date Of Birth");		
 		ct_Results.setRowCount(5,true);
+		ct_Results.setRowData(l_DummyData);
+		
+		//Add table to the horizontal panel
+		//Call the main panel generator again 
+		//after populating to place table in main panel
+		ct_Results.setPageSize(5);
+		ct_Results.setWidth("642px");
+=======
+		ct_Results.addColumn(tc_DOB, "D.O.B");
+		ct_Results.setRowCount(7, true);
 		ct_Results.setRowData(l_DummyData);
 
 		// Add table to the horizontal panel
 		// Call the main panel generator again
 		// after populating to place table in main panel
-		ct_Results.setPageSize(5);
 		ct_Results.setWidth("675px");
+>>>>>>> 90174eaec3dbe72acf94a6fb9402163615d6641a
 		pager.setDisplay(ct_Results);
 
 		b_Select.addClickHandler(new ClickHandler() {

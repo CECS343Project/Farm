@@ -135,3 +135,20 @@
 .moveRadioBtn {
 	margin: 0px 0px 0px 40px;
 }
+
+.moveMedResults {
+	margin: 20px 0px 0px 0px;
+}
+
+.moveListResults {
+	margin: 25px 0px 0px 0px;
+}
+
+.moveAddMedArrow {
+	margin: 40px 0px 0px 0px;
+}
+
+.moveDrugAllergyLabel {
+	color: white;
+	margin: 0px 0px 5px 0px;
+}

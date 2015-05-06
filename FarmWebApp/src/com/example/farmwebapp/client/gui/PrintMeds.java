@@ -42,7 +42,7 @@ public class PrintMeds extends MainGUI
 	private HorizontalPanel hp_labelSubmitContainer = new HorizontalPanel();
 	
 	private Image img_barcode = new Image("/images/barCode.png");
-	private Image btn_submit = new Image ("/images/submitWhite.png");
+	private Image btn_submit = new Image ("/images/printer.png");
 	private Image img_patientInfo = new Image("/images/patient.png");
 	private Image img_doctorInfo = new Image("/images/stethoscope.png");
 	private Image img_allergyWarning = new Image("/images/warning.png");
@@ -50,7 +50,7 @@ public class PrintMeds extends MainGUI
 	private Image img_warningLabel = new Image("/images/warningLabelNew.png");
 	
 	private Label lbl_notesReview = new Label("REVIEW");
-	private Label lbl_authorize = new Label("AUTHORIZE");
+	private Label lbl_authorize = new Label("PRINT");
 	private Label lbl_drugAllergies = new Label("DRUG ALLERGIES");
 	private Label lbl_medicationLabel = new Label("MEDICATION LABEL");
 	
@@ -305,6 +305,7 @@ public class PrintMeds extends MainGUI
 		
 		//Horizontal panels for label information [Design Properties]
 		hp_pharmInfo.setSpacing(5);
+		btn_submit.setTitle("PRINT PRESCRIPTION");
 		btn_submit.setPixelSize(80, 80);
 		img_barcode.setPixelSize(38, 210);
 		ta_dosageInfo.setPixelSize(150, 200);

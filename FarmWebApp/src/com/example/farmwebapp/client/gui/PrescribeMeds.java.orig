@@ -33,7 +33,11 @@ import com.example.farmwebapp.client.services.PatientServiceAsync;
 import com.example.farmwebapp.client.services.MedicationServiceInit;
 import com.example.farmwebapp.client.services.MedicationServiceAsync;
 
+<<<<<<< HEAD
 public class PrescribeMeds extends MainGUI
+=======
+public class PrescribeMeds // extends FindPatient
+>>>>>>> 90174eaec3dbe72acf94a6fb9402163615d6641a
 {
 	private FlexTable ft = new FlexTable();
 
