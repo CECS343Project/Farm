@@ -394,7 +394,7 @@ public class FindPatient extends MainGUI {
 		ct_Results.addColumn(tc_Address, "Address");
 		ct_Results.addColumn(tc_Email, "Email");
 		ct_Results.addColumn(tc_PhoneNumber, "Phone");
-		ct_Results.addColumn(tc_DOB, "Date Of Birth");
+		ct_Results.addColumn(tc_DOB, "D.O.B");
 		ct_Results.setRowCount(7, true);
 		ct_Results.setRowData(l_DummyData);
 
