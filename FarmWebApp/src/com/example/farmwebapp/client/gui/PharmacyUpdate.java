@@ -14,7 +14,10 @@ import java.util.Arrays;
 import com.google.gwt.user.client.ui.*;
 import com.google.gwt.user.cellview.client.*;
 import com.google.gwt.cell.client.ButtonCellBase.DefaultAppearance.Style;
+import com.google.gwt.dom.client.Style.Cursor;
 import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.MouseOverEvent;
+import com.google.gwt.event.dom.client.MouseOverHandler;
 import com.google.gwt.view.client.ListDataProvider;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.rpc.AsyncCallback;
@@ -172,6 +175,25 @@ public class PharmacyUpdate // extends MainGUI
 		 */
 		img_update.setPixelSize(100, 100);
 		img_update.addStyleName("moveRefresh");
+		/**
+		 * PRESCRIPTION REFRESH
+		 */
+		img_update.addClickHandler(new ClickHandler() {
+			public void onClick(ClickEvent event) {
+				// DO SOMETHING
+			}
+		});
+
+		/**
+		 * Change mouse to pointer to indicate the arrow is a button
+		 */
+		img_update.addMouseOverHandler(new MouseOverHandler() {
+			@Override
+			public void onMouseOver(MouseOverEvent event) {
+				img_update.getElement().getStyle().setCursor(Cursor.POINTER);
+			}
+		});
+		
 		hpCRUD.add(b_Select);
 		hpCRUD.add(b_Delete);
 		hpCRUD.addStyleName("moveRefreshBTN");
