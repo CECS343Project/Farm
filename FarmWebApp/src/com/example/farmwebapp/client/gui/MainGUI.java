@@ -201,9 +201,12 @@ public class MainGUI extends FarmWebApp
 				if (homePage.getSelectedIndex() == 1) {
 					homePage.setPixelSize(700, 300);
 				}
-				else if (homePage.getSelectedIndex() == 2 || homePage.getSelectedIndex() == 3) {
-					homePage.setPixelSize(700, 600);
+				else if (homePage.getSelectedIndex() == 2) {
+					homePage.setPixelSize(700, 700);
 			    }
+				else if (homePage.getSelectedIndex() == 3) {
+					homePage.setPixelSize(700, 600);
+				}
 				else if(homePage.getSelectedIndex() == 4)
 				{
 					logout();

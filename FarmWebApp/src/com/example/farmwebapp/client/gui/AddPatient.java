@@ -39,7 +39,6 @@ public class AddPatient extends MainGUI {
 	private TextBox tb_email = new TextBox();
 	private TextBox tb_phoneNo = new TextBox();
 	private TextBox tb_nameLast = new TextBox();
-	private TextBox tb_licenseNo = new TextBox();
 	private TextBox tb_nameFirst = new TextBox();
 	private TextBox tb_addressZip = new TextBox();
 	private TextBox tb_addressCity = new TextBox();
@@ -171,7 +170,7 @@ public class AddPatient extends MainGUI {
 		}); // restricts tb_phoneNo to only allow numbers
 
 		/**
-		 * LOGIN BUTTON
+		 * ADD BUTTON
 		 */
 		ft.setWidget(4, 3, signUpArrowRed);
 		signUpArrowRed.setPixelSize(25, 25);
@@ -195,8 +194,7 @@ public class AddPatient extends MainGUI {
 							+ tb_addressState.getText() + "<br>Zip: "
 							+ tb_addressZip.getText() + "<br>Email: "
 							+ tb_email.getText() + "<br>Date of Birth: "
-							+ db_dob.getValue() + "<br>License Number: "
-							+ tb_licenseNo.getText());
+							+ db_dob.getValue());
 					PopUps popups = new PopUps();
 					popups.showDialog("Patient added to the DB:\r\n" + s_DBData);
 				} catch (Exception e) {

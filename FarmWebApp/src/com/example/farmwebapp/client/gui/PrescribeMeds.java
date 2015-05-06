@@ -2,8 +2,6 @@ package com.example.farmwebapp.client.gui;
 
 import java.util.List;
 import java.util.Arrays;
-
-import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.ListBox;
@@ -22,23 +20,23 @@ import com.google.gwt.user.datepicker.client.DateBox;
 import com.google.gwt.user.cellview.client.CellTable;
 import com.google.gwt.user.cellview.client.TextColumn;
 import com.google.gwt.event.dom.client.MouseOverEvent;
+import com.example.farmwebapp.client.dbobjects.UserData;
 import com.google.gwt.event.dom.client.MouseOverHandler;
 import com.google.gwt.user.client.ui.HasVerticalAlignment;
-import com.example.farmwebapp.client.dbobjects.MedicationData;
 import com.example.farmwebapp.client.dbobjects.PatientData;
-import com.example.farmwebapp.client.dbobjects.UserData;
 import com.google.gwt.user.client.ui.HasHorizontalAlignment;
-import com.example.farmwebapp.client.services.MedicationServiceAsync;
-import com.example.farmwebapp.client.services.MedicationServiceInit;
-import com.example.farmwebapp.client.services.PatientServiceAsync;
-import com.example.farmwebapp.client.services.PatientServiceInit;
-import com.example.farmwebapp.client.services.UserServiceAsync;
+import com.example.farmwebapp.client.dbobjects.MedicationData;
 import com.example.farmwebapp.client.services.UserServiceInit;
+import com.example.farmwebapp.client.services.UserServiceAsync;
+import com.example.farmwebapp.client.services.PatientServiceInit;
+import com.example.farmwebapp.client.services.PatientServiceAsync;
+import com.example.farmwebapp.client.services.MedicationServiceInit;
+import com.example.farmwebapp.client.services.MedicationServiceAsync;
 
-public class PrescribeMeds //extends FindPatient
+public class PrescribeMeds // extends FindPatient
 {
 	private FlexTable ft = new FlexTable();
-	
+
 	private HorizontalPanel hp_notes = new HorizontalPanel();
 	private HorizontalPanel hp_doctorInfo = new HorizontalPanel();
 	private HorizontalPanel hp_dosageInfo = new HorizontalPanel();
@@ -49,72 +47,63 @@ public class PrescribeMeds //extends FindPatient
 	private HorizontalPanel hp_lMainContainer = new HorizontalPanel();
 	private HorizontalPanel hp_rMainContainer = new HorizontalPanel();
 	private HorizontalPanel hp_drugAllergyInfo = new HorizontalPanel();
-	
-	private Image btn_submit = new Image ("/images/submitWhite.png");
+
+	private Image btn_submit = new Image("/images/submitWhite.png");
 	private Image img_patientInfo = new Image("/images/patient.png");
 	private Image img_doctorInfo = new Image("/images/stethoscope.png");
 	private Image img_allergyWarning = new Image("/images/warning.png");
 	private Image img_addMeds = new Image("/images/loginArrowWhite.png");
 	private Image img_pillBottle = new Image("/images/pillBottleRevised.png");
-	private final DateTimeFormat dateFormat = DateTimeFormat.getFormat("MM/dd/yyyy");
+	private final DateTimeFormat dateFormat = DateTimeFormat
+			.getFormat("MM/dd/yyyy");
+
 	private DateBox db_endDate = new DateBox();
 	private DateBox db_startDate = new DateBox();
-	
+
 	private Label lbl_endDate = new Label("END");
 	private Label lbl_notes = new Label("NOTES");
 	private Label lbl_dosage = new Label("TAKE");
 	private Label lbl_submit = new Label("SUBMIT");
 	private Label lbl_startDate = new Label("START");
 	private Label lbl_frequency = new Label("EVERY");
-	private Label lbl_searchField = new Label("SEARCH");
 	private Label lbl_drugAllergies = new Label("DRUG ALLERGIES");
 	private Label lbl_medicationList = new Label("MEDICATION LIST");
-	
-	private TextBox tb_notes = new TextBox();
+
+	private TextArea ta_notes = new TextArea();
 	private TextBox tb_searchField = new TextBox();
 	private TextBox tb_dosageField = new TextBox();
-	
+
 	private ListBox lb_time = new ListBox();
 	private ListBox lb_units = new ListBox();
-	
+
 	private TextArea ta_doctorInfo = new TextArea();
 	private TextArea ta_patientInfo = new TextArea();
 	private TextArea ta_drugAllergies = new TextArea();
 	private TextArea ta_addedMedication = new TextArea();
-	
+
 	private VerticalPanel vp_btnSubmit = new VerticalPanel();
 	private VerticalPanel vp_leftContainer = new VerticalPanel();
 	private VerticalPanel vp_rightContainer = new VerticalPanel();
 	private VerticalPanel vp_drugAllergyInfo = new VerticalPanel();
-	
-	private CellTable<MedicationData> ct_Results = new CellTable<MedicationData>();
-	
-	private MedicationServiceAsync rpc;
-	
-	private MedicationData medications[];
-	private String selectedID;
-	
-	private String patientName = "Jimmy Jame";
-	private String patientStAddress = "109090 Tammy Blvd";
-	private String patientCityAddress = "Los Angeles, Ca 90063";
-	private String patientEmailAddress = "jjTammy@gmail.com";
-	private String patientPhoneNumber = "(562) 867 - 5309";
-	private String patientPolicyNumber = "Policy No: 548613543";
-	private String patientDOB = "D.O.B: 05/10/1985";
-	private UserData[] user;
-	private static int uInd;
-	private PatientData[] patient;
-	private static int ind;
 
+	private CellTable<MedicationData> ct_Results = new CellTable<MedicationData>();
+
+	private MedicationServiceAsync rpc;
+
+	private MedicationData medications[];
+
+	private static int ind;
+	private static int uInd;
+	private UserData[] user;
+	private PatientData[] patient;
 	private UserServiceAsync uRpc;
 	private PatientServiceAsync pRpc;
-	
+
 	/**
-	 * Default constructor instantiates the rpc async service 
-	 * for querying the database
+	 * Default constructor instantiates the rpc async service for querying the
+	 * database
 	 */
-	public PrescribeMeds() 
-	{
+	public PrescribeMeds() {
 		lb_units.addItem("--");
 		lb_units.addItem("mg");
 		lb_units.addItem("ml");
@@ -122,7 +111,7 @@ public class PrescribeMeds //extends FindPatient
 		lb_units.addItem("puffs");
 		lb_units.addItem("capsule");
 		lb_units.addItem("capsules");
-		
+
 		lb_time.addItem("--");
 		lb_time.addItem("o.d.");
 		lb_time.addItem("q.d.");
@@ -134,7 +123,7 @@ public class PrescribeMeds //extends FindPatient
 		lb_time.addItem("n.p.o");
 		lb_time.addItem("disp.");
 		lb_time.addItem("ad.lib.");
-		
+
 		rpc = MedicationServiceInit.initRpc();
 		uRpc = UserServiceInit.initRpc();
 		pRpc = PatientServiceInit.initRpc();
@@ -142,27 +131,24 @@ public class PrescribeMeds //extends FindPatient
 		getUsersDB();
 		getPatientsDB();
 	}
-	
-	public void setUInd(int val)
-	{
+
+	public void setUInd(int val) {
 		uInd = val;
 	}
-	public void setInd(int val)
-	{
+
+	public void setInd(int val) {
 		ind = val;
 	}
-	
+
 	/**
-	 * Sends an asynchronous call to the database and 
-	 * populates the celltable with the results when query succeeds
+	 * Sends an asynchronous call to the database and populates the celltable
+	 * with the results when query succeeds
 	 */
-	public void getMedicationsDB()
-	{
-		AsyncCallback<MedicationData[]> callback = new AsyncCallback<MedicationData[]>()
-		{
+	public void getMedicationsDB() {
+		AsyncCallback<MedicationData[]> callback = new AsyncCallback<MedicationData[]>() {
 			@Override
 			public void onFailure(Throwable caught) {
-				PopUps popUp = new PopUps();		
+				PopUps popUp = new PopUps();
 				popUp.showDialog(caught.toString());
 			}
 
@@ -170,254 +156,222 @@ public class PrescribeMeds //extends FindPatient
 			public void onSuccess(MedicationData[] result) {
 				medications = result;
 
-				//Populates the celltable
+				// Populates the celltable
 				drawTable();
 			}
 		};
 		rpc.getMedications(callback);
 	}
-	
-	public void getUsersDB()
-	{
-		AsyncCallback<UserData[]> callback = new AsyncCallback<UserData[]>()
-		{
+
+	public void getUsersDB() {
+		AsyncCallback<UserData[]> callback = new AsyncCallback<UserData[]>() {
 			@Override
 			public void onFailure(Throwable caught) {
 				// TODO Auto-generated method stub
-				
+
 			}
 
 			@Override
 			public void onSuccess(UserData[] result) {
 				user = result;
-				
-				
-				
-				ta_doctorInfo.setText(user[uInd].fName+" "+user[uInd].lName + 
-						"\n" + 
-						user[uInd].address + 
-						"\n"+ 
-						user[uInd].city+","+user[uInd].state+" "+user[uInd].zip + 
-						"\n" + 
-						user[uInd].email+ 
-						"\n" +
-						user[uInd].phone);
-									
+
+				ta_doctorInfo.setText(user[uInd].fName + " " + user[uInd].lName
+						+ "\n" + user[uInd].address + "\n" + user[uInd].city
+						+ "," + user[uInd].state + " " + user[uInd].zip + "\n"
+						+ user[uInd].email + "\n" + user[uInd].phone);
+
 			}
-	
+
 		};
 		uRpc.getUsers(callback);
 	}
-	
-	public void getPatientsDB()
-	{
-		AsyncCallback<PatientData[]> callback = new AsyncCallback<PatientData[]>()
-		{
+
+	public void getPatientsDB() {
+		AsyncCallback<PatientData[]> callback = new AsyncCallback<PatientData[]>() {
 			@Override
 			public void onFailure(Throwable caught) {
-				PopUps popUp = new PopUps();		
+				PopUps popUp = new PopUps();
 				popUp.showDialog(caught.toString());
 			}
 
 			@Override
 			public void onSuccess(PatientData[] result) {
 				patient = result;
-				ta_patientInfo.setText(patient[ind].fName+
-						" " +
-						patient[ind].lName+
-						"\n" + 
-						patient[ind].address+ 
-						"\n" +
-						patient[ind].city + ", " + patient[ind].state + " " + patient[ind].zip + 
-						"\n" + 
-						patient[ind].email + 
-						"\n" +
-						patient[ind].phone +  
-						"\n" + 
-						"D.O.B: "+patient[ind].dateOfBirth);
-				
-				//Populates the cell table
-				
+				ta_patientInfo.setText(patient[ind].fName + " "
+						+ patient[ind].lName + "\n" + patient[ind].address
+						+ "\n" + patient[ind].city + ", " + patient[ind].state
+						+ " " + patient[ind].zip + "\n" + patient[ind].email
+						+ "\n" + patient[ind].phone + "\n" + "D.O.B: "
+						+ patient[ind].dateOfBirth);
+
+				// Populates the cell table
+
 			}
 		};
 		pRpc.getPatients(callback);
 	}
-	
-	public void updatePatientsDB(PatientData patient)
-	{
-		AsyncCallback<PatientData> callback = new AsyncCallback<PatientData>()
-		{
+
+	public void updatePatientsDB(PatientData patient) {
+		AsyncCallback<PatientData> callback = new AsyncCallback<PatientData>() {
 
 			@Override
 			public void onFailure(Throwable caught) {
 				// TODO Auto-generated method stub
-				
+
 			}
 
 			@Override
-			public void onSuccess(PatientData result) 
-			{
+			public void onSuccess(PatientData result) {
 				PopUps pop = new PopUps();
-				
+
 				pop.showDialog("Successful update!");
-				
+
 			}
-			
+
 		};
 		pRpc.updatePatient(patient, callback);
 	}
-	
-	public IsWidget getPrescribeMedsPanel() 
-	{
-		//selectedID = super.getSelectedPatient();
+
+	public IsWidget getPrescribeMedsPanel() {
 		/**
 		 * PATIENT INFO
 		 */
-		//Hard coded information for demo purposes
-		//ta_patientInfo.setText(patientName + "\n" + patientStAddress + "\n" 
-		//		+ patientCityAddress + "\n" + patientEmailAddress + "\n" 
-		//		+ patientPhoneNumber + "\n" + patientPolicyNumber + "\n" + patientDOB);
-		//Design parameters
+		// Design parameters
 		ta_patientInfo.setVisibleLines(7);
 		ta_patientInfo.setCharacterWidth(42);
 		img_patientInfo.setPixelSize(100, 100);
 		ta_patientInfo.setStyleName("gwt-TextArea");
 		ta_patientInfo.getElement().setAttribute("disabled", "disabled");
-		//Add to panels
+		// Add to panels
 		hp_patientInfo.add(img_patientInfo);
 		hp_patientInfo.add(ta_patientInfo);
 		ft.setWidget(0, 0, hp_patientInfo);
-		
+
 		/**
 		 * DOCTOR INFO
 		 */
-		//Hard coded information for demo purposes
-		//ta_doctorInfo.setText("Napoleon Fulinara Jr" + "\n" + "727 W 7th St. Unit 1113" + "\n" 
-		//		+ "Los Angeles, Ca 90017" + "\n" + "jrfulinara@gmail.com" + "\n" 
-		//		+ "(858) 216-5155" + "\n" + "Policy No: 0000000000" + "\n" + "D.O.B: 06/22/1984");
-		//Design parameters
+		// Design parameters
 		ta_doctorInfo.setVisibleLines(7);
 		ta_doctorInfo.setCharacterWidth(42);
 		img_doctorInfo.setPixelSize(100, 100);
 		ta_doctorInfo.setStyleName("gwt-TextArea");
 		ta_doctorInfo.getElement().setAttribute("disabled", "disabled");
-		//Add to panels
+		// Add to panels
 		hp_doctorInfo.add(img_doctorInfo);
 		hp_doctorInfo.add(ta_doctorInfo);
 		ft.setWidget(0, 1, hp_doctorInfo);
-		
+
 		/**
 		 * SEARCH MEDICATIONS - MEDICATION RESULTS - ALLERGY INFORMATION
 		 */
-		//Left horizontal panel for red background [Design Properties]
+		// Left horizontal panel for red background [Design Properties]
 		hp_lMainContainer.setSpacing(5);
 		hp_lMainContainer.setPixelSize(325, 435);
 		hp_lMainContainer.setStyleName("redBackground");
-		
-		//Left vertical panel containing sub-horizontal panels [Design Properties]
+
+		// Left vertical panel containing sub-horizontal panels [Design
+		// Properties]
 		vp_leftContainer.setSpacing(5);
 		vp_leftContainer.setPixelSize(325, 435);
-		
-		//Search field design properties [Design Properties]
-		hp_searchField.setSpacing(5);
-		tb_searchField.setPixelSize(140, 15);
-		lbl_searchField.addStyleName("whiteFont");
-		
-		//Pill bottle image [Design Properties]
+
+		// Pill bottle image [Design Properties]
 		img_pillBottle.setPixelSize(100, 100);
 		img_pillBottle.setStyleName("movePillBottle");
-		
-		//Medication button [Design Properties]
+
+		// Medication button [Design Properties]
 		img_addMeds.setPixelSize(25, 25);
 		img_addMeds.getElement().setAttribute("align", "right");
 		img_addMeds.setStyleName("moveAddMedArrow");
-		
-		//Drug allergy information [Design Properties]
-		ta_drugAllergies.setPixelSize(200, 100);
+
+		// Drug allergy information [Design Properties]
+		ta_drugAllergies.setPixelSize(200, 145);
 		img_allergyWarning.setPixelSize(100, 100);
 		lbl_drugAllergies.setStyleName("whiteFont");
 		img_allergyWarning.setStyleName("moveWarningSign");
+
 		
-		//Add search field properties
-		hp_searchField.add(lbl_searchField);
-		hp_searchField.add(tb_searchField);
-		hp_searchField.setCellVerticalAlignment(lbl_searchField, HasVerticalAlignment.ALIGN_BOTTOM);
-		
-		//Add to main
-		vp_leftContainer.add(hp_searchField);
-		vp_leftContainer.setCellHorizontalAlignment(hp_searchField, HasHorizontalAlignment.ALIGN_RIGHT);
-		
-		//Add search results properties
+
+		// Add search results properties
 		hp_searchResults.add(img_pillBottle);
 		hp_searchResults.add(ct_Results);
 		
-		//Add to main
+		hp_searchResults.setStyleName("moveMedResults");
+		
+		// Add to main
+		img_addMeds.setTitle("ADD MEDICAITON TO LIST");
 		vp_leftContainer.add(hp_searchResults);
 		vp_leftContainer.add(img_addMeds);
-		hp_searchResults.setCellVerticalAlignment(img_pillBottle, HasVerticalAlignment.ALIGN_BOTTOM);
-		vp_leftContainer.setCellHorizontalAlignment(img_addMeds, HasHorizontalAlignment.ALIGN_RIGHT);
-		
-		//Click event
+		hp_searchResults.setCellVerticalAlignment(img_pillBottle,
+				HasVerticalAlignment.ALIGN_BOTTOM);
+		vp_leftContainer.setCellHorizontalAlignment(img_addMeds,
+				HasHorizontalAlignment.ALIGN_RIGHT);
+		hp_drugAllergyInfo.setStyleName("moveAddMedArrow");
+		// Click event
 		img_addMeds.addClickHandler(new ClickHandler() {
-	        public void onClick(ClickEvent event) {
-	        	try {
-		            //Add click event
-	        	}
-	        	catch(Exception e) {
-	        		//Add click event exception
-	        	}
-	        }
-	    });
-		
+			public void onClick(ClickEvent event) {
+				try {
+					// Add click event
+				} catch (Exception e) {
+					// Add click event exception
+				}
+			}
+		});
+
 		img_addMeds.addMouseOverHandler(new MouseOverHandler() {
 			@Override
 			public void onMouseOver(MouseOverEvent event) {
 				img_addMeds.getElement().getStyle().setCursor(Cursor.POINTER);
 			}
 		});
-		
-		//Add drug allergy properties
+
+		// Add drug allergy properties
 		hp_drugAllergyInfo.add(img_allergyWarning);
 		vp_drugAllergyInfo.add(lbl_drugAllergies);
 		vp_drugAllergyInfo.add(ta_drugAllergies);
 		hp_drugAllergyInfo.add(vp_drugAllergyInfo);
-		hp_drugAllergyInfo.setCellVerticalAlignment(img_allergyWarning, HasVerticalAlignment.ALIGN_BOTTOM);
-		hp_drugAllergyInfo.setCellHorizontalAlignment(img_allergyWarning, HasHorizontalAlignment.ALIGN_CENTER);
+		hp_drugAllergyInfo.setCellVerticalAlignment(img_allergyWarning,
+				HasVerticalAlignment.ALIGN_BOTTOM);
+		hp_drugAllergyInfo.setCellHorizontalAlignment(img_allergyWarning,
+				HasHorizontalAlignment.ALIGN_CENTER);
+		lbl_drugAllergies.setStyleName("moveDrugAllergyLabel");
+		hp_drugAllergyInfo.setStyleName("moveListResults");
 		
-		//Add to main
+		// Add to main
 		vp_leftContainer.add(hp_drugAllergyInfo);
-		
+
 		/**
 		 * MEDICATION LIST - DOSAGE INFO - NOTES - SUBMIT
 		 */
-		//Right horizontal panel for red background [Design Properties]
+		// Right horizontal panel for red background [Design Properties]
 		hp_rMainContainer.setSpacing(5);
 		hp_rMainContainer.setPixelSize(325, 435);
 		hp_rMainContainer.setStyleName("redBackground");
-		
-		//Right vertical panel containing sub-horizontal panels [Design Properties]
+
+		// Right vertical panel containing sub-horizontal panels [Design
+		// Properties]
 		vp_rightContainer.setSpacing(5);
 		vp_rightContainer.setPixelSize(325, 435);
-		
-		//Search field [Design Properties]
+
+		// Search field [Design Properties]
 		hp_searchField.setSpacing(5);
 		tb_searchField.setPixelSize(140, 15);
 		lbl_medicationList.addStyleName("whiteFont");
-		
-		//Added medication [Design Properties]
+
+		// Added medication [Design Properties]
 		ta_addedMedication.setPixelSize(300, 100);
-		
-		//Added medication properties
+
+		// Added medication properties
 		vp_rightContainer.add(lbl_medicationList);
 		vp_rightContainer.add(ta_addedMedication);
-		vp_rightContainer.setCellVerticalAlignment(lbl_medicationList, HasVerticalAlignment.ALIGN_BOTTOM);
-		
-		//Dosage information [Design Properties]
+		vp_rightContainer.setCellVerticalAlignment(lbl_medicationList,
+				HasVerticalAlignment.ALIGN_BOTTOM);
+
+		// Dosage information [Design Properties]
 		hp_dosageInfo.setSpacing(5);
 		hp_medDuration.setSpacing(5);
 		lb_time.setPixelSize(73, 23);
 		lb_units.setPixelSize(73, 23);
-		tb_notes.setPixelSize(220, 145);
+		ta_notes.setPixelSize(220, 145);
 		btn_submit.setPixelSize(80, 80);
 		db_endDate.setPixelSize(100, 15);
 		db_startDate.setPixelSize(100, 15);
@@ -432,134 +386,128 @@ public class PrescribeMeds //extends FindPatient
 		db_endDate.setFormat(new DateBox.DefaultFormat(dateFormat));
 		db_startDate.setFormat(new DateBox.DefaultFormat(dateFormat));
 		db_startDate.setFormat(new DateBox.DefaultFormat(dateFormat));
-		
-		//Add dosage info
+
+		// Add dosage info
 		hp_dosageInfo.add(lbl_dosage);
 		hp_dosageInfo.add(tb_dosageField);
 		hp_dosageInfo.add(lb_units);
 		hp_dosageInfo.add(lbl_frequency);
 		hp_dosageInfo.add(lb_time);
-		hp_dosageInfo.setCellVerticalAlignment(lb_time, HasVerticalAlignment.ALIGN_BOTTOM);
-		hp_dosageInfo.setCellVerticalAlignment(lb_units, HasVerticalAlignment.ALIGN_BOTTOM);
-		hp_dosageInfo.setCellVerticalAlignment(lbl_dosage, HasVerticalAlignment.ALIGN_BOTTOM);
-		hp_dosageInfo.setCellVerticalAlignment(lbl_frequency, HasVerticalAlignment.ALIGN_BOTTOM);
-		hp_dosageInfo.setCellVerticalAlignment(lbl_frequency, HasVerticalAlignment.ALIGN_BOTTOM);
-		
-		//Add to main
+		hp_dosageInfo.setCellVerticalAlignment(lb_time,
+				HasVerticalAlignment.ALIGN_BOTTOM);
+		hp_dosageInfo.setCellVerticalAlignment(lb_units,
+				HasVerticalAlignment.ALIGN_BOTTOM);
+		hp_dosageInfo.setCellVerticalAlignment(lbl_dosage,
+				HasVerticalAlignment.ALIGN_BOTTOM);
+		hp_dosageInfo.setCellVerticalAlignment(lbl_frequency,
+				HasVerticalAlignment.ALIGN_BOTTOM);
+		hp_dosageInfo.setCellVerticalAlignment(lbl_frequency,
+				HasVerticalAlignment.ALIGN_BOTTOM);
+
+		// Add to main
 		vp_rightContainer.add(hp_dosageInfo);
-		
-		//Add duration info
+
+		// Add duration info
 		hp_medDuration.add(lbl_startDate);
 		hp_medDuration.add(db_startDate);
 		hp_medDuration.add(lbl_endDate);
 		hp_medDuration.add(db_endDate);
-		hp_medDuration.setCellVerticalAlignment(lbl_startDate, HasVerticalAlignment.ALIGN_BOTTOM);
-		hp_medDuration.setCellVerticalAlignment(db_startDate, HasVerticalAlignment.ALIGN_BOTTOM);
-		hp_medDuration.setCellVerticalAlignment(lbl_endDate, HasVerticalAlignment.ALIGN_BOTTOM);
-		hp_medDuration.setCellVerticalAlignment(db_endDate, HasVerticalAlignment.ALIGN_BOTTOM);
-		
-		//Add to main
+		hp_medDuration.setCellVerticalAlignment(lbl_startDate,
+				HasVerticalAlignment.ALIGN_BOTTOM);
+		hp_medDuration.setCellVerticalAlignment(db_startDate,
+				HasVerticalAlignment.ALIGN_BOTTOM);
+		hp_medDuration.setCellVerticalAlignment(lbl_endDate,
+				HasVerticalAlignment.ALIGN_BOTTOM);
+		hp_medDuration.setCellVerticalAlignment(db_endDate,
+				HasVerticalAlignment.ALIGN_BOTTOM);
+
+		// Add to main
 		vp_rightContainer.add(hp_medDuration);
-		
-		//Add notes info
+
+		// Add notes info
 		vp_rightContainer.add(lbl_notes);
-		vp_rightContainer.setCellVerticalAlignment(lbl_notes, HasVerticalAlignment.ALIGN_BOTTOM);
-		
-		hp_notes.add(tb_notes);
+		vp_rightContainer.setCellVerticalAlignment(lbl_notes,
+				HasVerticalAlignment.ALIGN_BOTTOM);
+
+		hp_notes.add(ta_notes);
 		vp_btnSubmit.add(btn_submit);
 		vp_btnSubmit.add(lbl_submit);
-		vp_btnSubmit.setCellVerticalAlignment(lbl_submit, HasVerticalAlignment.ALIGN_BOTTOM);
-		vp_btnSubmit.setCellHorizontalAlignment(lbl_submit, HasHorizontalAlignment.ALIGN_CENTER);
-		
+		vp_btnSubmit.setCellVerticalAlignment(lbl_submit,
+				HasVerticalAlignment.ALIGN_BOTTOM);
+		vp_btnSubmit.setCellHorizontalAlignment(lbl_submit,
+				HasHorizontalAlignment.ALIGN_CENTER);
+
 		hp_notes.add(vp_btnSubmit);
 		vp_btnSubmit.setStyleName("moveSubmitBtn");
-		hp_notes.setCellVerticalAlignment(vp_btnSubmit, HasVerticalAlignment.ALIGN_BOTTOM);
-		
-		//Add to main
+		hp_notes.setCellVerticalAlignment(vp_btnSubmit,
+				HasVerticalAlignment.ALIGN_BOTTOM);
+
+		// Add to main
 		vp_rightContainer.add(hp_notes);
-		
-		//Click event
+		btn_submit.setTitle("SUBMIT PRESCRIPTION");
+		// Click event
 		btn_submit.addClickHandler(new ClickHandler() {
 			public void onClick(ClickEvent event) {
-				PatientData upPatient = new PatientData(); 
-				
+				PatientData upPatient = new PatientData();
+
 				upPatient.patientID = patient[ind].patientID;
-				upPatient.prescription = "Take " + tb_dosageField.getText()+" "+lb_units.getSelectedItemText()+" of " + tb_dosageField.getText()+ " every " +lb_time.getSelectedItemText()+" from " + db_startDate.getValue().toString()+" until " + db_endDate.getValue().toString();
-						
-				/*
-				HTML s_DBData;
-				try {
-					s_DBData = new HTML ("User Type: Patient"
-					+ "<br>" + patientName
-					+ "<br>" + patientStAddress
-					+ "<br>" + patientCityAddress
-					+ "<br>" + patientEmailAddress
-					+ "<br>" + patientPhoneNumber
-					+ "<br>" + patientPolicyNumber
-					+ "<br>" + patientDOB
-					+ "<br>" + "Take: " + tb_dosageField.getText() 
-						+ " " + lb_units.getSelectedItemText()
-					+ "<br>" + "Medication: " + ta_addedMedication.getText()
-					+ "<br>" + "Duration: " + lb_time.getSelectedItemText()
-					+ "<br>" + "Start: " + db_startDate.getValue()
-					+ "<br>" + "End: " + db_endDate.getValue());
-					
-					PopUps popups = new PopUps();
-					popups.showDialog("Prescription Sent!\r\n" + s_DBData);
-					*/
-					updatePatientsDB(upPatient);
-					}
-				
-			});
-		
+				upPatient.prescription = "Take " + tb_dosageField.getText()
+						+ " " + lb_units.getSelectedItemText() + " of "
+						+ tb_dosageField.getText() + " every "
+						+ lb_time.getSelectedItemText() + " from "
+						+ db_startDate.getValue().toString() + " until "
+						+ db_endDate.getValue().toString();
+
+				updatePatientsDB(upPatient);
+			}
+
+		});
+
 		btn_submit.addMouseOverHandler(new MouseOverHandler() {
 			@Override
 			public void onMouseOver(MouseOverEvent event) {
 				btn_submit.getElement().getStyle().setCursor(Cursor.POINTER);
-				}
-			});
-		
-		//Add to main
+			}
+		});
+
+		// Add to main
 		hp_lMainContainer.add(vp_leftContainer);
 		ft.setWidget(1, 0, hp_lMainContainer);
-		
-		//Add to main
+
+		// Add to main
 		hp_rMainContainer.add(vp_rightContainer);
 		ft.setWidget(1, 1, hp_rMainContainer);
 		return ft;
 	}
-	
+
 	/**
-	 * Populates the celltable using the PatientData class 
-	 * and the result of the query(PatientData[]) 
+	 * Populates the celltable using the PatientData class and the result of the
+	 * query(PatientData[])
 	 */
-	public void drawTable()
-	{
+	public void drawTable() {
 		/**
 		 * CELL TABLE FIELD
 		 */
 		final List<MedicationData> l_DummyData = Arrays.asList(medications);
-		
-		TextColumn<MedicationData> tc_MedName = new TextColumn<MedicationData>()
-		{
+
+		TextColumn<MedicationData> tc_MedName = new TextColumn<MedicationData>() {
 			@Override
-			public String getValue(MedicationData object) 
-			{
+			public String getValue(MedicationData object) {
 				return object.medicationName;
-			}				
+			}
 		};
-		
-		//Add the columns to the table
+
+		// Add the columns to the table
 		ct_Results.addColumn(tc_MedName, "");
-		ct_Results.setRowCount(2,true);
+		ct_Results.setRowCount(2, true);
 		ct_Results.setRowData(l_DummyData);
-		
-		//Add table to the horizontal panel
-		//Call the main panel generator again 
-		//after populating to place table in main panel
+
+		// Add table to the horizontal panel
+		// Call the main panel generator again
+		// after populating to place table in main panel
 		ct_Results.setPageSize(8);
 		ct_Results.setWidth("210px");
-		//hp_searchResults.add(ct_Results);
+		// hp_searchResults.add(ct_Results);
 		getPrescribeMedsPanel();
 	}
 }
