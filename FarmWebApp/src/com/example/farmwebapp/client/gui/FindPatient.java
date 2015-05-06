@@ -52,8 +52,7 @@ public class FindPatient extends MainGUI {
 	private TextBox tb_addressCity = new TextBox();
 	private TextBox tb_addressState = new TextBox();
 	private TextBox tb_addressStreet = new TextBox();
-
-	private Button b_Search = new Button("SEARCH");
+	
 	private Button b_Select = new Button("Select Patient");
 	private Button b_Delete = new Button("Delete Patient");
 
@@ -66,7 +65,7 @@ public class FindPatient extends MainGUI {
 
 	private HorizontalPanel hpCRUD = new HorizontalPanel();
 	
-	private Image signUpArrowRedDown = new Image("/images/loginArrowRedDown.png");
+	private Image img_findPatient = new Image("/images/findPatientRed.png");
 
 	private CellTable<PatientData> ct_Results = new CellTable<PatientData>();
 
@@ -281,12 +280,12 @@ public class FindPatient extends MainGUI {
 			}
 		}); // restricts tb_phoneNo to only allow numbers
 		
-		signUpArrowRedDown.setPixelSize(25, 25);
+		img_findPatient.setPixelSize(25, 25);
 		ft.getCellFormatter().setVerticalAlignment(4, 3,
 				HasVerticalAlignment.ALIGN_BOTTOM);
-		signUpArrowRedDown.setTitle("SEARCH PATIENT");
-		signUpArrowRedDown.getElement().setAttribute("align", "right");
-		signUpArrowRedDown.addClickHandler(new ClickHandler() {
+		img_findPatient.setTitle("FIND PATIENT");
+		img_findPatient.getElement().setAttribute("align", "right");
+		img_findPatient.addClickHandler(new ClickHandler() {
 			@Override
 			public void onClick(ClickEvent event) {
 				getPatientsDB();
@@ -296,14 +295,14 @@ public class FindPatient extends MainGUI {
 		/**
 		 * Change mouse to pointer to indicate the arrow is a button
 		 */
-		signUpArrowRedDown.addMouseOverHandler(new MouseOverHandler() {
+		img_findPatient.addMouseOverHandler(new MouseOverHandler() {
 			@Override
 			public void onMouseOver(MouseOverEvent event) {
-				signUpArrowRedDown.getElement().getStyle().setCursor(Cursor.POINTER);
+				img_findPatient.getElement().getStyle().setCursor(Cursor.POINTER);
 			}
 		});
 
-		ft.setWidget(4, 3, signUpArrowRedDown);
+		ft.setWidget(4, 3, img_findPatient);
 
 		/**
 		 * FORM PLACEMENT AND ATTRIBUTES

@@ -49,7 +49,7 @@ public class AddPatient extends MainGUI {
 
 	private HorizontalPanel hp = new HorizontalPanel();
 
-	private Image signUpArrowRed = new Image("/images/loginArrowRed.png");
+	private Image img_addPatient = new Image("/images/addPatientRed.png");
 
 	private final DateTimeFormat dateFormat = DateTimeFormat
 			.getFormat("MM/dd/yyyy");
@@ -172,17 +172,17 @@ public class AddPatient extends MainGUI {
 		/**
 		 * ADD BUTTON
 		 */
-		ft.setWidget(4, 3, signUpArrowRed);
-		signUpArrowRed.setPixelSize(25, 25);
+		ft.setWidget(4, 3, img_addPatient);
+		img_addPatient.setPixelSize(25, 25);
 		ft.getCellFormatter().setVerticalAlignment(4, 3,
 				HasVerticalAlignment.ALIGN_BOTTOM);
-		signUpArrowRed.getElement().setAttribute("align", "right");
-		signUpArrowRed.setTitle("ADD PATIENT");
+		img_addPatient.getElement().setAttribute("align", "right");
+		img_addPatient.setTitle("ADD PATIENT");
 		ft.getElement().setAttribute("cellpadding", "10");
 		/**
 		 * Send RPC call
 		 */
-		signUpArrowRed.addClickHandler(new ClickHandler() {
+		img_addPatient.addClickHandler(new ClickHandler() {
 			public void onClick(ClickEvent event) {
 				HTML s_DBData;
 				try {
@@ -205,10 +205,10 @@ public class AddPatient extends MainGUI {
 		/**
 		 * Change mouse to pointer to indicate the arrow is a button
 		 */
-		signUpArrowRed.addMouseOverHandler(new MouseOverHandler() {
+		img_addPatient.addMouseOverHandler(new MouseOverHandler() {
 			@Override
 			public void onMouseOver(MouseOverEvent event) {
-				signUpArrowRed.getElement().getStyle().setCursor(Cursor.POINTER);
+				img_addPatient.getElement().getStyle().setCursor(Cursor.POINTER);
 			}
 		});
 
