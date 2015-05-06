@@ -10,9 +10,14 @@
 package com.example.farmwebapp.client.gui;
 import java.util.List;
 import java.util.Arrays;
+
 import com.google.gwt.user.client.ui.*;
 import com.google.gwt.user.cellview.client.*;
+import com.google.gwt.cell.client.ButtonCellBase.DefaultAppearance.Style;
+import com.google.gwt.dom.client.Style.Cursor;
 import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.MouseOverEvent;
+import com.google.gwt.event.dom.client.MouseOverHandler;
 import com.google.gwt.view.client.ListDataProvider;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.rpc.AsyncCallback;
@@ -35,6 +40,8 @@ public class PharmacyUpdate // extends MainGUI
 	private VerticalPanel vp = new VerticalPanel();
 	private VerticalPanel vpTable = new VerticalPanel();
 	private HorizontalPanel hpCRUD = new HorizontalPanel();
+	
+	private Image img_update = new Image("/images/updatePharmacy.png");
 
 	private CellTable<PatientData> ct_Results = new CellTable<PatientData>();
 
@@ -164,9 +171,37 @@ public class PharmacyUpdate // extends MainGUI
 			}
 		});
 
+		/**
+		 * UPDATE IMAGE BUTTON
+		 */
+		img_update.setPixelSize(100, 100);
+		img_update.addStyleName("moveRefresh");
+		img_update.setTitle("REFRESH PRESCRIPTIONS");
+		/**
+		 * PRESCRIPTION REFRESH
+		 */
+		img_update.addClickHandler(new ClickHandler() {
+			public void onClick(ClickEvent event) {
+				// DO SOMETHING
+			}
+		});
+
+		/**
+		 * Change mouse to pointer to indicate the arrow is a button
+		 */
+		img_update.addMouseOverHandler(new MouseOverHandler() {
+			@Override
+			public void onMouseOver(MouseOverEvent event) {
+				img_update.getElement().getStyle().setCursor(Cursor.POINTER);
+			}
+		});
+		
 		hpCRUD.add(b_Select);
 		hpCRUD.add(b_Delete);
+		hpCRUD.addStyleName("moveRefreshBTN");
+		vpTable.add(img_update);
 		vpTable.add(ct_Results);
+		pager.addStyleName("movePager");
 		vpTable.add(pager);
 		vpTable.add(hpCRUD);
 		getPharmacyUpdatePanel();
