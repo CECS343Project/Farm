@@ -256,6 +256,17 @@ public class FindPatient extends MainGUI
 		final List<PatientData> l_DummyData = Arrays.asList(temp);
 		ListDataProvider<PatientData> ldp_CellData = new ListDataProvider<PatientData>();
 		
+		TextColumn<PatientData> tc_ID = new TextColumn<PatientData>()
+		{
+
+			@Override
+			public String getValue(PatientData object) 
+			{
+				return ""+object.patientID;
+			}
+	
+		};
+		
 		TextColumn<PatientData> tc_Name = new TextColumn<PatientData>()
 		{
 			@Override
@@ -327,6 +338,7 @@ public class FindPatient extends MainGUI
 		ct_Results.addColumnSortHandler(columnSortHandler);
 		
 		//Add the columns to the table
+		ct_Results.addColumn(tc_ID,"ID");
 		ct_Results.addColumn(tc_Name, "Name");
 		ct_Results.addColumn(tc_Address, "Address");
 		ct_Results.addColumn(tc_Email, "Email");
