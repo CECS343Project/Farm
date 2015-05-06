@@ -15,16 +15,6 @@
       <servlet-name>patientServlet</servlet-name>
       <url-pattern>/farmwebapp/patientService</url-pattern>
   </servlet-mapping>
-  
-  <servlet>
-      <servlet-name>doctorServlet</servlet-name>
-      <servlet-class>com.example.farmwebapp.server.DoctorServiceImpl</servlet-class>
-  </servlet>
-  
-  <servlet-mapping>
-      <servlet-name>doctorServlet</servlet-name>
-      <url-pattern>/farmwebapp/doctorService</url-pattern>
-  </servlet-mapping>  
 
   <servlet>
       <servlet-name>medicationServlet</servlet-name>
