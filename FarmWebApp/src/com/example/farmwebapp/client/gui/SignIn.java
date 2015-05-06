@@ -151,6 +151,9 @@ public class SignIn extends MainGUI
 		            		{
 		            			setUser(k);
 		            			PrintMeds print = new PrintMeds();
+		            			PrescribeMeds prescribe = new PrescribeMeds();
+		            			
+		            			prescribe.setUInd(k);
 		            			
 		            			print.setUInd(k);
 		            			switch(tb_userName.getText().charAt(0))
