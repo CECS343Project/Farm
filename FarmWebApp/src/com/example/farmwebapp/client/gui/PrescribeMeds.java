@@ -35,7 +35,7 @@ import com.example.farmwebapp.client.services.PatientServiceInit;
 import com.example.farmwebapp.client.services.UserServiceAsync;
 import com.example.farmwebapp.client.services.UserServiceInit;
 
-public class PrescribeMeds //extends FindPatient
+public class PrescribeMeds extends MainGUI
 {
 	private FlexTable ft = new FlexTable();
 	

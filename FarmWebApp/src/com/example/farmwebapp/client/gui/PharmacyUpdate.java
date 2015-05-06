@@ -172,13 +172,13 @@ public class PharmacyUpdate //extends MainGUI
 		ct_Results.addColumn(tc_Email, "Email");
 		ct_Results.addColumn(tc_PhoneNumber, "Phone");
 		ct_Results.addColumn(tc_DOB, "Date Of Birth");		
-		ct_Results.setRowCount(7,true);
+		ct_Results.setRowCount(5,true);
 		ct_Results.setRowData(l_DummyData);
 		
 		//Add table to the horizontal panel
 		//Call the main panel generator again 
 		//after populating to place table in main panel
-		ct_Results.setPageSize(10);
+		ct_Results.setPageSize(5);
 		ct_Results.setWidth("642px");
 		pager.setDisplay(ct_Results);
 		

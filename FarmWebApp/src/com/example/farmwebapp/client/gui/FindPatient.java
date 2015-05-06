@@ -79,7 +79,7 @@ public class FindPatient extends MainGUI
 		lb_nameSuffix.addItem("   ");
 		lb_nameSuffix.addItem("Jr.");
 		lb_nameSuffix.addItem("Sr.");
-		patients = super.getPatients();
+		//patients = super.getPatients();
 	}
 	public FindPatient(String string) 
 	{
@@ -132,32 +132,12 @@ public class FindPatient extends MainGUI
 		ft.setWidget(0, 1, tb_nameFirst);
 		tb_nameFirst.setPixelSize(CELLWIDTH, CELLHEIGHT);
 		tb_nameFirst.setTitle("First Name");
-		tb_nameFirst.addValueChangeHandler(new ValueChangeHandler<String>()
-			{
-
-			@Override
-			public void onValueChange(ValueChangeEvent<String> event) 
-			{
-				getPatientsSuper();
-				drawTable(patients);
-			}		
-		});
 
 		ft.setText(0, 2, "LAST NAME");
 		ft.getCellFormatter().setVerticalAlignment(0, 2, HasVerticalAlignment.ALIGN_BOTTOM);
 		ft.setWidget(0, 3, tb_nameLast);
 		tb_nameLast.setPixelSize(CELLWIDTH, CELLHEIGHT);
 		tb_nameLast.setTitle("Last Name");
-		tb_nameLast.addValueChangeHandler(new ValueChangeHandler<String>()
-				{
-
-				@Override
-				public void onValueChange(ValueChangeEvent<String> event) 
-				{
-					getPatientsSuper();
-					drawTable(patients);
-				}		
-			});
 
 		/**
 		 * ADDRESS FIELD
@@ -167,68 +147,25 @@ public class FindPatient extends MainGUI
 		ft.setWidget(1, 1, tb_addressStreet);
 		tb_addressStreet.setPixelSize(CELLWIDTH, CELLHEIGHT);
 		tb_addressStreet.setTitle("Address");
-		tb_addressStreet.addValueChangeHandler(new ValueChangeHandler<String>()
-				{
 
-				@Override
-				public void onValueChange(ValueChangeEvent<String> event) 
-				{
-					getPatientsSuper();
-					drawTable(patients);
-					
-				}		
-			});
 
 		ft.setText(1, 2, "CITY");
 		ft.getCellFormatter().setVerticalAlignment(1, 2, HasVerticalAlignment.ALIGN_BOTTOM);
 		ft.setWidget(1, 3, tb_addressCity);
 		tb_addressCity.setPixelSize(CELLWIDTH, CELLHEIGHT);
 		tb_addressCity.setTitle("City");
-		tb_addressCity.addValueChangeHandler(new ValueChangeHandler<String>()
-				{
-
-				@Override
-				public void onValueChange(ValueChangeEvent<String> event) 
-				{
-					getPatientsSuper();
-					drawTable(patients);
-					
-				}		
-			});
 		
 		ft.setText(2, 0, "STATE");
 		ft.getCellFormatter().setVerticalAlignment(2, 0, HasVerticalAlignment.ALIGN_BOTTOM);
 		ft.setWidget(2, 1, tb_addressState);
 		tb_addressState.setPixelSize(CELLWIDTH, CELLHEIGHT);
 		tb_addressState.setTitle("State");
-		tb_addressState.addValueChangeHandler(new ValueChangeHandler<String>()
-				{
-
-				@Override
-				public void onValueChange(ValueChangeEvent<String> event) 
-				{
-					getPatientsSuper();
-					drawTable(patients);
-					
-				}		
-			});
 		
 		ft.setText(2, 2, "ZIP CODE");
 		ft.getCellFormatter().setVerticalAlignment(2, 2, HasVerticalAlignment.ALIGN_BOTTOM);
 		ft.setWidget(2, 3, tb_addressZip);
 		tb_addressZip.setPixelSize(CELLWIDTH, CELLHEIGHT);
 		tb_addressZip.setTitle("Zip Code");
-		tb_addressZip.addValueChangeHandler(new ValueChangeHandler<String>()
-				{
-
-				@Override
-				public void onValueChange(ValueChangeEvent<String> event) 
-				{
-					getPatientsSuper();
-					drawTable(patients);
-					
-				}		
-			});
 		
 		/**
 		 * Restricts box to only accept numbers
@@ -260,17 +197,6 @@ public class FindPatient extends MainGUI
 		ft.setWidget(3, 3, tb_email);
 		tb_email.setPixelSize(CELLWIDTH, CELLHEIGHT);
 		tb_email.setTitle("Email");
-		tb_email.addValueChangeHandler(new ValueChangeHandler<String>()
-				{
-
-				@Override
-				public void onValueChange(ValueChangeEvent<String> event) 
-				{
-					getPatientsSuper();
-					drawTable(patients);
-					
-				}		
-			});
 		
 		/**
 		 * PHONE NUMBER FIELD
@@ -280,17 +206,6 @@ public class FindPatient extends MainGUI
 		ft.setWidget(4, 1, tb_phoneNo);
 		tb_phoneNo.setPixelSize(CELLWIDTH, CELLHEIGHT);
 		tb_phoneNo.setTitle("Phone Number");
-		tb_phoneNo.addValueChangeHandler(new ValueChangeHandler<String>()
-				{
-
-				@Override
-				public void onValueChange(ValueChangeEvent<String> event) 
-				{
-					getPatientsSuper();
-					drawTable(patients);
-					
-				}		
-			});
 		
 		tb_phoneNo.addKeyPressHandler(new KeyPressHandler() 
 	    {
@@ -417,13 +332,13 @@ public class FindPatient extends MainGUI
 		ct_Results.addColumn(tc_Email, "Email");
 		ct_Results.addColumn(tc_PhoneNumber, "Phone");
 		ct_Results.addColumn(tc_DOB, "Date Of Birth");		
-		ct_Results.setRowCount(7,true);
+		ct_Results.setRowCount(2,true);
 		ct_Results.setRowData(l_DummyData);
 		
 		//Add table to the horizontal panel
 		//Call the main panel generator again 
 		//after populating to place table in main panel
-		ct_Results.setPageSize(5);
+		ct_Results.setPageSize(2);
 		ct_Results.setWidth("642px");
 		pager.setDisplay(ct_Results);
 		
