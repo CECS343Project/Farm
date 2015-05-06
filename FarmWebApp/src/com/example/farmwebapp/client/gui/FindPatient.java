@@ -435,7 +435,9 @@ public class FindPatient extends MainGUI
 			public void onClick(ClickEvent event) 
 			{
 				PopUps pop = new PopUps();
+				PrescribeMeds prescribe = new PrescribeMeds();
 				String tempID = ct_Results.getRowElement(ct_Results.getKeyboardSelectedRow()).getLastChild().toString();
+				prescribe.setInd(ct_Results.getKeyboardSelectedRow());
 				moveToPrescribe(userType,tempID);
 			}
 			

@@ -8,11 +8,15 @@
  */
 package com.example.farmwebapp.client.gui;
 
+import com.example.farmwebapp.client.dbobjects.UserData;
+import com.example.farmwebapp.client.services.UserServiceAsync;
+import com.example.farmwebapp.client.services.UserServiceInit;
 import com.google.gwt.dom.client.Style.Cursor;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.dom.client.MouseOverEvent;
 import com.google.gwt.event.dom.client.MouseOverHandler;
+import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.CheckBox;
@@ -36,9 +40,35 @@ public class SignIn extends MainGUI
 	private Image pillBugLogo = new Image("/images/pillBugLogo.png");
 	
 	private CheckBox cb_showPassword = new CheckBox("Show Password");
+	private UserServiceAsync rpc;
+	private UserData[] users;
 
 	//Default Constructor
-	public SignIn() {}
+	public SignIn() 
+	{
+		rpc = UserServiceInit.initRpc();
+		getUsersDB();
+	}
+	
+	public void getUsersDB()
+	{
+		AsyncCallback<UserData[]> callback = new AsyncCallback<UserData[]>()
+		{
+			@Override
+			public void onFailure(Throwable caught) 
+			{
+				PopUps popUp = new PopUps();		
+				popUp.showDialog(caught.toString());
+			}
+
+			@Override
+			public void onSuccess(UserData[] result) 
+			{
+				users = result;
+			}
+		};
+		rpc.getUsers(callback);
+	}
 
 	public IsWidget getSignInPanel() {
 		/**
@@ -110,21 +140,53 @@ public class SignIn extends MainGUI
 	        	{
 		            PopUps popups = new PopUps();
 		            //popups.showDialog("Welcome "  + tb_userName.getText() + "!");
-		            removeLogins();
+		           // removeLogins();
+		            int k;
+		            
+		            for(k = 0; k < users.length; k++)
+		            {
+		            	if(tb_userName.getText() == users[k].uName)
+		            	{
+		            		if(ptb_password.getText() == users[k].password)
+		            		{
+		            			setUser(k);
+		            			PrintMeds print = new PrintMeds();
+		            			PrescribeMeds prescribe = new PrescribeMeds();
+		            			
+		            			prescribe.setUInd(k);
+		            			
+		            			print.setUInd(k);
+		            			switch(tb_userName.getText().charAt(0))
+		            			{
+		            			case 'd':
+		            				placeInRoot("doctor");
+		            				break;
+		            			case 'p':
+		            				placeInRoot("pharmacist");
+		            				break;
+		            			default:
+		            				placeInRoot("null");
+		            				break;
+		            			}
+		            		}
+			
+		            	}
+		            }
+		            /*
 		            if(tb_userName.getText().charAt(0) == 'p')
 		            {
-		            	placeInRoot("pharmacist");
+		            	
 		            }
 		            else if(tb_userName.getText().charAt(0) == 'd')
 		            {
-		            	placeInRoot("doctor");
+		            	
 		            }
 		            else
 		            {
 		            	popups.showDialog("Not a valid username!!!!");
 		            	placeInRoot("null");
 		            }
-		            
+		            */
 		            
 	        	}
 	        	catch(Exception e)
@@ -161,11 +223,11 @@ public class SignIn extends MainGUI
 	public void removeLogins()
 	{
 		this.getSignInPanel().asWidget().removeFromParent();
+		super.getHomePage().removeFromParent();
+	}	
+	
+	public void setUser(int val)
+	{
+		super.setUser(val);
 	}
-	
-	
-	
-	
-	
-	
 }

@@ -8,6 +8,8 @@ import com.example.farmwebapp.client.dbobjects.UserData;
 
 public class DB_User extends DB_Conn
 {
+	DB_User(){}
+	
 	public UserData[] getUsers()
 	{
 		String query = "SELECT * FROM users;";

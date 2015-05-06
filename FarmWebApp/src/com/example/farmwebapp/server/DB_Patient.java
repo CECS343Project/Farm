@@ -59,6 +59,53 @@ public class DB_Patient extends DB_Conn
 		return patientData;
 				
 	}
+	
+	public PatientData[] getPatientsUnfilled()
+	{
+		String query = "SELECT * FROM patients WHERE status = 'Unfilled';";
+		
+		PatientData[] patientData = null;
+		
+		try
+		{
+			Connection conn = getConn();
+			Statement select = conn.createStatement();
+			ResultSet result = select.executeQuery(query);
+			
+			int rSize = getResultSetSize(result);
+			patientData = new PatientData[rSize];
+			
+			int k = 0;
+			while(result.next())
+			{
+				patientData[k] = new PatientData();
+				
+				patientData[k].patientID = result.getInt(1);
+				patientData[k].fName = result.getString(2);
+				patientData[k].lName = result.getString(3);
+				patientData[k].email = result.getString(4);
+				patientData[k].phone = result.getInt(5);
+				patientData[k].dateOfBirth = result.getString(6);
+				patientData[k].address = result.getString(7);
+				patientData[k].city = result.getString(8);
+				patientData[k].state = result.getString(9);
+				patientData[k].zip = result.getInt(10);
+				patientData[k].status = result.getString(11);
+				patientData[k].prescription = result.getString(12);
+				patientData[k].userID = result.getInt(13);				
+				k++;
+			}
+			result.close();
+			conn.close();
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		
+		return patientData;
+				
+	}
 	public PatientData[] getPatients(String field, String value)
 	{
 		String query = "SELECT * FROM patients ";
@@ -66,31 +113,31 @@ public class DB_Patient extends DB_Conn
 		switch(field.toLowerCase())
 		{
 		case "patientid":
-			query += "WHERE patientID = '" + value+ "';";
+			query += "WHERE patientID = '" + value.trim()+ "';";
 			break;
 		case "fname":
-			query += "WHERE fName = '" + value+ "';";
+			query += "WHERE fName = '" + value.trim()+ "';";
 			break;
 		case "lname":
-			query += "WHERE lName = '" + value+ "';";
+			query += "WHERE lName = '" + value.trim()+ "';";
 			break;
 		case "address":
-			query += "WHERE address = '" + value+ "';";
+			query += "WHERE address = '" + value.trim()+ "';";
 			break;
 		case "city":
-			query += "WHERE city = '" + value+ "';";
+			query += "WHERE city = '" + value.trim()+ "';";
 			break;
 		case "state":
-			query += "WHERE state = '" + value+ "';";
+			query += "WHERE state = '" + value.trim()+ "';";
 			break;
 		case "zip":
-			query += "WHERE zipcode = '" + value+ "';";
+			query += "WHERE zipcode = '" + value.trim()+ "';";
 			break;
 		case "phone":
-			query += "WHERE phone = '" + value+ "';";
+			query += "WHERE phone = '" + value.trim()+ "';";
 			break;
 		case "dob":
-			query += "WHERE dateOfBirth = '" + value+ "';";
+			query += "WHERE dateOfBirth = '" + value.trim()+ "';";
 			break;
 		default:
 			query += ";";

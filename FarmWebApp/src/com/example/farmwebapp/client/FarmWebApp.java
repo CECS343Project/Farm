@@ -91,6 +91,29 @@ public class FarmWebApp implements EntryPoint
 		return userTypeGlobal;
 	}
 
+	public void refreshUI(String userType, int i, String tempID, int selectedID) 
+	{
+		gui = new MainGUI(i,tempID,selectedID);
+		
+		//Places gui into the root panel of the client screen
+		RootLayoutPanel rootPanel = RootLayoutPanel.get();
+		rootPanel.clear();
+		
+		if(userType == "null")
+		{
+			rootPanel.add(gui.getPanel());
+		}
+		else if(userType == "doctor")
+		{
+			rootPanel.add(gui.getPanelDoc());
+		}
+		else if(userType == "pharmacist")
+		{
+			rootPanel.add(gui.getPanelPharm());
+		}
+		
+	}
+
 	public void refreshUI(String userType, int i, String tempID) 
 	{
 		gui = new MainGUI(i,tempID);

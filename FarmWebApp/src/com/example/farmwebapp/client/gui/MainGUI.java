@@ -34,6 +34,10 @@ public class MainGUI extends FarmWebApp
 
 	private String selectedPatient;
 	private String userType = "doctor";
+
+	private int selectedID;
+
+	private int userIndex;
 	
 	//Default constructor
 	public MainGUI() 
@@ -49,10 +53,23 @@ public class MainGUI extends FarmWebApp
 		desiredIndex = index;
 	}
 	
+	public MainGUI(int i, String tempID, int selectedID) 
+	{
+		desiredIndex = i;
+		setSelectedPatient(tempID);
+		setSelectedID(selectedID);
+	}
+
 	public MainGUI(int i, String tempID) 
 	{
 		desiredIndex = i;
 		setSelectedPatient(tempID);
+	}
+
+	public void setSelectedID(int selectedID) 
+	{
+		selectedID = selectedID;
+		
 	}
 
 	public void  setDesiredIndex(int indx)
@@ -298,9 +315,9 @@ public class MainGUI extends FarmWebApp
 	//	return super.getUserType();
 	//}
 
-	public void refreshUI(String string, int i, String tempID) 
+	public void refreshUI(String string, int i, String tempID, int selectedID) 
 	{
-		super.refreshUI(string, i,tempID);
+		super.refreshUI(string, i,tempID,selectedID);
 		
 	}
 
@@ -315,5 +332,16 @@ public class MainGUI extends FarmWebApp
 	public String getUserType()
 	{
 		return userType;
+	}
+
+	public void refreshUI(String string, int i, String tempID) 
+	{
+		super.refreshUI(string, i,tempID);
+		
+	}
+
+	public void setUser(int val) 
+	{
+		userIndex = val;	
 	}
 }

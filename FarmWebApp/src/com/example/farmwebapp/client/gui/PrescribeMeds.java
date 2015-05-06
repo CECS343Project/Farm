@@ -25,9 +25,15 @@ import com.google.gwt.event.dom.client.MouseOverEvent;
 import com.google.gwt.event.dom.client.MouseOverHandler;
 import com.google.gwt.user.client.ui.HasVerticalAlignment;
 import com.example.farmwebapp.client.dbobjects.MedicationData;
+import com.example.farmwebapp.client.dbobjects.PatientData;
+import com.example.farmwebapp.client.dbobjects.UserData;
 import com.google.gwt.user.client.ui.HasHorizontalAlignment;
 import com.example.farmwebapp.client.services.MedicationServiceAsync;
 import com.example.farmwebapp.client.services.MedicationServiceInit;
+import com.example.farmwebapp.client.services.PatientServiceAsync;
+import com.example.farmwebapp.client.services.PatientServiceInit;
+import com.example.farmwebapp.client.services.UserServiceAsync;
+import com.example.farmwebapp.client.services.UserServiceInit;
 
 public class PrescribeMeds //extends FindPatient
 {
@@ -95,6 +101,13 @@ public class PrescribeMeds //extends FindPatient
 	private String patientPhoneNumber = "(562) 867 - 5309";
 	private String patientPolicyNumber = "Policy No: 548613543";
 	private String patientDOB = "D.O.B: 05/10/1985";
+	private UserData[] user;
+	private static int uInd;
+	private PatientData[] patient;
+	private static int ind;
+
+	private UserServiceAsync uRpc;
+	private PatientServiceAsync pRpc;
 	
 	/**
 	 * Default constructor instantiates the rpc async service 
@@ -123,7 +136,20 @@ public class PrescribeMeds //extends FindPatient
 		lb_time.addItem("ad.lib.");
 		
 		rpc = MedicationServiceInit.initRpc();
+		uRpc = UserServiceInit.initRpc();
+		pRpc = PatientServiceInit.initRpc();
 		getMedicationsDB();
+		getUsersDB();
+		getPatientsDB();
+	}
+	
+	public void setUInd(int val)
+	{
+		uInd = val;
+	}
+	public void setInd(int val)
+	{
+		ind = val;
 	}
 	
 	/**
@@ -151,6 +177,96 @@ public class PrescribeMeds //extends FindPatient
 		rpc.getMedications(callback);
 	}
 	
+	public void getUsersDB()
+	{
+		AsyncCallback<UserData[]> callback = new AsyncCallback<UserData[]>()
+		{
+			@Override
+			public void onFailure(Throwable caught) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void onSuccess(UserData[] result) {
+				user = result;
+				
+				
+				
+				ta_doctorInfo.setText(user[uInd].fName+" "+user[uInd].lName + 
+						"\n" + 
+						user[uInd].address + 
+						"\n"+ 
+						user[uInd].city+","+user[uInd].state+" "+user[uInd].zip + 
+						"\n" + 
+						user[uInd].email+ 
+						"\n" +
+						user[uInd].phone);
+									
+			}
+	
+		};
+		uRpc.getUsers(callback);
+	}
+	
+	public void getPatientsDB()
+	{
+		AsyncCallback<PatientData[]> callback = new AsyncCallback<PatientData[]>()
+		{
+			@Override
+			public void onFailure(Throwable caught) {
+				PopUps popUp = new PopUps();		
+				popUp.showDialog(caught.toString());
+			}
+
+			@Override
+			public void onSuccess(PatientData[] result) {
+				patient = result;
+				ta_patientInfo.setText(patient[ind].fName+
+						" " +
+						patient[ind].lName+
+						"\n" + 
+						patient[ind].address+ 
+						"\n" +
+						patient[ind].city + ", " + patient[ind].state + " " + patient[ind].zip + 
+						"\n" + 
+						patient[ind].email + 
+						"\n" +
+						patient[ind].phone +  
+						"\n" + 
+						"D.O.B: "+patient[ind].dateOfBirth);
+				
+				//Populates the cell table
+				
+			}
+		};
+		pRpc.getPatients(callback);
+	}
+	
+	public void updatePatientsDB(PatientData patient)
+	{
+		AsyncCallback<PatientData> callback = new AsyncCallback<PatientData>()
+		{
+
+			@Override
+			public void onFailure(Throwable caught) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void onSuccess(PatientData result) 
+			{
+				PopUps pop = new PopUps();
+				
+				pop.showDialog("Successful update!");
+				
+			}
+			
+		};
+		pRpc.updatePatient(patient, callback);
+	}
+	
 	public IsWidget getPrescribeMedsPanel() 
 	{
 		//selectedID = super.getSelectedPatient();
@@ -158,9 +274,9 @@ public class PrescribeMeds //extends FindPatient
 		 * PATIENT INFO
 		 */
 		//Hard coded information for demo purposes
-		ta_patientInfo.setText(patientName + "\n" + patientStAddress + "\n" 
-				+ patientCityAddress + "\n" + patientEmailAddress + "\n" 
-				+ patientPhoneNumber + "\n" + patientPolicyNumber + "\n" + patientDOB);
+		//ta_patientInfo.setText(patientName + "\n" + patientStAddress + "\n" 
+		//		+ patientCityAddress + "\n" + patientEmailAddress + "\n" 
+		//		+ patientPhoneNumber + "\n" + patientPolicyNumber + "\n" + patientDOB);
 		//Design parameters
 		ta_patientInfo.setVisibleLines(7);
 		ta_patientInfo.setCharacterWidth(42);
@@ -176,9 +292,9 @@ public class PrescribeMeds //extends FindPatient
 		 * DOCTOR INFO
 		 */
 		//Hard coded information for demo purposes
-		ta_doctorInfo.setText("Napoleon Fulinara Jr" + "\n" + "727 W 7th St. Unit 1113" + "\n" 
-				+ "Los Angeles, Ca 90017" + "\n" + "jrfulinara@gmail.com" + "\n" 
-				+ "(858) 216-5155" + "\n" + "Policy No: 0000000000" + "\n" + "D.O.B: 06/22/1984");
+		//ta_doctorInfo.setText("Napoleon Fulinara Jr" + "\n" + "727 W 7th St. Unit 1113" + "\n" 
+		//		+ "Los Angeles, Ca 90017" + "\n" + "jrfulinara@gmail.com" + "\n" 
+		//		+ "(858) 216-5155" + "\n" + "Policy No: 0000000000" + "\n" + "D.O.B: 06/22/1984");
 		//Design parameters
 		ta_doctorInfo.setVisibleLines(7);
 		ta_doctorInfo.setCharacterWidth(42);
@@ -365,6 +481,12 @@ public class PrescribeMeds //extends FindPatient
 		//Click event
 		btn_submit.addClickHandler(new ClickHandler() {
 			public void onClick(ClickEvent event) {
+				PatientData upPatient = new PatientData(); 
+				
+				upPatient.patientID = patient[ind].patientID;
+				upPatient.prescription = "Take " + tb_dosageField.getText()+" "+lb_units.getSelectedItemText()+" of " + tb_dosageField.getText()+ " every " +lb_time.getSelectedItemText()+" from " + db_startDate.getValue().toString()+" until " + db_endDate.getValue().toString();
+						
+				/*
 				HTML s_DBData;
 				try {
 					s_DBData = new HTML ("User Type: Patient"
@@ -384,11 +506,10 @@ public class PrescribeMeds //extends FindPatient
 					
 					PopUps popups = new PopUps();
 					popups.showDialog("Prescription Sent!\r\n" + s_DBData);
+					*/
+					updatePatientsDB(upPatient);
 					}
-				catch(Exception e) {
-					//Add click event exception
-					}
-				}
+				
 			});
 		
 		btn_submit.addMouseOverHandler(new MouseOverHandler() {

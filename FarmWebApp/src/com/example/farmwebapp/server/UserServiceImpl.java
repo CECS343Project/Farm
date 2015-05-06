@@ -11,7 +11,9 @@ public class UserServiceImpl  extends RemoteServiceServlet implements UserServic
 	@Override
 	public UserData[] getUsers() 
 	{
-		return null;
+		DB_User db = new DB_User();
+		UserData[] users = db.getUsers();
+		return users;
 	}
 
 	@Override

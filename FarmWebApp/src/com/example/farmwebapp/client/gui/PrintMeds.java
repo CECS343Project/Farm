@@ -20,11 +20,15 @@ import com.google.gwt.event.dom.client.MouseOverEvent;
 import com.google.gwt.event.dom.client.MouseOverHandler;
 import com.google.gwt.user.client.ui.HasVerticalAlignment;
 import com.example.farmwebapp.client.dbobjects.PatientData;
+import com.example.farmwebapp.client.dbobjects.UserData;
 import com.google.gwt.user.client.ui.HasHorizontalAlignment;
 import com.example.farmwebapp.client.services.PatientServiceAsync;
 import com.example.farmwebapp.client.services.PatientServiceInit;
+import com.example.farmwebapp.client.services.UserServiceAsync;
+import com.example.farmwebapp.client.services.UserServiceInit;
 
-public class PrintMeds {
+public class PrintMeds extends MainGUI
+{
 	private FlexTable ft = new FlexTable();
 	
 	private HorizontalPanel hp_pharmInfo = new HorizontalPanel();
@@ -65,17 +69,77 @@ public class PrintMeds {
 	private CellTable<PatientData> ct_Results = new CellTable<PatientData>();
 	
 	private PatientServiceAsync rpc;
+	private UserServiceAsync uRpc;
+	private static String name;
+	private static int ind;
+	private static int uInd;
 	
-	private PatientData PatientsDB[];
+	private PatientData patient[];
+	private UserData user[];
+	private int indx;
 	
-	/**
+	public void setUInd(int in)
+	{
+		uInd = in;
+	}
+	
+	public void setInd(int in)
+	{
+		ind = in;
+	}
+	public void setName(String n)
+	{
+		PopUps pop = new PopUps();
+		pop.showDialog(n);
+		name = n;
+	}
+	/**	
 	 * Default constructor instantiates the rpc async service 
 	 * for querying the database
 	 */
 	public PrintMeds() 
-	{
+	{		
 		rpc = PatientServiceInit.initRpc();
+		uRpc = UserServiceInit.initRpc();
 		getPatientsDB();
+		getUsersDB();
+	}
+	
+	public void getUsersDB()
+	{
+		AsyncCallback<UserData[]> callback = new AsyncCallback<UserData[]>()
+		{
+
+			@Override
+			public void onFailure(Throwable caught) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void onSuccess(UserData[] result) {
+				user = result;
+				ta_doctorInfo.setText(user[uInd].fName+" "+user[uInd].lName + 
+						"\n" + 
+						user[uInd].address + 
+						"\n"+ 
+						user[uInd].city+","+user[uInd].state+" "+user[uInd].zip + 
+						"\n" + 
+						user[uInd].email+ 
+						"\n" +
+						user[uInd].phone);
+				
+				ta_pharmInfo.setText(user[uInd].pharmacy + 
+						"\n" + 
+						user[uInd].pharmAddress+ 
+						"\n"+ 
+						user[uInd].pharmCity+", " +user[uInd].pharmState+" " +user[uInd].pharmZip);
+				
+				
+			}
+	
+		};
+		uRpc.getUsers(callback);
 	}
 	
 	/**
@@ -94,23 +158,69 @@ public class PrintMeds {
 
 			@Override
 			public void onSuccess(PatientData[] result) {
-				PatientsDB = result;
-
+				patient = result;
+				ta_patientInfo.setText(patient[ind].fName+
+						" " +
+						patient[ind].lName+
+						"\n" + 
+						patient[ind].address+ 
+						"\n" +
+						patient[ind].city + ", " + patient[ind].state + " " + patient[ind].zip + 
+						"\n" + 
+						patient[ind].email + 
+						"\n" +
+						patient[ind].phone +  
+						"\n" + 
+						"D.O.B: "+patient[ind].dateOfBirth);
+				
+				ta_dosageInfo.setText(patient[ind].fName+
+						" " +
+						patient[ind].lName+
+						"\n" + 
+						patient[ind].address+ 
+						"\n" +
+						patient[ind].city + ", " + patient[ind].state + " " + patient[ind].zip + 
+						"\n" + 
+						patient[ind].email + 
+						"\n" +
+						patient[ind].phone +  
+						"\n" + 
+						"D.O.B: "+patient[ind].dateOfBirth+
+						"\n_____________"+
+						patient[ind].prescription+
+						"\n_____________");
+				
 				//Populates the cell table
 				drawTable();
+				
 			}
 		};
-		rpc.getPatients(callback);
+		rpc.getPatientsUnfilled(callback);
 	}
 	
+	public PatientData findSelected(PatientData[] patients) 
+	{
+		PopUps pop = new PopUps();
+		int k;
+		for(k = 0; k < patients.length; k++)
+		{
+			if(patients[k].lName == name)
+			{
+				pop.showDialog(name);
+				return patients[k];
+			}
+		}
+		return null;
+		
+	}
 	public IsWidget getPrintMedsPanel() {
+		
+		PopUps pop = new PopUps();
+		
+		//pop.showDialog(patient[1].fName + "FIRST LAST " + patient[1].lName);
 		/**
 		 * PATIENT INFO
 		 */
-		//Hard coded information for demo purposes
-		ta_patientInfo.setText("Jimmy Jame" + "\n" + "109090 Tammy Blvd" + "\n" 
-				+ "Los Angeles, Ca 90063" + "\n" + "jjTammy@gmail.com" + "\n" 
-				+ "(562) 867-5309" + "\n" + "Policy No: 548613543" + "\n" + "D.O.B: 05/10/1985");
 		//Design parameters
 		ta_patientInfo.setVisibleLines(7);
 		ta_patientInfo.setCharacterWidth(42);
@@ -126,9 +236,7 @@ public class PrintMeds {
 		 * DOCTOR INFO
 		 */
 		//Hard coded information for demo purposes
-		ta_doctorInfo.setText("Napoleon Fulinara Jr" + "\n" + "727 W 7th St. Unit 1113" + "\n" 
-				+ "Los Angeles, Ca 90017" + "\n" + "jrfulinara@gmail.com" + "\n" 
-				+ "(858) 216-5155" + "\n" + "Policy No: 0000000000" + "\n" + "D.O.B: 06/22/1984");
+		
 		//Design parameters
 		ta_doctorInfo.setVisibleLines(7);
 		ta_doctorInfo.setCharacterWidth(42);
@@ -209,8 +317,7 @@ public class PrintMeds {
 		vp_rightContainer.setCellVerticalAlignment(lbl_medicationLabel, HasVerticalAlignment.ALIGN_BOTTOM);
 		
 		//Pharmacy info [Hard coded for demo purposes]
-		ta_pharmInfo.setText("CVS Pharmacy" + "\n" + "210 W 7th St." + "\n" 
-				+ "Los Angeles, Ca 90014" + "\n" + "(213) 327-0062");
+		
 		//Design parameters
 		ta_pharmInfo.setVisibleLines(7);
 		ta_pharmInfo.setCharacterWidth(18);
@@ -219,15 +326,7 @@ public class PrintMeds {
 		vp_btnSubmit.setStyleName("moveSubmitBtn");
 		ta_pharmInfo.getElement().setAttribute("disabled", "disabled");
 		ta_dosageInfo.getElement().setAttribute("disabled", "disabled");
-		ta_dosageInfo.setText("Jimmy Jame" + "\n" + "109090 Tammy Blvd" + "\n" 
-				+ "Los Angeles, Ca 90063" + "\n" + "jjTammy@gmail.com" + "\n" 
-				+ "(562) 867-5309" + "\n" + "Policy No: 548613543" + "\n" + "D.O.B: 05/10/1985"
-				+ "\n_____________"
-				+"\nTake 2 capsules of Ibuprofyn" + "\n" 
-				+ "b.i.d." + "\n" 
-				+ "From 04/23/2015 Until 04/24/2015"+ "\n" 
-				+ "NOTES:"
-				+ "\n_____________");
+		
 		//Add to panels
 		hp_pharmInfo.add(img_pharmBottle);
 		hp_pharmInfo.add(ta_pharmInfo);
@@ -294,10 +393,11 @@ public class PrintMeds {
 	 */
 	public void drawTable()
 	{
+		
 		/**
 		 * CELL TABLE FIELD
 		 */
-		final List<PatientData> l_DummyData = Arrays.asList(PatientsDB);
+		final List<PatientData> l_DummyData = Arrays.asList(patient);
 		
 		TextColumn<PatientData> tc_Name = new TextColumn<PatientData>()
 		{
