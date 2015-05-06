@@ -66,27 +66,30 @@ public class PrintMeds extends MainGUI
 	private CellTable<PatientData> ct_Results = new CellTable<PatientData>();
 	
 	private PatientServiceAsync rpc;
-	private String name[];
+	private static String name;
+	private static int ind;
 	
-	private PatientData PatientsDB[];
+	private PatientData patient[];
+	private int indx;
 	
-	/**
+	public void setInd(int in)
+	{
+		ind = in;
+	}
+	public void setName(String n)
+	{
+		PopUps pop = new PopUps();
+		pop.showDialog(n);
+		name = n;
+	}
+	/**	
 	 * Default constructor instantiates the rpc async service 
 	 * for querying the database
 	 */
 	public PrintMeds() 
-	{
-		int k;
-		
+	{		
 		rpc = PatientServiceInit.initRpc();
 		getPatientsDB();
-		PopUps pop = new PopUps();
-		
-		//pop.showDialog(first + "FIRST LAST " +last);
-		//for(k = 0; k < PatientsDB.length; k++)
-		//{
-			
-		//}
 	}
 	
 	/**
@@ -106,28 +109,78 @@ public class PrintMeds extends MainGUI
 			@Override
 			public void onSuccess(PatientData[] result) {
 				//name = getSelectedPatient().split(",[ ]*");
-				PatientsDB = result;
-
+				PopUps pop = new PopUps();
+				patient = result;
+				int k;
+				for(k = 0; k < 2; k++)
+				{
+					if(patient[k].lName == name)
+					{
+						indx = k;
+					}
+				}
+				ta_patientInfo.setText(patient[ind].fName+
+						" " +
+						patient[ind].lName+
+						"\n" + 
+						patient[ind].address+ 
+						"\n" +
+						patient[ind].city + ", " + patient[ind].state + " " + patient[ind].zip + 
+						"\n" + 
+						patient[ind].email + 
+						"\n" +
+						patient[ind].phone +  
+						"\n" + 
+						"D.O.B: "+patient[ind].dateOfBirth);
+				
+				ta_dosageInfo.setText(patient[ind].fName+
+						" " +
+						patient[ind].lName+
+						"\n" + 
+						patient[ind].address+ 
+						"\n" +
+						patient[ind].city + ", " + patient[ind].state + " " + patient[ind].zip + 
+						"\n" + 
+						patient[ind].email + 
+						"\n" +
+						patient[ind].phone +  
+						"\n" + 
+						"D.O.B: "+patient[ind].dateOfBirth+
+						"\n_____________"+
+						patient[ind].prescription+
+						"\n_____________");
+				
 				//Populates the cell table
 				drawTable();
 				
 			}
 		};
-		rpc.getPatients(callback);
+		rpc.getPatientsUnfilled(callback);
 	}
 	
+	public PatientData findSelected(PatientData[] patients) 
+	{
+		PopUps pop = new PopUps();
+		int k;
+		for(k = 0; k < patients.length; k++)
+		{
+			if(patients[k].lName == name)
+			{
+				pop.showDialog(name);
+				return patients[k];
+			}
+		}
+		return null;
+		
+	}
 	public IsWidget getPrintMedsPanel() {
 		
 		PopUps pop = new PopUps();
 		
-		//pop.showDialog(name[0] + "FIRST LAST " + name[1]);
+		//pop.showDialog(patient[1].fName + "FIRST LAST " + patient[1].lName);
 		/**
 		 * PATIENT INFO
 		 */
-		//Hard coded information for demo purposes
-		ta_patientInfo.setText("Jimmy Jame" + "\n" + "109090 Tammy Blvd" + "\n" 
-				+ "Los Angeles, Ca 90063" + "\n" + "jjTammy@gmail.com" + "\n" 
-				+ "(562) 867-5309" + "\n" + "Policy No: 548613543" + "\n" + "D.O.B: 05/10/1985");
 		//Design parameters
 		ta_patientInfo.setVisibleLines(7);
 		ta_patientInfo.setCharacterWidth(42);
@@ -236,15 +289,7 @@ public class PrintMeds extends MainGUI
 		vp_btnSubmit.setStyleName("moveSubmitBtn");
 		ta_pharmInfo.getElement().setAttribute("disabled", "disabled");
 		ta_dosageInfo.getElement().setAttribute("disabled", "disabled");
-		ta_dosageInfo.setText("Jimmy Jame" + "\n" + "109090 Tammy Blvd" + "\n" 
-				+ "Los Angeles, Ca 90063" + "\n" + "jjTammy@gmail.com" + "\n" 
-				+ "(562) 867-5309" + "\n" + "Policy No: 548613543" + "\n" + "D.O.B: 05/10/1985"
-				+ "\n_____________"
-				+"\nTake 2 capsules of Ibuprofyn" + "\n" 
-				+ "b.i.d." + "\n" 
-				+ "From 04/23/2015 Until 04/24/2015"+ "\n" 
-				+ "NOTES:"
-				+ "\n_____________");
+		
 		//Add to panels
 		hp_pharmInfo.add(img_pharmBottle);
 		hp_pharmInfo.add(ta_pharmInfo);
@@ -311,10 +356,11 @@ public class PrintMeds extends MainGUI
 	 */
 	public void drawTable()
 	{
+		
 		/**
 		 * CELL TABLE FIELD
 		 */
-		final List<PatientData> l_DummyData = Arrays.asList(PatientsDB);
+		final List<PatientData> l_DummyData = Arrays.asList(patient);
 		
 		TextColumn<PatientData> tc_Name = new TextColumn<PatientData>()
 		{

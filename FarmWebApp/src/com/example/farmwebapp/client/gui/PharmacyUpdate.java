@@ -182,14 +182,20 @@ public class PharmacyUpdate //extends MainGUI
 		ct_Results.setWidth("642px");
 		pager.setDisplay(ct_Results);
 		
-b_Select.addClickHandler(new ClickHandler(){
+		b_Select.addClickHandler(new ClickHandler(){
 			@Override
 			public void onClick(ClickEvent event) 
 			{
+				PrintMeds print = new PrintMeds();
+				
+				
 				PopUps pop = new PopUps();
 				String tempID = ct_Results.getRowElement(ct_Results.getKeyboardSelectedRow()).getFirstChild().toString();
-				pop.showDialog(tempID);
-				moveToPrescribe("pharmacist",tempID);
+				int selectedID = ct_Results.getKeyboardSelectedRow();
+				print.setName(tempID.split(", ")[0]);
+				print.setInd(selectedID);
+				//pop.showDialog(tempID.split(", ")[0]);
+				moveToPrescribe("pharmacist",tempID,selectedID);
 			}
 		});
 
@@ -200,7 +206,7 @@ b_Select.addClickHandler(new ClickHandler(){
 		vpTable.add(hpCRUD);
 		getPharmacyUpdatePanel();
 	}
-	protected void moveToPrescribe(String userID,String tempID) 
+	protected void moveToPrescribe(String userID,String tempID, int selectedID) 
 	{
 		MainGUI gui = new MainGUI();
 		if(userID == "doctor")
@@ -209,7 +215,7 @@ b_Select.addClickHandler(new ClickHandler(){
 		}
 		else if(userID == "pharmacist")
 		{
-			gui.refreshUI("pharmacist", 4,tempID);
+			gui.refreshUI("pharmacist", 4,tempID,selectedID);
 		}
 		
 		

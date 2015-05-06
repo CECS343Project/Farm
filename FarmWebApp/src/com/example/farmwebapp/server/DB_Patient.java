@@ -113,31 +113,31 @@ public class DB_Patient extends DB_Conn
 		switch(field.toLowerCase())
 		{
 		case "patientid":
-			query += "WHERE patientID = '" + value+ "';";
+			query += "WHERE patientID = '" + value.trim()+ "';";
 			break;
 		case "fname":
-			query += "WHERE fName = '" + value+ "';";
+			query += "WHERE fName = '" + value.trim()+ "';";
 			break;
 		case "lname":
-			query += "WHERE lName = '" + value+ "';";
+			query += "WHERE lName = '" + value.trim()+ "';";
 			break;
 		case "address":
-			query += "WHERE address = '" + value+ "';";
+			query += "WHERE address = '" + value.trim()+ "';";
 			break;
 		case "city":
-			query += "WHERE city = '" + value+ "';";
+			query += "WHERE city = '" + value.trim()+ "';";
 			break;
 		case "state":
-			query += "WHERE state = '" + value+ "';";
+			query += "WHERE state = '" + value.trim()+ "';";
 			break;
 		case "zip":
-			query += "WHERE zipcode = '" + value+ "';";
+			query += "WHERE zipcode = '" + value.trim()+ "';";
 			break;
 		case "phone":
-			query += "WHERE phone = '" + value+ "';";
+			query += "WHERE phone = '" + value.trim()+ "';";
 			break;
 		case "dob":
-			query += "WHERE dateOfBirth = '" + value+ "';";
+			query += "WHERE dateOfBirth = '" + value.trim()+ "';";
 			break;
 		default:
 			query += ";";
