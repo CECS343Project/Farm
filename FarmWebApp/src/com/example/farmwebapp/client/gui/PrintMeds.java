@@ -69,6 +69,7 @@ public class PrintMeds extends MainGUI
 	private CellTable<PatientData> ct_Results = new CellTable<PatientData>();
 	
 	private PatientServiceAsync rpc;
+	private PatientServiceAsync printRpc;
 	private UserServiceAsync uRpc;
 	private static String name;
 	private static int ind;
@@ -101,8 +102,30 @@ public class PrintMeds extends MainGUI
 	{		
 		rpc = PatientServiceInit.initRpc();
 		uRpc = UserServiceInit.initRpc();
+		printRpc = PatientServiceInit.initRpc();
 		getPatientsDB();
 		getUsersDB();
+	}
+	
+	public void printPatientDB(PatientData patient)
+	{
+		AsyncCallback callback = new AsyncCallback()
+		{
+
+			@Override
+			public void onFailure(Throwable caught) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void onSuccess(Object result) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+		};
+		printRpc.updatePatient(patient, callback);
 	}
 	
 	public void getUsersDB()
@@ -173,6 +196,8 @@ public class PrintMeds extends MainGUI
 						"\n" + 
 						"D.O.B: "+patient[ind].dateOfBirth);
 				
+				ta_notesReview.setText("The Presciption is as follows:\n\n\n" + patient[ind].prescription+"\n________________________________\n\nPlease click the print button in the lower right hand corner to fill this patient's prescription");
+				
 				ta_dosageInfo.setText(patient[ind].fName+
 						" " +
 						patient[ind].lName+
@@ -186,9 +211,9 @@ public class PrintMeds extends MainGUI
 						patient[ind].phone +  
 						"\n" + 
 						"D.O.B: "+patient[ind].dateOfBirth+
-						"\n_____________"+
+						"\n_____________\n\n"+
 						patient[ind].prescription+
-						"\n_____________");
+						"\n\n_____________");
 				
 				//Populates the cell table
 				drawTable();
@@ -361,9 +386,11 @@ public class PrintMeds extends MainGUI
 				try {
 					PopUps pop = new PopUps();
 					
-					pop.showDialog("Prescription has been filled for Jimmy Jame");
-					MainGUI gui = new MainGUI();
-					gui.refreshUI("pharmacist", 0);
+					pop.showDialog("Prescription has been filled for "+patient[ind].fName + " " + patient[ind].lName);
+					PatientData temp = patient[ind];
+					temp.prescription = " ";
+					temp.status = "Filled";
+					printPatientDB(temp);
 					}
 				catch(Exception e) {
 					//Add click event exception

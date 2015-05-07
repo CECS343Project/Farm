@@ -216,7 +216,7 @@ public class DB_Patient extends DB_Conn
 	public void updatePatient(PatientData patient) 
 	{
 		String query = null;
-		query = "UPDATE `pillbug`.`patients` SET `prescription` = '"+patient.prescription+"', `status` = 'Unfilled' WHERE `patientID` = "+patient.patientID+";";				
+		query = "UPDATE `pillbug`.`patients` SET `prescription` = '"+patient.prescription+"', `status` = '"+patient.status+"' WHERE `patientID` = "+patient.patientID+";";				
 		try
 		{
 			Connection conn = getConn();

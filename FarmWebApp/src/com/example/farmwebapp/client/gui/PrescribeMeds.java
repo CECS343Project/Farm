@@ -458,6 +458,7 @@ public class PrescribeMeds extends MainGUI
 						+ lb_time.getSelectedItemText() + " from "
 						+ dateFormat.format(db_startDate.getValue()).toString() + " until "
 						+ dateFormat.format(db_endDate.getValue()).toString();
+				upPatient.status = "Unfilled";
 				updatePatientsDB(upPatient);
 			}
 
@@ -513,6 +514,6 @@ public class PrescribeMeds extends MainGUI
 	
 	public void moveToHome()
 	{
-		super.refreshUI("Doctor");
+		//super.refreshUI("Doctor");
 	}
 }
