@@ -3,6 +3,11 @@ package com.example.farmwebapp.client.gui;
 import java.util.List;
 import java.util.Arrays;
 
+import org.apache.xalan.xsltc.compiler.Pattern;
+import org.apache.xerces.impl.xs.identity.Selector.Matcher;
+
+import com.google.gwt.regexp.shared.MatchResult;
+import com.google.gwt.regexp.shared.RegExp;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.Label;
@@ -311,9 +316,22 @@ public class PrescribeMeds extends MainGUI
 		img_addMeds.addClickHandler(new ClickHandler() {
 			public void onClick(ClickEvent event) {
 				try {
+					RegExp myPattern = RegExp.compile(">(.*?)</div>");
+					String selectedMeds = ct_Results.getRowElement(ct_Results.getKeyboardSelectedRow()).getFirstChild().toString();
+					MatchResult m = myPattern.exec(selectedMeds);
+					boolean matchFound = m != null;
+					if(matchFound )
+					{
+						for( int k = 0; k < m.getGroupCount(); k++)
+						{
+							String temp = m.getGroup(k);
+							ta_addedMedication.setText(temp.substring(75, temp.length()));
+						}
+					}
+					
 					// Add click event
 				} catch (Exception e) {
-					// Add click event exception
+					
 				}
 			}
 		});
