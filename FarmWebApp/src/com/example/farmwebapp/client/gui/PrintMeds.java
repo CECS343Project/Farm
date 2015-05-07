@@ -390,7 +390,7 @@ public class PrintMeds extends MainGUI
 				try {
 					PopUps pop = new PopUps();
 					
-					pop.showDialog("Prescription has been filled for "+patient[7].fName + " " + patient[7].lName);
+					//pop.showDialog("Prescription has been filled for "+patient[7].fName + " " + patient[7].lName);
 					PatientData temp = patient[7];
 					temp.prescription = " ";
 					temp.status = "Filled";
