@@ -9,6 +9,7 @@
  */
 package com.example.farmwebapp.client.gui;
 
+import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.TextBox;
@@ -27,6 +28,8 @@ import com.google.gwt.event.dom.client.KeyPressHandler;
 import com.google.gwt.event.dom.client.MouseOverHandler;
 import com.google.gwt.user.client.ui.HasVerticalAlignment;
 import com.example.farmwebapp.client.dbobjects.PatientData;
+import com.example.farmwebapp.client.services.PatientServiceAsync;
+import com.example.farmwebapp.client.services.PatientServiceInit;
 
 public class AddPatient extends MainGUI {
 	private final int CELLWIDTH = 195;
@@ -44,6 +47,18 @@ public class AddPatient extends MainGUI {
 	private TextBox tb_addressCity = new TextBox();
 	private TextBox tb_addressState = new TextBox();
 	private TextBox tb_addressStreet = new TextBox();
+	private static int ind;
+	PatientData patient = new PatientData();
+	private String fName;
+	private String lName;
+	private String address;
+	private String city;
+	private String zip;
+	private String dateOfBirth;
+	private String email;
+	private String phone;
+	private String state;
+	private String userID;
 
 	private VerticalPanel vp = new VerticalPanel();
 
@@ -53,9 +68,52 @@ public class AddPatient extends MainGUI {
 
 	private final DateTimeFormat dateFormat = DateTimeFormat
 			.getFormat("MM/dd/yyyy");
+	private PatientServiceAsync rpc;
 
 	// Default Constructor
 	public AddPatient() {
+		
+	}
+	
+	public void setInd(int val)
+	{
+		ind = val;
+	}
+	
+	public int getInd()
+	{
+		return ind;
+	}
+	
+	public void insertPatient(PatientData pat)
+	{
+		PopUps pop = new PopUps();
+		
+		pop.showDialog("made it to the call");
+		rpc = PatientServiceInit.initRpc();
+		AsyncCallback<PatientData> callback = new AsyncCallback<PatientData>()
+		{
+
+			@Override
+			public void onFailure(Throwable caught) {
+				PopUps pop = new PopUps();
+				
+				pop.showDialog(caught.toString());
+				
+			}
+
+			@Override
+			public void onSuccess(PatientData result) {
+				PopUps pop = new PopUps();
+				
+				pop.showDialog("SUCCEEDED");
+				// TODO Auto-generated method stub
+				
+			}
+			
+		};
+		
+		rpc.insertPatient(pat,callback);
 	}
 
 	/**
@@ -179,11 +237,54 @@ public class AddPatient extends MainGUI {
 		img_addPatient.getElement().setAttribute("align", "right");
 		img_addPatient.setTitle("ADD PATIENT");
 		ft.getElement().setAttribute("cellpadding", "10");
+		/*
+		PatientData patient = new PatientData();
+		patient.fName = tb_nameFirst.getText();
+		patient.lName = tb_nameLast.getText();
+		patient.address = tb_addressStreet.getText();
+		patient.city = tb_addressCity.getText();
+		patient.zip = Integer.parseInt(tb_addressZip.getText());
+		patient.dateOfBirth = db_dob.getValue().toString();
+		patient.email = tb_email.getText();
+		patient.phone = Integer.parseInt(tb_phoneNo.getText());
+		patient.state = tb_addressState.getText();
+		patient.userID = getInd();
+		*/
+		
+		
 		/**
 		 * Send RPC call
 		 */
 		img_addPatient.addClickHandler(new ClickHandler() {
 			public void onClick(ClickEvent event) {
+				PopUps pop = new PopUps();
+				pop.showDialog("CLICKED");
+				fName = tb_nameFirst.getText().toString();
+				lName = tb_nameLast.getText().toString();
+				address = tb_addressStreet.getText().toString();
+				city = tb_addressCity.getText().toString();
+				zip = tb_addressZip.getText().toString();
+				dateOfBirth = dateFormat.format(db_dob.getValue()).toString();
+				email = tb_email.getText().toString();
+				phone = tb_phoneNo.getText().toString();
+				state = tb_addressState.getText().toString();
+				userID = ""+getInd();
+				
+				PatientData patient = new PatientData();
+				patient.fName = tb_nameFirst.getText();
+				patient.lName = tb_nameLast.getText();
+				patient.address = tb_addressStreet.getText();
+				patient.city = tb_addressCity.getText();
+				patient.zip = Integer.parseInt(tb_addressZip.getText());
+				patient.dateOfBirth = dateFormat.format(db_dob.getValue()).toString();
+				patient.email = tb_email.getText();
+				patient.phone = Integer.parseInt(tb_phoneNo.getText());
+				patient.state = tb_addressState.getText();
+				patient.userID = getInd();
+				pop.showDialog("YO " + fName);
+				//insertPatient(fName);
+				insertPatient(patient);
+				/*
 				HTML s_DBData;
 				try {
 					s_DBData = new HTML("User Type: Patient" + "<br>Name: "
@@ -199,6 +300,7 @@ public class AddPatient extends MainGUI {
 					popups.showDialog("Patient added to the DB:\r\n" + s_DBData);
 				} catch (Exception e) {
 				}
+				*/
 			}
 		});
 

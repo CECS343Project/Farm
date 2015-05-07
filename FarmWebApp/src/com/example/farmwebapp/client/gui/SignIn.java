@@ -151,11 +151,12 @@ public class SignIn extends MainGUI
 		            		{
 		            			setUser(k);
 		            			PrintMeds print = new PrintMeds();
+		            			AddPatient add =new AddPatient();
 		            			PrescribeMeds prescribe = new PrescribeMeds();
 		            			
-		            			prescribe.setUInd(k);
-		            			
-		            			print.setUInd(k);
+		            			prescribe.setInd(k);
+		            			add.setInd(k);
+		            			print.setInd(k);
 		            			switch(tb_userName.getText().charAt(0))
 		            			{
 		            			case 'd':

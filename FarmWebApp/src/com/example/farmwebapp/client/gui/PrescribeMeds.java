@@ -2,6 +2,8 @@ package com.example.farmwebapp.client.gui;
 
 import java.util.List;
 import java.util.Arrays;
+
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.ListBox;
@@ -98,6 +100,7 @@ public class PrescribeMeds extends MainGUI
 	private PatientData[] patient;
 	private UserServiceAsync uRpc;
 	private PatientServiceAsync pRpc;
+	private PatientServiceAsync upRpc;
 
 	/**
 	 * Default constructor instantiates the rpc async service for querying the
@@ -127,6 +130,7 @@ public class PrescribeMeds extends MainGUI
 		rpc = MedicationServiceInit.initRpc();
 		uRpc = UserServiceInit.initRpc();
 		pRpc = PatientServiceInit.initRpc();
+		upRpc = PatientServiceInit.initRpc();
 		getMedicationsDB();
 		getUsersDB();
 		getPatientsDB();
@@ -211,7 +215,7 @@ public class PrescribeMeds extends MainGUI
 		pRpc.getPatients(callback);
 	}
 
-	public void updatePatientsDB(PatientData patient) {
+	public void updatePatientsDB(final PatientData uPatient) {
 		AsyncCallback<PatientData> callback = new AsyncCallback<PatientData>() {
 
 			@Override
@@ -222,14 +226,11 @@ public class PrescribeMeds extends MainGUI
 
 			@Override
 			public void onSuccess(PatientData result) {
-				PopUps pop = new PopUps();
-
-				pop.showDialog("Successful update!");
-
+				moveToHome();
 			}
 
 		};
-		pRpc.updatePatient(patient, callback);
+		upRpc.updatePatient(uPatient, callback);
 	}
 
 	public IsWidget getPrescribeMedsPanel() {
@@ -453,11 +454,10 @@ public class PrescribeMeds extends MainGUI
 				upPatient.patientID = patient[ind].patientID;
 				upPatient.prescription = "Take " + tb_dosageField.getText()
 						+ " " + lb_units.getSelectedItemText() + " of "
-						+ tb_dosageField.getText() + " every "
+						+ ta_addedMedication.getText() + " every "
 						+ lb_time.getSelectedItemText() + " from "
-						+ db_startDate.getValue().toString() + " until "
-						+ db_endDate.getValue().toString();
-
+						+ dateFormat.format(db_startDate.getValue()).toString() + " until "
+						+ dateFormat.format(db_endDate.getValue()).toString();
 				updatePatientsDB(upPatient);
 			}
 
@@ -509,5 +509,10 @@ public class PrescribeMeds extends MainGUI
 		ct_Results.setWidth("210px");
 		// hp_searchResults.add(ct_Results);
 		getPrescribeMedsPanel();
+	}
+	
+	public void moveToHome()
+	{
+		super.refreshUI("Doctor");
 	}
 }
