@@ -73,15 +73,19 @@ public class PrintMeds extends MainGUI
 	private UserServiceAsync uRpc;
 	private static String name;
 	private static int ind;
-	private static int uInd;
+	private static int pInd;
 	
 	private PatientData patient[];
 	private UserData user[];
 	private int indx;
 	
-	public void setUInd(int in)
+	public void setPInd(int in)
 	{
-		uInd = in;
+		pInd = in;
+	}
+	public void setPInd(String in)
+	{
+		pInd = Integer.valueOf(in);
 	}
 	
 	public void setInd(int in)
@@ -142,21 +146,21 @@ public class PrintMeds extends MainGUI
 			@Override
 			public void onSuccess(UserData[] result) {
 				user = result;
-				ta_doctorInfo.setText(user[uInd].fName+" "+user[uInd].lName + 
+				ta_doctorInfo.setText(user[ind].fName+" "+user[ind].lName + 
 						"\n" + 
-						user[uInd].address + 
+						user[ind].address + 
 						"\n"+ 
-						user[uInd].city+","+user[uInd].state+" "+user[uInd].zip + 
+						user[ind].city+","+user[ind].state+" "+user[ind].zip + 
 						"\n" + 
-						user[uInd].email+ 
+						user[ind].email+ 
 						"\n" +
-						user[uInd].phone);
+						user[ind].phone);
 				
-				ta_pharmInfo.setText(user[uInd].pharmacy + 
+				ta_pharmInfo.setText(user[ind].pharmacy + 
 						"\n" + 
-						user[uInd].pharmAddress+ 
+						user[ind].pharmAddress+ 
 						"\n"+ 
-						user[uInd].pharmCity+", " +user[uInd].pharmState+" " +user[uInd].pharmZip);
+						user[ind].pharmCity+", " +user[ind].pharmState+" " +user[ind].pharmZip);
 				
 				
 			}
@@ -182,37 +186,37 @@ public class PrintMeds extends MainGUI
 			@Override
 			public void onSuccess(PatientData[] result) {
 				patient = result;
-				ta_patientInfo.setText(patient[ind].fName+
+				ta_patientInfo.setText(patient[7].fName+
 						" " +
-						patient[ind].lName+
+						patient[7].lName+
 						"\n" + 
-						patient[ind].address+ 
+						patient[7].address+ 
 						"\n" +
-						patient[ind].city + ", " + patient[ind].state + " " + patient[ind].zip + 
+						patient[7].city + ", " + patient[7].state + " " + patient[7].zip + 
 						"\n" + 
-						patient[ind].email + 
+						patient[7].email + 
 						"\n" +
-						patient[ind].phone +  
+						patient[7].phone +  
 						"\n" + 
-						"D.O.B: "+patient[ind].dateOfBirth);
+						"D.O.B: "+patient[7].dateOfBirth);
 				
-				ta_notesReview.setText("The Presciption is as follows:\n\n\n" + patient[ind].prescription+"\n________________________________\n\nPlease click the print button in the lower right hand corner to fill this patient's prescription");
+				ta_notesReview.setText("The Presciption is as follows:\n\n\n" + patient[7].prescription+"\n________________________________\n\nPlease click the print button in the lower right hand corner to fill this patient's prescription");
 				
-				ta_dosageInfo.setText(patient[ind].fName+
+				ta_dosageInfo.setText(patient[7].fName+
 						" " +
-						patient[ind].lName+
+						patient[7].lName+
 						"\n" + 
-						patient[ind].address+ 
+						patient[7].address+ 
 						"\n" +
-						patient[ind].city + ", " + patient[ind].state + " " + patient[ind].zip + 
+						patient[7].city + ", " + patient[pInd].state + " " + patient[pInd].zip + 
 						"\n" + 
-						patient[ind].email + 
+						patient[7].email + 
 						"\n" +
-						patient[ind].phone +  
+						patient[7].phone +  
 						"\n" + 
-						"D.O.B: "+patient[ind].dateOfBirth+
+						"D.O.B: "+patient[7].dateOfBirth+
 						"\n_____________\n\n"+
-						patient[ind].prescription+
+						patient[7].prescription+
 						"\n\n_____________");
 				
 				//Populates the cell table
@@ -220,7 +224,7 @@ public class PrintMeds extends MainGUI
 				
 			}
 		};
-		rpc.getPatientsUnfilled(callback);
+		rpc.getPatients(callback);
 	}
 	
 	public PatientData findSelected(PatientData[] patients) 
@@ -386,8 +390,8 @@ public class PrintMeds extends MainGUI
 				try {
 					PopUps pop = new PopUps();
 					
-					pop.showDialog("Prescription has been filled for "+patient[ind].fName + " " + patient[ind].lName);
-					PatientData temp = patient[ind];
+					pop.showDialog("Prescription has been filled for "+patient[7].fName + " " + patient[7].lName);
+					PatientData temp = patient[7];
 					temp.prescription = " ";
 					temp.status = "Filled";
 					printPatientDB(temp);

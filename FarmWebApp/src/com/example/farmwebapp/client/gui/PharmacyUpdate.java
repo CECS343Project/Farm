@@ -8,6 +8,7 @@
  * @author Napoleon Fulinara Jr.
  */
 package com.example.farmwebapp.client.gui;
+import java.text.NumberFormat;
 import java.util.List;
 import java.util.Arrays;
 
@@ -129,6 +130,12 @@ public class PharmacyUpdate // extends MainGUI
 		final List<PatientData> l_DummyData = Arrays.asList(PatientsDB);
 		ListDataProvider<PatientData> ldp_CellData = new ListDataProvider<PatientData>();
 
+		TextColumn<PatientData> tc_ID = new TextColumn<PatientData>() {
+			@Override
+			public String getValue(PatientData object) {
+				return ""+object.patientID;
+			}
+		};
 		TextColumn<PatientData> tc_Name = new TextColumn<PatientData>() {
 			@Override
 			public String getValue(PatientData object) {
@@ -166,6 +173,7 @@ public class PharmacyUpdate // extends MainGUI
 		ct_Results.getColumnSortList().push(tc_Name);
 
 		// Add the columns to the table
+		ct_Results.addColumn(tc_ID, "ID");
 		ct_Results.addColumn(tc_Name, "Name");
 		ct_Results.addColumn(tc_Address, "Address");
 		ct_Results.addColumn(tc_Email, "Email");
@@ -184,6 +192,8 @@ public class PharmacyUpdate // extends MainGUI
 		b_Select.addClickHandler(new ClickHandler() {
 			@Override
 			public void onClick(ClickEvent event) {
+				try
+				{				
 				PrintMeds print = new PrintMeds();
 
 				PopUps pop = new PopUps();
@@ -191,10 +201,16 @@ public class PharmacyUpdate // extends MainGUI
 						.getRowElement(ct_Results.getKeyboardSelectedRow())
 						.getFirstChild().toString();
 				int selectedID = ct_Results.getKeyboardSelectedRow();
-				print.setName(tempID.split(", ")[0]);
-				print.setInd(selectedID);
-				// pop.showDialog(tempID.split(", ")[0]);
+				//print.setName(tempID.split(", ")[0]);
+				print.setPInd(7);
 				moveToPrescribe("pharmacist", tempID, selectedID);
+				}
+				catch(NumberFormatException e)
+				{
+					
+				}
+				// pop.showDialog(tempID.split(", ")[0]);
+				
 			}
 		});
 

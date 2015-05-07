@@ -187,7 +187,7 @@ public class DB_Patient extends DB_Conn
 	{
 		String query = null;
 		query = "INSERT INTO `pillbug`.`patients`"+
-				"(`fName`,lName,email,phone,dateOfBirth,address,city,state,zip,userID)"+
+				"(`fName`,lName,email,phone,dateOfBirth,address,city,state,zip,status,userID)"+
 				"VALUES"+
 				"('"+patient.fName+"',"
 				+ "'"+patient.lName+"',"
@@ -198,6 +198,7 @@ public class DB_Patient extends DB_Conn
 				+ "'"+patient.city+"',"
 				+ "'"+patient.state+"',"
 				+ ""+patient.zip+","
+				+ "'Unfilled',"
 				+ ""+patient.userID+""
 				+ ");";				
 		try

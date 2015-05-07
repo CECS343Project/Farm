@@ -157,6 +157,8 @@ public class SignIn extends MainGUI
 		            			prescribe.setInd(k);
 		            			add.setInd(k);
 		            			print.setInd(k);
+		            			prescribe.setPInd(k);
+		            			print.setPInd(k);
 		            			switch(tb_userName.getText().charAt(0))
 		            			{
 		            			case 'd':

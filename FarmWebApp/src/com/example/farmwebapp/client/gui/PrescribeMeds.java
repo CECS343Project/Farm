@@ -100,7 +100,7 @@ public class PrescribeMeds extends MainGUI
 	private MedicationData medications[];
 
 	private static int ind;
-	private static int uInd;
+	private static int pInd;
 	private UserData[] user;
 	private PatientData[] patient;
 	private UserServiceAsync uRpc;
@@ -141,9 +141,13 @@ public class PrescribeMeds extends MainGUI
 		getPatientsDB();
 	}
 
-	public void setUInd(int val) {
-		uInd = val;
+	public void setPInd(int val) {
+		pInd = val;
 	}
+	public void setPInd(String val) {
+		pInd = Integer.valueOf(val);
+	}
+
 
 	public void setInd(int val) {
 		ind = val;
@@ -184,10 +188,10 @@ public class PrescribeMeds extends MainGUI
 			public void onSuccess(UserData[] result) {
 				user = result;
 
-				ta_doctorInfo.setText(user[uInd].fName + " " + user[uInd].lName
-						+ "\n" + user[uInd].address + "\n" + user[uInd].city
-						+ "," + user[uInd].state + " " + user[uInd].zip + "\n"
-						+ user[uInd].email + "\n" + user[uInd].phone);
+				ta_doctorInfo.setText(user[ind].fName + " " + user[ind].lName
+						+ "\n" + user[ind].address + "\n" + user[ind].city
+						+ "," + user[ind].state + " " + user[ind].zip + "\n"
+						+ user[ind].email + "\n" + user[ind].phone);
 
 			}
 
@@ -206,12 +210,12 @@ public class PrescribeMeds extends MainGUI
 			@Override
 			public void onSuccess(PatientData[] result) {
 				patient = result;
-				ta_patientInfo.setText(patient[ind].fName + " "
-						+ patient[ind].lName + "\n" + patient[ind].address
-						+ "\n" + patient[ind].city + ", " + patient[ind].state
-						+ " " + patient[ind].zip + "\n" + patient[ind].email
-						+ "\n" + patient[ind].phone + "\n" + "D.O.B: "
-						+ patient[ind].dateOfBirth);
+				ta_patientInfo.setText(patient[7].fName + " "
+						+ patient[7].lName + "\n" + patient[7].address
+						+ "\n" + patient[7].city + ", " + patient[7].state
+						+ " " + patient[7].zip + "\n" + patient[7].email
+						+ "\n" + patient[7].phone + "\n" + "D.O.B: "
+						+ patient[7].dateOfBirth);
 
 				// Populates the cell table
 
@@ -316,7 +320,7 @@ public class PrescribeMeds extends MainGUI
 		img_addMeds.addClickHandler(new ClickHandler() {
 			public void onClick(ClickEvent event) {
 				try {
-					RegExp myPattern = RegExp.compile(">(.*?)</div>");
+					RegExp myPattern = RegExp.compile("[0-9][0-9]\">(.*?)</div>");
 					String selectedMeds = ct_Results.getRowElement(ct_Results.getKeyboardSelectedRow()).getFirstChild().toString();
 					MatchResult m = myPattern.exec(selectedMeds);
 					boolean matchFound = m != null;
@@ -325,7 +329,7 @@ public class PrescribeMeds extends MainGUI
 						for( int k = 0; k < m.getGroupCount(); k++)
 						{
 							String temp = m.getGroup(k);
-							ta_addedMedication.setText(temp.substring(75, temp.length()));
+							ta_addedMedication.setText(temp.substring(0, temp.length()));
 						}
 					}
 					
@@ -469,7 +473,7 @@ public class PrescribeMeds extends MainGUI
 			public void onClick(ClickEvent event) {
 				PatientData upPatient = new PatientData();
 
-				upPatient.patientID = patient[ind].patientID;
+				upPatient.patientID = patient[7].patientID;
 				upPatient.prescription = "Take " + tb_dosageField.getText()
 						+ " " + lb_units.getSelectedItemText() + " of "
 						+ ta_addedMedication.getText() + " every "

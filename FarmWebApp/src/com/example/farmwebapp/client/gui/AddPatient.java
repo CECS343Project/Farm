@@ -72,7 +72,7 @@ public class AddPatient extends MainGUI {
 
 	// Default Constructor
 	public AddPatient() {
-		
+		rpc = PatientServiceInit.initRpc();
 	}
 	
 	public void setInd(int val)
@@ -85,12 +85,11 @@ public class AddPatient extends MainGUI {
 		return ind;
 	}
 	
-	public void insertPatient(PatientData pat)
+	public void insertPatientDB(PatientData pat)
 	{
 		PopUps pop = new PopUps();
 		
-		pop.showDialog("made it to the call");
-		rpc = PatientServiceInit.initRpc();
+		
 		AsyncCallback<PatientData> callback = new AsyncCallback<PatientData>()
 		{
 
@@ -106,7 +105,7 @@ public class AddPatient extends MainGUI {
 			public void onSuccess(PatientData result) {
 				PopUps pop = new PopUps();
 				
-				pop.showDialog("SUCCEEDED");
+				pop.showDialog("Successfully added patient!");
 				// TODO Auto-generated method stub
 				
 			}
@@ -256,20 +255,7 @@ public class AddPatient extends MainGUI {
 		 * Send RPC call
 		 */
 		img_addPatient.addClickHandler(new ClickHandler() {
-			public void onClick(ClickEvent event) {
-				PopUps pop = new PopUps();
-				pop.showDialog("CLICKED");
-				fName = tb_nameFirst.getText().toString();
-				lName = tb_nameLast.getText().toString();
-				address = tb_addressStreet.getText().toString();
-				city = tb_addressCity.getText().toString();
-				zip = tb_addressZip.getText().toString();
-				dateOfBirth = dateFormat.format(db_dob.getValue()).toString();
-				email = tb_email.getText().toString();
-				phone = tb_phoneNo.getText().toString();
-				state = tb_addressState.getText().toString();
-				userID = ""+getInd();
-				
+			public void onClick(ClickEvent event) {				
 				PatientData patient = new PatientData();
 				patient.fName = tb_nameFirst.getText();
 				patient.lName = tb_nameLast.getText();
@@ -281,9 +267,8 @@ public class AddPatient extends MainGUI {
 				patient.phone = Integer.parseInt(tb_phoneNo.getText());
 				patient.state = tb_addressState.getText();
 				patient.userID = getInd();
-				pop.showDialog("YO " + fName);
 				//insertPatient(fName);
-				insertPatient(patient);
+				insertPatientDB(patient);
 				/*
 				HTML s_DBData;
 				try {

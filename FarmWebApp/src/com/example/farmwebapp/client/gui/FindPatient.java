@@ -110,7 +110,37 @@ public class FindPatient extends MainGUI {
 				// "FIND PATIENT");
 			}
 		};
+		
+		
 		rpc.getPatients(callback);
+	}
+	/**
+	 * Sends an asynchronous call to the database and populates the celltable
+	 * with the results when query succeeds
+	 * 
+	 * @return
+	 */
+	public void getPatientsDB(String name) {
+		rpc = PatientServiceInit.initRpc();
+		AsyncCallback<PatientData[]> callback = new AsyncCallback<PatientData[]>() {
+			@Override
+			public void onFailure(Throwable caught) {
+				PopUps popUp = new PopUps();
+			} // popUp.showDialog(caught.toString());
+
+			@Override
+			public void onSuccess(PatientData[] result) {
+				PopUps popUp = new PopUps();
+				// popUp.showDialog("Got the patients!");
+				patients = result;
+				drawTable(patients);
+				// findPatientPanel = new FindPatient(PatientsDB);
+				// findPatientPanel.getFindPatientPanel().asWidget().removeFromParent();
+				// homePage.add(findPatientPanel.getFindPatientPanel(),
+				// "FIND PATIENT");
+			}
+		};
+		rpc.getPatients("fname",name,callback);
 	}
 
 	/**
@@ -231,7 +261,14 @@ public class FindPatient extends MainGUI {
 		img_findPatient.addClickHandler(new ClickHandler() {
 			@Override
 			public void onClick(ClickEvent event) {
-				getPatientsDB();
+				if(tb_nameFirst.getText()!= null)
+				{
+				getPatientsDB(tb_nameFirst.getText());
+				}
+				else
+				{
+					getPatientsDB();
+				}
 			}
 		});
 		
@@ -365,16 +402,18 @@ public class FindPatient extends MainGUI {
 			public void onClick(ClickEvent event) {
 				PopUps pop = new PopUps();
 				PrescribeMeds prescribe = new PrescribeMeds();
+				PrintMeds print = new PrintMeds();
 				String tempID = ct_Results
 						.getRowElement(ct_Results.getKeyboardSelectedRow())
-						.getLastChild().toString();
-				prescribe.setInd(ct_Results.getKeyboardSelectedRow());
+						.getFirstChild().toString();
+				
+				prescribe.setPInd(8);
+				print.setPInd(8);
 				moveToPrescribe(userType, tempID);
 			}
 		});
 
 		hpCRUD.add(b_Select);
-		hpCRUD.add(b_Delete);
 
 		vpTable.add(ct_Results);
 		vpTable.add(pager);
