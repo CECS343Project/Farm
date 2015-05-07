@@ -263,7 +263,7 @@ public class FindPatient extends MainGUI {
 			public void onClick(ClickEvent event) {
 				if(tb_nameFirst.getText()!= null)
 				{
-				getPatientsDB(tb_nameFirst.getText());
+					getPatientsDB(tb_nameFirst.getText());
 				}
 				else
 				{
