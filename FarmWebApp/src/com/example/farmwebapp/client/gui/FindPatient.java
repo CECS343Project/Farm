@@ -407,8 +407,8 @@ public class FindPatient extends MainGUI {
 						.getRowElement(ct_Results.getKeyboardSelectedRow())
 						.getFirstChild().toString();
 				
-				prescribe.setPInd(8);
-				print.setPInd(8);
+				prescribe.setPInd(7);
+				print.setPInd(7);
 				moveToPrescribe(userType, tempID);
 			}
 		});

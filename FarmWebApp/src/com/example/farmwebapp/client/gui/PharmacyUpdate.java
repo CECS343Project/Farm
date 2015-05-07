@@ -217,7 +217,6 @@ public class PharmacyUpdate // extends MainGUI
 
 		
 		hpCRUD.add(b_Select);
-		hpCRUD.add(b_Delete);
 		hpCRUD.addStyleName("moveRefreshBTN");
 		vpTable.add(ct_Results);
 		pager.addStyleName("movePager");
